@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<XPARR_CDS>
+	<Segment id="1">
+		<Offset>10</Offset>
+		<gene name="HA_sig_pept" strand="forward">
+			<exon from="1" to="48"/>
+		</gene>
+		<gene name="HA1" strand="forward">
+			<exon from="49" to="1035"/>
+		</gene>
+		<gene name="HA2" strand="forward">
+			<exon from="1036" to="1698"/>
+		</gene>
+	</Segment>
+	<Segment id="2">
+		<Offset>19</Offset>
+		<gene name="NA" strand="forward">
+			<exon from="1" to="1407"/>
+		</gene>
+	</Segment>
+</XPARR_CDS>
