@@ -63,9 +63,10 @@ sub nsyn_substitutions{
 	my $anc_seq=shift;
 	my $seq=shift;
 	my $rCDS=shift;
-	my $ra_nsyn=shift;
+	#my $ra_nsyn=shift;
+	my %ra_nsyn;
 	#@{$ra_nsyn}=();
-	%{$ra_nsyn} = {};
+	#%{$ra_nsyn} = {};
 	return -1 unless defined($anc_seq)&&defined($seq);
 	my $len=length $anc_seq;
 	if(defined($rCDS)){
@@ -93,11 +94,12 @@ sub nsyn_substitutions{
 			$p->ancestral_allele($aaa);
 			$p->derived_allele($aa);
 			#push @{$ra_nsyn},$p;
+			print ("mutmap: ".$n."\t".$aa."\t".$aaa."\n");
 			$ra_nsyn{$n} = $p;
 		};
 	};
-	#return @{$ra_nsyn}; 
-	return  %{$ra_nsyn};
+	##return @{$ra_nsyn}; 
+	return  %ra_nsyn;
 }
 
 
