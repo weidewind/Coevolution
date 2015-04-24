@@ -1,0 +1,6717 @@
+mutmap: 8	L	L
+mutmap: 27	N	N
+mutmap: 42	T	T
+mutmap: 56	G	G
+mutmap: 67	L	L
+mutmap: 73	N	N
+mutmap: 82	P	P
+mutmap: 85	D	D
+mutmap: 88	L	L
+mutmap: 95	Y	Y
+mutmap: 102	S	S
+mutmap: 108	Y	Y
+mutmap: 116	E	E
+mutmap: 125	V	V
+mutmap: 127	S	S
+mutmap: 139	S	S
+mutmap: 143	H	H
+mutmap: 147	G	G
+mutmap: 165	L	L
+mutmap: 168	T	T
+mutmap: 171	G	G
+mutmap: 177	L	L
+mutmap: 197	H	H
+mutmap: 219	S	S
+mutmap: 232	A	A
+mutmap: 248	T	T
+mutmap: 249	L	L
+mutmap: 278	G	G
+mutmap: 280	G	G
+mutmap: 283	T	T
+mutmap: 300	G	G
+mutmap: 312	H	H
+mutmap: 337	I	I
+mutmap: 339	S	S
+mutmap: 343	R	R
+mutmap: 396	N	N
+mutmap: 404	T	T
+mutmap: 408	A	A
+mutmap: 427	V	V
+mutmap: 433	D	D
+mutmap: 449	R	R
+mutmap: 450	T	T
+mutmap: 458	V	V
+mutmap: 474	K	K
+mutmap: 479	G	G
+mutmap: 502	Y	Y
+mutmap: 513	R	R
+mutmap: 521	L	L
+mutmap: 540	L	L
+mutmap: 542	L	L
+mutmap: 543	L	L
+mutmap: 550	S	S
+mutmap: 565	I	I
+mutmap: 38	E	E
+mutmap: 45	H	H
+mutmap: 138	S	S
+mutmap: 149	T	T
+mutmap: 169	K	K
+mutmap: 231	A	A
+mutmap: 262	G	G
+mutmap: 276	G	G
+mutmap: 286	A	A
+mutmap: 322	Y	Y
+mutmap: 350	A	A
+mutmap: 451	L	L
+mutmap: 462	Y	Y
+mutmap: 515	K	K
+mutmap: 526	V	V
+mutmap: 172	D	D
+mutmap: 81	N	N
+mutmap: 169	K	K
+mutmap: 233	R	R
+mutmap: 385	Q	Q
+mutmap: 430	G	G
+mutmap: 449	R	R
+mutmap: 199	S	S
+mutmap: 276	G	G
+mutmap: 459	K	K
+mutmap: 276	G	G
+mutmap: 335	R	R
+mutmap: 354	E	E
+mutmap: 28	N	N
+mutmap: 38	E	E
+mutmap: 515	K	K
+mutmap: 125	V	V
+mutmap: 479	G	G
+mutmap: 503	P	P
+mutmap: 508	E	E
+mutmap: 557	G	G
+mutmap: 136	K	K
+mutmap: 156	G	G
+mutmap: 184	K	K
+mutmap: 338	P	P
+mutmap: 56	G	G
+mutmap: 117	E	E
+mutmap: 180	S	S
+mutmap: 192	L	L
+mutmap: 226	F	F
+mutmap: 337	I	I
+mutmap: 36	V	V
+mutmap: 184	K	K
+mutmap: 365	Y	Y
+mutmap: 146	T	T
+mutmap: 451	L	L
+mutmap: 2	K	K
+mutmap: 79	L	L
+mutmap: 28	N	N
+mutmap: 58	L	L
+mutmap: 264	L	L
+mutmap: 510	K	K
+mutmap: 128	F	F
+mutmap: 150	A	A
+mutmap: 351	G	G
+mutmap: 379	A	A
+mutmap: 441	L	L
+mutmap: 9	L	L
+mutmap: 87	L	L
+mutmap: 157	K	K
+mutmap: 202	K	K
+mutmap: 260	A	A
+mutmap: 335	R	R
+mutmap: 407	T	T
+mutmap: 431	F	F
+mutmap: 436	T	T
+mutmap: 449	R	R
+mutmap: 459	K	K
+mutmap: 495	V	V
+mutmap: 148	V	V
+mutmap: 532	I	I
+mutmap: 67	L	L
+mutmap: 155	A	A
+mutmap: 343	R	R
+mutmap: 355	G	G
+mutmap: 47	V	V
+mutmap: 58	L	L
+mutmap: 74	I	I
+mutmap: 108	Y	Y
+mutmap: 134	F	F
+mutmap: 175	P	P
+mutmap: 206	T	T
+mutmap: 240	A	A
+mutmap: 242	R	R
+mutmap: 266	A	A
+mutmap: 279	S	S
+mutmap: 352	F	F
+mutmap: 378	A	A
+mutmap: 422	N	N
+mutmap: 442	L	L
+mutmap: 463	E	E
+mutmap: 476	I	I
+mutmap: 478	N	N
+mutmap: 498	G	G
+mutmap: 543	L	L
+mutmap: 550	S	S
+mutmap: 2	K	K
+mutmap: 49	L	L
+mutmap: 287	S	S
+mutmap: 59	C	C
+mutmap: 79	L	L
+mutmap: 89	S	S
+mutmap: 129	E	E
+mutmap: 156	G	G
+mutmap: 170	K	K
+mutmap: 175	P	P
+mutmap: 248	T	T
+mutmap: 280	G	G
+mutmap: 290	E	E
+mutmap: 304	S	S
+mutmap: 345	L	L
+mutmap: 375	S	S
+mutmap: 451	L	L
+mutmap: 463	E	E
+mutmap: 507	E	E
+mutmap: 511	L	L
+mutmap: 516	I	I
+mutmap: 47	V	V
+mutmap: 165	L	L
+mutmap: 278	G	G
+mutmap: 287	S	S
+mutmap: 367	Y	Y
+mutmap: 393	N	N
+mutmap: 419	R	R
+mutmap: 502	Y	Y
+mutmap: 14	A	A
+mutmap: 273	L	L
+mutmap: 395	V	V
+mutmap: 407	T	T
+mutmap: 447	N	N
+mutmap: 34	D	D
+mutmap: 108	Y	Y
+mutmap: 149	T	T
+mutmap: 167	L	L
+mutmap: 278	G	G
+mutmap: 293	T	T
+mutmap: 191	V	V
+mutmap: 308	F	F
+mutmap: 473	A	A
+mutmap: 474	K	K
+mutmap: 560	Q	Q
+mutmap: 125	V	V
+mutmap: 334	L	L
+mutmap: 354	E	E
+mutmap: 387	A	A
+mutmap: 430	G	G
+mutmap: 28	N	N
+mutmap: 87	L	L
+mutmap: 88	L	L
+mutmap: 55	N	N
+mutmap: 89	S	S
+mutmap: 105	G	G
+mutmap: 148	V	V
+mutmap: 228	P	P
+mutmap: 233	R	R
+mutmap: 266	A	A
+mutmap: 326	T	T
+mutmap: 343	R	R
+mutmap: 359	G	G
+mutmap: 433	D	D
+mutmap: 453	F	F
+mutmap: 515	K	K
+mutmap: 559	L	L
+mutmap: 560	Q	Q
+mutmap: 9	L	L
+mutmap: 28	N	N
+mutmap: 88	L	L
+mutmap: 13	S	S
+mutmap: 26	A	A
+mutmap: 38	E	E
+mutmap: 107	C	C
+mutmap: 110	G	G
+mutmap: 194	G	G
+mutmap: 280	G	G
+mutmap: 281	I	I
+mutmap: 293	T	T
+mutmap: 313	P	P
+mutmap: 326	T	T
+mutmap: 371	N	N
+mutmap: 426	K	K
+mutmap: 478	N	N
+mutmap: 501	D	D
+mutmap: 510	K	K
+mutmap: 540	L	L
+mutmap: 558	S	S
+mutmap: 79	L	L
+mutmap: 154	H	H
+mutmap: 184	N	N
+mutmap: 217	V	V
+mutmap: 263	N	N
+mutmap: 310	N	N
+mutmap: 322	Y	Y
+mutmap: 416	L	L
+mutmap: 469	L	L
+mutmap: 470	R	R
+mutmap: 504	K	K
+mutmap: 555	S	S
+mutmap: 361	V	V
+mutmap: 370	Q	Q
+mutmap: 227	T	T
+mutmap: 432	L	L
+mutmap: 249	L	L
+mutmap: 284	S	S
+mutmap: 301	A	A
+mutmap: 305	S	S
+mutmap: 372	E	E
+mutmap: 380	D	D
+mutmap: 412	E	E
+mutmap: 441	L	L
+mutmap: 519	V	V
+mutmap: 521	L	L
+mutmap: 551	F	F
+mutmap: 167	L	L
+mutmap: 40	N	N
+mutmap: 51	E	E
+mutmap: 58	L	L
+mutmap: 61	L	L
+mutmap: 72	C	C
+mutmap: 138	R	R
+mutmap: 173	S	S
+mutmap: 203	D	D
+mutmap: 228	P	P
+mutmap: 245	Y	Y
+mutmap: 249	L	L
+mutmap: 250	L	L
+mutmap: 326	T	T
+mutmap: 347	G	G
+mutmap: 453	F	F
+mutmap: 482	E	E
+mutmap: 525	G	G
+mutmap: 253	G	G
+mutmap: 479	G	G
+mutmap: 53	S	S
+mutmap: 56	G	G
+mutmap: 543	L	L
+mutmap: 102	S	S
+mutmap: 184	N	N
+mutmap: 306	L	L
+mutmap: 347	G	G
+mutmap: 501	D	D
+mutmap: 50	L	L
+mutmap: 138	R	R
+mutmap: 118	L	L
+mutmap: 147	G	G
+mutmap: 317	G	G
+mutmap: 479	G	G
+mutmap: 531	A	A
+mutmap: 167	L	L
+mutmap: 231	A	A
+mutmap: 461	L	L
+mutmap: 540	L	L
+mutmap: 30	T	T
+mutmap: 89	S	S
+mutmap: 224	R	R
+mutmap: 252	P	P
+mutmap: 123	S	S
+mutmap: 328	L	L
+mutmap: 36	V	V
+mutmap: 540	L	L
+mutmap: 163	N	N
+mutmap: 554	C	C
+mutmap: 65	A	A
+mutmap: 305	S	S
+mutmap: 335	R	R
+mutmap: 520	K	K
+mutmap: 61	L	L
+mutmap: 78	I	I
+mutmap: 94	S	S
+mutmap: 217	V	V
+mutmap: 110	G	G
+mutmap: 209	R	R
+mutmap: 345	L	L
+mutmap: 460	N	N
+mutmap: 321	K	K
+mutmap: 398	V	V
+mutmap: 5	L	L
+mutmap: 120	E	E
+mutmap: 308	F	F
+mutmap: 361	I	I
+mutmap: 416	L	L
+mutmap: 453	F	F
+mutmap: 12	L	L
+mutmap: 56	G	G
+mutmap: 65	A	A
+mutmap: 116	E	E
+mutmap: 510	K	K
+mutmap: 323	V	V
+mutmap: 123	S	S
+mutmap: 152	C	C
+mutmap: 163	N	N
+mutmap: 222	Y	Y
+mutmap: 280	G	G
+mutmap: 464	K	K
+mutmap: 506	S	S
+mutmap: 540	L	L
+mutmap: 179	K	K
+mutmap: 275	R	R
+mutmap: 348	A	A
+mutmap: 134	F	F
+mutmap: 454	H	H
+mutmap: 12	L	L
+mutmap: 84	C	C
+mutmap: 159	S	S
+mutmap: 323	V	V
+mutmap: 498	G	G
+mutmap: 507	E	E
+mutmap: 273	L	L
+mutmap: 432	L	L
+mutmap: 199	S	S
+mutmap: 296	Q	Q
+mutmap: 71	K	K
+mutmap: 337	I	I
+mutmap: 190	L	L
+mutmap: 215	V	V
+mutmap: 244	N	N
+mutmap: 403	N	N
+mutmap: 92	S	S
+mutmap: 113	A	A
+mutmap: 359	G	G
+mutmap: 412	E	E
+mutmap: 36	V	V
+mutmap: 16	D	D
+mutmap: 123	S	S
+mutmap: 430	G	G
+mutmap: 53	N	N
+mutmap: 56	G	G
+mutmap: 389	N	N
+mutmap: 431	F	F
+mutmap: 461	L	L
+mutmap: 287	S	S
+mutmap: 6	L	L
+mutmap: 37	L	L
+mutmap: 59	C	C
+mutmap: 60	R	R
+mutmap: 70	G	G
+mutmap: 136	K	K
+mutmap: 138	S	S
+mutmap: 170	K	K
+mutmap: 241	G	G
+mutmap: 322	Y	Y
+mutmap: 356	G	G
+mutmap: 373	Q	Q
+mutmap: 396	N	N
+mutmap: 410	G	G
+mutmap: 460	N	N
+mutmap: 495	V	V
+mutmap: 506	S	S
+mutmap: 561	C	C
+mutmap: 78	I	I
+mutmap: 329	R	R
+mutmap: 471	N	N
+mutmap: 119	R	R
+mutmap: 73	S	S
+mutmap: 113	A	A
+mutmap: 271	F	F
+mutmap: 430	G	G
+mutmap: 12	F	F
+mutmap: 510	K	K
+mutmap: 19	T	T
+mutmap: 45	H	H
+mutmap: 56	G	G
+mutmap: 119	R	R
+mutmap: 123	S	S
+mutmap: 236	V	V
+mutmap: 305	S	S
+mutmap: 345	L	L
+mutmap: 503	P	P
+mutmap: 535	T	T
+mutmap: 543	L	L
+mutmap: 560	Q	Q
+mutmap: 565	I	I
+mutmap: 533	Y	Y
+mutmap: 550	S	S
+mutmap: 557	G	G
+mutmap: 249	L	L
+mutmap: 273	L	L
+mutmap: 284	S	S
+mutmap: 15	T	T
+mutmap: 23	G	G
+mutmap: 266	A	A
+mutmap: 395	V	V
+mutmap: 479	G	G
+mutmap: 495	V	V
+mutmap: 38	E	E
+mutmap: 319	C	C
+mutmap: 390	G	G
+mutmap: 182	V	V
+mutmap: 370	Q	Q
+mutmap: 224	R	R
+mutmap: 477	G	G
+mutmap: 484	Y	Y
+mutmap: 507	E	E
+mutmap: 380	D	D
+mutmap: 469	L	L
+mutmap: 62	K	K
+mutmap: 299	Q	Q
+mutmap: 389	N	N
+mutmap: 9	L	L
+mutmap: 59	C	C
+mutmap: 123	S	S
+mutmap: 136	K	K
+mutmap: 148	V	V
+mutmap: 185	K	K
+mutmap: 241	G	G
+mutmap: 269	Y	Y
+mutmap: 293	A	A
+mutmap: 409	V	V
+mutmap: 425	K	K
+mutmap: 444	L	L
+mutmap: 550	S	S
+mutmap: 30	T	T
+mutmap: 355	G	G
+mutmap: 81	N	N
+mutmap: 103	E	E
+mutmap: 131	F	F
+mutmap: 159	S	S
+mutmap: 186	E	E
+mutmap: 191	V	V
+mutmap: 460	N	N
+mutmap: 550	S	S
+mutmap: 7	V	V
+mutmap: 94	S	S
+mutmap: 144	T	T
+mutmap: 205	R	R
+mutmap: 215	V	V
+mutmap: 217	V	V
+mutmap: 267	P	P
+mutmap: 306	L	L
+mutmap: 307	P	P
+mutmap: 370	Q	Q
+mutmap: 442	L	L
+mutmap: 465	V	V
+mutmap: 539	S	S
+mutmap: 234	P	P
+mutmap: 404	T	T
+mutmap: 55	N	N
+mutmap: 285	N	N
+mutmap: 559	L	L
+mutmap: 449	R	R
+mutmap: 55	N	N
+mutmap: 175	P	P
+mutmap: 323	V	V
+mutmap: 404	T	T
+mutmap: 148	V	V
+mutmap: 238	D	D
+mutmap: 498	G	G
+mutmap: 505	Y	Y
+mutmap: 208	Y	Y
+mutmap: 19	T	T
+mutmap: 105	G	G
+mutmap: 169	E	E
+mutmap: 168	T	T
+mutmap: 375	S	S
+mutmap: 394	K	K
+mutmap: 498	G	G
+mutmap: 16	Y	Y
+mutmap: 101	N	N
+mutmap: 169	E	E
+mutmap: 342	S	S
+mutmap: 417	E	E
+mutmap: 353	I	I
+mutmap: 535	T	T
+mutmap: 320	P	P
+mutmap: 335	R	R
+mutmap: 379	A	A
+mutmap: 476	I	I
+mutmap: 440	E	E
+mutmap: 525	G	G
+mutmap: 152	C	C
+mutmap: 199	S	S
+mutmap: 91	E	E
+mutmap: 399	I	I
+mutmap: 407	T	T
+mutmap: 144	T	T
+mutmap: 217	V	V
+mutmap: 273	L	L
+mutmap: 264	L	L
+mutmap: 215	V	V
+mutmap: 341	Q	Q
+mutmap: 197	H	H
+mutmap: 280	G	G
+mutmap: 376	G	G
+mutmap: 213	A	A
+mutmap: 220	S	S
+mutmap: 365	Y	Y
+mutmap: 551	F	F
+mutmap: 560	Q	Q
+mutmap: 154	H	H
+mutmap: 87	L	L
+mutmap: 148	V	V
+mutmap: 87	L	L
+mutmap: 417	E	E
+mutmap: 425	K	K
+mutmap: 440	E	E
+mutmap: 444	L	L
+mutmap: 225	R	R
+mutmap: 269	Y	Y
+mutmap: 13	T	T
+mutmap: 153	S	S
+mutmap: 367	Y	Y
+mutmap: 430	G	G
+mutmap: 223	S	S
+mutmap: 79	L	L
+mutmap: 311	V	V
+mutmap: 158	S	S
+mutmap: 191	V	V
+mutmap: 381	Q	Q
+mutmap: 154	H	H
+mutmap: 243	I	I
+mutmap: 400	E	E
+mutmap: 432	L	L
+mutmap: 454	H	H
+mutmap: 541	V	V
+mutmap: 136	K	K
+mutmap: 494	S	S
+mutmap: 202	G	G
+mutmap: 218	V	V
+mutmap: 317	G	G
+mutmap: 379	A	A
+mutmap: 477	G	G
+mutmap: 337	I	I
+mutmap: 148	V	V
+mutmap: 185	K	K
+mutmap: 205	R	R
+mutmap: 227	T	T
+mutmap: 269	Y	Y
+mutmap: 405	Q	Q
+mutmap: 60	R	R
+mutmap: 81	N	N
+mutmap: 113	A	A
+mutmap: 119	R	R
+mutmap: 146	T	T
+mutmap: 168	T	T
+mutmap: 215	V	V
+mutmap: 310	N	N
+mutmap: 382	K	K
+mutmap: 515	K	K
+mutmap: 26	A	A
+mutmap: 40	N	N
+mutmap: 55	N	N
+mutmap: 98	E	E
+mutmap: 128	F	F
+mutmap: 239	Q	Q
+mutmap: 243	I	I
+mutmap: 285	N	N
+mutmap: 292	D	D
+mutmap: 298	P	P
+mutmap: 363	G	G
+mutmap: 372	E	E
+mutmap: 379	A	A
+mutmap: 399	I	I
+mutmap: 432	L	L
+mutmap: 453	F	F
+mutmap: 514	E	E
+mutmap: 541	V	V
+mutmap: 555	S	S
+mutmap: 146	T	T
+mutmap: 182	V	V
+mutmap: 198	P	P
+mutmap: 393	N	N
+mutmap: 465	V	V
+mutmap: 6	L	L
+mutmap: 252	P	P
+mutmap: 337	I	I
+mutmap: 212	N	N
+mutmap: 336	N	N
+mutmap: 126	S	S
+mutmap: 477	G	G
+mutmap: 293	A	A
+mutmap: 130	R	R
+mutmap: 543	L	L
+mutmap: 185	K	K
+mutmap: 286	A	A
+mutmap: 98	E	E
+mutmap: 101	N	N
+mutmap: 176	N	N
+mutmap: 231	A	A
+mutmap: 278	G	G
+mutmap: 19	T	T
+mutmap: 41	V	V
+mutmap: 323	V	V
+mutmap: 486	K	K
+mutmap: 149	S	S
+mutmap: 6	L	L
+mutmap: 89	S	S
+mutmap: 430	G	G
+mutmap: 539	S	S
+mutmap: 5	L	L
+mutmap: 9	L	L
+mutmap: 149	S	S
+mutmap: 164	L	L
+mutmap: 100	P	P
+mutmap: 430	G	G
+mutmap: 172	G	G
+mutmap: 456	S	S
+mutmap: 254	D	D
+mutmap: 304	S	S
+mutmap: 416	L	L
+mutmap: 493	E	E
+mutmap: 252	P	P
+mutmap: 271	F	F
+mutmap: 383	S	S
+mutmap: 55	N	N
+mutmap: 561	C	C
+mutmap: 249	L	L
+mutmap: 94	S	S
+mutmap: 56	G	G
+mutmap: 57	K	K
+mutmap: 137	E	E
+mutmap: 369	H	H
+mutmap: 519	V	V
+mutmap: 22	I	I
+mutmap: 71	N	N
+mutmap: 103	E	E
+mutmap: 110	G	G
+mutmap: 318	E	E
+mutmap: 558	S	S
+mutmap: 253	G	G
+mutmap: 484	Y	Y
+mutmap: 487	C	C
+mutmap: 23	G	G
+mutmap: 149	S	S
+mutmap: 162	R	R
+mutmap: 264	L	L
+mutmap: 139	S	S
+mutmap: 43	V	V
+mutmap: 518	G	G
+mutmap: 23	G	G
+mutmap: 268	R	R
+mutmap: 310	N	N
+mutmap: 378	A	A
+mutmap: 225	R	R
+mutmap: 252	P	P
+mutmap: 219	S	S
+mutmap: 417	E	E
+mutmap: 426	K	K
+mutmap: 510	K	K
+mutmap: 49	L	L
+mutmap: 308	F	F
+mutmap: 108	Y	Y
+mutmap: 36	V	V
+mutmap: 270	A	A
+mutmap: 484	Y	Y
+mutmap: 293	A	A
+mutmap: 461	L	L
+mutmap: 455	D	D
+mutmap: 158	S	S
+mutmap: 79	L	L
+mutmap: 46	S	S
+mutmap: 318	E	E
+mutmap: 199	P	P
+mutmap: 501	D	D
+mutmap: 514	E	E
+mutmap: 67	L	L
+mutmap: 113	A	A
+mutmap: 130	R	R
+mutmap: 6	L	L
+mutmap: 15	T	T
+mutmap: 17	A	A
+mutmap: 539	S	S
+mutmap: 363	G	G
+mutmap: 535	T	T
+mutmap: 7	V	V
+mutmap: 137	E	E
+mutmap: 235	K	K
+mutmap: 376	G	G
+mutmap: 457	N	N
+mutmap: 155	N	N
+mutmap: 103	E	E
+mutmap: 426	K	K
+mutmap: 308	F	F
+mutmap: 108	Y	Y
+mutmap: 173	L	L
+mutmap: 430	G	G
+mutmap: 236	V	V
+mutmap: 361	V	V
+mutmap: 196	H	H
+mutmap: 3	V	V
+mutmap: 354	E	E
+mutmap: 143	H	H
+mutmap: 268	R	R
+mutmap: 526	V	V
+mutmap: 159	S	S
+mutmap: 529	I	I
+mutmap: 31	D	D
+mutmap: 348	A	A
+mutmap: 306	L	L
+mutmap: 513	R	R
+mutmap: 142	N	N
+mutmap: 23	G	G
+mutmap: 477	G	G
+mutmap: 67	L	L
+mutmap: 359	G	G
+mutmap: 363	G	G
+mutmap: 123	S	S
+mutmap: 223	S	S
+mutmap: 236	V	V
+mutmap: 445	L	L
+mutmap: 486	K	K
+mutmap: 299	Q	Q
+mutmap: 417	E	E
+mutmap: 465	V	V
+mutmap: 67	L	L
+mutmap: 317	G	G
+mutmap: 486	K	K
+mutmap: 218	V	V
+mutmap: 7	V	V
+mutmap: 449	R	R
+mutmap: 270	A	A
+mutmap: 363	G	G
+mutmap: 467	S	S
+mutmap: 329	R	R
+mutmap: 394	K	K
+mutmap: 153	S	S
+mutmap: 208	Y	Y
+mutmap: 266	A	A
+mutmap: 180	S	S
+mutmap: 186	E	E
+mutmap: 206	A	A
+mutmap: 248	T	T
+mutmap: 293	A	A
+mutmap: 400	E	E
+mutmap: 454	H	H
+mutmap: 308	F	F
+mutmap: 283	T	T
+mutmap: 468	Q	Q
+mutmap: 469	L	L
+mutmap: 416	L	L
+mutmap: 422	N	N
+mutmap: 509	S	S
+mutmap: 486	K	K
+mutmap: 283	T	T
+mutmap: 198	P	P
+mutmap: 284	S	S
+mutmap: 404	T	T
+mutmap: 486	K	K
+mutmap: 67	L	L
+mutmap: 317	G	G
+mutmap: 430	G	G
+mutmap: 232	K	K
+mutmap: 315	T	T
+mutmap: 79	L	L
+mutmap: 170	K	K
+mutmap: 199	P	P
+mutmap: 172	G	G
+mutmap: 217	V	V
+mutmap: 108	Y	Y
+mutmap: 87	L	L
+mutmap: 317	G	G
+mutmap: 169	G	G
+mutmap: 199	P	P
+mutmap: 283	T	T
+mutmap: 526	V	V
+mutmap: 305	S	S
+mutmap: 425	K	K
+mutmap: 376	G	G
+mutmap: 559	L	L
+mutmap: 79	L	L
+mutmap: 208	Y	Y
+mutmap: 509	S	S
+mutmap: 91	E	E
+mutmap: 237	R	R
+mutmap: 376	G	G
+mutmap: 559	L	L
+mutmap: 562	T	T
+mutmap: 257	I	I
+mutmap: 116	E	E
+mutmap: 56	G	G
+mutmap: 509	S	S
+mutmap: 258	F	F
+mutmap: 266	A	A
+mutmap: 480	C	C
+mutmap: 460	N	N
+mutmap: 284	S	S
+mutmap: 518	G	G
+mutmap: 7	V	V
+mutmap: 56	G	G
+mutmap: 174	Y	Y
+mutmap: 299	Q	Q
+mutmap: 356	G	G
+mutmap: 374	G	G
+mutmap: 367	Y	Y
+mutmap: 417	E	E
+mutmap: 28	N	N
+mutmap: 117	E	E
+mutmap: 294	K	K
+mutmap: 436	T	T
+mutmap: 97	V	V
+mutmap: 195	V	V
+mutmap: 509	S	S
+mutmap: 521	L	L
+mutmap: 103	E	E
+mutmap: 130	R	R
+mutmap: 200	N	N
+mutmap: 261	N	N
+mutmap: 458	V	V
+mutmap: 484	Y	Y
+mutmap: 17	A	A
+mutmap: 149	S	S
+mutmap: 170	K	K
+mutmap: 198	P	P
+mutmap: 210	T	T
+mutmap: 36	V	V
+mutmap: 320	P	P
+mutmap: 511	L	L
+mutmap: 381	Q	Q
+mutmap: 439	A	A
+mutmap: 262	G	G
+mutmap: 7	V	V
+mutmap: 186	E	E
+mutmap: 332	T	T
+mutmap: 29	S	S
+mutmap: 117	E	E
+mutmap: 192	L	L
+mutmap: 329	R	R
+mutmap: 368	H	H
+mutmap: 438	N	N
+mutmap: 452	D	D
+mutmap: 174	Y	Y
+mutmap: 511	L	L
+mutmap: 417	E	E
+mutmap: 427	V	V
+mutmap: 80	G	G
+mutmap: 270	A	A
+mutmap: 227	T	T
+mutmap: 255	T	T
+mutmap: 222	Y	Y
+mutmap: 3	V	V
+mutmap: 116	E	E
+mutmap: 348	A	A
+mutmap: 162	R	R
+mutmap: 162	R	R
+mutmap: 188	E	E
+mutmap: 164	L	L
+mutmap: 176	N	N
+mutmap: 236	V	V
+mutmap: 242	R	R
+mutmap: 39	K	K
+mutmap: 103	E	E
+mutmap: 137	E	E
+mutmap: 199	P	P
+mutmap: 268	R	R
+mutmap: 6	L	L
+mutmap: 110	G	G
+mutmap: 426	K	K
+mutmap: 304	S	S
+mutmap: 312	H	H
+mutmap: 131	F	F
+mutmap: 160	F	F
+mutmap: 339	S	S
+mutmap: 317	G	G
+mutmap: 6	L	L
+mutmap: 342	S	S
+mutmap: 185	K	K
+mutmap: 530	L	L
+mutmap: 333	G	G
+mutmap: 559	L	L
+mutmap: 209	H	H
+mutmap: 53	S	S
+mutmap: 89	S	S
+mutmap: 465	V	V
+mutmap: 67	L	L
+mutmap: 213	A	A
+mutmap: 461	L	L
+mutmap: 560	Q	Q
+mutmap: 36	V	V
+mutmap: 529	I	I
+mutmap: 264	L	L
+mutmap: 418	R	R
+mutmap: 169	G	G
+mutmap: 60	L	L
+mutmap: 144	T	T
+mutmap: 532	I	I
+mutmap: 224	R	R
+mutmap: 286	A	A
+mutmap: 469	L	L
+mutmap: 109	P	P
+mutmap: 119	R	R
+mutmap: 396	N	N
+mutmap: 430	G	G
+mutmap: 565	I	I
+mutmap: 110	G	G
+mutmap: 465	V	V
+mutmap: 112	F	F
+mutmap: 113	A	A
+mutmap: 234	P	P
+mutmap: 337	I	I
+mutmap: 483	F	F
+mutmap: 423	L	L
+mutmap: 503	P	P
+mutmap: 103	E	E
+mutmap: 502	Y	Y
+mutmap: 426	K	K
+mutmap: 442	L	L
+mutmap: 513	R	R
+mutmap: 457	N	N
+mutmap: 312	H	H
+mutmap: 317	G	G
+mutmap: 343	R	R
+mutmap: 110	G	G
+mutmap: 30	T	T
+mutmap: 165	L	L
+mutmap: 202	G	G
+mutmap: 422	N	N
+mutmap: 540	L	L
+mutmap: 438	N	N
+mutmap: 321	K	K
+mutmap: 295	C	C
+mutmap: 199	P	P
+mutmap: 477	G	G
+mutmap: 110	G	G
+mutmap: 10	C	C
+mutmap: 293	A	A
+mutmap: 5	L	L
+mutmap: 329	R	R
+mutmap: 294	K	K
+mutmap: 80	G	G
+mutmap: 213	A	A
+mutmap: 289	D	D
+mutmap: 438	N	N
+mutmap: 98	E	E
+mutmap: 119	R	R
+mutmap: 530	L	L
+mutmap: 250	L	L
+mutmap: 294	K	K
+mutmap: 196	H	H
+mutmap: 478	N	N
+mutmap: 530	L	L
+mutmap: 379	A	A
+mutmap: 370	Q	Q
+mutmap: 106	T	T
+mutmap: 419	R	R
+mutmap: 349	I	I
+mutmap: 6	L	L
+mutmap: 81	N	N
+mutmap: 480	C	C
+mutmap: 516	I	I
+mutmap: 540	L	L
+mutmap: 195	V	V
+mutmap: 276	G	G
+mutmap: 335	R	R
+mutmap: 6	L	L
+mutmap: 112	F	F
+mutmap: 396	N	N
+mutmap: 167	L	L
+mutmap: 129	E	E
+mutmap: 237	R	R
+mutmap: 363	G	G
+mutmap: 367	Y	Y
+mutmap: 453	F	F
+mutmap: 197	H	H
+mutmap: 194	G	G
+mutmap: 307	P	P
+mutmap: 67	L	L
+mutmap: 170	K	K
+mutmap: 306	L	L
+mutmap: 344	G	G
+mutmap: 559	L	L
+mutmap: 165	L	L
+mutmap: 488	N	N
+mutmap: 293	A	A
+mutmap: 39	K	K
+mutmap: 455	D	D
+mutmap: 298	P	P
+mutmap: 273	L	L
+mutmap: 351	G	G
+mutmap: 514	E	E
+mutmap: 113	A	A
+mutmap: 430	G	G
+mutmap: 137	E	E
+mutmap: 333	G	G
+mutmap: 345	L	L
+mutmap: 86	L	L
+mutmap: 191	V	V
+mutmap: 558	S	S
+mutmap: 13	T	T
+mutmap: 342	S	S
+mutmap: 350	A	A
+mutmap: 62	K	K
+mutmap: 14	A	A
+mutmap: 337	I	I
+mutmap: 8	L	L
+mutmap: 378	A	A
+mutmap: 197	H	H
+mutmap: 168	T	T
+mutmap: 356	G	G
+mutmap: 510	K	K
+mutmap: 266	A	A
+mutmap: 384	T	T
+mutmap: 78	I	I
+mutmap: 130	R	R
+mutmap: 488	N	N
+mutmap: 426	K	K
+mutmap: 540	L	L
+mutmap: 525	G	G
+mutmap: 313	P	P
+mutmap: 171	N	N
+mutmap: 348	A	A
+mutmap: 284	S	S
+mutmap: 125	V	V
+mutmap: 310	N	N
+mutmap: 117	E	E
+mutmap: 242	R	R
+mutmap: 186	E	E
+mutmap: 400	E	E
+mutmap: 376	G	G
+mutmap: 177	L	L
+mutmap: 45	H	H
+mutmap: 277	F	F
+mutmap: 463	E	E
+mutmap: 334	L	L
+mutmap: 332	T	T
+mutmap: 84	C	C
+mutmap: 165	L	L
+mutmap: 431	F	F
+mutmap: 23	G	G
+mutmap: 308	F	F
+mutmap: 23	G	G
+mutmap: 73	S	S
+mutmap: 445	L	L
+mutmap: 320	P	P
+mutmap: 119	R	R
+mutmap: 98	E	E
+mutmap: 6	L	L
+mutmap: 110	G	G
+mutmap: 119	R	R
+mutmap: 313	P	P
+mutmap: 108	Y	Y
+mutmap: 67	L	L
+mutmap: 215	V	V
+mutmap: 297	T	T
+mutmap: 198	P	P
+mutmap: 344	G	G
+mutmap: 339	S	S
+mutmap: 444	L	L
+mutmap: 370	Q	Q
+mutmap: 59	C	C
+mutmap: 170	K	K
+mutmap: 234	P	P
+mutmap: 439	A	A
+mutmap: 290	E	E
+mutmap: 97	V	V
+mutmap: 395	V	V
+mutmap: 215	V	V
+mutmap: 33	V	V
+mutmap: 43	V	V
+mutmap: 266	A	A
+mutmap: 390	G	G
+mutmap: 397	S	S
+mutmap: 533	Y	Y
+mutmap: 562	R	R
+mutmap: 218	V	V
+mutmap: 48	N	N
+mutmap: 130	R	R
+mutmap: 230	I	I
+mutmap: 294	K	K
+mutmap: 305	S	S
+mutmap: 486	K	K
+mutmap: 7	V	V
+mutmap: 333	G	G
+mutmap: 7	V	V
+mutmap: 17	A	A
+mutmap: 41	V	V
+mutmap: 347	G	G
+mutmap: 118	L	L
+mutmap: 519	V	V
+mutmap: 169	G	G
+mutmap: 336	N	N
+mutmap: 424	N	N
+mutmap: 160	F	F
+mutmap: 236	V	V
+mutmap: 249	L	L
+mutmap: 266	A	A
+mutmap: 345	L	L
+mutmap: 445	L	L
+mutmap: 174	Y	Y
+mutmap: 24	Y	Y
+mutmap: 137	E	E
+mutmap: 172	G	G
+mutmap: 207	L	L
+mutmap: 509	S	S
+mutmap: 523	S	S
+mutmap: 287	P	P
+mutmap: 530	L	L
+mutmap: 60	L	L
+mutmap: 71	N	N
+mutmap: 3	V	V
+mutmap: 169	G	G
+mutmap: 179	K	K
+mutmap: 249	L	L
+mutmap: 369	H	H
+mutmap: 436	T	T
+mutmap: 103	E	E
+mutmap: 56	G	G
+mutmap: 157	K	K
+mutmap: 349	I	I
+mutmap: 407	T	T
+mutmap: 300	G	G
+mutmap: 203	D	D
+mutmap: 398	V	V
+mutmap: 184	N	N
+mutmap: 6	L	L
+mutmap: 60	L	L
+mutmap: 262	G	G
+mutmap: 419	R	R
+mutmap: 244	N	N
+mutmap: 3	V	V
+mutmap: 430	G	G
+mutmap: 7	V	V
+mutmap: 94	S	S
+mutmap: 440	E	E
+mutmap: 413	F	F
+mutmap: 418	R	R
+mutmap: 283	T	T
+mutmap: 355	G	G
+mutmap: 199	P	P
+mutmap: 186	E	E
+mutmap: 304	S	S
+mutmap: 374	G	G
+mutmap: 177	L	L
+mutmap: 478	N	N
+mutmap: 308	F	F
+mutmap: 356	G	G
+mutmap: 151	S	S
+mutmap: 96	I	I
+mutmap: 531	A	A
+mutmap: 17	A	A
+mutmap: 104	N	N
+mutmap: 337	I	I
+mutmap: 142	N	N
+mutmap: 240	E	E
+mutmap: 6	L	L
+mutmap: 362	D	D
+mutmap: 438	N	N
+mutmap: 561	C	C
+mutmap: 430	G	G
+mutmap: 130	R	R
+mutmap: 142	N	N
+mutmap: 426	K	K
+mutmap: 479	G	G
+mutmap: 56	G	G
+mutmap: 189	V	V
+mutmap: 219	S	S
+mutmap: 375	S	S
+mutmap: 388	I	I
+mutmap: 565	I	I
+mutmap: 154	H	H
+mutmap: 164	L	L
+mutmap: 391	I	I
+mutmap: 254	D	D
+mutmap: 86	L	L
+mutmap: 275	R	R
+mutmap: 347	G	G
+mutmap: 414	N	N
+mutmap: 65	A	A
+mutmap: 142	N	N
+mutmap: 172	G	G
+mutmap: 173	L	L
+mutmap: 471	N	N
+mutmap: 423	L	L
+mutmap: 10	C	C
+mutmap: 49	L	L
+mutmap: 61	L	L
+mutmap: 202	G	G
+mutmap: 239	Q	Q
+mutmap: 250	L	L
+mutmap: 268	R	R
+mutmap: 295	C	C
+mutmap: 389	N	N
+mutmap: 478	N	N
+mutmap: 495	V	V
+mutmap: 539	S	S
+mutmap: 76	G	G
+mutmap: 113	A	A
+mutmap: 318	E	E
+mutmap: 441	L	L
+mutmap: 38	E	E
+mutmap: 91	E	E
+mutmap: 199	P	P
+mutmap: 318	E	E
+mutmap: 91	E	E
+mutmap: 408	A	A
+mutmap: 468	Q	Q
+mutmap: 26	A	A
+mutmap: 29	S	S
+mutmap: 186	E	E
+mutmap: 408	A	A
+mutmap: 441	L	L
+mutmap: 442	L	L
+mutmap: 468	Q	Q
+mutmap: 510	K	K
+mutmap: 423	L	L
+mutmap: 473	A	A
+mutmap: 496	K	K
+mutmap: 148	V	V
+mutmap: 473	A	A
+mutmap: 521	L	L
+mutmap: 557	G	G
+mutmap: 211	E	E
+mutmap: 355	G	G
+mutmap: 419	R	R
+mutmap: 422	N	N
+mutmap: 81	N	N
+mutmap: 169	G	G
+mutmap: 294	K	K
+mutmap: 263	N	N
+mutmap: 455	D	D
+mutmap: 102	P	P
+mutmap: 228	P	P
+mutmap: 142	N	N
+mutmap: 305	S	S
+mutmap: 209	H	H
+mutmap: 464	K	K
+mutmap: 48	N	N
+mutmap: 430	G	G
+mutmap: 50	L	L
+mutmap: 159	S	S
+mutmap: 282	I	I
+mutmap: 488	N	N
+mutmap: 508	E	E
+mutmap: 517	D	D
+mutmap: 310	N	N
+mutmap: 215	V	V
+mutmap: 324	R	R
+mutmap: 471	N	N
+mutmap: 375	S	S
+mutmap: 53	S	S
+mutmap: 437	Y	Y
+mutmap: 81	N	N
+mutmap: 246	Y	Y
+mutmap: 275	R	R
+mutmap: 418	R	R
+mutmap: 424	N	N
+mutmap: 436	T	T
+mutmap: 559	L	L
+mutmap: 180	S	S
+mutmap: 154	H	H
+mutmap: 266	A	A
+mutmap: 407	T	T
+mutmap: 447	N	N
+mutmap: 482	E	E
+mutmap: 310	N	N
+mutmap: 543	L	L
+mutmap: 88	I	I
+mutmap: 206	A	A
+mutmap: 280	G	G
+mutmap: 50	L	L
+mutmap: 453	F	F
+mutmap: 29	S	S
+mutmap: 49	L	L
+mutmap: 309	Q	Q
+mutmap: 35	T	T
+mutmap: 347	G	G
+mutmap: 7	V	V
+mutmap: 10	C	C
+mutmap: 17	A	A
+mutmap: 26	A	A
+mutmap: 54	H	H
+mutmap: 462	Y	Y
+mutmap: 76	G	G
+mutmap: 43	V	V
+mutmap: 94	S	S
+mutmap: 469	L	L
+mutmap: 16	Y	Y
+mutmap: 273	L	L
+mutmap: 146	T	T
+mutmap: 426	K	K
+mutmap: 498	G	G
+mutmap: 533	Y	Y
+mutmap: 145	V	V
+mutmap: 415	K	K
+mutmap: 208	Y	Y
+mutmap: 355	G	G
+mutmap: 543	L	L
+mutmap: 208	Y	Y
+mutmap: 266	A	A
+mutmap: 335	R	R
+mutmap: 339	S	S
+mutmap: 154	H	H
+mutmap: 315	T	T
+mutmap: 236	V	V
+mutmap: 352	F	F
+mutmap: 24	Y	Y
+mutmap: 217	V	V
+mutmap: 546	L	L
+mutmap: 80	G	G
+mutmap: 389	N	N
+mutmap: 21	C	C
+mutmap: 79	L	L
+mutmap: 231	A	A
+mutmap: 282	I	I
+mutmap: 310	N	N
+mutmap: 390	G	G
+mutmap: 441	L	L
+mutmap: 148	V	V
+mutmap: 155	N	N
+mutmap: 335	R	R
+mutmap: 528	Q	Q
+mutmap: 562	R	R
+mutmap: 356	G	G
+mutmap: 310	N	N
+mutmap: 424	N	N
+mutmap: 53	S	S
+mutmap: 400	E	E
+mutmap: 460	N	N
+mutmap: 559	L	L
+mutmap: 249	L	L
+mutmap: 253	R	R
+mutmap: 458	V	V
+mutmap: 56	G	G
+mutmap: 350	A	A
+mutmap: 29	S	S
+mutmap: 45	H	H
+mutmap: 76	G	G
+mutmap: 101	N	N
+mutmap: 249	L	L
+mutmap: 518	G	G
+mutmap: 282	I	I
+mutmap: 156	G	G
+mutmap: 91	E	E
+mutmap: 86	L	L
+mutmap: 321	K	K
+mutmap: 156	G	G
+mutmap: 88	I	I
+mutmap: 198	P	P
+mutmap: 87	L	L
+mutmap: 423	L	L
+mutmap: 560	Q	Q
+mutmap: 69	L	L
+mutmap: 500	Y	Y
+mutmap: 76	G	G
+mutmap: 312	H	H
+mutmap: 356	G	G
+mutmap: 511	L	L
+mutmap: 85	E	E
+mutmap: 134	F	F
+mutmap: 150	A	A
+mutmap: 498	G	G
+mutmap: 215	V	V
+mutmap: 423	L	L
+mutmap: 71	N	N
+mutmap: 408	A	A
+mutmap: 158	S	S
+mutmap: 434	I	I
+mutmap: 442	L	L
+mutmap: 44	T	T
+mutmap: 488	N	N
+mutmap: 342	S	S
+mutmap: 356	G	G
+mutmap: 509	S	S
+mutmap: 530	L	L
+mutmap: 264	L	L
+mutmap: 459	K	K
+mutmap: 390	G	G
+mutmap: 12	F	F
+mutmap: 105	G	G
+mutmap: 533	Y	Y
+mutmap: 560	Q	Q
+mutmap: 299	Q	Q
+mutmap: 409	V	V
+mutmap: 500	Y	Y
+mutmap: 164	L	L
+mutmap: 415	K	K
+mutmap: 437	Y	Y
+mutmap: 498	G	G
+mutmap: 199	P	P
+mutmap: 458	V	V
+mutmap: 168	T	T
+mutmap: 233	R	R
+mutmap: 243	I	I
+mutmap: 311	V	V
+mutmap: 306	L	L
+mutmap: 335	R	R
+mutmap: 56	G	G
+mutmap: 444	L	L
+mutmap: 374	G	G
+mutmap: 275	R	R
+mutmap: 422	N	N
+mutmap: 437	Y	Y
+mutmap: 464	K	K
+mutmap: 58	L	L
+mutmap: 81	N	N
+mutmap: 332	T	T
+mutmap: 455	D	D
+mutmap: 490	E	E
+mutmap: 550	S	S
+mutmap: 39	K	K
+mutmap: 486	K	K
+mutmap: 41	V	V
+mutmap: 416	L	L
+mutmap: 134	F	F
+mutmap: 101	N	N
+mutmap: 278	G	G
+mutmap: 408	A	A
+mutmap: 348	A	A
+mutmap: 502	Y	Y
+mutmap: 218	V	V
+mutmap: 29	S	S
+mutmap: 87	L	L
+mutmap: 428	D	D
+mutmap: 5	L	L
+mutmap: 7	V	V
+mutmap: 238	D	D
+mutmap: 273	L	L
+mutmap: 433	D	D
+mutmap: 450	T	T
+mutmap: 451	L	L
+mutmap: 203	D	D
+mutmap: 362	D	D
+mutmap: 41	V	V
+mutmap: 560	Q	Q
+mutmap: 560	Q	Q
+mutmap: 252	P	P
+mutmap: 394	K	K
+mutmap: 444	L	L
+mutmap: 62	K	K
+mutmap: 86	L	L
+mutmap: 148	V	V
+mutmap: 441	L	L
+mutmap: 565	I	I
+mutmap: 67	L	L
+mutmap: 237	R	R
+mutmap: 504	K	K
+mutmap: 136	K	K
+mutmap: 287	P	P
+mutmap: 541	V	V
+mutmap: 169	G	G
+mutmap: 71	N	N
+mutmap: 165	L	L
+mutmap: 244	N	N
+mutmap: 54	H	H
+mutmap: 293	A	A
+mutmap: 500	Y	Y
+mutmap: 81	N	N
+mutmap: 506	S	S
+mutmap: 408	A	A
+mutmap: 127	S	S
+mutmap: 276	G	G
+mutmap: 152	C	C
+mutmap: 224	R	R
+mutmap: 345	L	L
+mutmap: 326	A	A
+mutmap: 127	S	S
+mutmap: 297	T	T
+mutmap: 308	F	F
+mutmap: 505	Y	Y
+mutmap: 12	F	F
+mutmap: 369	H	H
+mutmap: 460	N	N
+mutmap: 469	L	L
+mutmap: 550	S	S
+mutmap: 75	A	A
+mutmap: 44	T	T
+mutmap: 356	G	G
+mutmap: 509	S	S
+mutmap: 80	G	G
+mutmap: 195	V	V
+mutmap: 404	T	T
+mutmap: 252	P	P
+mutmap: 155	N	N
+mutmap: 491	C	C
+mutmap: 110	G	G
+mutmap: 234	P	P
+mutmap: 318	E	E
+mutmap: 363	G	G
+mutmap: 126	S	S
+mutmap: 293	A	A
+mutmap: 479	G	G
+mutmap: 87	L	L
+mutmap: 165	L	L
+mutmap: 175	P	P
+mutmap: 424	N	N
+mutmap: 430	G	G
+mutmap: 112	F	F
+mutmap: 141	P	P
+mutmap: 306	L	L
+mutmap: 310	N	N
+mutmap: 350	A	A
+mutmap: 369	H	H
+mutmap: 396	N	N
+mutmap: 401	K	K
+mutmap: 408	A	A
+mutmap: 423	L	L
+mutmap: 429	D	D
+mutmap: 461	L	L
+mutmap: 468	Q	Q
+mutmap: 473	A	A
+mutmap: 483	F	F
+mutmap: 496	K	K
+mutmap: 501	D	D
+mutmap: 503	P	P
+mutmap: 5	L	L
+mutmap: 479	G	G
+mutmap: 557	G	G
+mutmap: 563	I	I
+mutmap: 293	A	A
+mutmap: 73	S	S
+mutmap: 120	E	E
+mutmap: 278	G	G
+mutmap: 209	N	N
+mutmap: 90	K	K
+mutmap: 94	S	S
+mutmap: 60	L	L
+mutmap: 103	E	E
+mutmap: 249	L	L
+mutmap: 118	L	L
+mutmap: 119	R	R
+mutmap: 33	V	V
+mutmap: 198	P	P
+mutmap: 244	N	N
+mutmap: 444	L	L
+mutmap: 120	E	E
+mutmap: 185	K	K
+mutmap: 423	L	L
+mutmap: 237	R	R
+mutmap: 423	L	L
+mutmap: 208	Y	Y
+mutmap: 5	L	L
+mutmap: 317	G	G
+mutmap: 419	R	R
+mutmap: 19	T	T
+mutmap: 108	Y	Y
+mutmap: 196	H	H
+mutmap: 496	K	K
+mutmap: 272	A	A
+mutmap: 441	L	L
+mutmap: 153	S	S
+mutmap: 488	N	N
+mutmap: 503	P	P
+mutmap: 452	D	D
+mutmap: 488	N	N
+mutmap: 3	V	V
+mutmap: 264	L	L
+mutmap: 280	G	G
+mutmap: 460	N	N
+mutmap: 56	G	G
+mutmap: 205	K	K
+mutmap: 498	G	G
+mutmap: 67	L	L
+mutmap: 174	Y	Y
+mutmap: 122	L	L
+mutmap: 143	H	H
+mutmap: 509	S	S
+mutmap: 177	L	L
+mutmap: 60	L	L
+mutmap: 499	T	T
+mutmap: 56	G	G
+mutmap: 172	G	G
+mutmap: 237	R	R
+mutmap: 12	F	F
+mutmap: 191	V	V
+mutmap: 79	L	L
+mutmap: 280	G	G
+mutmap: 408	A	A
+mutmap: 214	Y	Y
+mutmap: 513	R	R
+mutmap: 191	V	V
+mutmap: 510	K	K
+mutmap: 70	G	G
+mutmap: 17	A	A
+mutmap: 76	G	G
+mutmap: 555	S	S
+mutmap: 294	K	K
+mutmap: 59	C	C
+mutmap: 249	L	L
+mutmap: 304	S	S
+mutmap: 61	L	L
+mutmap: 404	T	T
+mutmap: 408	A	A
+mutmap: 400	E	E
+mutmap: 249	L	L
+mutmap: 441	L	L
+mutmap: 236	V	V
+mutmap: 29	S	S
+mutmap: 165	L	L
+mutmap: 237	R	R
+mutmap: 368	H	H
+mutmap: 431	F	F
+mutmap: 73	S	S
+mutmap: 118	L	L
+mutmap: 6	L	L
+mutmap: 450	T	T
+mutmap: 516	I	I
+mutmap: 442	L	L
+mutmap: 299	Q	Q
+mutmap: 430	G	G
+mutmap: 199	P	P
+mutmap: 423	L	L
+mutmap: 539	S	S
+mutmap: 542	L	L
+mutmap: 148	V	V
+mutmap: 262	G	G
+mutmap: 51	E	E
+mutmap: 530	L	L
+mutmap: 390	G	G
+mutmap: 299	Q	Q
+mutmap: 56	G	G
+mutmap: 132	E	E
+mutmap: 261	N	N
+mutmap: 536	V	V
+mutmap: 71	N	N
+mutmap: 390	G	G
+mutmap: 468	Q	Q
+mutmap: 409	V	V
+mutmap: 249	L	L
+mutmap: 74	V	V
+mutmap: 244	N	N
+mutmap: 164	L	L
+mutmap: 86	L	L
+mutmap: 425	K	K
+mutmap: 250	L	L
+mutmap: 60	L	L
+mutmap: 164	L	L
+mutmap: 294	K	K
+mutmap: 469	L	L
+mutmap: 266	A	A
+mutmap: 328	L	L
+mutmap: 482	E	E
+mutmap: 6	L	L
+mutmap: 86	L	L
+mutmap: 191	V	V
+mutmap: 451	L	L
+mutmap: 565	I	I
+mutmap: 110	G	G
+mutmap: 46	S	S
+mutmap: 9	L	L
+mutmap: 104	N	N
+mutmap: 139	S	S
+mutmap: 416	L	L
+mutmap: 430	G	G
+mutmap: 311	V	V
+mutmap: 375	S	S
+mutmap: 208	Y	Y
+mutmap: 315	T	T
+mutmap: 150	A	A
+mutmap: 184	N	N
+mutmap: 294	K	K
+mutmap: 31	D	D
+mutmap: 449	R	R
+mutmap: 251	E	E
+mutmap: 352	F	F
+mutmap: 408	A	A
+mutmap: 540	L	L
+mutmap: 94	S	S
+mutmap: 275	R	R
+mutmap: 8	L	L
+mutmap: 57	K	K
+mutmap: 79	L	L
+mutmap: 293	A	A
+mutmap: 136	K	K
+mutmap: 318	E	E
+mutmap: 537	A	A
+mutmap: 496	K	K
+mutmap: 530	L	L
+mutmap: 147	G	G
+mutmap: 120	E	E
+mutmap: 165	L	L
+mutmap: 356	G	G
+mutmap: 67	L	L
+mutmap: 299	Q	Q
+mutmap: 44	T	T
+mutmap: 51	E	E
+mutmap: 58	L	L
+mutmap: 67	L	L
+mutmap: 103	E	E
+mutmap: 116	E	E
+mutmap: 299	Q	Q
+mutmap: 91	E	E
+mutmap: 142	N	N
+mutmap: 186	E	E
+mutmap: 215	V	V
+mutmap: 298	P	P
+mutmap: 424	N	N
+mutmap: 451	L	L
+mutmap: 533	Y	Y
+mutmap: 550	S	S
+mutmap: 114	D	D
+mutmap: 198	P	P
+mutmap: 128	F	F
+mutmap: 449	R	R
+mutmap: 47	V	V
+mutmap: 114	D	D
+mutmap: 461	L	L
+mutmap: 388	I	I
+mutmap: 403	N	N
+mutmap: 51	E	E
+mutmap: 245	Y	Y
+mutmap: 305	S	S
+mutmap: 81	N	N
+mutmap: 8	L	L
+mutmap: 293	A	A
+mutmap: 331	V	V
+mutmap: 55	N	N
+mutmap: 533	Y	Y
+mutmap: 555	S	S
+mutmap: 238	D	D
+mutmap: 356	G	G
+mutmap: 430	G	G
+mutmap: 7	V	V
+mutmap: 308	F	F
+mutmap: 334	L	L
+mutmap: 538	S	S
+mutmap: 279	S	S
+mutmap: 294	K	K
+mutmap: 127	S	S
+mutmap: 255	T	T
+mutmap: 530	L	L
+mutmap: 289	D	D
+mutmap: 314	V	V
+mutmap: 384	T	T
+mutmap: 113	A	A
+mutmap: 286	A	A
+mutmap: 58	L	L
+mutmap: 388	I	I
+mutmap: 450	T	T
+mutmap: 512	N	N
+mutmap: 497	N	N
+mutmap: 418	R	R
+mutmap: 45	H	H
+mutmap: 518	G	G
+mutmap: 232	K	K
+mutmap: 359	G	G
+mutmap: 41	V	V
+mutmap: 398	V	V
+mutmap: 426	K	K
+mutmap: 479	G	G
+mutmap: 244	N	N
+mutmap: 85	E	E
+mutmap: 165	L	L
+mutmap: 334	L	L
+mutmap: 295	C	C
+mutmap: 416	L	L
+mutmap: 237	R	R
+mutmap: 477	G	G
+mutmap: 131	F	F
+mutmap: 251	E	E
+mutmap: 225	K	K
+mutmap: 293	A	A
+mutmap: 52	N	N
+mutmap: 395	V	V
+mutmap: 43	V	V
+mutmap: 143	H	H
+mutmap: 156	G	G
+mutmap: 157	E	E
+mutmap: 191	V	V
+mutmap: 227	T	T
+mutmap: 475	E	E
+mutmap: 301	A	A
+mutmap: 363	G	G
+mutmap: 156	G	G
+mutmap: 205	K	K
+mutmap: 86	L	L
+mutmap: 95	Y	Y
+mutmap: 172	G	G
+mutmap: 465	V	V
+mutmap: 478	N	N
+mutmap: 7	V	V
+mutmap: 7	V	V
+mutmap: 85	E	E
+mutmap: 309	Q	Q
+mutmap: 10	C	C
+mutmap: 244	N	N
+mutmap: 500	Y	Y
+mutmap: 299	Q	Q
+mutmap: 506	S	S
+mutmap: 324	R	R
+mutmap: 267	P	P
+mutmap: 398	V	V
+mutmap: 7	V	V
+mutmap: 187	K	K
+mutmap: 262	G	G
+mutmap: 541	V	V
+mutmap: 14	A	A
+mutmap: 15	T	T
+mutmap: 334	L	L
+mutmap: 550	S	S
+mutmap: 255	T	T
+mutmap: 191	V	V
+mutmap: 320	P	P
+mutmap: 468	Q	Q
+mutmap: 165	L	L
+mutmap: 7	V	V
+mutmap: 10	C	C
+mutmap: 29	S	S
+mutmap: 86	L	L
+mutmap: 305	S	S
+mutmap: 56	G	G
+mutmap: 559	L	L
+mutmap: 408	A	A
+mutmap: 273	L	L
+mutmap: 394	K	K
+mutmap: 488	N	N
+mutmap: 44	T	T
+mutmap: 76	G	G
+mutmap: 180	S	S
+mutmap: 446	E	E
+mutmap: 134	F	F
+mutmap: 394	K	K
+mutmap: 441	L	L
+mutmap: 86	L	L
+mutmap: 294	K	K
+mutmap: 127	S	S
+mutmap: 421	E	E
+mutmap: 54	H	H
+mutmap: 430	G	G
+mutmap: 444	L	L
+mutmap: 208	Y	Y
+mutmap: 22	I	I
+mutmap: 26	A	A
+mutmap: 29	S	S
+mutmap: 67	L	L
+mutmap: 71	N	N
+mutmap: 113	A	A
+mutmap: 155	N	N
+mutmap: 159	S	S
+mutmap: 169	G	G
+mutmap: 186	E	E
+mutmap: 190	L	L
+mutmap: 262	G	G
+mutmap: 318	E	E
+mutmap: 371	N	N
+mutmap: 417	E	E
+mutmap: 397	S	S
+mutmap: 350	A	A
+mutmap: 400	E	E
+mutmap: 484	Y	Y
+mutmap: 8	L	L
+mutmap: 53	S	S
+mutmap: 113	A	A
+mutmap: 169	G	G
+mutmap: 369	H	H
+mutmap: 401	K	K
+mutmap: 429	D	D
+mutmap: 461	L	L
+mutmap: 483	F	F
+mutmap: 47	V	V
+mutmap: 58	L	L
+mutmap: 76	G	G
+mutmap: 308	F	F
+mutmap: 405	Q	Q
+mutmap: 462	Y	Y
+mutmap: 78	I	I
+mutmap: 523	S	S
+mutmap: 60	L	L
+mutmap: 117	E	E
+mutmap: 137	E	E
+mutmap: 176	N	N
+mutmap: 240	E	E
+mutmap: 22	I	I
+mutmap: 67	L	L
+mutmap: 159	S	S
+mutmap: 190	L	L
+mutmap: 226	F	F
+mutmap: 479	G	G
+mutmap: 53	N	N
+mutmap: 177	L	L
+mutmap: 371	N	N
+mutmap: 419	R	R
+mutmap: 71	N	N
+mutmap: 446	E	E
+mutmap: 439	A	A
+mutmap: 204	Q	Q
+mutmap: 234	P	P
+mutmap: 149	S	S
+mutmap: 449	R	R
+mutmap: 467	N	N
+mutmap: 391	I	I
+mutmap: 419	R	R
+mutmap: 8	L	L
+mutmap: 101	N	N
+mutmap: 452	D	D
+mutmap: 356	G	G
+mutmap: 390	G	G
+mutmap: 51	E	E
+mutmap: 148	V	V
+mutmap: 303	N	N
+mutmap: 185	K	K
+mutmap: 236	V	V
+mutmap: 324	R	R
+mutmap: 350	A	A
+mutmap: 448	E	E
+mutmap: 470	K	K
+mutmap: 449	R	R
+mutmap: 112	F	F
+mutmap: 142	N	N
+mutmap: 249	L	L
+mutmap: 297	T	T
+mutmap: 394	K	K
+mutmap: 208	Y	Y
+mutmap: 144	T	T
+mutmap: 7	V	V
+mutmap: 235	K	K
+mutmap: 241	G	G
+mutmap: 123	S	S
+mutmap: 264	L	L
+mutmap: 339	S	S
+mutmap: 155	N	N
+mutmap: 262	G	G
+mutmap: 396	N	N
+mutmap: 501	D	D
+mutmap: 295	C	C
+mutmap: 12	F	F
+mutmap: 309	Q	Q
+mutmap: 7	V	V
+mutmap: 43	V	V
+mutmap: 199	P	P
+mutmap: 105	G	G
+mutmap: 177	L	L
+mutmap: 17	A	A
+mutmap: 30	T	T
+mutmap: 119	R	R
+mutmap: 282	I	I
+mutmap: 303	N	N
+mutmap: 495	V	V
+mutmap: 196	H	H
+mutmap: 221	H	H
+mutmap: 312	H	H
+mutmap: 409	V	V
+mutmap: 470	K	K
+mutmap: 445	L	L
+mutmap: 141	P	P
+mutmap: 331	V	V
+mutmap: 419	R	R
+mutmap: 326	A	A
+mutmap: 17	A	A
+mutmap: 67	L	L
+mutmap: 244	N	N
+mutmap: 7	V	V
+mutmap: 49	L	L
+mutmap: 69	L	L
+mutmap: 337	I	I
+mutmap: 369	H	H
+mutmap: 437	Y	Y
+mutmap: 335	R	R
+mutmap: 505	Y	Y
+mutmap: 249	L	L
+mutmap: 174	Y	Y
+mutmap: 79	L	L
+mutmap: 304	S	S
+mutmap: 486	K	K
+mutmap: 56	G	G
+mutmap: 79	L	L
+mutmap: 227	T	T
+mutmap: 224	R	R
+mutmap: 266	A	A
+mutmap: 510	K	K
+mutmap: 441	L	L
+mutmap: 355	G	G
+mutmap: 408	A	A
+mutmap: 443	V	V
+mutmap: 468	Q	Q
+mutmap: 479	G	G
+mutmap: 496	K	K
+mutmap: 58	L	L
+mutmap: 130	R	R
+mutmap: 249	L	L
+mutmap: 105	G	G
+mutmap: 118	L	L
+mutmap: 199	P	P
+mutmap: 508	E	E
+mutmap: 81	N	N
+mutmap: 189	V	V
+mutmap: 374	G	G
+mutmap: 550	S	S
+mutmap: 17	A	A
+mutmap: 206	A	A
+mutmap: 313	P	P
+mutmap: 539	S	S
+mutmap: 485	H	H
+mutmap: 134	F	F
+mutmap: 296	Q	Q
+mutmap: 488	N	N
+mutmap: 203	D	D
+mutmap: 251	E	E
+mutmap: 373	Q	Q
+mutmap: 9	L	L
+mutmap: 36	V	V
+mutmap: 311	V	V
+mutmap: 431	F	F
+mutmap: 540	L	L
+mutmap: 16	Y	Y
+mutmap: 191	V	V
+mutmap: 198	P	P
+mutmap: 314	V	V
+mutmap: 519	V	V
+mutmap: 208	Y	Y
+mutmap: 102	P	P
+mutmap: 293	A	A
+mutmap: 369	H	H
+mutmap: 114	D	D
+mutmap: 196	H	H
+mutmap: 223	S	S
+mutmap: 376	G	G
+mutmap: 211	E	E
+mutmap: 82	P	P
+mutmap: 118	L	L
+mutmap: 526	V	V
+mutmap: 248	T	T
+mutmap: 271	F	F
+mutmap: 294	K	K
+mutmap: 480	C	C
+mutmap: 145	V	V
+mutmap: 216	S	S
+mutmap: 5	L	L
+mutmap: 21	C	C
+mutmap: 338	P	P
+mutmap: 242	R	R
+mutmap: 280	G	G
+mutmap: 460	N	N
+mutmap: 162	R	R
+mutmap: 518	G	G
+mutmap: 293	A	A
+mutmap: 382	K	K
+mutmap: 388	I	I
+mutmap: 328	L	L
+mutmap: 131	F	F
+mutmap: 135	P	P
+mutmap: 223	S	S
+mutmap: 7	V	V
+mutmap: 425	K	K
+mutmap: 164	L	L
+mutmap: 14	A	A
+mutmap: 436	T	T
+mutmap: 129	E	E
+mutmap: 160	F	F
+mutmap: 170	K	K
+mutmap: 174	Y	Y
+mutmap: 239	Q	Q
+mutmap: 294	K	K
+mutmap: 113	A	A
+mutmap: 170	K	K
+mutmap: 355	G	G
+mutmap: 186	E	E
+mutmap: 189	V	V
+mutmap: 4	K	K
+mutmap: 453	F	F
+mutmap: 204	Q	Q
+mutmap: 382	K	K
+mutmap: 400	E	E
+mutmap: 404	T	T
+mutmap: 40	N	N
+mutmap: 340	I	I
+mutmap: 430	G	G
+mutmap: 469	L	L
+mutmap: 137	G	G
+mutmap: 180	S	S
+mutmap: 55	N	N
+mutmap: 30	T	T
+mutmap: 27	N	N
+mutmap: 452	D	D
+mutmap: 392	T	T
+mutmap: 280	G	G
+mutmap: 291	C	C
+mutmap: 389	N	N
+mutmap: 169	G	G
+mutmap: 208	Y	Y
+mutmap: 338	P	P
+mutmap: 414	N	N
+mutmap: 497	N	N
+mutmap: 531	A	A
+mutmap: 45	H	H
+mutmap: 105	G	G
+mutmap: 110	G	G
+mutmap: 144	T	T
+mutmap: 284	S	S
+mutmap: 380	D	D
+mutmap: 176	N	N
+mutmap: 503	P	P
+mutmap: 537	A	A
+mutmap: 426	K	K
+mutmap: 16	Y	Y
+mutmap: 13	T	T
+mutmap: 426	K	K
+mutmap: 487	C	C
+mutmap: 113	A	A
+mutmap: 304	S	S
+mutmap: 560	Q	Q
+mutmap: 63	G	G
+mutmap: 506	S	S
+mutmap: 218	V	V
+mutmap: 408	A	A
+mutmap: 503	P	P
+mutmap: 523	S	S
+mutmap: 299	Q	Q
+mutmap: 133	I	I
+mutmap: 146	T	T
+mutmap: 154	H	H
+mutmap: 212	N	N
+mutmap: 560	Q	Q
+mutmap: 379	A	A
+mutmap: 28	N	N
+mutmap: 35	T	T
+mutmap: 116	E	E
+mutmap: 150	A	A
+mutmap: 179	K	K
+mutmap: 276	G	G
+mutmap: 329	R	R
+mutmap: 31	D	D
+mutmap: 84	C	C
+mutmap: 233	R	R
+mutmap: 409	V	V
+mutmap: 5	L	L
+mutmap: 105	G	G
+mutmap: 224	R	R
+mutmap: 287	S	S
+mutmap: 331	V	V
+mutmap: 337	I	I
+mutmap: 375	S	S
+mutmap: 430	G	G
+mutmap: 464	K	K
+mutmap: 350	A	A
+mutmap: 150	A	A
+mutmap: 199	S	S
+mutmap: 426	K	K
+mutmap: 102	S	S
+mutmap: 252	P	P
+mutmap: 76	G	G
+mutmap: 493	E	E
+mutmap: 127	S	S
+mutmap: 182	V	V
+mutmap: 416	L	L
+mutmap: 75	A	A
+mutmap: 285	N	N
+mutmap: 333	G	G
+mutmap: 84	C	C
+mutmap: 92	S	S
+mutmap: 113	A	A
+mutmap: 125	V	V
+mutmap: 339	S	S
+mutmap: 401	K	K
+mutmap: 546	L	L
+mutmap: 191	V	V
+mutmap: 379	A	A
+mutmap: 528	Q	Q
+mutmap: 221	N	N
+mutmap: 242	R	R
+mutmap: 273	L	L
+mutmap: 424	N	N
+mutmap: 543	L	L
+mutmap: 2	K	K
+mutmap: 31	D	D
+mutmap: 75	A	A
+mutmap: 79	L	L
+mutmap: 97	V	V
+mutmap: 112	F	F
+mutmap: 124	S	S
+mutmap: 174	Y	Y
+mutmap: 199	S	S
+mutmap: 335	R	R
+mutmap: 401	K	K
+mutmap: 465	V	V
+mutmap: 24	Y	Y
+mutmap: 218	V	V
+mutmap: 221	N	N
+mutmap: 222	Y	Y
+mutmap: 273	L	L
+mutmap: 339	S	S
+mutmap: 311	I	I
+mutmap: 407	T	T
+mutmap: 26	A	A
+mutmap: 103	E	E
+mutmap: 158	S	S
+mutmap: 479	G	G
+mutmap: 543	L	L
+mutmap: 539	S	S
+mutmap: 63	G	G
+mutmap: 81	N	N
+mutmap: 119	R	R
+mutmap: 178	N	N
+mutmap: 199	S	S
+mutmap: 271	F	F
+mutmap: 285	N	N
+mutmap: 322	Y	Y
+mutmap: 356	G	G
+mutmap: 423	L	L
+mutmap: 530	L	L
+Same:
+98
+98
+
+18
+14
+14
+
+63
+
+17
+25
+85
+
+35
+35
+25
+17
+
+
+
+
+13
+
+78
+9
+9
+
+
+15
+15
+
+52
+14
+14
+15
+8
+8
+27
+12
+
+12
+5
+
+5
+5
+25
+12
+12
+
+
+
+15
+15
+32
+
+
+
+
+
+67
+67
+
+
+12
+8
+8
+
+
+
+10
+10
+10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11
+11
+
+
+34
+
+
+
+
+
+
+
+
+
+
+10
+10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+14
+14
+19
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+26
+26
+
+
+
+
+
+
+
+
+
+
+18
+18
+
+
+
+
+
+
+
+17
+17
+
+
+
+
+
+
+15
+15
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+20
+20
+
+13
+
+13
+
+
+
+
+
+7
+7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+14
+14
+
+
+6
+6
+8
+10
+16
+9
+
+
+
+
+
+
+19
+
+19
+
+
+
+
+
+
+
+
+
+
+
+
+9
+9
+17
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+12
+12
+14
+
+7
+7
+18
+
+18
+
+
+
+
+
+
+
+
+
+
+
+
+19
+19
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+15
+15
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+18
+18
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9
+9
+
+
+
+
+
+
+
+10
+10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+14
+
+
+
+14
+12
+12
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10
+10
+7
+7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+16
+16
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+16
+16
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9
+
+9
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3
+3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3
+3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Different:
+
+
+
+
+
+
+
+
+
+136
+56
+55
+20
+37
+20
+55
+151
+
+30
+30
+32
+12
+
+5
+5
+8
+10
+10
+64
+65
+117
+29
+
+
+
+
+
+
+18
+18
+18
+21
+
+22
+20
+68
+61
+65
+29
+372
+63
+82
+73
+63
+
+167
+167
+71
+28
+79
+28
+49
+49
+
+
+
+55
+
+55
+53
+55
+51
+51
+227
+96
+52
+52
+188
+55
+76
+55
+100
+61
+61
+89
+83
+70
+70
+
+37
+37
+29
+29
+49
+54
+43
+
+37
+51
+51
+66
+83
+76
+76
+53
+54
+53
+92
+20
+18
+18
+22
+
+73
+73
+254
+136
+175
+
+36
+36
+136
+347
+347
+111
+
+94
+
+127
+94
+48
+48
+18
+18
+21
+20
+18
+36
+91
+80
+49
+81
+49
+58
+58
+114
+114
+83
+83
+
+160
+160
+170
+117
+117
+13
+25
+26
+13
+
+45
+45
+169
+174
+
+79
+83
+79
+
+
+
+60
+60
+18
+18
+23
+
+41
+41
+18
+18
+57
+11
+16
+32
+11
+220
+94
+52
+13
+13
+52
+63
+63
+
+214
+37
+37
+74
+74
+
+29
+29
+59
+59
+
+
+
+
+28
+28
+29
+52
+
+
+147
+66
+31
+32
+31
+
+14
+17
+14
+186
+88
+
+88
+20
+57
+20
+151
+147
+147
+13
+13
+63
+34
+27
+31
+15
+15
+44
+46
+50
+52
+58
+47
+44
+69
+69
+68
+68
+
+35
+35
+35
+29
+29
+
+
+104
+77
+77
+
+97
+13
+13
+18
+47
+46
+53
+46
+
+139
+139
+
+95
+83
+83
+212
+212
+27
+27
+124
+147
+147
+20
+20
+26
+34
+16
+21
+16
+18
+16
+16
+25
+40
+46
+
+64
+64
+
+
+115
+30
+30
+30
+
+
+30
+38
+
+280
+109
+78
+12
+12
+
+
+169
+122
+122
+144
+11
+12
+12
+13
+11
+37
+144
+51
+51
+67
+67
+118
+54
+186
+98
+30
+31
+30
+18
+15
+15
+27
+27
+54
+17
+17
+11
+11
+120
+45
+45
+60
+18
+16
+14
+22
+14
+42
+120
+346
+346
+30
+138
+21
+21
+391
+17
+10
+10
+33
+33
+14
+15
+9
+9
+9
+
+9
+130
+130
+111
+116
+59
+15
+15
+15
+215
+215
+
+238
+236
+
+107
+107
+110
+
+
+111
+45
+45
+25
+21
+21
+32
+32
+116
+111
+39
+39
+16
+13
+13
+394
+394
+
+26
+26
+230
+
+
+
+
+
+66
+66
+19
+19
+55
+224
+224
+67
+67
+122
+91
+21
+21
+22
+15
+15
+18
+33
+33
+184
+85
+85
+128
+93
+44
+51
+44
+56
+93
+
+
+146
+146
+201
+18
+13
+13
+24
+61
+
+143
+143
+29
+35
+11
+11
+16
+43
+65
+65
+29
+19
+19
+58
+58
+240
+32
+42
+42
+26
+17
+17
+32
+34
+35
+34
+12
+12
+32
+68
+70
+68
+249
+26
+25
+25
+87
+26
+289
+14
+14
+
+59
+123
+52
+11
+11
+44
+52
+25
+25
+40
+16
+16
+8
+8
+62
+62
+148
+161
+12
+12
+14
+
+
+27
+27
+53
+53
+80
+80
+
+123
+114
+85
+149
+85
+
+
+249
+13
+13
+13
+14
+158
+226
+226
+
+
+61
+61
+33
+33
+37
+9
+9
+25
+47
+94
+48
+70
+48
+
+
+
+157
+20
+21
+20
+43
+
+184
+184
+129
+
+129
+133
+19
+19
+15
+16
+15
+51
+23
+139
+139
+
+
+343
+63
+63
+58
+58
+18
+6
+6
+18
+19
+19
+54
+355
+61
+21
+21
+49
+49
+50
+84
+50
+68
+68
+245
+51
+26
+82
+26
+229
+173
+173
+162
+162
+119
+22
+19
+19
+48
+17
+17
+17
+48
+154
+154
+179
+24
+24
+35
+59
+163
+23
+23
+26
+26
+
+107
+107
+143
+114
+73
+73
+185
+14
+14
+31
+47
+
+31
+278
+55
+17
+17
+36
+51
+97
+97
+10
+10
+10
+10
+287
+78
+78
+101
+61
+61
+186
+102
+101
+52
+36
+36
+42
+16
+16
+60
+23
+30
+29
+23
+41
+41
+26
+25
+25
+16
+16
+
+26
+197
+197
+22
+10
+10
+16
+16
+19
+19
+7
+7
+81
+81
+95
+161
+306
+43
+43
+75
+75
+241
+
+13
+13
+24
+16
+17
+16
+20
+20
+36
+35
+42
+
+
+30
+30
+7
+7
+16
+16
+373
+373
+264
+264
+23
+25
+23
+21
+21
+
+18
+18
+26
+26
+
+61
+61
+52
+228
+
+
+178
+178
+
+44
+68
+44
+371
+27
+27
+47
+19
+19
+
+31
+136
+31
+276
+45
+7
+7
+45
+48
+
+48
+136
+
+85
+85
+78
+78
+57
+
+57
+62
+57
+57
+95
+20
+20
+24
+26
+44
+41
+41
+36
+
+
+47
+54
+47
+160
+54
+54
+67
+29
+29
+45
+8
+8
+13
+10
+10
+45
+67
+291
+291
+275
+275
+29
+29
+66
+22
+22
+61
+64
+33
+327
+125
+9
+9
+35
+32
+32
+34
+7
+13
+7
+35
+124
+34
+92
+30
+15
+15
+20
+20
+26
+19
+17
+17
+54
+19
+34
+41
+41
+
+240
+114
+46
+46
+
+60
+44
+44
+78
+78
+55
+55
+16
+16
+
+50
+39
+39
+
+83
+15
+15
+9
+
+11
+12
+9
+53
+38
+
+
+73
+17
+17
+
+67
+67
+29
+29
+127
+17
+17
+
+78
+52
+48
+48
+3
+3
+66
+23
+23
+
+98
+92
+49
+49
+64
+64
+97
+29
+29
+72
+40
+209
+347
+31
+31
+
+256
+256
+
+150
+150
+154
+96
+39
+9
+9
+35
+61
+52
+32
+32
+35
+101
+56
+56
+325
+325
+193
+118
+70
+51
+51
+84
+84
+
+
+169
+111
+111
+
+365
+66
+66
+202
+119
+157
+119
+140
+16
+16
+49
+49
+68
+68
+97
+53
+23
+14
+14
+12
+12
+53
+36
+36
+15
+8
+8
+13
+15
+129
+13
+13
+
+54
+54
+
+75
+75
+
+142
+142
+
+16
+16
+45
+202
+62
+62
+
+144
+70
+14
+15
+12
+12
+
+51
+
+
+
+185
+185
+44
+44
+210
+77
+77
+77
+31
+18
+18
+12
+12
+11
+4
+4
+11
+30
+30
+32
+
+40
+40
+
+15
+15
+43
+40
+40
+9
+9
+12
+12
+40
+
+61
+61
+
+
+64
+11
+11
+
+
+
+82
+82
+291
+28
+28
+18
+18
+34
+49
+251
+251
+247
+96
+33
+33
+15
+15
+63
+
+167
+110
+13
+13
+13
+13
+20
+12
+
+12
+25
+165
+165
+18
+18
+20
+26
+
+24
+24
+30
+24
+24
+77
+19
+19
+150
+
+64
+53
+53
+59
+77
+19
+21
+19
+64
+
+130
+57
+19
+12
+12
+39
+
+39
+78
+78
+141
+
+197
+150
+
+150
+18
+18
+
+
+185
+185
+173
+113
+99
+17
+11
+11
+6
+6
+
+19
+18
+18
+59
+359
+8
+
+8
+31
+162
+86
+22
+22
+36
+49
+88
+85
+85
+123
+249
+60
+60
+72
+
+70
+17
+73
+73
+17
+77
+77
+
+
+
+
+104
+104
+52
+31
+24
+33
+24
+24
+13
+9
+8
+14
+8
+13
+7
+7
+21
+19
+19
+
+6
+9
+15
+12
+4
+4
+19
+19
+48
+48
+50
+50
+147
+147
+76
+62
+62
+
+81
+81
+61
+34
+
+11
+11
+29
+29
+35
+17
+34
+369
+369
+271
+271
+19
+19
+
+17
+21
+21
+65
+65
+17
+115
+61
+61
+26
+26
+10
+10
+14
+
+124
+23
+23
+7
+7
+142
+142
+84
+84
+22
+22
+23
+26
+27
+14
+14
+41
+19
+19
+53
+167
+77
+34
+34
+49
+11
+15
+11
+12
+100
+13
+13
+60
+198
+368
+6
+6
+56
+56
+275
+10
+10
+55
+63
+63
+64
+13
+13
+103
+103
+5
+13
+5
+7
+7
+68
+17
+17
+32
+
+16
+16
+37
+
+103
+31
+31
+64
+
+73
+73
+91
+101
+133
+91
+5
+5
+111
+109
+9
+9
+51
+84
+
+84
+61
+61
+
+76
+76
+44
+21
+21
+
+44
+54
+54
+163
+25
+25
+64
+16
+8
+8
+142
+212
+71
+12
+6
+6
+
+86
+86
+86
+74
+14
+12
+12
+56
+86
+70
+70
+151
+151
+30
+72
+72
+20
+20
+26
+92
+30
+258
+11
+11
+186
+15
+15
+66
+66
+128
+128
+
+
+109
+21
+21
+76
+147
+147
+171
+246
+6
+6
+
+
+115
+17
+17
+78
+
+
+34
+34
+53
+132
+17
+16
+16
+67
+22
+22
+184
+62
+19
+28
+19
+40
+149
+286
+286
+
+15
+15
+
+
+194
+194
+237
+83
+55
+12
+12
+36
+55
+142
+38
+28
+28
+8
+10
+9
+8
+13
+8
+53
+142
+129
+126
+58
+58
+115
+115
+119
+77
+77
+
+
+12
+12
+19
+15
+15
+265
+265
+149
+111
+30
+30
+70
+70
+24
+36
+31
+31
+37
+
+24
+148
+69
+69
+95
+94
+283
+35
+35
+191
+191
+
+
+41
+41
+43
+43
+
+93
+66
+14
+14
+93
+96
+29
+30
+
+30
+29
+
+36
+36
+140
+54
+
+54
+
+19
+19
+168
+64
+64
+114
+114
+80
+10
+10
+
+78
+78
+
+
+44
+14
+14
+44
+63
+63
+41
+
+41
+102
+78
+15
+15
+9
+9
+54
+53
+53
+
+146
+146
+110
+68
+22
+15
+15
+59
+131
+116
+71
+71
+272
+272
+23
+23
+70
+70
+64
+64
+
+73
+18
+18
+60
+60
+102
+36
+36
+15
+15
+24
+52
+54
+54
+113
+113
+166
+166
+345
+4
+4
+46
+12
+12
+46
+140
+140
+90
+81
+120
+74
+74
+81
+346
+19
+15
+6
+14
+10
+26
+6
+9
+11
+10
+19
+52
+73
+12
+12
+56
+73
+
+134
+134
+
+33
+33
+14
+14
+110
+19
+104
+64
+22
+21
+21
+19
+85
+
+23
+20
+
+20
+45
+24
+24
+21
+21
+197
+22
+22
+19
+19
+13
+13
+17
+
+
+30
+30
+16
+16
+27
+27
+40
+10
+
+29
+4
+4
+16
+218
+74
+17
+17
+19
+18
+227
+81
+
+39
+67
+39
+160
+21
+18
+14
+
+14
+16
+21
+21
+11
+11
+123
+366
+366
+
+54
+54
+176
+102
+29
+51
+58
+65
+20
+21
+21
+22
+22
+7
+7
+12
+14
+8
+8
+8
+10
+20
+29
+171
+121
+39
+61
+39
+121
+83
+62
+62
+244
+244
+274
+
+265
+21
+21
+66
+40
+10
+14
+10
+62
+
+15
+15
+19
+29
+29
+68
+117
+
+117
+163
+163
+246
+17
+12
+14
+11
+11
+13
+22
+
+139
+63
+17
+8
+8
+
+104
+
+71
+11
+14
+12
+11
+27
+20
+20
+73
+39
+39
+230
+230
+
+135
+93
+93
+140
+63
+10
+10
+45
+
+393
+19
+18
+18
+92
+92
+114
+20
+19
+19
+39
+59
+59
+39
+84
+84
+78
+78
+52
+76
+52
+106
+106
+118
+37
+37
+18
+18
+
+
+
+369
+69
+9
+9
+70
+70
+308
+
+
+93
+42
+15
+13
+13
+42
+36
+36
+35
+35
+28
+28
+32
+317
+42
+42
+
+
+
+44
+15
+15
+44
+89
+53
+26
+13
+13
+63
+188
+69
+69
+46
+19
+20
+34
+21
+20
+19
+150
+61
+30
+30
+16
+16
+18
+40
+263
+20
+20
+85
+53
+53
+216
+216
+29
+29
+204
+204
+
+
+
+
+67
+67
+25
+25
+56
+
+266
+28
+28
+45
+
+123
+68
+27
+27
+78
+60
+16
+32
+16
+39
+38
+68
+33
+33
+41
+
+15
+15
+62
+54
+54
+
+17
+17
+36
+48
+
+48
+17
+8
+8
+
+26
+66
+66
+21
+21
+10
+10
+17
+12
+12
+
+14
+42
+
+
+115
+115
+
+187
+187
+110
+110
+
+27
+32
+18
+18
+27
+76
+76
+
+83
+83
+
+18
+20
+17
+17
+
+13
+13
+18
+16
+127
+127
+62
+70
+62
+197
+197
+83
+83
+194
+90
+46
+31
+31
+11
+11
+259
+259
+133
+56
+56
+58
+58
+23
+23
+67
+
+56
+56
+278
+43
+43
+8
+8
+9
+20
+26
+12
+11
+11
+179
+160
+48
+48
+36
+39
+21
+21
+21
+
+20
+20
+66
+
+353
+19
+19
+58
+
+37
+37
+45
+45
+140
+180
+
+81
+81
+
+23
+35
+15
+15
+23
+219
+19
+43
+19
+
+249
+245
+65
+65
+45
+61
+45
+
+116
+116
+273
+15
+15
+30
+167
+167
+19
+19
+10
+9
+
+9
+12
+14
+14
+12
+235
+136
+55
+55
+288
+288
+103
+74
+15
+12
+16
+12
+61
+61
+87
+
+76
+76
+
+99
+99
+30
+30
+51
+51
+196
+232
+135
+15
+15
+41
+22
+11
+11
+65
+40
+62
+62
+16
+16
+396
+396
+146
+146
+72
+67
+67
+6
+6
+72
+
+169
+169
+146
+146
+40
+40
+
+14
+10
+10
+14
+38
+209
+209
+
+173
+173
+12
+12
+181
+121
+34
+34
+251
+44
+44
+225
+139
+27
+
+18
+18
+16
+12
+12
+125
+
+75
+75
+50
+12
+12
+12
+
+30
+30
+
+41
+41
+35
+35
+68
+
+291
+111
+21
+21
+17
+17
+
+Probability:   0.000000, normal approx w. mean: 122674.500000, std deviation: 6360.985714, z: -11.726799----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |    117    |             48080      / 122616
+----------------------------------------------------------------
+   2    |   1979    |           2149576      /2073992
+----------------------------------------------------------------
+N (size of both datasets):    2096
+Probability:   0.000000, normal approx w. mean: 122674.500000, std deviation: 6360.985714, z: -11.726799
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+

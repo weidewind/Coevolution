@@ -7,132 +7,30 @@ use Bio::Phylo::IO;
 use DnaUtilities::compare qw(nsyn_substitutions);
 
 use TreeUtils::Phylo::FigTree;
-use TreeUtils::Phylo::MutMap::PhyloDistance;
 use Bio::SeqIO;
 use Data::Dumper;
 use Bit::Vector;
 use Statistics::Test::WilcoxonRankSum;
 use Try::Tiny;
+use TreeUtils::Phylo::MutMap::MutMap qw(mutmap_from_files);
 
 
-# creates new object MutMap, which contains tree, sequences of its nodes and the derived map of mutations
 
-sub new{
-	my $class=shift;
-	my $self = {};
-	bless($self,$class);
+
+
+
+sub load_data{
 	
-	my $tree = parse_tree($_[0]);
-	my %sequences = parse_fasta($_[1]);
-
-	my @ks = keys %fasta;
-	my $length = length($sequences{$ks[0]}); # supposing that all sequences have the same length
-
-	$self = {
-		tree => $tree,
-		sequences =>  %sequences,
-		mutmap => mutmap($tree, $sequences),
-		seq_length => $length,
-	};
-	
-	return $self;
-};
-
-
-			
-sub mutmap_from_files {
-	my $tree_file = shift; 
-	my $nodeseqs_file = shift;
-	
-	# read .fasta into a hash
-	my %nodeseqs;
-	my $seqio = Bio::SeqIO->new(-file => $nodeseqs_file, -format => "fasta");
-	while ( my $seqobj = $seqio->next_seq ) {
-		my $trimmed_id = (split(/\//, $seqobj->display_id))[0];
-    	$nodeseqs{ $trimmed_id } = $seqobj->seq;
-	}
-	
-	# read .newick into Bio::Phylo::IO
-	my $tree = parse_tree ($tree_file);
-	
-	return mutmap($tree, \%nodeseqs);
 }
-
-
-# read .fasta into a hash
-sub parse_fasta {
-	my $nodeseqs_file = shift;
-	my %nodeseqs;
-	my $seqio = Bio::SeqIO->new(-file => $nodeseqs_file, -format => "fasta");
-	while ( my $seqobj = $seqio->next_seq ) {
-		my $trimmed_id = (split(/\//, $seqobj->display_id))[0];
-    	$nodeseqs{ $trimmed_id } = $seqobj->seq;
-	}
-	return %nodeseqs;
-}
-
-
-## This method gets two files (.newick tree and .fasta with sequences of all its nodes)
-## and returns a map of mutations (%subs_on_node: node name -> array of substitution structs; 
-## 								   %nodes_with_sub: site index -> array of nodes (links))
-sub mutmap {
-
-	my $tree = $_[0];
-	my %nodeseqs = %{$_[1]};
-	my %subs_on_node;
-	my %nodes_with_sub;
-	
-	my @nodes = $tree -> get_nodes;
-	foreach my $node(@nodes){
-		if ($node->is_root()) {next;}
-		my $name = $node ->get_name();
-		my %nsyn = nsyn_substitutions($nodeseqs{$node->get_ancestors()->[0]->get_name()},
-									  $nodeseqs{$name});					  
-		$subs_on_node{$name}=\%nsyn;
-		for	my $site_index(keys %nsyn){
-			if (! exists $nodes_with_sub{$site_index}){
-				$nodes_with_sub{$site_index} = ();
-			}
-			push (@{$nodes_with_sub{$site_index}}, \$node);
-		}	
-	}
-
-	return (\%subs_on_node, \%nodes_with_sub);
-};
-
-
-sub parse_tree {
-					my $tree_file = $_[0];
-					open TREE, "< $tree_file" or die "Cannot open file ".$tree_file."\n";
-					# get a newick string from some source
- 					my $tree_string;
- 					my $t;
- 					while($t = <TREE>){
- 						$t =~ s/\n$//;
- 						$tree_string = $tree_string.$t;
- 					}
- 					 close TREE;
-
- 					# Call class method parse from Bio::Phylo::IO
- 					# note: newick parser returns 'Bio::Phylo::Forest'
-                    # Call ->first to retrieve the first tree of the forest.
- 					my $tree = Bio::Phylo::IO->parse(
-  					  -string => $tree_string,
-   					  -format => 'newick'
- 					)->first;
-
- 					return $tree;
-	
-} 
-
-
 
 # prints nexus tree, on wich all mutations in the specified site are shown 
+# print_tree_with_mutations(site_index, tree, mutmap)
 
 sub print_tree_with_mutations{
 my $site = shift;
-my $tree = $self->{tree};
-my @mutmaps = $self->{mutmap};
+my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
+my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
+my @mutmaps = mutmap($tree, \%fasta);
 my %subs_on_node = %{$mutmaps[0]};
 my %nodes_with_sub = %{$mutmaps[1]};
 
@@ -166,25 +64,43 @@ foreach my $trn(@{$nodes_with_sub{$site}}){
 }
 }
 
+#onemtest(248);
+#onemtest(214);
+#onemtest(136);
 
+#logic_general();
+#logic_unrestricted();
+
+
+my $muts = MutMap -> new("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n2.l.r.newick", 
+						 "C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n2.all.fa");
 
 
 sub logic{
-my $tree = $self->{tree};
-my $fasta = $self->{sequences};
-my @mutmaps = $self->{mutmap};
+	
+my $muts = MutMap -> new("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n2.l.r.newick", "C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n2.all.fa");
+	
+my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n2.l.r.newick");
+my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n2.all.fa");
+my @mutmaps = mutmap($tree, \%fasta);
 my %subs_on_node = %{$mutmaps[0]};
 my %nodes_with_sub = %{$mutmaps[1]};
 
 
+#my @sieved = sieve(\@{$nodes_with_sub{10}},\%subs_on_node, 10, "Y", 1);
+#print "Sieved: ";
+#foreach my $s(@sieved){
+#	print $$s->get_name()."\t";
+#}
 my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
 #470
 for (my $ind = 1; $ind <566; $ind++){
 	compute_bitvectors($tree, \%subs_on_node, $ind);
-	my @distr = find_min_distances_naive($ind);
+#print ("Nodes with sub: ".scalar @{$nodes_with_sub{$ind}});
+my @distr = find_min_distances_naive($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
 
-	print "Distribution for ".$ind.": ";
-	print "\nSame aa: ";
+print "Distribution for ".$ind.": ";
+print "\nSame aa: ";
 	foreach my $dist(@{$distr[0]}){
 		print ($dist."\t")
 	};
@@ -193,15 +109,14 @@ for (my $ind = 1; $ind <566; $ind++){
 	foreach my $dist(@{$distr[1]}){
 		print ($dist."\t")
 	};
-	print "\n";
- 	 try {
- 	 	$wilcox_test->load_data(\@{$distr[0]}, \@{$distr[1]});
-  		my $prob = $wilcox_test->probability();
-  		my $pf = sprintf '%f', $prob; # prints 0.091022
-  		print "\n";
-  		print $wilcox_test->probability_status();
-  		print $wilcox_test->summary();
-   		print "\n";
+print "\n";
+  try {$wilcox_test->load_data(\@{$distr[0]}, \@{$distr[1]});
+  my $prob = $wilcox_test->probability();
+  my $pf = sprintf '%f', $prob; # prints 0.091022
+  print "\n";
+  print $wilcox_test->probability_status();
+  print $wilcox_test->summary();
+    print "\n";
   }
 }
 
@@ -210,29 +125,39 @@ for (my $ind = 1; $ind <566; $ind++){
 }
 
 
-## 
-
 sub logic_unrestricted{
-my $tree = $self->{tree};
-my $fasta = $self->{sequences};
-my @mutmaps = $self->{mutmap};
-my $length  = $self->{seq_length};
+my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.l.r.newick");
+my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.all.fa");
+
+my @ks = keys %fasta;
+my $length = length($fasta{$ks[0]});
+my @mutmaps = mutmap($tree, \%fasta);
 my %subs_on_node = %{$mutmaps[0]};
 my %nodes_with_sub = %{$mutmaps[1]};
 
 my @general_same;
 my @general_diff;
 
+#my @sieved = sieve(\@{$nodes_with_sub{10}},\%subs_on_node, 10, "Y", 1);
+#print "Sieved: ";
+#foreach my $s(@sieved){
+#	print $$s->get_name()."\t";
+#}
 my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+#470
+#566
+print (($length/3)."\n");
 for (my $ind = 1; $ind <=($length/3); $ind++){
 
-	my @distr = find_min_distances_unrestricted($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+#print ("Nodes with sub: ".scalar @{$nodes_with_sub{$ind}});
 
-	push @general_same, @{$distr[0]};
-	push @general_diff, @{$distr[1]};
+my @distr = find_min_distances_unrestricted($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
 
-	print "Distribution for ".$ind.": ";
-	print "\nSame aa: ";
+push @general_same, @{$distr[0]};
+push @general_diff, @{$distr[1]};
+
+print "Distribution for ".$ind.": ";
+print "\nSame aa: ";
 	foreach my $dist(@{$distr[0]}){
 		print ($dist."\t")
 	};
@@ -241,18 +166,18 @@ for (my $ind = 1; $ind <=($length/3); $ind++){
 	foreach my $dist(@{$distr[1]}){
 		print ($dist."\t")
 	};
-	print "\n";
-	
-  	try {
-  		$wilcox_test->load_data(\@{$distr[0]}, \@{$distr[1]});
-  		my $prob = $wilcox_test->probability();
- 		my $pf = sprintf '%f', $prob; # prints 0.091022
-  		print "\n";
- 		print $wilcox_test->probability_status();
-  		print $wilcox_test->summary();
-   		print "\n";
+print "\n";
+  try {$wilcox_test->load_data(\@{$distr[0]}, \@{$distr[1]});
+  my $prob = $wilcox_test->probability();
+  my $pf = sprintf '%f', $prob; # prints 0.091022
+  print "\n";
+  print $wilcox_test->probability_status();
+  print $wilcox_test->summary();
+    print "\n";
   }
-   
+  
+
+  
 }
 
 print "Same:\n";
@@ -274,9 +199,6 @@ foreach my $diff(@general_diff){
 
 }
 
-# computes minimal_distance_naive for all sites
-# returns two arrays: 1) minimal distances between mutations in the same aa,
-# 2) min dists between mutations in different aas.
 
 sub logic_general {
 	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.l.r.newick");
@@ -288,7 +210,11 @@ my %nodes_with_sub = %{$mutmaps[1]};
 my @general_same;
 my @general_diff;
 
-
+#my @sieved = sieve(\@{$nodes_with_sub{10}},\%subs_on_node, 10, "Y", 1);
+#print "Sieved: ";
+#foreach my $s(@sieved){
+#	print $$s->get_name()."\t";
+#}
 my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
 #470
 for (my $ind = 1; $ind <566; $ind++){
@@ -381,7 +307,29 @@ sub logic_2{
 	}
 }
 
+sub subtreetest{
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h1.l.r.newick");
+my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h1.all.fa");
+my @mutmaps = mutmap($tree, \%fasta);
+my %subs_on_node = %{$mutmaps[0]};
+my %nodes_with_sub = %{$mutmaps[1]};
 
+ compute_min_distances_in_subtree($tree, \%subs_on_node);
+ my $root = $tree->get_root();
+	$root->visit_depth_first(
+				-post => sub{ #all daughters have been processed
+					my $node=shift;
+					my %min_dists = compute_min_distances_global($node, \%subs_on_node);
+					print $node->get_name."\t";
+					for my $site(keys %min_dists){
+						print ($site."_".$min_dists{$site}."\t");
+					}
+					print "\n";
+				}
+	);
+}
+
+#subtreetest();
 
 ## For every node of the given tree sets a hash -min_distances_in_subtree:
 ## key = index of site (in protein sequence)
@@ -391,7 +339,8 @@ sub logic_2{
 
 sub compute_min_distances_global{
 	my $node = $_[0];
-	my %subs_on_node = %{${$self->{mutmap}}[0]};
+	my %subs_on_node = %{$_[1]};
+	#my $seq_length = $_[2];
 	
 	my %min_dists = %{$node->get_generic("-min_distances_in_subtree")};
 
@@ -430,15 +379,10 @@ sub compute_min_distances_global{
 	
 }
 
-# Self-describing. Needs nothing. For each node and for each site computes min distance from that node to 
-# closest node in the subtree with mutation in that site.
-# Does not care about mutation type. 
-# The resulting hash will only contain key "site_index", if there is a mutation in this site somewhere down from that node.
-# These hashes are kept in "-min_distances_in_subtree" field of nodes.
 
 sub compute_min_distances_in_subtree{
-	my $tree = $self->{tree};
-	my %subs_on_node = %{${$self->{mutmap}}[0]};
+	my $tree = $_[0];
+	my %subs_on_node = %{$_[1]};
 	
 	my $root = $tree->get_root();
 	$root->visit_depth_first(
@@ -464,23 +408,22 @@ sub compute_min_distances_in_subtree{
 							}
 						}
 					}
+					#print (" number of sites with muutations in the subtree ".(scalar keys %min_dists)."\n");
 					$node->set_generic("-min_distances_in_subtree" => \%min_dists);
-
+					#print $node->get_name()."\t";
+					#print Dumper (%min_dists);
+					#print "\n";
 					
 				}
 			);
 }
 
-
-# The only difference from find_min_distances_naive is that this method does not check 
-# if there is a substitution on the path between two nodes (if there is a birch between two firs - we still consider this pair of firs)  
-
 sub find_min_distances_unrestricted {
-	my $tree = $self->{tree};
-	my @nodes = ${$self->{mutmap}}[1]{$_[0]};
-	my %subs_on_node = %{${$self->{mutmap}}[0]};
-	my $site_index = $_[0];
-
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+	#my $same_derived = $_[4];
 	my @min_distances_same;
 	my @min_distances_diff;
 	
@@ -504,18 +447,12 @@ sub find_min_distances_unrestricted {
 	return (\@min_distances_same, \@min_distances_diff);	
 }
 
-# Given a specific site, for every node with a mutation in this site 
-# calculates the minimal distance from this node to another node with a substitution in this site:
-# 1) derived aa is the same aa as in the first node 2) derived aa is some other aa
-# Does not consider a path between two nodes, if a substitution of another type is present on this path.
-# Returns two unsorted arrays of minimal distances.
-
 sub find_min_distances_naive{
-	my $tree = $self->{tree};
-	my @nodes = ${$self->{mutmap}}[1]{$_[0]};
-	my %subs_on_node = %{${$self->{mutmap}}[0]};
-	my $site_index = $_[0];
-
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+	#my $same_derived = $_[4];
 	my @min_distances_same;
 	my @min_distances_diff;
 	
@@ -525,16 +462,22 @@ sub find_min_distances_naive{
 		my $bit_vect1 = ${$nodes[$i]}->get_generic("-mutations_on_path")->Clone();
 		$bit_vect1->Move_Left(1);
 		my $derived1 = ${$subs_on_node{${$nodes[$i]}->get_name()}}{$site_index}->{"Substitution::derived_allele"};
+		#my @sieved = sieve(\@nodes,\%subs_on_node, $site_index, $t_derived, $same_derived);
+		#for (my $j = 0; $j < scalar @sieved; $j++){
 		for (my $j = 0; $j < scalar @nodes; $j++){
 			if ($j == $i){ next; }
+			#my $mrca = ${$nodes[$i]}->get_mrca(${$sieved[$j]})->get_generic("-mutations_on_path")->Size();
 			my $mrca = ${$nodes[$i]}->get_mrca(${$nodes[$j]})->get_generic("-mutations_on_path")->Size();
+			#my $bit_vect2 = ${$sieved[$j]}->get_generic("-mutations_on_path")->Clone();
 			my $bit_vect2 = ${$nodes[$j]}->get_generic("-mutations_on_path")->Clone();
 			my $bit_vect1_t = $bit_vect1->Clone();
 			$bit_vect2->Move_Left(1);
 			$bit_vect2->Move_Right($mrca+1);
 			$bit_vect1_t->Move_Right($mrca+1);
 			if ($bit_vect2->is_empty() & $bit_vect1_t->is_empty()){
+				#my $dist = ${$nodes[$i]}->calc_patristic_distance(${$sieved[$j]});
 				my $dist = calc_true_patristic_distance(${$nodes[$i]}, ${$nodes[$j]});
+				
 				my $derived2 = ${$subs_on_node{${$nodes[$j]}->get_name()}}{$site_index}->{"Substitution::derived_allele"};
 				if ($derived1 eq $derived2){
 					if(!defined $min_dist_same || $dist < $min_dist_same){
@@ -583,9 +526,9 @@ sub dist{
 }
 
 sub compute_bitvectors{
-	my $tree = $self->{tree};
-	my %mutmap = %{$self->{mutmap}};
-	my $site_index = $_[0];
+	my $tree = $_[0];
+	my %mutmap = %{$_[1]};
+	my $site_index = $_[2];
 
 	my $root = $tree->get_root();
 	$root->set_generic("-mutations_on_path" => Bit::Vector->new(0));
@@ -614,5 +557,73 @@ sub compute_bitvectors{
 }
 
 
+sub test {
+my %mm = mutmap_from_files("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h1.l.r.newick","C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h1.all.fa");  
+print Dumper ($mm{"INTNODE2340"}[0]);
+print ($mm{"INTNODE2340"}[0]->{"Substitution::position"});
+}
+
+sub test2 {
+my %mm = mutmap_from_files("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h1.l.r.newick","C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h1.all.fa");  
+print Dumper ($mm{"INTNODE2340"});
+#print ($mm{"INTNODE2340"}[0]->{"Substitution::position"});
+}
+
+
+sub testv {
+my $vec1 = Bit::Vector->new(10);
+$vec1->Bit_On(3);
+my $string = $vec1->to_Bin();
+print "'$string'\n";
+my $vect = Bit::Vector->new(11);
+$vect -> Interval_Copy($vec1,0,3,10);
+$vect -> Bit_On(10);
+$string = $vect->to_Bin();
+print "'$string'\n";
+$vect->Move_Left(1);
+$string = $vect->to_Bin();
+print "'$string'\n";
+my $vect2 = Bit::Vector->new(6);
+$vect2 -> Bit_On(3);
+my $vect3 = Bit::Vector->new(6);
+$vect3 -> Bit_On(2);
+my $vect4 = Bit::Vector->new(6);
+$vect4->Divide($vect2, $vect3, Bit::Vector->new(6));
+print ($vect2->to_Bin()."\t".$vect3->to_Bin()."\t".$vect4->to_Bin()."\n");
+
+}
+
+sub wilkotest{
+	my @a1;
+	my $undefi;
+	push @a1, (1,2,7,9);
+	#push @a1, $undefi;
+	push @a1, 3;
+	my @a2;
+	push @a2, (5,2,8,13);
+	my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+	$wilcox_test->load_data(\@a1, \@a2);
+  my $prob = $wilcox_test->probability();
+  my $pf = sprintf '%f', $prob; # prints 0.091022
+  print "\n";
+  print $wilcox_test->probability_status();
+  print $wilcox_test->summary();
+    print "\n";
+    #ok, undef values don't influence the statistics
+}
+
+sub patrtest{
+		my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
+	foreach my $node(@{$tree->get_internals()}){
+		if ($node->get_name() eq "INTNODE2473"){
+		foreach my $n(@{$tree->get_internals()}){
+			if ($n->get_name() eq "INTNODE2479"){
+				print get_mrcn($node, $n)->get_name()."\n";
+			print $node->get_name()."\t".$n->get_name()."\t".calc_true_patristic_distance($node, $n)."\n";
+			}
+	}
+		}
+	}
+}
 
 

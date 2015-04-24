@@ -1,0 +1,5965 @@
+mutmap: 26	I	T
+mutmap: 434	T	A
+mutmap: 126	P	H
+mutmap: 47	N	S
+mutmap: 81	L	V
+mutmap: 93	K	Q
+mutmap: 194	V	I
+mutmap: 463	D	N
+mutmap: 69	T	N
+mutmap: 183	R	C
+mutmap: 290	V	I
+mutmap: 303	A	V
+mutmap: 347	H	Q
+mutmap: 358	N	D
+mutmap: 431	E	K
+mutmap: 307	V	M
+mutmap: 329	N	D
+mutmap: 356	D	N
+mutmap: 466	L	F
+mutmap: 69	T	N
+mutmap: 308	K	E
+mutmap: 370	S	L
+mutmap: 20	I	V
+mutmap: 336	Y	N
+mutmap: 153	T	I
+mutmap: 197	Y	D
+mutmap: 253	K	R
+mutmap: 344	K	R
+mutmap: 368	E	K
+mutmap: 390	L	S
+mutmap: 334	S	N
+mutmap: 141	E	D
+mutmap: 328	K	N
+mutmap: 401	A	D
+mutmap: 346	K	N
+mutmap: 265	T	I
+mutmap: 346	T	N
+mutmap: 48	K	N
+mutmap: 265	I	T
+mutmap: 195	N	T
+mutmap: 296	R	K
+mutmap: 392	M	I
+mutmap: 23	V	L
+mutmap: 328	K	N
+mutmap: 46	V	A
+mutmap: 216	V	G
+mutmap: 248	E	G
+mutmap: 360	L	V
+mutmap: 444	I	V
+mutmap: 50	I	V
+mutmap: 56	T	I
+mutmap: 71	I	T
+mutmap: 127	S	G
+mutmap: 328	K	N
+mutmap: 455	A	T
+mutmap: 128	R	K
+mutmap: 245	N	S
+mutmap: 29	Q	L
+mutmap: 177	G	A
+mutmap: 16	I	T
+mutmap: 51	I	M
+mutmap: 57	T	I
+mutmap: 325	A	T
+mutmap: 383	L	W
+mutmap: 384	F	S
+mutmap: 249	S	R
+mutmap: 310	H	Y
+mutmap: 463	N	D
+mutmap: 106	V	I
+mutmap: 328	K	N
+mutmap: 220	K	Q
+mutmap: 46	P	A
+mutmap: 180	R	S
+mutmap: 374	C	Y
+mutmap: 334	S	N
+mutmap: 248	E	G
+mutmap: 313	V	D
+mutmap: 328	K	N
+mutmap: 369	E	D
+mutmap: 290	V	I
+mutmap: 313	A	V
+mutmap: 302	I	V
+mutmap: 77	T	I
+mutmap: 155	Y	H
+mutmap: 332	Y	S
+mutmap: 368	D	E
+mutmap: 41	D	E
+mutmap: 128	R	K
+mutmap: 254	V	I
+mutmap: 43	G	D
+mutmap: 43	S	G
+mutmap: 46	P	A
+mutmap: 155	Y	H
+mutmap: 113	G	D
+mutmap: 74	D	E
+mutmap: 197	H	Y
+mutmap: 221	S	N
+mutmap: 338	Q	R
+mutmap: 400	I	S
+mutmap: 141	N	D
+mutmap: 172	K	R
+mutmap: 302	I	V
+mutmap: 367	G	S
+mutmap: 370	L	S
+mutmap: 401	E	D
+mutmap: 465	S	N
+mutmap: 401	K	E
+mutmap: 39	P	Q
+mutmap: 402	S	N
+mutmap: 396	I	V
+mutmap: 346	S	N
+mutmap: 64	K	E
+mutmap: 338	Q	R
+mutmap: 149	V	I
+mutmap: 372	L	S
+mutmap: 24	T	M
+mutmap: 194	I	V
+mutmap: 401	G	D
+mutmap: 396	I	V
+mutmap: 346	S	N
+mutmap: 401	G	D
+mutmap: 149	V	I
+mutmap: 56	T	I
+mutmap: 143	R	K
+mutmap: 199	E	K
+mutmap: 431	K	E
+mutmap: 208	N	D
+mutmap: 338	Q	R
+mutmap: 199	E	K
+mutmap: 331	S	R
+mutmap: 367	S	G
+mutmap: 435	K	R
+mutmap: 43	N	S
+mutmap: 400	R	S
+mutmap: 367	G	S
+mutmap: 358	D	N
+mutmap: 216	V	G
+mutmap: 392	T	I
+mutmap: 5	T	Q
+mutmap: 41	D	E
+mutmap: 52	Q	P
+mutmap: 40	H	Y
+mutmap: 222	V	I
+mutmap: 75	R	K
+mutmap: 93	R	K
+mutmap: 94	V	I
+mutmap: 52	L	P
+mutmap: 82	A	V
+mutmap: 385	K	T
+mutmap: 435	E	K
+mutmap: 39	H	Q
+mutmap: 173	E	Q
+mutmap: 462	G	A
+mutmap: 14	T	S
+mutmap: 77	V	I
+mutmap: 62	T	I
+mutmap: 93	N	K
+mutmap: 462	A	G
+mutmap: 338	Q	R
+mutmap: 62	V	I
+mutmap: 307	M	V
+mutmap: 310	H	Y
+mutmap: 161	S	N
+mutmap: 210	K	R
+mutmap: 77	K	I
+mutmap: 349	M	V
+mutmap: 77	V	I
+mutmap: 399	E	D
+mutmap: 17	V	I
+mutmap: 44	P	S
+mutmap: 9	I	T
+mutmap: 309	N	D
+mutmap: 434	A	T
+mutmap: 83	K	E
+mutmap: 136	R	Q
+mutmap: 338	Q	R
+mutmap: 17	T	I
+mutmap: 258	K	E
+mutmap: 84	H	Y
+mutmap: 347	R	H
+mutmap: 248	K	E
+mutmap: 403	M	R
+mutmap: 338	W	R
+mutmap: 93	N	K
+mutmap: 211	V	L
+mutmap: 346	G	S
+mutmap: 80	E	K
+mutmap: 410	S	F
+mutmap: 248	D	E
+mutmap: 370	S	L
+mutmap: 50	A	V
+mutmap: 13	I	V
+mutmap: 47	Y	N
+mutmap: 50	I	V
+mutmap: 303	I	V
+mutmap: 136	K	Q
+mutmap: 165	I	V
+mutmap: 199	K	E
+mutmap: 199	E	K
+mutmap: 309	N	D
+mutmap: 57	T	I
+mutmap: 266	R	S
+mutmap: 40	H	Y
+mutmap: 67	H	Y
+mutmap: 271	G	S
+mutmap: 86	S	N
+mutmap: 233	V	I
+mutmap: 338	L	W
+mutmap: 344	E	K
+mutmap: 369	K	E
+mutmap: 418	V	I
+mutmap: 95	A	T
+mutmap: 462	G	A
+mutmap: 81	P	L
+mutmap: 271	N	S
+mutmap: 216	S	G
+mutmap: 127	D	G
+mutmap: 56	I	T
+mutmap: 248	G	E
+mutmap: 141	D	N
+mutmap: 151	G	D
+mutmap: 246	S	A
+mutmap: 205	I	F
+mutmap: 248	G	E
+mutmap: 336	H	Y
+mutmap: 127	D	G
+mutmap: 221	K	N
+mutmap: 285	S	P
+mutmap: 102	M	K
+mutmap: 121	H	Y
+mutmap: 370	F	L
+mutmap: 346	S	G
+mutmap: 77	M	I
+mutmap: 151	N	D
+mutmap: 208	G	D
+mutmap: 27	V	A
+mutmap: 416	N	S
+mutmap: 31	I	T
+mutmap: 127	G	D
+mutmap: 71	I	T
+mutmap: 151	G	D
+mutmap: 212	A	V
+mutmap: 248	E	G
+mutmap: 381	E	G
+mutmap: 54	G	E
+mutmap: 141	K	N
+mutmap: 342	D	N
+mutmap: 370	F	L
+mutmap: 43	S	N
+mutmap: 125	G	D
+mutmap: 254	V	I
+mutmap: 239	I	V
+mutmap: 357	E	G
+mutmap: 444	I	V
+mutmap: 372	A	S
+mutmap: 307	I	V
+mutmap: 397	M	I
+mutmap: 77	K	I
+mutmap: 197	N	H
+mutmap: 369	E	K
+mutmap: 378	R	K
+mutmap: 445	A	V
+mutmap: 445	V	A
+mutmap: 465	G	N
+mutmap: 307	I	V
+mutmap: 445	T	A
+mutmap: 267	Q	P
+mutmap: 57	V	I
+mutmap: 43	C	S
+mutmap: 312	V	I
+mutmap: 126	R	P
+mutmap: 120	L	P
+mutmap: 199	K	E
+mutmap: 283	Q	R
+mutmap: 220	N	K
+mutmap: 117	A	T
+mutmap: 168	Y	H
+mutmap: 77	K	I
+mutmap: 400	G	R
+mutmap: 458	G	W
+mutmap: 459	L	P
+mutmap: 460	M	D
+mutmap: 462	T	A
+mutmap: 463	R	D
+mutmap: 465	S	N
+mutmap: 42	Y	C
+mutmap: 315	R	S
+mutmap: 45	S	P
+mutmap: 125	G	D
+mutmap: 236	I	T
+mutmap: 197	D	H
+mutmap: 267	Q	P
+mutmap: 401	D	G
+mutmap: 45	L	P
+mutmap: 263	I	V
+mutmap: 80	Y	K
+mutmap: 82	S	A
+mutmap: 269	P	S
+mutmap: 272	D	A
+mutmap: 151	N	D
+mutmap: 312	T	I
+mutmap: 463	N	D
+mutmap: 136	R	Q
+mutmap: 367	G	S
+mutmap: 120	L	P
+mutmap: 253	R	K
+mutmap: 65	V	I
+mutmap: 43	D	N
+mutmap: 372	L	S
+mutmap: 386	S	P
+mutmap: 13	I	V
+mutmap: 151	G	D
+mutmap: 77	M	I
+mutmap: 43	D	N
+mutmap: 268	M	L
+mutmap: 434	A	T
+mutmap: 249	K	R
+mutmap: 400	K	R
+mutmap: 208	G	D
+mutmap: 58	L	I
+mutmap: 336	N	H
+mutmap: 271	N	S
+mutmap: 329	H	N
+mutmap: 414	D	G
+mutmap: 198	N	D
+mutmap: 370	S	F
+mutmap: 45	P	L
+mutmap: 199	K	E
+mutmap: 385	R	K
+mutmap: 24	I	M
+mutmap: 401	N	D
+mutmap: 251	N	D
+mutmap: 313	A	V
+mutmap: 120	L	P
+mutmap: 43	S	N
+mutmap: 45	P	L
+mutmap: 451	S	G
+mutmap: 432	E	Q
+mutmap: 120	H	P
+mutmap: 311	G	S
+mutmap: 93	N	K
+mutmap: 208	N	D
+mutmap: 249	K	R
+mutmap: 120	L	P
+mutmap: 403	S	R
+mutmap: 11	S	G
+mutmap: 269	L	S
+mutmap: 120	P	L
+mutmap: 176	M	I
+mutmap: 414	S	G
+mutmap: 68	M	L
+mutmap: 446	L	F
+mutmap: 143	G	R
+mutmap: 197	D	H
+mutmap: 265	T	I
+mutmap: 437	L	W
+mutmap: 44	P	S
+mutmap: 151	V	D
+mutmap: 72	P	T
+mutmap: 339	D	N
+mutmap: 53	Y	C
+mutmap: 151	G	D
+mutmap: 120	L	P
+mutmap: 398	I	V
+mutmap: 82	V	A
+mutmap: 263	I	V
+mutmap: 263	V	I
+mutmap: 360	L	V
+mutmap: 80	N	K
+mutmap: 463	N	D
+mutmap: 360	A	V
+mutmap: 83	G	E
+mutmap: 392	V	I
+mutmap: 136	R	Q
+mutmap: 83	K	E
+mutmap: 394	K	R
+mutmap: 62	T	I
+mutmap: 20	T	I
+mutmap: 267	S	P
+mutmap: 18	S	A
+mutmap: 267	T	S
+mutmap: 307	I	V
+mutmap: 120	L	P
+mutmap: 23	F	L
+mutmap: 62	T	I
+mutmap: 458	G	W
+mutmap: 30	A	V
+mutmap: 169	M	L
+mutmap: 332	F	S
+mutmap: 116	M	V
+mutmap: 400	K	R
+mutmap: 40	H	Y
+mutmap: 67	H	Y
+mutmap: 73	T	I
+mutmap: 368	D	E
+mutmap: 78	Y	C
+mutmap: 120	L	P
+mutmap: 37	L	F
+mutmap: 59	K	E
+mutmap: 444	F	V
+mutmap: 451	R	G
+mutmap: 458	L	W
+mutmap: 467	R	M
+mutmap: 240	I	V
+mutmap: 236	N	T
+mutmap: 332	L	F
+mutmap: 40	H	Y
+mutmap: 134	I	L
+mutmap: 48	S	N
+mutmap: 347	L	H
+mutmap: 120	L	P
+mutmap: 148	I	T
+mutmap: 222	F	I
+mutmap: 223	F	L
+mutmap: 234	H	N
+mutmap: 248	R	G
+mutmap: 23	L	F
+mutmap: 143	V	G
+mutmap: 23	F	L
+mutmap: 30	I	V
+mutmap: 42	F	C
+mutmap: 216	V	G
+mutmap: 385	N	K
+mutmap: 30	V	I
+mutmap: 155	H	Y
+mutmap: 64	K	E
+mutmap: 338	F	L
+mutmap: 393	K	N
+mutmap: 434	N	T
+mutmap: 148	I	T
+mutmap: 347	Q	H
+mutmap: 371	H	R
+mutmap: 310	H	Y
+mutmap: 199	K	E
+mutmap: 458	M	W
+mutmap: 459	A	P
+mutmap: 286	D	G
+mutmap: 466	I	L
+mutmap: 93	D	N
+mutmap: 28	T	I
+mutmap: 347	R	H
+mutmap: 430	G	R
+mutmap: 205	V	F
+mutmap: 370	F	L
+mutmap: 386	S	P
+mutmap: 369	T	K
+mutmap: 463	E	D
+mutmap: 431	N	K
+mutmap: 329	T	N
+mutmap: 392	T	I
+mutmap: 401	D	G
+mutmap: 313	I	V
+mutmap: 380	V	I
+mutmap: 44	P	S
+mutmap: 211	I	L
+mutmap: 336	N	H
+mutmap: 77	V	I
+mutmap: 409	V	I
+mutmap: 358	D	N
+mutmap: 215	V	I
+mutmap: 18	A	S
+mutmap: 23	L	F
+mutmap: 30	V	I
+mutmap: 38	R	K
+mutmap: 461	E	G
+mutmap: 342	D	N
+mutmap: 400	K	R
+mutmap: 238	I	T
+mutmap: 10	V	I
+mutmap: 392	M	I
+mutmap: 199	K	E
+mutmap: 347	R	H
+mutmap: 29	M	L
+mutmap: 263	I	V
+mutmap: 66	A	V
+mutmap: 3	S	P
+mutmap: 17	T	I
+mutmap: 2	D	N
+mutmap: 19	A	T
+mutmap: 334	N	S
+mutmap: 199	K	E
+mutmap: 2	Y	N
+mutmap: 4	I	N
+mutmap: 5	K	Q
+mutmap: 151	G	D
+mutmap: 315	R	S
+mutmap: 461	E	G
+mutmap: 462	G	A
+mutmap: 463	N	D
+mutmap: 466	H	L
+mutmap: 30	M	I
+mutmap: 414	D	G
+mutmap: 387	H	N
+mutmap: 194	I	V
+mutmap: 335	G	S
+mutmap: 466	I	L
+mutmap: 148	I	T
+mutmap: 151	E	D
+mutmap: 399	E	D
+mutmap: 215	V	I
+mutmap: 310	H	Y
+mutmap: 199	K	E
+mutmap: 93	D	N
+mutmap: 432	E	Q
+mutmap: 199	K	E
+mutmap: 30	L	I
+mutmap: 71	I	T
+mutmap: 74	K	E
+mutmap: 77	L	I
+mutmap: 344	K	E
+mutmap: 148	K	T
+mutmap: 151	E	D
+mutmap: 151	N	D
+mutmap: 151	N	D
+mutmap: 151	D	N
+mutmap: 212	I	V
+mutmap: 433	K	E
+mutmap: 408	A	G
+mutmap: 436	A	V
+mutmap: 435	K	E
+mutmap: 313	A	V
+mutmap: 418	V	I
+mutmap: 238	A	T
+mutmap: 147	N	D
+mutmap: 77	M	I
+mutmap: 263	I	V
+mutmap: 385	K	N
+mutmap: 433	K	E
+mutmap: 151	E	D
+mutmap: 26	T	I
+mutmap: 464	T	I
+mutmap: 215	V	I
+mutmap: 148	I	T
+mutmap: 45	S	P
+mutmap: 265	I	T
+mutmap: 335	G	S
+mutmap: 148	T	I
+mutmap: 221	E	K
+mutmap: 241	L	M
+mutmap: 267	K	T
+mutmap: 77	V	I
+mutmap: 221	E	K
+mutmap: 334	N	S
+mutmap: 434	N	T
+mutmap: 308	N	K
+mutmap: 431	N	K
+mutmap: 82	V	A
+mutmap: 161	T	N
+mutmap: 71	I	T
+mutmap: 435	D	E
+mutmap: 11	S	G
+mutmap: 5	P	Q
+mutmap: 95	A	T
+mutmap: 148	I	T
+mutmap: 193	W	C
+mutmap: 42	S	F
+mutmap: 80	R	K
+mutmap: 265	I	T
+mutmap: 199	E	K
+mutmap: 433	K	E
+mutmap: 148	K	T
+mutmap: 386	S	P
+mutmap: 148	T	K
+mutmap: 148	I	K
+mutmap: 287	I	V
+mutmap: 44	F	S
+mutmap: 421	R	C
+mutmap: 148	K	T
+mutmap: 113	N	D
+mutmap: 416	G	S
+mutmap: 414	S	G
+mutmap: 45	L	P
+mutmap: 80	E	K
+mutmap: 126	L	P
+mutmap: 331	R	S
+mutmap: 466	F	L
+mutmap: 312	T	I
+mutmap: 312	V	I
+mutmap: 53	Y	C
+mutmap: 210	K	R
+mutmap: 215	V	I
+mutmap: 335	G	S
+mutmap: 30	V	I
+mutmap: 33	I	V
+mutmap: 95	A	T
+mutmap: 248	D	G
+mutmap: 151	N	D
+mutmap: 313	A	V
+mutmap: 221	E	K
+mutmap: 10	V	I
+mutmap: 48	I	N
+mutmap: 43	S	N
+mutmap: 17	L	I
+mutmap: 370	S	L
+mutmap: 221	E	K
+mutmap: 370	L	S
+mutmap: 151	G	D
+mutmap: 257	N	I
+mutmap: 268	C	L
+mutmap: 282	S	P
+mutmap: 352	R	W
+mutmap: 30	M	I
+mutmap: 328	R	K
+mutmap: 6	M	K
+mutmap: 149	I	V
+mutmap: 336	Y	H
+mutmap: 161	S	N
+mutmap: 416	I	S
+mutmap: 372	T	S
+mutmap: 93	G	D
+mutmap: 401	D	G
+mutmap: 416	N	S
+mutmap: 55	T	P
+mutmap: 222	V	I
+mutmap: 253	R	K
+mutmap: 27	V	A
+mutmap: 250	T	A
+mutmap: 248	R	G
+mutmap: 64	K	E
+mutmap: 44	P	S
+mutmap: 315	G	S
+mutmap: 28	T	I
+mutmap: 89	E	K
+mutmap: 159	V	L
+mutmap: 322	A	V
+mutmap: 463	N	D
+mutmap: 392	T	I
+mutmap: 265	I	T
+mutmap: 427	M	I
+mutmap: 372	L	S
+mutmap: 304	H	D
+mutmap: 339	N	D
+mutmap: 151	A	D
+mutmap: 248	E	G
+mutmap: 249	R	K
+mutmap: 236	A	T
+mutmap: 260	R	G
+mutmap: 261	R	K
+mutmap: 336	N	H
+mutmap: 452	A	T
+mutmap: 399	G	D
+mutmap: 386	S	P
+mutmap: 30	M	I
+mutmap: 2	I	N
+mutmap: 4	I	N
+mutmap: 6	R	K
+mutmap: 66	A	V
+mutmap: 176	V	I
+mutmap: 198	E	D
+mutmap: 434	N	T
+mutmap: 210	M	R
+mutmap: 392	T	I
+mutmap: 434	A	T
+mutmap: 399	E	D
+mutmap: 26	V	I
+mutmap: 82	T	A
+mutmap: 90	Q	P
+mutmap: 286	D	G
+mutmap: 336	N	H
+mutmap: 399	G	D
+mutmap: 110	S	A
+mutmap: 245	N	S
+mutmap: 287	I	V
+mutmap: 93	G	D
+mutmap: 400	K	R
+mutmap: 275	I	V
+mutmap: 151	G	D
+mutmap: 249	E	K
+mutmap: 216	A	V
+mutmap: 151	N	D
+mutmap: 51	V	M
+mutmap: 238	A	T
+mutmap: 267	K	T
+mutmap: 287	I	V
+mutmap: 81	P	L
+mutmap: 241	I	M
+mutmap: 336	L	H
+mutmap: 305	V	I
+mutmap: 150	R	H
+mutmap: 26	T	I
+mutmap: 339	N	D
+mutmap: 372	L	S
+mutmap: 221	D	E
+mutmap: 399	E	D
+mutmap: 367	N	S
+mutmap: 357	R	G
+mutmap: 127	N	D
+mutmap: 50	M	V
+mutmap: 271	N	S
+mutmap: 463	N	D
+mutmap: 77	K	I
+mutmap: 155	H	Y
+mutmap: 329	T	N
+mutmap: 77	M	I
+mutmap: 151	V	D
+mutmap: 215	V	I
+mutmap: 309	N	D
+mutmap: 2	D	N
+mutmap: 26	T	I
+mutmap: 72	I	T
+mutmap: 251	N	D
+mutmap: 6	R	K
+mutmap: 155	H	Y
+mutmap: 433	K	E
+mutmap: 41	V	E
+mutmap: 404	T	S
+mutmap: 249	E	K
+mutmap: 400	K	R
+mutmap: 231	I	V
+mutmap: 150	R	H
+mutmap: 194	I	V
+mutmap: 310	H	Y
+mutmap: 370	S	L
+mutmap: 55	Q	P
+mutmap: 151	N	D
+mutmap: 68	P	L
+mutmap: 4	I	N
+mutmap: 5	K	Q
+mutmap: 393	S	N
+mutmap: 401	S	G
+mutmap: 392	M	I
+mutmap: 2	Y	N
+mutmap: 4	I	N
+mutmap: 5	K	Q
+mutmap: 199	Q	K
+mutmap: 77	V	I
+mutmap: 120	L	P
+mutmap: 197	N	D
+mutmap: 357	R	G
+mutmap: 93	N	D
+mutmap: 147	Y	D
+mutmap: 210	K	R
+mutmap: 394	K	R
+mutmap: 329	D	N
+mutmap: 392	T	I
+mutmap: 443	V	I
+mutmap: 387	K	N
+mutmap: 215	V	I
+mutmap: 215	I	V
+mutmap: 249	N	K
+mutmap: 346	S	G
+mutmap: 312	T	I
+mutmap: 317	L	V
+mutmap: 331	G	S
+mutmap: 427	T	I
+mutmap: 404	T	S
+mutmap: 51	I	M
+mutmap: 266	G	S
+mutmap: 151	N	D
+mutmap: 248	R	G
+mutmap: 76	G	E
+mutmap: 80	T	K
+mutmap: 271	G	S
+mutmap: 76	G	E
+mutmap: 151	G	D
+mutmap: 304	H	D
+mutmap: 151	G	D
+mutmap: 151	N	D
+mutmap: 443	V	I
+mutmap: 386	H	P
+mutmap: 26	T	I
+mutmap: 335	G	S
+mutmap: 83	G	E
+mutmap: 165	A	V
+mutmap: 5	K	Q
+mutmap: 50	A	V
+mutmap: 269	L	S
+mutmap: 414	S	G
+mutmap: 55	S	P
+mutmap: 10	M	I
+mutmap: 221	D	E
+mutmap: 463	E	D
+mutmap: 43	S	N
+mutmap: 221	E	D
+mutmap: 151	G	D
+mutmap: 185	H	D
+mutmap: 194	L	I
+mutmap: 338	S	L
+mutmap: 347	R	H
+mutmap: 128	N	K
+mutmap: 303	I	V
+mutmap: 335	S	G
+mutmap: 44	F	S
+mutmap: 221	D	E
+mutmap: 465	K	N
+mutmap: 466	S	L
+mutmap: 467	H	M
+mutmap: 468	A	P
+mutmap: 469	Y	I
+mutmap: 30	V	I
+mutmap: 23	S	F
+mutmap: 249	E	K
+mutmap: 400	K	R
+mutmap: 30	A	I
+mutmap: 151	G	D
+mutmap: 435	A	E
+mutmap: 431	N	K
+mutmap: 149	L	V
+mutmap: 188	V	A
+mutmap: 23	L	F
+mutmap: 113	G	D
+mutmap: 84	H	Y
+mutmap: 231	I	V
+mutmap: 26	T	I
+mutmap: 26	T	I
+mutmap: 26	T	I
+mutmap: 151	E	D
+mutmap: 57	V	I
+mutmap: 344	V	E
+mutmap: 435	K	E
+mutmap: 9	A	T
+mutmap: 119	V	E
+mutmap: 119	I	V
+mutmap: 433	G	E
+mutmap: 463	N	D
+mutmap: 236	I	T
+mutmap: 334	R	S
+mutmap: 16	I	T
+mutmap: 386	H	P
+mutmap: 65	T	I
+mutmap: 66	A	V
+mutmap: 67	H	Y
+mutmap: 151	N	D
+mutmap: 453	F	Y
+mutmap: 64	K	E
+mutmap: 151	N	D
+mutmap: 387	N	K
+mutmap: 151	G	D
+mutmap: 21	G	C
+mutmap: 16	T	I
+mutmap: 151	G	D
+mutmap: 151	N	D
+mutmap: 2	D	N
+mutmap: 21	G	C
+mutmap: 151	N	D
+mutmap: 347	R	H
+mutmap: 151	D	N
+mutmap: 392	T	I
+mutmap: 346	S	G
+mutmap: 45	T	P
+mutmap: 50	G	V
+mutmap: 281	F	Y
+mutmap: 151	E	D
+mutmap: 26	I	T
+mutmap: 258	K	E
+mutmap: 342	S	N
+mutmap: 390	F	L
+mutmap: 464	L	I
+mutmap: 465	S	N
+mutmap: 95	S	T
+mutmap: 147	N	D
+mutmap: 147	N	D
+mutmap: 147	D	N
+mutmap: 210	K	R
+mutmap: 432	Q	E
+mutmap: 437	W	L
+mutmap: 380	V	I
+mutmap: 393	S	N
+mutmap: 77	M	I
+mutmap: 148	I	T
+mutmap: 402	D	N
+mutmap: 26	I	T
+mutmap: 51	V	M
+mutmap: 151	G	D
+mutmap: 433	K	E
+mutmap: 67	S	Y
+mutmap: 286	D	G
+mutmap: 399	E	D
+mutmap: 215	V	I
+mutmap: 310	Y	H
+mutmap: 150	H	R
+mutmap: 26	T	I
+mutmap: 267	I	T
+mutmap: 335	G	S
+mutmap: 249	E	K
+mutmap: 435	D	E
+mutmap: 249	K	E
+mutmap: 222	V	I
+mutmap: 215	V	I
+mutmap: 50	M	V
+mutmap: 149	A	V
+mutmap: 151	G	D
+mutmap: 208	D	N
+mutmap: 2	D	N
+mutmap: 4	I	N
+mutmap: 3	S	P
+mutmap: 5	S	Q
+mutmap: 150	G	R
+mutmap: 214	G	S
+mutmap: 15	F	L
+mutmap: 16	I	T
+mutmap: 19	S	T
+mutmap: 83	K	E
+mutmap: 2	D	N
+mutmap: 5	S	Q
+mutmap: 4	I	N
+mutmap: 147	N	D
+mutmap: 392	T	I
+mutmap: 416	N	S
+mutmap: 215	V	I
+mutmap: 220	Q	K
+mutmap: 215	V	I
+mutmap: 309	N	D
+mutmap: 147	N	D
+mutmap: 147	D	N
+mutmap: 215	V	I
+mutmap: 151	N	D
+mutmap: 74	K	E
+mutmap: 76	G	E
+mutmap: 80	T	K
+mutmap: 136	K	Q
+mutmap: 45	S	P
+mutmap: 57	M	I
+mutmap: 199	N	K
+mutmap: 52	Q	L
+mutmap: 386	S	P
+mutmap: 5	H	Q
+mutmap: 10	M	I
+mutmap: 313	A	V
+mutmap: 148	I	T
+mutmap: 204	N	S
+mutmap: 148	I	T
+mutmap: 220	N	K
+mutmap: 273	H	Q
+mutmap: 72	I	T
+mutmap: 347	N	H
+mutmap: 433	K	E
+mutmap: 468	H	P
+mutmap: 148	I	T
+mutmap: 45	P	S
+mutmap: 458	S	W
+mutmap: 204	N	S
+mutmap: 223	F	L
+mutmap: 372	S	L
+mutmap: 151	G	D
+mutmap: 136	K	Q
+mutmap: 148	I	T
+mutmap: 307	V	I
+mutmap: 24	L	M
+mutmap: 263	I	V
+mutmap: 401	D	G
+mutmap: 310	R	H
+mutmap: 312	V	I
+mutmap: 347	N	H
+mutmap: 358	T	N
+mutmap: 231	I	V
+mutmap: 258	K	E
+mutmap: 251	N	D
+mutmap: 56	K	T
+mutmap: 238	I	T
+mutmap: 415	E	K
+mutmap: 359	E	D
+mutmap: 419	I	N
+mutmap: 420	G	R
+mutmap: 401	D	G
+mutmap: 468	L	P
+mutmap: 65	V	I
+mutmap: 263	I	V
+mutmap: 45	T	P
+mutmap: 433	K	E
+mutmap: 464	L	I
+mutmap: 5	H	Q
+mutmap: 147	N	D
+mutmap: 386	H	P
+mutmap: 465	T	N
+mutmap: 10	M	I
+mutmap: 148	I	T
+mutmap: 32	I	T
+mutmap: 116	M	V
+mutmap: 303	I	V
+mutmap: 43	S	N
+mutmap: 434	N	T
+mutmap: 445	A	V
+mutmap: 339	N	D
+mutmap: 77	K	I
+mutmap: 151	E	D
+mutmap: 148	K	T
+mutmap: 342	D	N
+mutmap: 312	V	I
+mutmap: 4	T	N
+mutmap: 77	V	I
+mutmap: 148	I	T
+mutmap: 329	S	N
+mutmap: 148	I	T
+mutmap: 335	G	S
+mutmap: 126	T	P
+mutmap: 367	N	S
+mutmap: 369	T	K
+mutmap: 83	G	E
+mutmap: 147	D	N
+mutmap: 51	I	M
+mutmap: 221	D	E
+mutmap: 402	D	N
+mutmap: 387	N	K
+mutmap: 148	I	T
+mutmap: 77	T	I
+mutmap: 347	N	H
+mutmap: 464	V	I
+mutmap: 215	I	V
+mutmap: 93	G	D
+mutmap: 147	N	D
+mutmap: 336	N	H
+mutmap: 215	I	V
+mutmap: 147	N	D
+mutmap: 147	N	D
+mutmap: 148	I	T
+mutmap: 28	T	I
+mutmap: 212	I	V
+mutmap: 170	E	G
+mutmap: 147	N	D
+mutmap: 367	N	S
+mutmap: 272	D	A
+mutmap: 79	H	P
+mutmap: 358	D	N
+mutmap: 44	P	S
+mutmap: 197	N	D
+mutmap: 469	V	I
+mutmap: 65	T	I
+mutmap: 58	T	I
+mutmap: 328	E	K
+mutmap: 49	R	Q
+mutmap: 443	V	I
+mutmap: 151	E	D
+mutmap: 65	M	I
+mutmap: 381	G	E
+mutmap: 13	I	V
+mutmap: 148	A	T
+mutmap: 434	N	T
+mutmap: 332	F	S
+mutmap: 386	S	P
+mutmap: 148	K	T
+mutmap: 33	I	V
+mutmap: 241	I	M
+mutmap: 148	I	K
+mutmap: 12	F	S
+mutmap: 378	R	K
+mutmap: 433	K	E
+mutmap: 26	T	I
+mutmap: 40	C	Y
+mutmap: 433	E	K
+mutmap: 43	D	N
+mutmap: 91	R	Q
+mutmap: 151	N	D
+mutmap: 177	V	A
+mutmap: 267	A	T
+mutmap: 372	F	L
+mutmap: 26	L	I
+mutmap: 181	Y	S
+mutmap: 151	G	D
+mutmap: 127	N	D
+mutmap: 307	M	I
+mutmap: 127	D	N
+mutmap: 148	K	T
+mutmap: 82	E	A
+mutmap: 433	K	E
+mutmap: 465	H	N
+mutmap: 338	F	L
+mutmap: 342	D	N
+mutmap: 414	D	G
+mutmap: 221	D	E
+mutmap: 17	M	I
+mutmap: 308	T	K
+mutmap: 54	K	E
+mutmap: 466	I	L
+mutmap: 263	I	V
+mutmap: 308	K	T
+mutmap: 77	K	I
+mutmap: 44	F	S
+mutmap: 403	S	R
+mutmap: 148	I	T
+mutmap: 332	F	S
+mutmap: 73	V	I
+mutmap: 338	S	L
+mutmap: 356	S	D
+mutmap: 3	I	P
+mutmap: 4	Q	N
+mutmap: 5	S	Q
+mutmap: 267	K	T
+mutmap: 44	P	S
+mutmap: 468	S	P
+mutmap: 307	T	I
+mutmap: 400	K	R
+mutmap: 60	K	R
+mutmap: 46	S	P
+mutmap: 51	L	M
+mutmap: 56	A	T
+mutmap: 147	D	N
+mutmap: 97	S	F
+mutmap: 150	H	R
+mutmap: 317	L	V
+mutmap: 47	D	N
+mutmap: 321	F	L
+mutmap: 60	K	R
+mutmap: 147	D	N
+mutmap: 463	N	D
+mutmap: 147	N	D
+mutmap: 221	D	E
+mutmap: 386	S	P
+mutmap: 465	I	N
+mutmap: 151	A	D
+mutmap: 339	N	D
+mutmap: 151	G	A
+mutmap: 30	V	I
+mutmap: 151	E	D
+mutmap: 54	D	E
+mutmap: 315	R	S
+mutmap: 325	P	T
+mutmap: 246	V	A
+mutmap: 245	N	S
+mutmap: 463	D	N
+mutmap: 269	T	S
+mutmap: 346	V	G
+mutmap: 93	N	D
+mutmap: 4	Q	N
+mutmap: 5	S	Q
+mutmap: 2	M	N
+mutmap: 3	I	P
+mutmap: 93	D	N
+mutmap: 221	K	E
+mutmap: 372	S	L
+mutmap: 430	K	R
+mutmap: 372	S	L
+mutmap: 17	L	I
+mutmap: 328	N	K
+mutmap: 40	C	Y
+mutmap: 20	T	I
+mutmap: 238	A	T
+mutmap: 19	I	T
+mutmap: 81	I	L
+mutmap: 233	V	I
+mutmap: 434	N	T
+mutmap: 45	S	P
+mutmap: 82	S	A
+mutmap: 396	D	V
+mutmap: 73	T	I
+mutmap: 146	D	N
+mutmap: 120	H	P
+mutmap: 427	V	I
+mutmap: 342	D	N
+mutmap: 120	L	P
+mutmap: 234	D	N
+mutmap: 432	Q	E
+mutmap: 437	W	L
+mutmap: 143	M	V
+mutmap: 331	N	S
+mutmap: 240	I	V
+mutmap: 176	V	I
+mutmap: 58	M	I
+mutmap: 115	R	W
+mutmap: 59	G	E
+mutmap: 392	V	I
+mutmap: 423	F	Y
+mutmap: 81	Q	L
+mutmap: 248	E	G
+mutmap: 197	N	D
+mutmap: 17	V	I
+mutmap: 392	T	I
+mutmap: 338	S	L
+mutmap: 315	G	S
+mutmap: 151	N	D
+mutmap: 220	N	K
+mutmap: 151	G	D
+mutmap: 346	D	G
+mutmap: 387	D	N
+mutmap: 438	G	W
+mutmap: 45	L	P
+mutmap: 441	T	N
+mutmap: 449	S	T
+mutmap: 151	G	D
+mutmap: 329	T	N
+mutmap: 125	G	D
+mutmap: 30	V	I
+mutmap: 360	A	V
+mutmap: 93	I	N
+mutmap: 258	K	E
+mutmap: 463	N	D
+mutmap: 77	V	I
+mutmap: 336	L	H
+mutmap: 387	K	N
+mutmap: 127	N	D
+mutmap: 238	A	T
+mutmap: 216	A	V
+mutmap: 335	G	S
+mutmap: 435	D	E
+mutmap: 241	I	M
+mutmap: 285	L	P
+mutmap: 212	A	V
+mutmap: 292	K	R
+mutmap: 335	G	S
+mutmap: 346	S	G
+mutmap: 435	K	E
+mutmap: 329	K	N
+mutmap: 402	D	N
+mutmap: 329	N	K
+mutmap: 4	I	N
+mutmap: 5	K	Q
+mutmap: 120	L	P
+mutmap: 167	Y	F
+mutmap: 392	T	I
+mutmap: 240	I	V
+mutmap: 366	V	I
+mutmap: 151	G	D
+mutmap: 392	T	I
+mutmap: 465	D	N
+mutmap: 251	V	D
+mutmap: 331	R	S
+mutmap: 370	S	L
+mutmap: 36	Q	H
+mutmap: 151	G	D
+mutmap: 82	T	A
+mutmap: 148	P	T
+mutmap: 184	P	H
+mutmap: 287	A	V
+mutmap: 451	S	G
+mutmap: 151	N	D
+mutmap: 51	K	M
+mutmap: 380	L	I
+mutmap: 342	S	N
+mutmap: 451	S	G
+mutmap: 161	I	N
+mutmap: 463	N	D
+mutmap: 386	S	P
+mutmap: 77	T	I
+mutmap: 372	L	S
+mutmap: 386	S	P
+mutmap: 210	K	R
+mutmap: 370	S	L
+mutmap: 378	Q	K
+mutmap: 126	H	P
+mutmap: 150	R	H
+mutmap: 77	K	I
+mutmap: 372	L	S
+mutmap: 392	T	I
+mutmap: 151	E	D
+mutmap: 86	K	N
+mutmap: 273	H	Q
+mutmap: 466	F	L
+mutmap: 159	M	L
+mutmap: 459	T	P
+mutmap: 95	A	T
+mutmap: 288	I	R
+mutmap: 466	H	L
+mutmap: 204	T	S
+mutmap: 151	V	D
+mutmap: 151	A	V
+mutmap: 380	F	I
+mutmap: 363	A	G
+mutmap: 258	K	E
+mutmap: 151	N	D
+mutmap: 22	L	F
+mutmap: 4	I	N
+mutmap: 302	M	I
+mutmap: 148	I	T
+mutmap: 335	G	S
+mutmap: 83	K	E
+mutmap: 370	S	L
+mutmap: 105	P	S
+mutmap: 296	R	K
+mutmap: 307	M	I
+mutmap: 120	H	P
+mutmap: 120	L	H
+mutmap: 284	H	Y
+mutmap: 86	E	K
+mutmap: 44	P	S
+mutmap: 148	I	T
+mutmap: 339	N	D
+mutmap: 215	V	I
+mutmap: 151	N	D
+mutmap: 77	V	I
+mutmap: 86	E	K
+mutmap: 151	E	D
+mutmap: 210	K	R
+mutmap: 372	L	S
+mutmap: 221	D	E
+mutmap: 150	H	R
+mutmap: 390	W	L
+mutmap: 22	L	F
+mutmap: 120	R	P
+mutmap: 13	I	V
+mutmap: 65	M	I
+mutmap: 335	G	S
+mutmap: 194	I	V
+mutmap: 125	E	D
+mutmap: 131	P	Q
+mutmap: 135	V	G
+mutmap: 443	F	I
+mutmap: 147	Y	D
+mutmap: 151	G	D
+mutmap: 312	T	I
+mutmap: 151	N	D
+mutmap: 263	I	V
+mutmap: 93	D	N
+mutmap: 401	S	G
+mutmap: 67	H	Y
+mutmap: 263	V	I
+mutmap: 392	T	I
+mutmap: 370	S	L
+mutmap: 93	S	N
+mutmap: 44	P	S
+mutmap: 329	D	N
+mutmap: 6	M	K
+mutmap: 42	L	F
+mutmap: 62	T	I
+mutmap: 9	R	T
+mutmap: 10	L	I
+mutmap: 11	A	G
+mutmap: 355	H	D
+mutmap: 126	L	P
+mutmap: 264	R	H
+mutmap: 51	I	M
+mutmap: 127	N	D
+mutmap: 308	R	K
+mutmap: 370	S	L
+mutmap: 372	L	S
+mutmap: 148	I	T
+mutmap: 312	T	I
+mutmap: 4	S	N
+mutmap: 5	N	Q
+mutmap: 7	D	I
+mutmap: 8	N	I
+mutmap: 467	H	M
+mutmap: 468	A	P
+mutmap: 469	Y	I
+mutmap: 315	R	S
+mutmap: 43	S	N
+mutmap: 77	M	I
+mutmap: 77	I	M
+mutmap: 4	I	N
+mutmap: 5	K	Q
+mutmap: 2	Y	N
+mutmap: 367	G	S
+mutmap: 466	H	L
+mutmap: 401	D	G
+mutmap: 465	K	N
+mutmap: 251	G	D
+mutmap: 360	A	V
+mutmap: 44	P	S
+mutmap: 315	K	R
+mutmap: 431	N	K
+mutmap: 50	M	V
+mutmap: 71	I	T
+mutmap: 77	T	I
+mutmap: 307	M	I
+mutmap: 357	R	G
+mutmap: 151	V	D
+mutmap: 432	Q	E
+mutmap: 249	N	K
+mutmap: 43	N	S
+mutmap: 331	N	S
+mutmap: 290	I	V
+mutmap: 56	A	T
+mutmap: 45	L	P
+mutmap: 431	R	K
+mutmap: 165	I	V
+mutmap: 274	N	H
+mutmap: 339	N	D
+mutmap: 65	V	I
+mutmap: 151	N	D
+mutmap: 249	E	K
+mutmap: 334	N	S
+mutmap: 465	K	N
+mutmap: 43	S	N
+mutmap: 127	N	D
+mutmap: 215	V	I
+mutmap: 433	K	E
+mutmap: 221	E	K
+mutmap: 416	N	S
+mutmap: 143	L	V
+mutmap: 161	S	N
+mutmap: 190	M	L
+mutmap: 69	A	T
+mutmap: 339	G	D
+mutmap: 433	K	E
+mutmap: 17	L	I
+mutmap: 51	I	M
+mutmap: 7	D	I
+mutmap: 27	S	A
+mutmap: 83	K	E
+mutmap: 249	E	K
+mutmap: 307	T	I
+mutmap: 313	A	V
+mutmap: 16	I	T
+mutmap: 258	K	E
+mutmap: 386	S	P
+mutmap: 44	P	S
+mutmap: 124	S	C
+mutmap: 161	K	N
+mutmap: 215	V	I
+mutmap: 267	S	T
+mutmap: 33	L	V
+mutmap: 6	R	K
+mutmap: 148	K	T
+mutmap: 317	L	V
+mutmap: 385	H	N
+mutmap: 389	Q	K
+mutmap: 238	A	T
+mutmap: 36	N	H
+mutmap: 258	K	E
+mutmap: 105	W	S
+mutmap: 463	N	D
+mutmap: 261	R	K
+mutmap: 83	K	E
+mutmap: 72	I	T
+mutmap: 331	R	S
+mutmap: 333	R	S
+mutmap: 404	T	S
+mutmap: 199	D	E
+mutmap: 437	W	L
+mutmap: 18	A	S
+mutmap: 42	F	C
+mutmap: 329	T	N
+mutmap: 437	W	L
+mutmap: 414	S	G
+mutmap: 57	M	I
+mutmap: 258	K	E
+mutmap: 386	A	P
+mutmap: 120	H	P
+mutmap: 126	R	P
+mutmap: 185	H	D
+mutmap: 77	M	I
+mutmap: 205	I	F
+mutmap: 88	L	S
+mutmap: 332	F	S
+mutmap: 338	S	L
+mutmap: 110	T	A
+mutmap: 26	T	I
+mutmap: 40	C	Y
+mutmap: 248	E	G
+mutmap: 331	N	S
+mutmap: 401	S	G
+mutmap: 82	E	A
+mutmap: 269	L	S
+mutmap: 263	I	V
+mutmap: 430	K	R
+mutmap: 308	N	K
+mutmap: 434	N	T
+mutmap: 16	I	T
+mutmap: 151	G	D
+mutmap: 151	N	D
+mutmap: 392	T	I
+mutmap: 307	I	V
+mutmap: 430	S	R
+mutmap: 51	I	M
+mutmap: 222	V	I
+mutmap: 431	T	K
+mutmap: 453	F	Y
+mutmap: 392	M	I
+mutmap: 111	S	G
+mutmap: 369	E	K
+mutmap: 68	P	L
+mutmap: 16	I	T
+mutmap: 416	N	S
+mutmap: 468	H	P
+mutmap: 356	S	D
+mutmap: 57	T	I
+mutmap: 313	I	V
+mutmap: 216	S	G
+mutmap: 393	H	N
+mutmap: 307	I	V
+mutmap: 360	A	V
+mutmap: 386	S	P
+mutmap: 216	S	G
+mutmap: 370	S	L
+mutmap: 463	E	D
+mutmap: 45	F	P
+mutmap: 465	D	N
+mutmap: 30	I	V
+mutmap: 77	V	I
+mutmap: 342	D	N
+mutmap: 120	L	P
+mutmap: 287	I	V
+mutmap: 267	P	S
+mutmap: 267	L	P
+mutmap: 310	R	Y
+mutmap: 18	T	A
+mutmap: 376	I	T
+mutmap: 27	T	A
+mutmap: 245	N	S
+mutmap: 467	F	M
+mutmap: 22	S	F
+mutmap: 65	M	I
+mutmap: 468	R	P
+mutmap: 67	H	Y
+mutmap: 467	K	M
+mutmap: 227	K	E
+mutmap: 44	P	S
+mutmap: 401	D	G
+mutmap: 44	S	P
+mutmap: 265	I	T
+mutmap: 153	A	T
+mutmap: 463	N	D
+mutmap: 372	T	S
+mutmap: 434	A	T
+mutmap: 43	S	N
+mutmap: 41	D	E
+mutmap: 120	L	P
+mutmap: 151	G	D
+mutmap: 331	N	S
+mutmap: 127	N	D
+mutmap: 151	E	D
+mutmap: 5	K	Q
+mutmap: 28	V	I
+mutmap: 212	A	V
+mutmap: 44	P	S
+mutmap: 148	I	T
+mutmap: 414	S	G
+mutmap: 401	D	G
+mutmap: 26	V	I
+mutmap: 62	M	I
+mutmap: 27	V	A
+mutmap: 52	P	L
+mutmap: 357	R	G
+mutmap: 81	P	L
+mutmap: 119	D	E
+mutmap: 120	L	P
+mutmap: 143	E	G
+mutmap: 249	R	K
+mutmap: 263	I	V
+mutmap: 267	Q	P
+mutmap: 370	F	L
+mutmap: 401	D	G
+mutmap: 332	F	S
+mutmap: 339	D	N
+mutmap: 83	A	E
+mutmap: 120	L	P
+mutmap: 264	R	H
+mutmap: 392	V	I
+mutmap: 400	S	R
+mutmap: 432	E	Q
+mutmap: 267	T	P
+mutmap: 399	E	D
+mutmap: 451	R	G
+mutmap: 172	R	K
+mutmap: 248	E	G
+mutmap: 416	N	S
+mutmap: 65	M	I
+mutmap: 197	N	D
+mutmap: 82	V	A
+mutmap: 416	G	S
+mutmap: 49	K	Q
+mutmap: 170	R	G
+mutmap: 332	L	F
+mutmap: 469	M	I
+mutmap: 76	G	E
+mutmap: 222	V	I
+mutmap: 53	Y	C
+mutmap: 50	A	V
+mutmap: 245	N	S
+mutmap: 43	D	N
+mutmap: 43	D	N
+mutmap: 210	K	R
+mutmap: 344	D	E
+mutmap: 77	M	I
+mutmap: 455	A	T
+mutmap: 77	K	M
+mutmap: 271	N	S
+mutmap: 342	S	N
+mutmap: 222	T	I
+mutmap: 263	I	V
+mutmap: 334	N	S
+mutmap: 384	F	S
+mutmap: 26	T	I
+mutmap: 149	I	V
+mutmap: 414	S	G
+mutmap: 221	N	K
+mutmap: 16	I	T
+mutmap: 40	H	Y
+mutmap: 41	D	E
+mutmap: 45	S	P
+mutmap: 62	T	I
+mutmap: 194	I	V
+mutmap: 199	K	E
+mutmap: 392	T	I
+mutmap: 435	K	E
+mutmap: 31	I	T
+mutmap: 210	K	R
+mutmap: 258	K	E
+mutmap: 263	A	V
+mutmap: 465	D	N
+mutmap: 58	M	I
+mutmap: 94	V	I
+mutmap: 430	K	R
+mutmap: 14	F	S
+mutmap: 258	K	E
+mutmap: 27	T	A
+mutmap: 44	P	S
+mutmap: 434	N	T
+mutmap: 310	H	Y
+mutmap: 117	I	T
+mutmap: 221	N	K
+mutmap: 376	I	T
+mutmap: 56	A	T
+mutmap: 40	H	Y
+mutmap: 50	A	V
+mutmap: 52	P	L
+mutmap: 62	T	I
+mutmap: 65	T	I
+mutmap: 264	N	H
+mutmap: 370	F	L
+mutmap: 251	N	D
+mutmap: 101	A	S
+mutmap: 33	L	V
+mutmap: 77	K	I
+mutmap: 303	I	V
+mutmap: 221	N	K
+mutmap: 208	D	N
+mutmap: 465	D	N
+mutmap: 77	M	I
+mutmap: 78	R	C
+mutmap: 269	P	S
+mutmap: 199	K	E
+mutmap: 75	E	K
+mutmap: 392	T	I
+mutmap: 94	L	I
+mutmap: 38	R	K
+mutmap: 303	I	V
+mutmap: 57	T	I
+mutmap: 62	T	I
+mutmap: 434	P	T
+mutmap: 450	P	S
+mutmap: 388	P	S
+mutmap: 412	I	V
+mutmap: 57	T	I
+mutmap: 126	S	P
+mutmap: 6	R	K
+mutmap: 450	P	S
+mutmap: 40	F	Y
+mutmap: 60	G	R
+mutmap: 330	N	D
+mutmap: 434	I	T
+mutmap: 83	K	E
+mutmap: 362	I	M
+mutmap: 294	H	N
+mutmap: 359	N	D
+mutmap: 65	T	I
+mutmap: 5	R	Q
+mutmap: 283	Q	R
+mutmap: 360	M	V
+mutmap: 466	R	L
+mutmap: 20	V	I
+mutmap: 331	N	S
+mutmap: 367	G	S
+mutmap: 67	H	Y
+mutmap: 242	I	T
+mutmap: 76	G	E
+mutmap: 77	K	I
+mutmap: 251	E	D
+mutmap: 44	P	S
+mutmap: 313	F	V
+mutmap: 265	T	I
+mutmap: 94	L	I
+mutmap: 255	I	L
+mutmap: 221	N	K
+mutmap: 270	E	G
+mutmap: 40	H	Y
+mutmap: 210	K	R
+mutmap: 238	A	T
+mutmap: 198	N	D
+mutmap: 31	I	T
+mutmap: 360	A	V
+mutmap: 199	K	E
+mutmap: 168	N	H
+mutmap: 338	I	L
+mutmap: 255	I	L
+mutmap: 238	A	T
+mutmap: 30	I	V
+mutmap: 20	T	I
+mutmap: 82	V	A
+mutmap: 199	K	E
+mutmap: 263	I	V
+mutmap: 332	S	F
+mutmap: 27	T	A
+mutmap: 386	S	P
+mutmap: 69	A	T
+mutmap: 267	K	T
+mutmap: 381	K	E
+mutmap: 381	D	E
+mutmap: 381	E	D
+mutmap: 286	D	G
+mutmap: 151	G	D
+mutmap: 391	H	Q
+mutmap: 334	N	S
+mutmap: 89	R	K
+mutmap: 205	L	F
+mutmap: 392	V	I
+mutmap: 220	R	K
+mutmap: 313	A	V
+mutmap: 317	M	V
+mutmap: 455	A	T
+mutmap: 65	T	I
+mutmap: 24	I	M
+mutmap: 71	A	T
+mutmap: 402	D	N
+mutmap: 437	L	W
+mutmap: 151	N	D
+mutmap: 370	S	L
+mutmap: 40	H	Y
+mutmap: 199	K	E
+mutmap: 19	A	T
+mutmap: 67	H	Y
+mutmap: 221	R	K
+mutmap: 367	N	S
+mutmap: 328	R	K
+mutmap: 427	V	I
+mutmap: 311	N	S
+mutmap: 284	H	Y
+mutmap: 400	G	R
+mutmap: 13	I	V
+mutmap: 465	K	N
+mutmap: 83	G	E
+mutmap: 414	S	G
+mutmap: 219	Y	S
+mutmap: 313	I	V
+mutmap: 57	M	I
+mutmap: 111	V	G
+mutmap: 336	R	H
+mutmap: 331	R	S
+mutmap: 398	I	V
+mutmap: 231	I	V
+mutmap: 433	K	E
+mutmap: 216	S	G
+mutmap: 176	M	I
+mutmap: 102	R	K
+mutmap: 431	R	K
+mutmap: 149	A	V
+mutmap: 312	V	I
+mutmap: 44	P	S
+mutmap: 47	K	N
+mutmap: 216	V	G
+mutmap: 68	M	L
+mutmap: 25	H	Q
+mutmap: 199	E	K
+mutmap: 465	S	N
+mutmap: 267	A	T
+mutmap: 401	D	G
+mutmap: 432	G	E
+mutmap: 44	P	S
+mutmap: 136	K	Q
+mutmap: 263	A	V
+mutmap: 13	F	V
+mutmap: 90	Q	P
+mutmap: 263	I	V
+mutmap: 221	N	K
+mutmap: 332	S	F
+mutmap: 75	R	K
+mutmap: 392	T	I
+mutmap: 143	R	G
+mutmap: 204	I	S
+mutmap: 240	I	V
+mutmap: 127	G	D
+mutmap: 385	R	K
+mutmap: 414	S	G
+mutmap: 267	A	T
+mutmap: 147	Y	D
+mutmap: 81	I	L
+mutmap: 302	T	I
+mutmap: 151	E	D
+mutmap: 433	K	E
+mutmap: 51	I	M
+mutmap: 125	G	D
+mutmap: 221	N	K
+mutmap: 148	A	T
+mutmap: 43	Y	N
+mutmap: 83	G	E
+mutmap: 263	I	V
+mutmap: 127	N	D
+mutmap: 463	N	D
+mutmap: 110	V	A
+mutmap: 307	I	V
+mutmap: 82	V	A
+mutmap: 83	G	E
+mutmap: 367	N	S
+mutmap: 273	K	Q
+mutmap: 30	A	V
+mutmap: 368	G	E
+mutmap: 50	A	V
+mutmap: 67	H	Y
+mutmap: 57	T	I
+mutmap: 58	T	I
+mutmap: 62	T	I
+mutmap: 329	T	N
+mutmap: 416	R	S
+mutmap: 22	S	F
+mutmap: 468	S	P
+mutmap: 81	P	L
+mutmap: 315	G	S
+mutmap: 433	K	E
+mutmap: 16	I	T
+mutmap: 221	N	K
+mutmap: 221	K	N
+mutmap: 434	N	T
+mutmap: 102	R	K
+mutmap: 172	K	R
+mutmap: 127	E	D
+mutmap: 253	R	K
+mutmap: 392	V	I
+mutmap: 349	M	V
+mutmap: 147	N	D
+mutmap: 136	K	Q
+mutmap: 257	V	I
+mutmap: 163	M	L
+mutmap: 77	K	I
+mutmap: 248	E	G
+mutmap: 182	G	S
+mutmap: 292	K	R
+mutmap: 150	R	H
+mutmap: 223	F	L
+mutmap: 227	K	E
+mutmap: 228	F	S
+mutmap: 234	H	N
+mutmap: 235	W	G
+mutmap: 13	A	V
+mutmap: 263	I	V
+mutmap: 385	N	K
+mutmap: 24	I	M
+mutmap: 216	S	G
+mutmap: 19	I	T
+mutmap: 464	L	I
+mutmap: 45	L	P
+mutmap: 309	N	D
+mutmap: 360	M	V
+mutmap: 120	L	P
+mutmap: 126	H	P
+mutmap: 82	S	A
+mutmap: 310	H	Y
+mutmap: 270	R	G
+mutmap: 267	S	T
+mutmap: 386	A	P
+mutmap: 432	Q	E
+mutmap: 434	S	T
+mutmap: 267	Q	P
+mutmap: 310	H	Y
+mutmap: 342	D	N
+mutmap: 55	T	P
+mutmap: 434	N	T
+mutmap: 263	I	V
+mutmap: 120	L	P
+mutmap: 51	I	M
+mutmap: 106	N	I
+mutmap: 358	D	N
+mutmap: 120	L	P
+mutmap: 120	H	P
+mutmap: 367	N	S
+mutmap: 370	S	L
+mutmap: 236	I	T
+mutmap: 120	L	P
+mutmap: 143	G	R
+mutmap: 120	L	P
+mutmap: 46	S	P
+mutmap: 31	I	T
+mutmap: 176	M	I
+mutmap: 81	P	L
+mutmap: 432	K	Q
+mutmap: 434	N	T
+mutmap: 358	D	N
+mutmap: 109	A	S
+mutmap: 17	V	I
+mutmap: 24	V	M
+mutmap: 248	E	G
+mutmap: 336	Y	H
+mutmap: 265	T	I
+mutmap: 267	K	Q
+mutmap: 339	D	N
+mutmap: 370	S	L
+mutmap: 399	E	D
+mutmap: 120	L	P
+mutmap: 263	I	V
+mutmap: 120	H	L
+mutmap: 120	P	L
+mutmap: 40	C	Y
+mutmap: 120	L	P
+mutmap: 432	P	Q
+mutmap: 46	S	P
+mutmap: 197	Y	H
+mutmap: 64	K	E
+mutmap: 313	A	V
+mutmap: 403	M	R
+mutmap: 331	R	S
+mutmap: 71	I	T
+mutmap: 120	H	P
+mutmap: 77	V	I
+mutmap: 205	L	F
+mutmap: 127	Y	D
+mutmap: 24	V	M
+mutmap: 197	D	H
+mutmap: 358	D	N
+mutmap: 120	L	P
+mutmap: 437	L	W
+mutmap: 24	T	M
+mutmap: 47	S	N
+mutmap: 57	T	I
+mutmap: 65	M	I
+mutmap: 258	K	E
+mutmap: 269	L	S
+mutmap: 369	T	K
+mutmap: 403	S	R
+mutmap: 285	S	P
+mutmap: 263	I	V
+mutmap: 358	S	N
+mutmap: 77	V	I
+mutmap: 119	D	E
+mutmap: 120	L	P
+mutmap: 154	L	P
+mutmap: 269	L	S
+mutmap: 69	I	T
+mutmap: 197	N	H
+mutmap: 267	Q	P
+mutmap: 151	E	D
+mutmap: 22	L	F
+mutmap: 56	K	T
+mutmap: 251	V	D
+mutmap: 463	N	D
+mutmap: 7	E	I
+mutmap: 460	E	D
+mutmap: 462	R	A
+mutmap: 463	T	N
+mutmap: 464	S	I
+mutmap: 26	T	I
+mutmap: 120	L	P
+mutmap: 287	I	V
+mutmap: 127	G	D
+mutmap: 221	N	K
+mutmap: 336	Y	H
+mutmap: 22	C	F
+mutmap: 77	V	I
+mutmap: 263	A	V
+mutmap: 326	A	P
+mutmap: 338	R	L
+mutmap: 344	K	E
+mutmap: 346	S	G
+mutmap: 374	D	Y
+mutmap: 62	T	I
+mutmap: 77	K	I
+mutmap: 176	M	I
+mutmap: 24	V	M
+mutmap: 136	R	Q
+mutmap: 427	V	I
+mutmap: 198	N	D
+mutmap: 44	P	S
+mutmap: 208	N	D
+mutmap: 463	E	D
+mutmap: 31	I	T
+mutmap: 18	T	A
+mutmap: 40	C	Y
+mutmap: 151	N	D
+mutmap: 208	N	D
+mutmap: 235	R	G
+mutmap: 339	D	N
+mutmap: 267	Q	P
+mutmap: 336	H	Y
+mutmap: 254	V	I
+mutmap: 400	K	R
+mutmap: 147	N	D
+mutmap: 258	K	E
+mutmap: 149	A	V
+mutmap: 265	V	I
+mutmap: 331	G	S
+mutmap: 418	T	I
+mutmap: 77	K	I
+mutmap: 307	M	V
+mutmap: 44	P	S
+mutmap: 380	M	I
+mutmap: 336	H	Y
+mutmap: 267	Q	P
+mutmap: 313	A	V
+mutmap: 50	A	V
+mutmap: 52	P	L
+mutmap: 58	T	I
+mutmap: 62	T	I
+mutmap: 271	T	S
+mutmap: 30	I	V
+mutmap: 332	A	S
+mutmap: 315	N	S
+mutmap: 126	S	P
+mutmap: 267	T	P
+mutmap: 151	E	D
+mutmap: 208	N	D
+mutmap: 45	L	P
+mutmap: 51	L	M
+mutmap: 267	S	P
+mutmap: 47	S	N
+mutmap: 125	G	D
+mutmap: 463	N	D
+mutmap: 231	I	V
+mutmap: 290	A	V
+mutmap: 401	D	G
+mutmap: 339	K	N
+mutmap: 328	R	K
+mutmap: 29	M	L
+mutmap: 414	N	G
+mutmap: 28	V	I
+mutmap: 176	M	I
+mutmap: 339	D	N
+mutmap: 344	R	K
+mutmap: 50	A	V
+mutmap: 140	I	L
+mutmap: 248	G	E
+mutmap: 368	A	E
+mutmap: 370	S	L
+mutmap: 334	N	S
+mutmap: 42	W	C
+mutmap: 250	T	A
+mutmap: 372	F	S
+mutmap: 338	Q	R
+mutmap: 416	N	S
+mutmap: 432	P	Q
+mutmap: 66	A	V
+mutmap: 54	Q	E
+mutmap: 307	M	V
+mutmap: 426	W	L
+mutmap: 51	I	M
+mutmap: 262	V	I
+mutmap: 127	S	G
+mutmap: 462	G	A
+mutmap: 338	Q	R
+mutmap: 14	T	S
+mutmap: 82	A	V
+mutmap: 265	F	I
+mutmap: 462	G	A
+mutmap: 313	I	V
+mutmap: 42	W	C
+mutmap: 385	K	T
+mutmap: 389	I	K
+mutmap: 431	E	K
+mutmap: 220	R	K
+mutmap: 328	R	K
+mutmap: 465	D	N
+mutmap: 238	A	T
+mutmap: 309	N	D
+mutmap: 414	A	G
+mutmap: 431	E	K
+mutmap: 36	D	H
+mutmap: 52	L	P
+mutmap: 248	K	E
+mutmap: 367	R	S
+mutmap: 392	T	I
+mutmap: 176	M	I
+mutmap: 16	S	T
+mutmap: 17	L	I
+mutmap: 71	I	T
+mutmap: 127	S	G
+mutmap: 172	R	K
+mutmap: 38	R	K
+mutmap: 432	K	Q
+mutmap: 20	M	I
+mutmap: 367	S	G
+mutmap: 426	W	L
+mutmap: 462	G	A
+mutmap: 199	E	K
+mutmap: 51	V	M
+mutmap: 194	I	V
+mutmap: 368	G	E
+mutmap: 401	G	D
+mutmap: 433	K	E
+mutmap: 234	Y	N
+mutmap: 251	E	D
+mutmap: 390	S	L
+mutmap: 401	G	D
+mutmap: 233	V	I
+mutmap: 127	S	G
+mutmap: 346	D	N
+mutmap: 431	K	E
+mutmap: 62	V	I
+mutmap: 155	Y	H
+mutmap: 263	I	V
+mutmap: 307	M	V
+mutmap: 308	R	K
+mutmap: 401	N	D
+mutmap: 258	K	E
+mutmap: 249	K	R
+mutmap: 334	S	N
+mutmap: 13	I	V
+mutmap: 141	N	D
+mutmap: 86	K	N
+mutmap: 315	R	S
+mutmap: 414	S	G
+mutmap: 343	D	E
+mutmap: 344	K	R
+mutmap: 56	M	I
+mutmap: 199	E	K
+mutmap: 331	K	R
+mutmap: 435	K	R
+mutmap: 46	S	A
+mutmap: 334	K	N
+mutmap: 302	I	V
+mutmap: 38	R	K
+mutmap: 56	T	I
+mutmap: 210	K	R
+mutmap: 333	G	S
+mutmap: 367	N	S
+mutmap: 46	T	A
+mutmap: 16	I	T
+mutmap: 40	H	Y
+mutmap: 46	S	A
+mutmap: 47	S	N
+mutmap: 77	T	I
+mutmap: 245	N	S
+mutmap: 286	D	G
+mutmap: 302	I	V
+mutmap: 308	K	E
+mutmap: 334	K	N
+mutmap: 463	N	D
+mutmap: 153	V	I
+mutmap: 49	R	Q
+mutmap: 401	G	D
+mutmap: 57	T	I
+mutmap: 381	S	G
+mutmap: 24	T	M
+mutmap: 141	N	D
+mutmap: 245	N	S
+mutmap: 334	S	N
+mutmap: 344	T	R
+mutmap: 358	N	D
+mutmap: 126	R	H
+mutmap: 12	F	S
+mutmap: 14	F	S
+mutmap: 338	K	R
+mutmap: 172	K	R
+mutmap: 427	M	I
+mutmap: 402	H	N
+mutmap: 269	T	S
+mutmap: 241	I	M
+mutmap: 44	F	S
+mutmap: 468	H	P
+mutmap: 176	M	I
+mutmap: 108	I	L
+mutmap: 74	D	E
+mutmap: 77	K	I
+mutmap: 3	S	P
+mutmap: 356	S	N
+mutmap: 64	G	E
+Distribution for 1: 
+Same aa: 
+Different aa: 
+Distribution for 2: 
+Same aa: 40	47		25	32	12	9	9		32	
+Different aa: 23	23	19	19	15	15	23	24	30	21	
+
+Probability:   0.444810, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |                85      /     72
+----------------------------------------------------------------
+   2    |     10    |                86      /     90
+----------------------------------------------------------------
+N (size of both datasets):      18
+Probability:   0.444810, exact
+Not significant (at 0.05 level)
+
+Distribution for 3: 
+Same aa: 53	53	49	49	212	
+Different aa: 50	32	32	49	234	
+
+Probability:   0.404762, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                32      /     25
+----------------------------------------------------------------
+   2    |      5    |                23      /     25
+----------------------------------------------------------------
+N (size of both datasets):      10
+Probability:   0.404762, exact
+Not significant (at 0.05 level)
+
+Distribution for 4: 
+Same aa: 40	14	18	18	8	8		33	33	9	9		19	
+Different aa: 42	14	22	20	21	17	17	24	10	11	10	31	21	
+
+Probability:   0.434140, normal approx w. mean: 137.500000, std deviation:  17.260263, z:  -0.782143----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     11    |               123      /    132
+----------------------------------------------------------------
+   2    |     13    |               176      /    156
+----------------------------------------------------------------
+N (size of both datasets):      24
+Probability:   0.434140, normal approx w. mean: 137.500000, std deviation:  17.260263, z:  -0.782143
+Not significant (at 0.05 level)
+
+Distribution for 5: 
+Same aa: 	43		18	16	16	14	14	9	9	28	29	22		22	43		
+Different aa: 71	37	17	18	16	7	18	14	7	8	20	11	11	33	20	37	37	
+
+Probability:   0.737760, normal approx w. mean: 201.500000, std deviation:  23.893863, z:   0.334814----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     13    |               210      /    195
+----------------------------------------------------------------
+   2    |     17    |               255      /    255
+----------------------------------------------------------------
+N (size of both datasets):      30
+Probability:   0.737760, normal approx w. mean: 201.500000, std deviation:  23.893863, z:   0.334814
+Not significant (at 0.05 level)
+
+Distribution for 6: 
+Same aa: 19	17	17	19	24	59	
+Different aa: 12	12	21	15	28	71	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      6    |                42      /     36
+----------------------------------------------------------------
+   2    |      6    |                36      /     36
+----------------------------------------------------------------
+N (size of both datasets):      12
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 7: 
+Same aa: 40	40		
+Different aa: 88	72	72	
+
+Probability:   0.200000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 3      /      5
+----------------------------------------------------------------
+   2    |      3    |                12      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.200000, exact
+Not significant (at 0.05 level)
+
+Distribution for 8: 
+Same aa: 	
+Different aa: 	
+Distribution for 9: 
+Same aa: 			
+Different aa: 84	28	28	
+Distribution for 10: 
+Same aa: 30	30	7	7	12		
+Different aa: 35	19	24	25	28	19	
+
+Probability:   0.389610, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                25      /     27
+----------------------------------------------------------------
+   2    |      6    |                41      /     33
+----------------------------------------------------------------
+N (size of both datasets):      11
+Probability:   0.389610, exact
+Not significant (at 0.05 level)
+
+Distribution for 11: 
+Same aa: 54	54		
+Different aa: 61	17	17	
+
+Probability:   0.600000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 7      /      5
+----------------------------------------------------------------
+   2    |      3    |                 8      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.600000, exact
+Not significant (at 0.05 level)
+
+Distribution for 12: 
+Same aa: 230	230	
+Different aa: 		
+Distribution for 13: 
+Same aa: 41	41	25	25	59			105	
+Different aa: 65	56	88	77	9	9	12	160	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      6    |                44      /     42
+----------------------------------------------------------------
+   2    |      8    |                61      /     56
+----------------------------------------------------------------
+N (size of both datasets):      14
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 14: 
+Same aa: 40	198	40	198	
+Different aa: 60	60	90	140	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                18      /     16
+----------------------------------------------------------------
+   2    |      4    |                18      /     16
+----------------------------------------------------------------
+N (size of both datasets):       8
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 15: 
+Same aa: 	
+Different aa: 	
+Distribution for 16: 
+Same aa: 60	16		16	27	12	12	27	27		60	
+Different aa: 75	120		132	107	83	85	106	95	75	127	
+
+Probability:   0.000022, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |                45      /     85
+----------------------------------------------------------------
+   2    |     10    |               145      /     95
+----------------------------------------------------------------
+N (size of both datasets):      19
+Probability:   0.000022, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 17: 
+Same aa: 34	81	81	14		14	64	14	34	114	
+Different aa: 10	10	29	16	19	4	4	18	38	44	
+
+Probability:   0.061205, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |               113      /     85
+----------------------------------------------------------------
+   2    |     10    |                77      /     95
+----------------------------------------------------------------
+N (size of both datasets):      19
+Probability:   0.061205, exact
+Not significant (at 0.05 level)
+
+Distribution for 18: 
+Same aa: 	37	37	44	44	
+Different aa: 8			8	42	
+
+Probability:   0.171429, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                20      /     14
+----------------------------------------------------------------
+   2    |      3    |                 8      /     10
+----------------------------------------------------------------
+N (size of both datasets):       7
+Probability:   0.171429, exact
+Not significant (at 0.05 level)
+
+Distribution for 19: 
+Same aa: 72		86	72	86	
+Different aa: 32	29	29	22	22	
+
+Probability:   0.015873, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                30      /     18
+----------------------------------------------------------------
+   2    |      5    |                15      /     22
+----------------------------------------------------------------
+N (size of both datasets):       9
+Probability:   0.015873, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 20: 
+Same aa: 	36	37		36		
+Different aa: 	33	68	7	7	75	
+
+Probability:   0.678571, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      3    |                15      /     12
+----------------------------------------------------------------
+   2    |      5    |                21      /     20
+----------------------------------------------------------------
+N (size of both datasets):       8
+Probability:   0.678571, exact
+Not significant (at 0.05 level)
+
+Distribution for 21: 
+Same aa: 4	4	
+Different aa: 		
+Distribution for 22: 
+Same aa: 6	6	43	43	65		
+Different aa: 44	44	33	46	32	32	
+
+Probability:   0.632035, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                27      /     27
+----------------------------------------------------------------
+   2    |      6    |                39      /     33
+----------------------------------------------------------------
+N (size of both datasets):      11
+Probability:   0.632035, exact
+Not significant (at 0.05 level)
+
+Distribution for 23: 
+Same aa: 				46		46	
+Different aa: 154	154			46	8	8	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 8      /      7
+----------------------------------------------------------------
+   2    |      5    |                20      /     17
+----------------------------------------------------------------
+N (size of both datasets):       7
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 24: 
+Same aa: 77	52		22	22	26	26	77	26	107	
+Different aa: 64	22	73	40	52	13	27	13	23	159	
+
+Probability:   0.672996, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |                95      /     85
+----------------------------------------------------------------
+   2    |     10    |                94      /     95
+----------------------------------------------------------------
+N (size of both datasets):      19
+Probability:   0.672996, exact
+Not significant (at 0.05 level)
+
+Distribution for 25: 
+Same aa: 	
+Different aa: 	
+Distribution for 26: 
+Same aa: 	17	45	17	20	5	3	4	3	15	15	4	13		35	45	36	35	
+Different aa: 	16	13	13	19	14	12	13	11			13	8	8	20	20	39	33	
+
+Probability:   0.766880, normal approx w. mean: 240.000000, std deviation:  25.298221, z:  -0.296464----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     16    |               264      /    248
+----------------------------------------------------------------
+   2    |     15    |               232      /    232
+----------------------------------------------------------------
+N (size of both datasets):      31
+Probability:   0.766880, normal approx w. mean: 240.000000, std deviation:  25.298221, z:  -0.296464
+Not significant (at 0.05 level)
+
+Distribution for 27: 
+Same aa: 42	46		44	42	20	20	
+Different aa: 40	23	23	12	12	46	48	
+
+Probability:   0.655012, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      6    |                45      /     39
+----------------------------------------------------------------
+   2    |      7    |                45      /     45
+----------------------------------------------------------------
+N (size of both datasets):      13
+Probability:   0.655012, exact
+Not significant (at 0.05 level)
+
+Distribution for 28: 
+Same aa: 24	24	25	59	59	
+Different aa: 27	41	52	27	78	
+
+Probability:   0.365079, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                23      /     25
+----------------------------------------------------------------
+   2    |      5    |                32      /     25
+----------------------------------------------------------------
+N (size of both datasets):      10
+Probability:   0.365079, exact
+Not significant (at 0.05 level)
+
+Distribution for 29: 
+Same aa: 	85	85	
+Different aa: 96	161	96	
+
+Probability:   0.200000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 3      /      5
+----------------------------------------------------------------
+   2    |      3    |                12      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.200000, exact
+Not significant (at 0.05 level)
+
+Distribution for 30: 
+Same aa: 51	22	24	24	27		20	11	11	7		7	20	22	39	51	44	
+Different aa: 13	13	17	15	15	10	11	13	10	7	7	10	13	17	13	13	49	
+
+Probability:   0.017357, normal approx w. mean: 280.500000, std deviation:  26.481125, z:  -2.379053----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     15    |               311      /    240
+----------------------------------------------------------------
+   2    |     17    |               217      /    272
+----------------------------------------------------------------
+N (size of both datasets):      32
+Probability:   0.017357, normal approx w. mean: 280.500000, std deviation:  26.481125, z:  -2.379053
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 31: 
+Same aa: 14	37	37	22	14	
+Different aa: 					
+Distribution for 32: 
+Same aa: 	
+Different aa: 	
+Distribution for 33: 
+Same aa: 29	29	61	61	
+Different aa: 22	33	22	75	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                20      /     16
+----------------------------------------------------------------
+   2    |      4    |                16      /     16
+----------------------------------------------------------------
+N (size of both datasets):       8
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 34: 
+Same aa: 
+Different aa: 
+Distribution for 35: 
+Same aa: 
+Different aa: 
+Distribution for 36: 
+Same aa: 			
+Different aa: 23	23	95	
+Distribution for 37: 
+Same aa: 	
+Different aa: 	
+Distribution for 38: 
+Same aa: 69	69	87	90	
+Different aa: 				
+Distribution for 39: 
+Same aa: 		
+Different aa: 54	54	
+Distribution for 40: 
+Same aa: 36	36	7	7	26	26	45	22	12		8	8	38	38	137	
+Different aa: 41	23	23	18	45	29	18	24	14	4	4	10	46	23	158	
+
+Probability:   0.930440, normal approx w. mean: 210.000000, std deviation:  22.912878, z:   0.087287----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     14    |               212      /    203
+----------------------------------------------------------------
+   2    |     15    |               222      /    217
+----------------------------------------------------------------
+N (size of both datasets):      29
+Probability:   0.930440, normal approx w. mean: 210.000000, std deviation:  22.912878, z:   0.087287
+Not significant (at 0.05 level)
+
+Distribution for 41: 
+Same aa: 73	71		52	52	
+Different aa: 158	107	44	44	88	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                18      /     18
+----------------------------------------------------------------
+   2    |      5    |                27      /     22
+----------------------------------------------------------------
+N (size of both datasets):       9
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 42: 
+Same aa: 	18			18	42	42	
+Different aa: 48	49	24	24	53	48	70	
+
+Probability:   0.084848, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                14      /     22
+----------------------------------------------------------------
+   2    |      7    |                52      /     38
+----------------------------------------------------------------
+N (size of both datasets):      11
+Probability:   0.084848, exact
+Not significant (at 0.05 level)
+
+Distribution for 43: 
+Same aa: 			18		10	10	18	15	16	16	91	5		5	32	4	4		
+Different aa: 			17		9	11	9	40	27	27	27	37		38	37	10	10	10	
+
+Probability:   0.182050, normal approx w. mean: 182.000000, std deviation:  20.607442, z:  -1.334469----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     13    |               154      /    175
+----------------------------------------------------------------
+   2    |     14    |               224      /    189
+----------------------------------------------------------------
+N (size of both datasets):      27
+Probability:   0.182050, normal approx w. mean: 182.000000, std deviation:  20.607442, z:  -1.334469
+Not significant (at 0.05 level)
+
+Distribution for 44: 
+Same aa: 18	10	17	23	17	10	16	10	16	20	18	17	17	4		4	12	12	9	9	12	12	212	
+Different aa: 77	39	22	15	15	12	12	14	12	25	21	18	25	37		39	71	65	75	72	71	77	141	
+
+Probability:   0.000491, normal approx w. mean: 495.000000, std deviation:  42.602817, z:  -3.485685----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     22    |               346      /    484
+----------------------------------------------------------------
+   2    |     22    |               644      /    484
+----------------------------------------------------------------
+N (size of both datasets):      44
+Probability:   0.000491, normal approx w. mean: 495.000000, std deviation:  42.602817, z:  -3.485685
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 45: 
+Same aa: 60	34	13	13	21	18	4	21		4	23	18	20		60	63	34	
+Different aa: 16	16			11	11	4	4		4	16	15	17	34	41	41	34	
+
+Probability:   0.169202, normal approx w. mean: 210.000000, std deviation:  22.912878, z:  -1.374773----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     15    |               257      /    217
+----------------------------------------------------------------
+   2    |     14    |               178      /    203
+----------------------------------------------------------------
+N (size of both datasets):      29
+Probability:   0.169202, normal approx w. mean: 210.000000, std deviation:  22.912878, z:  -1.374773
+Not significant (at 0.05 level)
+
+Distribution for 46: 
+Same aa: 	30	30	79	29	29	57		57	
+Different aa: 18	18	34				25	25	38	
+
+Probability:   0.069930, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                62      /     45
+----------------------------------------------------------------
+   2    |      6    |                29      /     39
+----------------------------------------------------------------
+N (size of both datasets):      13
+Probability:   0.069930, exact
+Not significant (at 0.05 level)
+
+Distribution for 47: 
+Same aa: 				34	34	143	
+Different aa: 	15	72	49	31	15	150	
+
+Probability:   0.642857, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      3    |                17      /     13
+----------------------------------------------------------------
+   2    |      6    |                28      /     27
+----------------------------------------------------------------
+N (size of both datasets):       9
+Probability:   0.642857, exact
+Not significant (at 0.05 level)
+
+Distribution for 48: 
+Same aa: 			
+Different aa: 155	27	27	
+Distribution for 49: 
+Same aa: 222		222	
+Different aa: 78	78	196	
+
+Probability:   0.200000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 9      /      5
+----------------------------------------------------------------
+   2    |      3    |                 6      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.200000, exact
+Not significant (at 0.05 level)
+
+Distribution for 50: 
+Same aa: 105	21	105	20	78		24	20	10	13	10	30	21	
+Different aa: 104	3	3	22	9	9	10	28	58	67	64	31	22	
+
+Probability:   0.643840, normal approx w. mean: 169.000000, std deviation:  18.384776, z:  -0.462339----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     12    |               165      /    150
+----------------------------------------------------------------
+   2    |     13    |               160      /    162
+----------------------------------------------------------------
+N (size of both datasets):      25
+Probability:   0.643840, normal approx w. mean: 169.000000, std deviation:  18.384776, z:  -0.462339
+Not significant (at 0.05 level)
+
+Distribution for 51: 
+Same aa: 84	20	12	20	12	97		14	14	36	48	36	97	55	145	
+Different aa: 49	9	6	6	16	13	9	11	9	41	67	33	33	48	49	
+
+Probability:   0.066798, normal approx w. mean: 225.000000, std deviation:  22.912878, z:  -1.833030----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     14    |               252      /    203
+----------------------------------------------------------------
+   2    |     15    |               182      /    217
+----------------------------------------------------------------
+N (size of both datasets):      29
+Probability:   0.066798, normal approx w. mean: 225.000000, std deviation:  22.912878, z:  -1.833030
+Not significant (at 0.05 level)
+
+Distribution for 52: 
+Same aa: 	29		50	50	60	29	
+Different aa: 21	21	57	57	87	97	30	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                30      /     30
+----------------------------------------------------------------
+   2    |      7    |                48      /     42
+----------------------------------------------------------------
+N (size of both datasets):      12
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 53: 
+Same aa: 34	36	34	
+Different aa: 			
+Distribution for 54: 
+Same aa: 				
+Different aa: 50	9	9	50	
+Distribution for 55: 
+Same aa: 61			61	
+Different aa: 18	10	10	67	
+
+Probability:   0.533333, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 9      /      6
+----------------------------------------------------------------
+   2    |      4    |                12      /     12
+----------------------------------------------------------------
+N (size of both datasets):       6
+Probability:   0.533333, exact
+Not significant (at 0.05 level)
+
+Distribution for 56: 
+Same aa: 36	70		66	31	31	69	66		36	
+Different aa: 33	81	27	12	12	21	38	27	17	17	
+
+Probability:   0.019288, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |               102      /     72
+----------------------------------------------------------------
+   2    |     10    |                69      /     90
+----------------------------------------------------------------
+N (size of both datasets):      18
+Probability:   0.019288, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 57: 
+Same aa: 62	35	76	76	49	49	28	6	6	53	16	28	62	
+Different aa: 131	43	18	6	6	5	5	25	23	21	21	18	173	
+
+Probability:   0.100792, normal approx w. mean: 175.500000, std deviation:  19.500000, z:  -1.641026----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     13    |               208      /    169
+----------------------------------------------------------------
+   2    |     13    |               143      /    169
+----------------------------------------------------------------
+N (size of both datasets):      26
+Probability:   0.100792, normal approx w. mean: 175.500000, std deviation:  19.500000, z:  -1.641026
+Not significant (at 0.05 level)
+
+Distribution for 58: 
+Same aa: 	84	68	68	73	73	
+Different aa: 47	16	16	16	16	47	
+
+Probability:   0.004329, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                45      /     27
+----------------------------------------------------------------
+   2    |      6    |                21      /     33
+----------------------------------------------------------------
+N (size of both datasets):      11
+Probability:   0.004329, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 59: 
+Same aa: 		
+Different aa: 33	33	
+Distribution for 60: 
+Same aa: 10	10		
+Different aa: 84	78	78	
+
+Probability:   0.200000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 3      /      5
+----------------------------------------------------------------
+   2    |      3    |                12      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.200000, exact
+Not significant (at 0.05 level)
+
+Distribution for 61: 
+Same aa: 
+Different aa: 
+Distribution for 62: 
+Same aa: 24	99	12	12	37		25	15	15	18	18	18	99	
+Different aa: 9	9	9	19	50	9	56	48	43	49	23	37	100	
+
+Probability:   0.703380, normal approx w. mean: 156.000000, std deviation:  18.384776, z:  -0.380750----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     12    |               148      /    150
+----------------------------------------------------------------
+   2    |     13    |               176      /    162
+----------------------------------------------------------------
+N (size of both datasets):      25
+Probability:   0.703380, normal approx w. mean: 156.000000, std deviation:  18.384776, z:  -0.380750
+Not significant (at 0.05 level)
+
+Distribution for 63: 
+Same aa: 
+Different aa: 
+Distribution for 64: 
+Same aa: 97	24	22	22	60		
+Different aa: 109	204	216	226	178	109	
+
+Probability:   0.004329, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                15      /     27
+----------------------------------------------------------------
+   2    |      6    |                51      /     33
+----------------------------------------------------------------
+N (size of both datasets):      11
+Probability:   0.004329, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 65: 
+Same aa: 71	8	23	8	26	26	23	26	38	12	4	4	26	
+Different aa: 17	8	4	4	7	20	20	36	8	16	8	8	17	
+
+Probability:   0.100792, normal approx w. mean: 175.500000, std deviation:  19.500000, z:  -1.641026----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     13    |               208      /    169
+----------------------------------------------------------------
+   2    |     13    |               143      /    169
+----------------------------------------------------------------
+N (size of both datasets):      26
+Probability:   0.100792, normal approx w. mean: 175.500000, std deviation:  19.500000, z:  -1.641026
+Not significant (at 0.05 level)
+
+Distribution for 66: 
+Same aa: 31	24	24	77	
+Different aa: 				
+Distribution for 67: 
+Same aa: 53	19	27		27	19	13	13	13	
+Different aa: 96	46	9	9	28	53	80	90	87	
+
+Probability:   0.096174, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |                54      /     68
+----------------------------------------------------------------
+   2    |      9    |                98      /     76
+----------------------------------------------------------------
+N (size of both datasets):      17
+Probability:   0.096174, exact
+Not significant (at 0.05 level)
+
+Distribution for 68: 
+Same aa: 47	44	44	47	
+Different aa: 25	61	25	50	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                18      /     16
+----------------------------------------------------------------
+   2    |      4    |                18      /     16
+----------------------------------------------------------------
+N (size of both datasets):       8
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 69: 
+Same aa: 37	37	77	77		
+Different aa: 		58	49	49	
+
+Probability:   0.914286, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                16      /     14
+----------------------------------------------------------------
+   2    |      3    |                12      /     10
+----------------------------------------------------------------
+N (size of both datasets):       7
+Probability:   0.914286, exact
+Not significant (at 0.05 level)
+
+Distribution for 70: 
+Same aa: 
+Different aa: 
+Distribution for 71: 
+Same aa: 87	28	8	8	16		28	60	
+Different aa: 154	49	64	66	74	49	49	97	
+
+Probability:   0.025486, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                37      /     52
+----------------------------------------------------------------
+   2    |      8    |                83      /     60
+----------------------------------------------------------------
+N (size of both datasets):      15
+Probability:   0.025486, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 72: 
+Same aa: 	28	28	34	
+Different aa: 32	50	54	32	
+
+Probability:   0.171429, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      3    |                 8      /     10
+----------------------------------------------------------------
+   2    |      4    |                20      /     14
+----------------------------------------------------------------
+N (size of both datasets):       7
+Probability:   0.171429, exact
+Not significant (at 0.05 level)
+
+Distribution for 73: 
+Same aa: 38		38	
+Different aa: 48	28	28	
+
+Probability:   0.600000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 7      /      5
+----------------------------------------------------------------
+   2    |      3    |                 8      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.600000, exact
+Not significant (at 0.05 level)
+
+Distribution for 74: 
+Same aa: 83	28	28	83	
+Different aa: 134	134	156	211	
+
+Probability:   0.028571, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                10      /     16
+----------------------------------------------------------------
+   2    |      4    |                26      /     16
+----------------------------------------------------------------
+N (size of both datasets):       8
+Probability:   0.028571, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 75: 
+Same aa: 90		90	
+Different aa: 90	20	20	
+
+Probability:   0.600000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 8      /      5
+----------------------------------------------------------------
+   2    |      3    |                 7      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.600000, exact
+Not significant (at 0.05 level)
+
+Distribution for 76: 
+Same aa: 8	8	14	7	7	
+Different aa: 					
+Distribution for 77: 
+Same aa: 75	9	17	9	29	16	16	29	23		13	18	18	17	16	24	10	16	22	10	18	22	18	19	13			41	31	11		11	11	11	13	24	24	22	16	16	75	144	
+Different aa: 73	11	6	6	16	22	22	21	21	8	8	10	13	13	9	8	5	5	5	5	11	11	12	19	13			15	15	5		7	7	5	12	31	21	9	9	23	44	44	
+
+Probability:   0.000981, normal approx w. mean: 1521.000000, std deviation:  98.147848, z:  -3.296048----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     38    |              1806      /   1463
+----------------------------------------------------------------
+   2    |     39    |              1197      /   1501
+----------------------------------------------------------------
+N (size of both datasets):      77
+Probability:   0.000981, normal approx w. mean: 1521.000000, std deviation:  98.147848, z:  -3.296048
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 78: 
+Same aa: 		
+Different aa: 51	51	
+Distribution for 79: 
+Same aa: 	
+Different aa: 	
+Distribution for 80: 
+Same aa: 74				74	14	14	
+Different aa: 42	42	38	11	11	26	32	
+
+Probability:   0.460606, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                28      /     22
+----------------------------------------------------------------
+   2    |      7    |                38      /     38
+----------------------------------------------------------------
+N (size of both datasets):      11
+Probability:   0.460606, exact
+Not significant (at 0.05 level)
+
+Distribution for 81: 
+Same aa: 	28	48	78		37	78	46	28	
+Different aa: 	60	13	6	6	45	8	8	48	
+
+Probability:   0.074903, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                71      /     52
+----------------------------------------------------------------
+   2    |      8    |                48      /     60
+----------------------------------------------------------------
+N (size of both datasets):      15
+Probability:   0.074903, exact
+Not significant (at 0.05 level)
+
+Distribution for 82: 
+Same aa: 30	56	39	39	17	60	80	17	60	13	13	13	56	30	
+Different aa: 	44	12	17	17	30	19	19	12	20	19	20	19		
+
+Probability:   0.116706, normal approx w. mean: 162.000000, std deviation:  19.442222, z:  -1.568751----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     14    |               220      /    182
+----------------------------------------------------------------
+   2    |     12    |               131      /    156
+----------------------------------------------------------------
+N (size of both datasets):      26
+Probability:   0.116706, normal approx w. mean: 162.000000, std deviation:  19.442222, z:  -1.568751
+Not significant (at 0.05 level)
+
+Distribution for 83: 
+Same aa: 47	39	24	15	31	15	27	27	24		36	11	9	9	
+Different aa: 47	4	4	11	11	22	24	29	24	22	13	18	16	13	
+
+Probability:   0.207060, normal approx w. mean: 196.000000, std deviation:  20.607442, z:  -1.261680----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     13    |               208      /    175
+----------------------------------------------------------------
+   2    |     14    |               169      /    189
+----------------------------------------------------------------
+N (size of both datasets):      27
+Probability:   0.207060, normal approx w. mean: 196.000000, std deviation:  20.607442, z:  -1.261680
+Not significant (at 0.05 level)
+
+Distribution for 84: 
+Same aa: 92	92	
+Different aa: 		
+Distribution for 85: 
+Same aa: 
+Different aa: 
+Distribution for 86: 
+Same aa: 	173	8	8	173	
+Different aa: 81	81			104	
+
+Probability:   0.914286, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                16      /     14
+----------------------------------------------------------------
+   2    |      3    |                12      /     10
+----------------------------------------------------------------
+N (size of both datasets):       7
+Probability:   0.914286, exact
+Not significant (at 0.05 level)
+
+Distribution for 87: 
+Same aa: 
+Different aa: 
+Distribution for 88: 
+Same aa: 	
+Different aa: 	
+Distribution for 89: 
+Same aa: 		
+Different aa: 75	75	
+Distribution for 90: 
+Same aa: 78	78	
+Different aa: 		
+Distribution for 91: 
+Same aa: 	
+Different aa: 	
+Distribution for 92: 
+Same aa: 
+Different aa: 
+Distribution for 93: 
+Same aa: 		15	15	30	10	10	15	15	12	21	12	29		29		
+Different aa: 	32	39	32	56			13	8	11	11	8	26	9	11	9	
+
+Probability:   0.567920, normal approx w. mean: 169.000000, std deviation:  18.384776, z:  -0.571125----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     12    |               167      /    150
+----------------------------------------------------------------
+   2    |     13    |               158      /    162
+----------------------------------------------------------------
+N (size of both datasets):      25
+Probability:   0.567920, normal approx w. mean: 169.000000, std deviation:  18.384776, z:  -0.571125
+Not significant (at 0.05 level)
+
+Distribution for 94: 
+Same aa: 84	84	10	10	
+Different aa: 84	8	8	14	
+
+Probability:   0.400000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                21      /     16
+----------------------------------------------------------------
+   2    |      4    |                15      /     16
+----------------------------------------------------------------
+N (size of both datasets):       8
+Probability:   0.400000, exact
+Not significant (at 0.05 level)
+
+Distribution for 95: 
+Same aa: 74	11	11		17	
+Different aa: 89	27	30	24	24	
+
+Probability:   0.158730, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                14      /     18
+----------------------------------------------------------------
+   2    |      5    |                31      /     22
+----------------------------------------------------------------
+N (size of both datasets):       9
+Probability:   0.158730, exact
+Not significant (at 0.05 level)
+
+Distribution for 96: 
+Same aa: 
+Different aa: 
+Distribution for 97: 
+Same aa: 	
+Different aa: 	
+Distribution for 98: 
+Same aa: 
+Different aa: 
+Distribution for 99: 
+Same aa: 
+Different aa: 
+Distribution for 100: 
+Same aa: 
+Different aa: 
+Distribution for 101: 
+Same aa: 	
+Different aa: 	
+Distribution for 102: 
+Same aa: 	10	10	
+Different aa: 55	57	55	
+
+Probability:   0.200000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 3      /      5
+----------------------------------------------------------------
+   2    |      3    |                12      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.200000, exact
+Not significant (at 0.05 level)
+
+Distribution for 103: 
+Same aa: 
+Different aa: 
+Distribution for 104: 
+Same aa: 
+Different aa: 
+Distribution for 105: 
+Same aa: 		
+Different aa: 29	29	
+Distribution for 106: 
+Same aa: 		
+Different aa: 118	118	
+Distribution for 107: 
+Same aa: 
+Different aa: 
+Distribution for 108: 
+Same aa: 	
+Different aa: 	
+Distribution for 109: 
+Same aa: 	
+Different aa: 	
+Distribution for 110: 
+Same aa: 			
+Different aa: 42	42	48	
+Distribution for 111: 
+Same aa: 		
+Different aa: 53	53	
+Distribution for 112: 
+Same aa: 
+Different aa: 
+Distribution for 113: 
+Same aa: 147		147	
+Different aa: 133	20	20	
+
+Probability:   0.200000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 9      /      5
+----------------------------------------------------------------
+   2    |      3    |                 6      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.200000, exact
+Not significant (at 0.05 level)
+
+Distribution for 114: 
+Same aa: 
+Different aa: 
+Distribution for 115: 
+Same aa: 	
+Different aa: 	
+Distribution for 116: 
+Same aa: 44	44	
+Different aa: 		
+Distribution for 117: 
+Same aa: 		
+Different aa: 50	50	
+Distribution for 118: 
+Same aa: 
+Different aa: 
+Distribution for 119: 
+Same aa: 		25	25	
+Different aa: 56		56	75	
+
+Probability:   0.200000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 3      /      5
+----------------------------------------------------------------
+   2    |      3    |                12      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.200000, exact
+Not significant (at 0.05 level)
+
+Distribution for 120: 
+Same aa: 19	5	5	16	12		5	10	10	10	14	10	6	6	10			38	7	5	8	16	21	3	3	16	5	6	4			4	18	15	12	11	
+Different aa: 18	20	17	13	15		12	18	22	22	14	4	4	6	10		6	12	15	15	18	29	38	4	5	4	7	8	7	3	3	9	7	12	15	13	
+
+Probability:   0.305620, normal approx w. mean: 1023.000000, std deviation:  76.138033, z:  -1.024455----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     31    |               944      /   1007
+----------------------------------------------------------------
+   2    |     34    |              1200      /   1105
+----------------------------------------------------------------
+N (size of both datasets):      65
+Probability:   0.305620, normal approx w. mean: 1023.000000, std deviation:  76.138033, z:  -1.024455
+Not significant (at 0.05 level)
+
+Distribution for 121: 
+Same aa: 	
+Different aa: 	
+Distribution for 122: 
+Same aa: 
+Different aa: 
+Distribution for 123: 
+Same aa: 
+Different aa: 
+Distribution for 124: 
+Same aa: 	
+Different aa: 	
+Distribution for 125: 
+Same aa: 7	7	66		48	40	
+Different aa: 71	74	13	13	81	93	
+
+Probability:   0.103896, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                21      /     27
+----------------------------------------------------------------
+   2    |      6    |                45      /     33
+----------------------------------------------------------------
+N (size of both datasets):      11
+Probability:   0.103896, exact
+Not significant (at 0.05 level)
+
+Distribution for 126: 
+Same aa: 	43	16		72	16	43	58	72	58		
+Different aa: 3	37	12	24	12	16	39	19	19	37	3	
+
+Probability:   0.008018, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |               111      /     76
+----------------------------------------------------------------
+   2    |     11    |                79      /    104
+----------------------------------------------------------------
+N (size of both datasets):      19
+Probability:   0.008018, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 127: 
+Same aa: 41	12	12	12	14	19		15	11	11	34	45	42			12	29	29	41	
+Different aa: 109	39	41	27	65	70		66	62	53	29	8	7	7	21	21	39	52	80	
+
+Probability:   0.047262, normal approx w. mean: 280.000000, std deviation:  28.982753, z:  -1.983938----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     16    |               222      /    272
+----------------------------------------------------------------
+   2    |     18    |               373      /    306
+----------------------------------------------------------------
+N (size of both datasets):      34
+Probability:   0.047262, normal approx w. mean: 280.000000, std deviation:  28.982753, z:  -1.983938
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 128: 
+Same aa: 34	34		
+Different aa: 188	168	168	
+
+Probability:   0.200000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 3      /      5
+----------------------------------------------------------------
+   2    |      3    |                12      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.200000, exact
+Not significant (at 0.05 level)
+
+Distribution for 129: 
+Same aa: 
+Different aa: 
+Distribution for 130: 
+Same aa: 
+Different aa: 
+Distribution for 131: 
+Same aa: 	
+Different aa: 	
+Distribution for 132: 
+Same aa: 
+Different aa: 
+Distribution for 133: 
+Same aa: 
+Different aa: 
+Distribution for 134: 
+Same aa: 	
+Different aa: 	
+Distribution for 135: 
+Same aa: 	
+Different aa: 	
+Distribution for 136: 
+Same aa: 18	65	33	37	12	12	9	9	18	
+Different aa: 12	12	41	41	51	53	42	41	18	
+
+Probability:   0.107939, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |                67      /     81
+----------------------------------------------------------------
+   2    |      9    |               104      /     81
+----------------------------------------------------------------
+N (size of both datasets):      18
+Probability:   0.107939, exact
+Not significant (at 0.05 level)
+
+Distribution for 137: 
+Same aa: 
+Different aa: 
+Distribution for 138: 
+Same aa: 
+Different aa: 
+Distribution for 139: 
+Same aa: 
+Different aa: 
+Distribution for 140: 
+Same aa: 	
+Different aa: 	
+Distribution for 141: 
+Same aa: 	55			55	56	
+Different aa: 26	55	34	34	26	72	
+
+Probability:   0.261905, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      3    |                20      /     13
+----------------------------------------------------------------
+   2    |      6    |                25      /     27
+----------------------------------------------------------------
+N (size of both datasets):       9
+Probability:   0.261905, exact
+Not significant (at 0.05 level)
+
+Distribution for 142: 
+Same aa: 
+Different aa: 
+Distribution for 143: 
+Same aa: 	17						17	
+Different aa: 		32	19	19	32	49		
+
+Probability:   0.095238, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 3      /      7
+----------------------------------------------------------------
+   2    |      5    |                25      /     17
+----------------------------------------------------------------
+N (size of both datasets):       7
+Probability:   0.095238, exact
+Not significant (at 0.05 level)
+
+Distribution for 144: 
+Same aa: 
+Different aa: 
+Distribution for 145: 
+Same aa: 
+Different aa: 
+Distribution for 146: 
+Same aa: 	
+Different aa: 	
+Distribution for 147: 
+Same aa: 21	22	6	3		11	3		5		6	4	3	3	10	10	4	22	78	63	63	
+Different aa: 19	10	16	12		20	11		13		14	12	11	10			12	19	6	6	65	
+
+Probability:   0.172920, normal approx w. mean: 315.000000, std deviation:  28.982753, z:  -1.362879----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     18    |               275      /    306
+----------------------------------------------------------------
+   2    |     16    |               320      /    272
+----------------------------------------------------------------
+N (size of both datasets):      34
+Probability:   0.172920, normal approx w. mean: 315.000000, std deviation:  28.982753, z:  -1.362879
+Not significant (at 0.05 level)
+
+Distribution for 148: 
+Same aa: 26	13	13	11	9		9	5			5	9	6	4	4	9	6	9	5	5	6	6	87	9		12	10		11	11	9	22	26	87	
+Different aa: 30	16	15	7	6		5	5	5	5	8	9	11	9	7	12	5	3	3	4	4	6	8	4		14	8	10	10	19	13	15	32	44	
+
+Probability:   0.492720, normal approx w. mean: 992.000000, std deviation:  69.243532, z:  -0.685985----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     29    |               947      /    884
+----------------------------------------------------------------
+   2    |     32    |               944      /    976
+----------------------------------------------------------------
+N (size of both datasets):      61
+Probability:   0.492720, normal approx w. mean: 992.000000, std deviation:  69.243532, z:  -0.685985
+Not significant (at 0.05 level)
+
+Distribution for 149: 
+Same aa: 25	25	69		88	69	68	68	
+Different aa: 		25	11	11	13	13	59	
+
+Probability:   0.006993, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                67      /     45
+----------------------------------------------------------------
+   2    |      6    |                24      /     39
+----------------------------------------------------------------
+N (size of both datasets):      13
+Probability:   0.006993, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 150: 
+Same aa: 14	11	12		12	11		80	
+Different aa: 		16	16	26				
+
+Probability:   0.119048, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      6    |                24      /     27
+----------------------------------------------------------------
+   2    |      3    |                21      /     13
+----------------------------------------------------------------
+N (size of both datasets):       9
+Probability:   0.119048, exact
+Not significant (at 0.05 level)
+
+Distribution for 151: 
+Same aa: 26	26	26	35	29	43	10	38	22	13	4	4		13	6	18	24	13	8	15	10	4	6	5	8	10	7	5	5	4	4	4	5	4		5	5	10	7	10	9	6	22	7	24		8	6	10	11	10	10	8	14	15		6	11	14	12	7	21	12	12	35	10	29	38	39	44	31	26	32	
+Different aa: 26	14	14	8	8	10	9	27	19	5	5	7		10	9	16	9	6	6	12	9	2	6	2	8	10	7	3	4	3	3	2	2	3		4	4	10	7	10	10	4	19	4	6		6	5	7	8	7	4	4	3	2		2	10	10	5	5	10	10	2	2	3	3	7	7	12	22	20	20	
+
+Probability:   0.000024, normal approx w. mean: 4795.500000, std deviation: 234.836645, z:  -4.228471----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     69    |              5789      /   4761
+----------------------------------------------------------------
+   2    |     69    |              3802      /   4761
+----------------------------------------------------------------
+N (size of both datasets):     138
+Probability:   0.000024, normal approx w. mean: 4795.500000, std deviation: 234.836645, z:  -4.228471
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 152: 
+Same aa: 
+Different aa: 
+Distribution for 153: 
+Same aa: 			
+Different aa: 51		51	
+Distribution for 154: 
+Same aa: 	
+Different aa: 	
+Distribution for 155: 
+Same aa: 15	15	28	16	16	22	
+Different aa: 						
+Distribution for 156: 
+Same aa: 
+Different aa: 
+Distribution for 157: 
+Same aa: 
+Different aa: 
+Distribution for 158: 
+Same aa: 
+Different aa: 
+Distribution for 159: 
+Same aa: 		
+Different aa: 21	21	
+Distribution for 160: 
+Same aa: 
+Different aa: 
+Distribution for 161: 
+Same aa: 81		20		20		
+Different aa: 73	17	13	13	19	27	
+
+Probability:   0.261905, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      3    |                20      /     13
+----------------------------------------------------------------
+   2    |      6    |                25      /     27
+----------------------------------------------------------------
+N (size of both datasets):       9
+Probability:   0.261905, exact
+Not significant (at 0.05 level)
+
+Distribution for 162: 
+Same aa: 
+Different aa: 
+Distribution for 163: 
+Same aa: 	
+Different aa: 	
+Distribution for 164: 
+Same aa: 
+Different aa: 
+Distribution for 165: 
+Same aa: 84		84	
+Different aa: 90	28	28	
+
+Probability:   0.600000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 7      /      5
+----------------------------------------------------------------
+   2    |      3    |                 8      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.600000, exact
+Not significant (at 0.05 level)
+
+Distribution for 166: 
+Same aa: 
+Different aa: 
+Distribution for 167: 
+Same aa: 	
+Different aa: 	
+Distribution for 168: 
+Same aa: 		
+Different aa: 54	54	
+Distribution for 169: 
+Same aa: 	
+Different aa: 	
+Distribution for 170: 
+Same aa: 		
+Different aa: 80	80	
+Distribution for 171: 
+Same aa: 
+Different aa: 
+Distribution for 172: 
+Same aa: 94	92		92	94	
+Different aa: 					
+Distribution for 173: 
+Same aa: 	
+Different aa: 	
+Distribution for 174: 
+Same aa: 
+Different aa: 
+Distribution for 175: 
+Same aa: 
+Different aa: 
+Distribution for 176: 
+Same aa: 21	13	13	43	21	26	28	36	117	
+Different aa: 56	57	56	77	63	73	91	105	216	
+
+Probability:   0.002509, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |                53      /     81
+----------------------------------------------------------------
+   2    |      9    |               118      /     81
+----------------------------------------------------------------
+N (size of both datasets):      18
+Probability:   0.002509, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 177: 
+Same aa: 		
+Different aa: 190	190	
+Distribution for 178: 
+Same aa: 
+Different aa: 
+Distribution for 179: 
+Same aa: 
+Different aa: 
+Distribution for 180: 
+Same aa: 	
+Different aa: 	
+Distribution for 181: 
+Same aa: 	
+Different aa: 	
+Distribution for 182: 
+Same aa: 	
+Different aa: 	
+Distribution for 183: 
+Same aa: 	
+Different aa: 	
+Distribution for 184: 
+Same aa: 	
+Different aa: 	
+Distribution for 185: 
+Same aa: 59	59	
+Different aa: 		
+Distribution for 186: 
+Same aa: 
+Different aa: 
+Distribution for 187: 
+Same aa: 
+Different aa: 
+Distribution for 188: 
+Same aa: 	
+Different aa: 	
+Distribution for 189: 
+Same aa: 
+Different aa: 
+Distribution for 190: 
+Same aa: 	
+Different aa: 	
+Distribution for 191: 
+Same aa: 
+Different aa: 
+Distribution for 192: 
+Same aa: 
+Different aa: 
+Distribution for 193: 
+Same aa: 	
+Different aa: 	
+Distribution for 194: 
+Same aa: 	33	32	16		16	78	33	
+Different aa: 								
+Distribution for 195: 
+Same aa: 	
+Different aa: 	
+Distribution for 196: 
+Same aa: 
+Different aa: 
+Distribution for 197: 
+Same aa: 		20	21	21	16	17	16	69		32	20	
+Different aa: 		12	12	15					23	23	15	
+
+Probability:   0.142258, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |                85      /     67
+----------------------------------------------------------------
+   2    |      6    |                35      /     45
+----------------------------------------------------------------
+N (size of both datasets):      15
+Probability:   0.142258, exact
+Not significant (at 0.05 level)
+
+Distribution for 198: 
+Same aa: 33		52	33	
+Different aa: 73	72	72	72	
+
+Probability:   0.057143, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      3    |                 6      /     10
+----------------------------------------------------------------
+   2    |      4    |                22      /     14
+----------------------------------------------------------------
+N (size of both datasets):       7
+Probability:   0.057143, exact
+Not significant (at 0.05 level)
+
+Distribution for 199: 
+Same aa: 8	8	37		26	26	15	6	6	12	13					23	10	8	8	9		15	77	
+Different aa: 		60		47	55	23	20	20	14	19	25	18	18	14	64	53	51	49	50				
+
+Probability:   0.002302, normal approx w. mean: 297.500000, std deviation:  29.033027, z:  -3.048253----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     17    |               208      /    289
+----------------------------------------------------------------
+   2    |     17    |               386      /    289
+----------------------------------------------------------------
+N (size of both datasets):      34
+Probability:   0.002302, normal approx w. mean: 297.500000, std deviation:  29.033027, z:  -3.048253
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 200: 
+Same aa: 
+Different aa: 
+Distribution for 201: 
+Same aa: 
+Different aa: 
+Distribution for 202: 
+Same aa: 
+Different aa: 
+Distribution for 203: 
+Same aa: 
+Different aa: 
+Distribution for 204: 
+Same aa: 13	13			
+Different aa: 25	26	25	80	
+
+Probability:   0.133333, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 3      /      6
+----------------------------------------------------------------
+   2    |      4    |                18      /     12
+----------------------------------------------------------------
+N (size of both datasets):       6
+Probability:   0.133333, exact
+Not significant (at 0.05 level)
+
+Distribution for 205: 
+Same aa: 53		53	52	52	
+Different aa: 38	33	33	47	38	
+
+Probability:   0.015873, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                30      /     18
+----------------------------------------------------------------
+   2    |      5    |                15      /     22
+----------------------------------------------------------------
+N (size of both datasets):       9
+Probability:   0.015873, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 206: 
+Same aa: 
+Different aa: 
+Distribution for 207: 
+Same aa: 
+Different aa: 
+Distribution for 208: 
+Same aa: 49	30	30	25	87	87	11	11	15	
+Different aa: 56	19	20	20			19	24	24	
+
+Probability:   0.521154, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |                83      /     72
+----------------------------------------------------------------
+   2    |      7    |                53      /     56
+----------------------------------------------------------------
+N (size of both datasets):      16
+Probability:   0.521154, exact
+Not significant (at 0.05 level)
+
+Distribution for 209: 
+Same aa: 
+Different aa: 
+Distribution for 210: 
+Same aa: 59	18		13	13	18	22	7	34	7	119	
+Different aa: 78	9	9	17	18	15	21	65	93	66	189	
+
+Probability:   0.341780, normal approx w. mean: 110.000000, std deviation:  14.200939, z:  -0.950641----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     10    |                96      /    105
+----------------------------------------------------------------
+   2    |     11    |               135      /    115
+----------------------------------------------------------------
+N (size of both datasets):      21
+Probability:   0.341780, normal approx w. mean: 110.000000, std deviation:  14.200939, z:  -0.950641
+Not significant (at 0.05 level)
+
+Distribution for 211: 
+Same aa: 		
+Different aa: 70	70	
+Distribution for 212: 
+Same aa: 39	23	23	43	39	
+Different aa: 67	17	18	17	40	
+
+Probability:   0.507937, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                31      /     25
+----------------------------------------------------------------
+   2    |      5    |                24      /     25
+----------------------------------------------------------------
+N (size of both datasets):      10
+Probability:   0.507937, exact
+Not significant (at 0.05 level)
+
+Distribution for 213: 
+Same aa: 
+Different aa: 
+Distribution for 214: 
+Same aa: 	
+Different aa: 	
+Distribution for 215: 
+Same aa: 9	9	12	9	16	17	4	7	6	6	6	6	4	7	20	9	14	
+Different aa: 																	
+Distribution for 216: 
+Same aa: 86	78	42	60	13	13	4	4	18	60	18	
+Different aa: 107	31	31	19			19	21	5	5	21	
+
+Probability:   0.924851, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     11    |               114      /    110
+----------------------------------------------------------------
+   2    |      9    |                96      /     90
+----------------------------------------------------------------
+N (size of both datasets):      20
+Probability:   0.924851, exact
+Not significant (at 0.05 level)
+
+Distribution for 217: 
+Same aa: 
+Different aa: 
+Distribution for 218: 
+Same aa: 
+Different aa: 
+Distribution for 219: 
+Same aa: 	
+Different aa: 	
+Distribution for 220: 
+Same aa: 	66		23	23	90	90	
+Different aa: 	43	8	8	23	43	63	
+
+Probability:   0.194805, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                38      /     27
+----------------------------------------------------------------
+   2    |      6    |                28      /     33
+----------------------------------------------------------------
+N (size of both datasets):      11
+Probability:   0.194805, exact
+Not significant (at 0.05 level)
+
+Distribution for 221: 
+Same aa: 		17	8	7	7	13	7		17	13	7	7		13	8	5	5	8	5		8	6	6		36	
+Different aa: 76	76	66	57	56	53	24	37		48	43	37	36	24	31	57	15	18	21	18	10	10	12	12		49	
+
+Probability:   0.000001, normal approx w. mean: 450.000000, std deviation:  42.426407, z:  -4.855467----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     20    |               243      /    440
+----------------------------------------------------------------
+   2    |     24    |               746      /    528
+----------------------------------------------------------------
+N (size of both datasets):      44
+Probability:   0.000001, normal approx w. mean: 450.000000, std deviation:  42.426407, z:  -4.855467
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 222: 
+Same aa: 77		26	26	43	43		
+Different aa: 79	28	43	51	28	5	5	
+
+Probability:   0.848485, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                34      /     30
+----------------------------------------------------------------
+   2    |      7    |                44      /     42
+----------------------------------------------------------------
+N (size of both datasets):      12
+Probability:   0.848485, exact
+Not significant (at 0.05 level)
+
+Distribution for 223: 
+Same aa: 55	55	65	
+Different aa: 			
+Distribution for 224: 
+Same aa: 
+Different aa: 
+Distribution for 225: 
+Same aa: 
+Different aa: 
+Distribution for 226: 
+Same aa: 
+Different aa: 
+Distribution for 227: 
+Same aa: 49	49	
+Different aa: 		
+Distribution for 228: 
+Same aa: 	
+Different aa: 	
+Distribution for 229: 
+Same aa: 
+Different aa: 
+Distribution for 230: 
+Same aa: 
+Different aa: 
+Distribution for 231: 
+Same aa: 28	4	4	74	74	
+Different aa: 					
+Distribution for 232: 
+Same aa: 
+Different aa: 
+Distribution for 233: 
+Same aa: 76	84	76	
+Different aa: 			
+Distribution for 234: 
+Same aa: 65		65		
+Different aa: 39	39	80	129	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 7      /      6
+----------------------------------------------------------------
+   2    |      4    |                14      /     12
+----------------------------------------------------------------
+N (size of both datasets):       6
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 235: 
+Same aa: 		
+Different aa: 70	70	
+Distribution for 236: 
+Same aa: 21			74	21	
+Different aa: 46	39	26	26	43	
+
+Probability:   0.571429, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      3    |                11      /     12
+----------------------------------------------------------------
+   2    |      5    |                25      /     20
+----------------------------------------------------------------
+N (size of both datasets):       8
+Probability:   0.571429, exact
+Not significant (at 0.05 level)
+
+Distribution for 237: 
+Same aa: 
+Different aa: 
+Distribution for 238: 
+Same aa: 37	7	7	37	7	10	19	5	5	89	
+Different aa: 20	18	13	13	16	22	20	64	65	105	
+
+Probability:   0.084511, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     10    |                82      /    100
+----------------------------------------------------------------
+   2    |     10    |               128      /    100
+----------------------------------------------------------------
+N (size of both datasets):      20
+Probability:   0.084511, exact
+Not significant (at 0.05 level)
+
+Distribution for 239: 
+Same aa: 	
+Different aa: 	
+Distribution for 240: 
+Same aa: 32	7	7	56	
+Different aa: 				
+Distribution for 241: 
+Same aa: 	18	19	18	216	
+Different aa: 25	29	32	25	221	
+
+Probability:   0.158730, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                14      /     18
+----------------------------------------------------------------
+   2    |      5    |                31      /     22
+----------------------------------------------------------------
+N (size of both datasets):       9
+Probability:   0.158730, exact
+Not significant (at 0.05 level)
+
+Distribution for 242: 
+Same aa: 	
+Different aa: 	
+Distribution for 243: 
+Same aa: 
+Different aa: 
+Distribution for 244: 
+Same aa: 
+Different aa: 
+Distribution for 245: 
+Same aa: 59	25	25	37	37	49	49	
+Different aa: 							
+Distribution for 246: 
+Same aa: 		
+Different aa: 92	92	
+Distribution for 247: 
+Same aa: 
+Different aa: 
+Distribution for 248: 
+Same aa: 21	21	38		10	10	22	40		22	15	22	15	34	15	15	22	23	38	
+Different aa: 		10	10	17	11	53	25	20	9	9	22	14	25	54	59	47	18	40	
+
+Probability:   0.986260, normal approx w. mean: 297.500000, std deviation:  29.033027, z:  -0.017222----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     17    |               297      /    289
+----------------------------------------------------------------
+   2    |     17    |               297      /    289
+----------------------------------------------------------------
+N (size of both datasets):      34
+Probability:   0.986260, normal approx w. mean: 297.500000, std deviation:  29.033027, z:  -0.017222
+Not significant (at 0.05 level)
+
+Distribution for 249: 
+Same aa: 	22	22	58	14	16	29	11	11		29	14	19	58	125	
+Different aa: 13	126	116	11	11	19	3	12	3		11	11	22	55	13	
+
+Probability:   0.109296, normal approx w. mean: 196.000000, std deviation:  20.607442, z:  -1.601363----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     13    |               215      /    175
+----------------------------------------------------------------
+   2    |     14    |               162      /    189
+----------------------------------------------------------------
+N (size of both datasets):      27
+Probability:   0.109296, normal approx w. mean: 196.000000, std deviation:  20.607442, z:  -1.601363
+Not significant (at 0.05 level)
+
+Distribution for 250: 
+Same aa: 92	92	
+Different aa: 		
+Distribution for 251: 
+Same aa: 58	23	23	64		58	128	64	128	
+Different aa: 22	20	21	20	23	17	17	22	95	
+
+Probability:   0.002962, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |               101      /     68
+----------------------------------------------------------------
+   2    |      9    |                52      /     76
+----------------------------------------------------------------
+N (size of both datasets):      17
+Probability:   0.002962, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 252: 
+Same aa: 
+Different aa: 
+Distribution for 253: 
+Same aa: 	55	71	55	
+Different aa: 				
+Distribution for 254: 
+Same aa: 100	36	36	
+Different aa: 			
+Distribution for 255: 
+Same aa: 12	12	
+Different aa: 		
+Distribution for 256: 
+Same aa: 
+Different aa: 
+Distribution for 257: 
+Same aa: 		
+Different aa: 83	83	
+Distribution for 258: 
+Same aa: 30	18	18	8	8	14	14	25	34	34	30	30	97	
+Different aa: 													
+Distribution for 259: 
+Same aa: 
+Different aa: 
+Distribution for 260: 
+Same aa: 	
+Different aa: 	
+Distribution for 261: 
+Same aa: 23	23	
+Different aa: 		
+Distribution for 262: 
+Same aa: 	
+Different aa: 	
+Distribution for 263: 
+Same aa: 18	10		25	12	13	5	5	12		10	22	12	43	12	43	12	12	13	15	22	15	66	118	
+Different aa: 35	42		71	72	93	84	85	76		50	50	14	33	22	5	5	13	14	32	42	31	31	109	
+
+Probability:   0.003745, normal approx w. mean: 495.000000, std deviation:  42.602817, z:  -2.898869----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     22    |               371      /    484
+----------------------------------------------------------------
+   2    |     22    |               619      /    484
+----------------------------------------------------------------
+N (size of both datasets):      44
+Probability:   0.003745, normal approx w. mean: 495.000000, std deviation:  42.602817, z:  -2.898869
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 264: 
+Same aa: 53	53		
+Different aa: 68	27	27	
+
+Probability:   0.600000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 7      /      5
+----------------------------------------------------------------
+   2    |      3    |                 8      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.600000, exact
+Not significant (at 0.05 level)
+
+Distribution for 265: 
+Same aa: 131		24	13	13	17	39	30	24			
+Different aa: 97		42					62	36	36	58	
+
+Probability:   0.037962, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |                44      /     56
+----------------------------------------------------------------
+   2    |      6    |                61      /     42
+----------------------------------------------------------------
+N (size of both datasets):      14
+Probability:   0.037962, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 266: 
+Same aa: 		
+Different aa: 92	92	
+Distribution for 267: 
+Same aa: 13	8	46		25	25			27				30	48		11	11		6		6	11	11	48	46	
+Different aa: 33	26	2	5	33	22	13	23	13	29	5	2	22	24	13	16	13	16	22		24	20	17	12	12	
+
+Probability:   0.534480, normal approx w. mean: 328.000000, std deviation:  36.221541, z:   0.621177----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     16    |               351      /    320
+----------------------------------------------------------------
+   2    |     24    |               469      /    480
+----------------------------------------------------------------
+N (size of both datasets):      40
+Probability:   0.534480, normal approx w. mean: 328.000000, std deviation:  36.221541, z:   0.621177
+Not significant (at 0.05 level)
+
+Distribution for 268: 
+Same aa: 		
+Different aa: 81	81	
+Distribution for 269: 
+Same aa: 59	16	53	220	27	59	6	6	220	
+Different aa: 22	36	9	9	44	39	26	22	161	
+
+Probability:   0.475483, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |                94      /     81
+----------------------------------------------------------------
+   2    |      9    |                77      /     81
+----------------------------------------------------------------
+N (size of both datasets):      18
+Probability:   0.475483, exact
+Not significant (at 0.05 level)
+
+Distribution for 270: 
+Same aa: 		
+Different aa: 18	18	
+Distribution for 271: 
+Same aa: 92	38	38	75	92	53		
+Different aa: 19	19	44	23	23	61	20	
+
+Probability:   0.018648, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      6    |                58      /     39
+----------------------------------------------------------------
+   2    |      7    |                33      /     45
+----------------------------------------------------------------
+N (size of both datasets):      13
+Probability:   0.018648, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 272: 
+Same aa: 83	83	
+Different aa: 		
+Distribution for 273: 
+Same aa: 22	22		
+Different aa: 86	76	76	
+
+Probability:   0.200000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 3      /      5
+----------------------------------------------------------------
+   2    |      3    |                12      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.200000, exact
+Not significant (at 0.05 level)
+
+Distribution for 274: 
+Same aa: 	
+Different aa: 	
+Distribution for 275: 
+Same aa: 	
+Different aa: 	
+Distribution for 276: 
+Same aa: 
+Different aa: 
+Distribution for 277: 
+Same aa: 
+Different aa: 
+Distribution for 278: 
+Same aa: 
+Different aa: 
+Distribution for 279: 
+Same aa: 
+Different aa: 
+Distribution for 280: 
+Same aa: 
+Different aa: 
+Distribution for 281: 
+Same aa: 	
+Different aa: 	
+Distribution for 282: 
+Same aa: 	
+Different aa: 	
+Distribution for 283: 
+Same aa: 47	47	
+Different aa: 		
+Distribution for 284: 
+Same aa: 84	84	
+Different aa: 		
+Distribution for 285: 
+Same aa: 14		14	
+Different aa: 67	61	61	
+
+Probability:   0.200000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 3      /      5
+----------------------------------------------------------------
+   2    |      3    |                12      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.200000, exact
+Not significant (at 0.05 level)
+
+Distribution for 286: 
+Same aa: 29	26	26	61	199	
+Different aa: 					
+Distribution for 287: 
+Same aa: 14	11	11		28	28	
+Different aa: 21	15	18	15	45	63	
+
+Probability:   0.216450, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                23      /     27
+----------------------------------------------------------------
+   2    |      6    |                43      /     33
+----------------------------------------------------------------
+N (size of both datasets):      11
+Probability:   0.216450, exact
+Not significant (at 0.05 level)
+
+Distribution for 288: 
+Same aa: 	
+Different aa: 	
+Distribution for 289: 
+Same aa: 
+Different aa: 
+Distribution for 290: 
+Same aa: 67	67			
+Different aa: 		92	92	
+
+Probability:   0.333333, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 3      /      4
+----------------------------------------------------------------
+   2    |      2    |                 7      /      4
+----------------------------------------------------------------
+N (size of both datasets):       4
+Probability:   0.333333, exact
+Not significant (at 0.05 level)
+Warning: sample size (4) too small (<5)!
+
+Distribution for 291: 
+Same aa: 
+Different aa: 
+Distribution for 292: 
+Same aa: 78	78	
+Different aa: 		
+Distribution for 293: 
+Same aa: 
+Different aa: 
+Distribution for 294: 
+Same aa: 	
+Different aa: 	
+Distribution for 295: 
+Same aa: 
+Different aa: 
+Distribution for 296: 
+Same aa: 185	185	
+Different aa: 		
+Distribution for 297: 
+Same aa: 
+Different aa: 
+Distribution for 298: 
+Same aa: 
+Different aa: 
+Distribution for 299: 
+Same aa: 
+Different aa: 
+Distribution for 300: 
+Same aa: 
+Different aa: 
+Distribution for 301: 
+Same aa: 
+Different aa: 
+Distribution for 302: 
+Same aa: 30	30			39	47	
+Different aa: 		80	80			
+
+Probability:   0.133333, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                10      /     12
+----------------------------------------------------------------
+   2    |      2    |                11      /      6
+----------------------------------------------------------------
+N (size of both datasets):       6
+Probability:   0.133333, exact
+Not significant (at 0.05 level)
+
+Distribution for 303: 
+Same aa: 	60	18	18	8	8	
+Different aa: 147	147	228	230	197	193	
+
+Probability:   0.004329, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                15      /     27
+----------------------------------------------------------------
+   2    |      6    |                51      /     33
+----------------------------------------------------------------
+N (size of both datasets):      11
+Probability:   0.004329, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 304: 
+Same aa: 30	30	
+Different aa: 		
+Distribution for 305: 
+Same aa: 	
+Different aa: 	
+Distribution for 306: 
+Same aa: 
+Different aa: 
+Distribution for 307: 
+Same aa: 	32	9	9	11		24	37	23	23	37	10	10	43	32	33	77	
+Different aa: 	40	40	41	54	15	14	14	25	26	25	55	55	67	40	59	122	
+
+Probability:   0.028248, normal approx w. mean: 240.000000, std deviation:  25.298221, z:  -2.193830----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     15    |               184      /    232
+----------------------------------------------------------------
+   2    |     16    |               312      /    248
+----------------------------------------------------------------
+N (size of both datasets):      31
+Probability:   0.028248, normal approx w. mean: 240.000000, std deviation:  25.298221, z:  -2.193830
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 308: 
+Same aa: 41	38			168	38	168	41	
+Different aa: 	17	21		17	43	137		
+
+Probability:   0.220779, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      6    |                43      /     33
+----------------------------------------------------------------
+   2    |      5    |                23      /     27
+----------------------------------------------------------------
+N (size of both datasets):      11
+Probability:   0.220779, exact
+Not significant (at 0.05 level)
+
+Distribution for 309: 
+Same aa: 14	14	23	23	60	37	
+Different aa: 						
+Distribution for 310: 
+Same aa: 91	28	8	8	22				15	15	28	
+Different aa: 138	51	34	28	46	16	16	28	39	42	31	
+
+Probability:   0.030483, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |                54      /     76
+----------------------------------------------------------------
+   2    |     11    |               136      /    104
+----------------------------------------------------------------
+N (size of both datasets):      19
+Probability:   0.030483, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 311: 
+Same aa: 		
+Different aa: 51	51	
+Distribution for 312: 
+Same aa: 53	66	11	28	19	17	17	16	11	53	
+Different aa: 23	23	6	6	10	11	10	21	15	58	
+
+Probability:   0.137305, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     10    |               125      /    100
+----------------------------------------------------------------
+   2    |     10    |                85      /    100
+----------------------------------------------------------------
+N (size of both datasets):      20
+Probability:   0.137305, exact
+Not significant (at 0.05 level)
+
+Distribution for 313: 
+Same aa: 	89	34	27	9	9	24	15	27		52	50	34	38	75	
+Different aa: 	63	41	18	21	18	36	27	33	7	7	20	41	45	46	
+
+Probability:   0.544140, normal approx w. mean: 196.000000, std deviation:  20.607442, z:  -0.606577----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     13    |               195      /    175
+----------------------------------------------------------------
+   2    |     14    |               183      /    189
+----------------------------------------------------------------
+N (size of both datasets):      27
+Probability:   0.544140, normal approx w. mean: 196.000000, std deviation:  20.607442, z:  -0.606577
+Not significant (at 0.05 level)
+
+Distribution for 314: 
+Same aa: 
+Different aa: 
+Distribution for 315: 
+Same aa: 65	37	12	23	12	23		73		139	
+Different aa: 36	40	11	22	11	11		51	36	123	
+
+Probability:   0.407404, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |                81      /     68
+----------------------------------------------------------------
+   2    |      9    |                72      /     76
+----------------------------------------------------------------
+N (size of both datasets):      17
+Probability:   0.407404, exact
+Not significant (at 0.05 level)
+
+Distribution for 316: 
+Same aa: 
+Different aa: 
+Distribution for 317: 
+Same aa: 11	11	34		
+Different aa: 78	83	60	60	
+
+Probability:   0.057143, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      3    |                 6      /     10
+----------------------------------------------------------------
+   2    |      4    |                22      /     14
+----------------------------------------------------------------
+N (size of both datasets):       7
+Probability:   0.057143, exact
+Not significant (at 0.05 level)
+
+Distribution for 318: 
+Same aa: 
+Different aa: 
+Distribution for 319: 
+Same aa: 
+Different aa: 
+Distribution for 320: 
+Same aa: 
+Different aa: 
+Distribution for 321: 
+Same aa: 	
+Different aa: 	
+Distribution for 322: 
+Same aa: 	
+Different aa: 	
+Distribution for 323: 
+Same aa: 
+Different aa: 
+Distribution for 324: 
+Same aa: 
+Different aa: 
+Distribution for 325: 
+Same aa: 		
+Different aa: 176	176	
+Distribution for 326: 
+Same aa: 	
+Different aa: 	
+Distribution for 327: 
+Same aa: 
+Different aa: 
+Distribution for 328: 
+Same aa: 13	13	14	14	14	80			78	39	39	
+Different aa: 					12	17	12	78	88	109	
+
+Probability:   0.724076, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |                68      /     67
+----------------------------------------------------------------
+   2    |      6    |                51      /     45
+----------------------------------------------------------------
+N (size of both datasets):      15
+Probability:   0.724076, exact
+Not significant (at 0.05 level)
+
+Distribution for 329: 
+Same aa: 		21	14	30		14			30	22	60	
+Different aa: 	59	21	10	24	24	8	8		10	37	59	
+
+Probability:   0.548334, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                69      /     59
+----------------------------------------------------------------
+   2    |     10    |                83      /     85
+----------------------------------------------------------------
+N (size of both datasets):      17
+Probability:   0.548334, exact
+Not significant (at 0.05 level)
+
+Distribution for 330: 
+Same aa: 	
+Different aa: 	
+Distribution for 331: 
+Same aa: 	16	91	16	16	16	21	13	13	37	60	60	91		
+Different aa: 92	11	17	7	7	15	26	31	30	16	16	41	45	92	
+
+Probability:   0.738140, normal approx w. mean: 162.000000, std deviation:  19.442222, z:   0.334324----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     12    |               169      /    156
+----------------------------------------------------------------
+   2    |     14    |               182      /    182
+----------------------------------------------------------------
+N (size of both datasets):      26
+Probability:   0.738140, normal approx w. mean: 162.000000, std deviation:  19.442222, z:   0.334324
+Not significant (at 0.05 level)
+
+Distribution for 332: 
+Same aa: 	16		13	13	16	23		18	18		
+Different aa: 95	51		90	91	51	38	16	18	16	38	
+
+Probability:   0.013060, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                38      /     59
+----------------------------------------------------------------
+   2    |     10    |               115      /     85
+----------------------------------------------------------------
+N (size of both datasets):      17
+Probability:   0.013060, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 333: 
+Same aa: 		
+Different aa: 181	181	
+Distribution for 334: 
+Same aa: 15	15	30	15		15	7	7	70	16	57	57	54	
+Different aa: 41	36	43	25	24	24	78	79	102	26	26	49	49	
+
+Probability:   0.077100, normal approx w. mean: 156.000000, std deviation:  18.384776, z:  -1.767767----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     12    |               123      /    150
+----------------------------------------------------------------
+   2    |     13    |               202      /    162
+----------------------------------------------------------------
+N (size of both datasets):      25
+Probability:   0.077100, normal approx w. mean: 156.000000, std deviation:  18.384776, z:  -1.767767
+Not significant (at 0.05 level)
+
+Distribution for 335: 
+Same aa: 25	9	9	7		7	10	9	8	5	5	
+Different aa: 											
+Distribution for 336: 
+Same aa: 		63	29	64	18	18	19	20	19		22	22	11	11	
+Different aa: 		24	29	16	16	16	19	18	16	49	24	32			
+
+Probability:   0.902040, normal approx w. mean: 132.000000, std deviation:  16.248077, z:  -0.123091----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     12    |               146      /    138
+----------------------------------------------------------------
+   2    |     11    |               129      /    126
+----------------------------------------------------------------
+N (size of both datasets):      23
+Probability:   0.902040, normal approx w. mean: 132.000000, std deviation:  16.248077, z:  -0.123091
+Not significant (at 0.05 level)
+
+Distribution for 337: 
+Same aa: 
+Different aa: 
+Distribution for 338: 
+Same aa: 32	32	23	18	16			41	13	41	13	18	43			16	23		
+Different aa: 63	59	35	14	6	6		23	16	16	19	23	32	42	53	12	28	89	
+
+Probability:   0.737760, normal approx w. mean: 201.500000, std deviation:  23.893863, z:  -0.334814----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     13    |               193      /    195
+----------------------------------------------------------------
+   2    |     17    |               272      /    255
+----------------------------------------------------------------
+N (size of both datasets):      30
+Probability:   0.737760, normal approx w. mean: 201.500000, std deviation:  23.893863, z:  -0.334814
+Not significant (at 0.05 level)
+
+Distribution for 339: 
+Same aa: 14	19	19	16	16	23	19		14	24	29		29	
+Different aa: 51	19	14	28	24	23	17	14	47	41	27	6	6	
+
+Probability:   0.706480, normal approx w. mean: 137.500000, std deviation:  17.260263, z:  -0.376588----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     11    |               130      /    132
+----------------------------------------------------------------
+   2    |     13    |               169      /    156
+----------------------------------------------------------------
+N (size of both datasets):      24
+Probability:   0.706480, normal approx w. mean: 137.500000, std deviation:  17.260263, z:  -0.376588
+Not significant (at 0.05 level)
+
+Distribution for 340: 
+Same aa: 
+Different aa: 
+Distribution for 341: 
+Same aa: 
+Different aa: 
+Distribution for 342: 
+Same aa: 12	27	30	21	21	23	30	27	71	12	
+Different aa: 41	29	23	23	26	4	4	36	36	41	
+
+Probability:   0.616305, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     10    |                98      /    100
+----------------------------------------------------------------
+   2    |     10    |               112      /    100
+----------------------------------------------------------------
+N (size of both datasets):      20
+Probability:   0.616305, exact
+Not significant (at 0.05 level)
+
+Distribution for 343: 
+Same aa: 	
+Different aa: 	
+Distribution for 344: 
+Same aa: 20		74			74		20		
+Different aa: 59	19	21	21	57	57	19	49	49	
+
+Probability:   0.562238, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                32      /     26
+----------------------------------------------------------------
+   2    |      9    |                59      /     58
+----------------------------------------------------------------
+N (size of both datasets):      13
+Probability:   0.562238, exact
+Not significant (at 0.05 level)
+
+Distribution for 345: 
+Same aa: 
+Different aa: 
+Distribution for 346: 
+Same aa: 		19	19		23	8	8			23	23		
+Different aa: 6	6	39	34		73	8	8	8	10	10	82	34	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                70      /     66
+----------------------------------------------------------------
+   2    |     12    |               120      /    114
+----------------------------------------------------------------
+N (size of both datasets):      19
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 347: 
+Same aa: 	66			12	12	7	7	8	11	8	
+Different aa: 	55	19	9	9	15	8	7	7	12	7	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |                75      /     72
+----------------------------------------------------------------
+   2    |     10    |                96      /     90
+----------------------------------------------------------------
+N (size of both datasets):      18
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 348: 
+Same aa: 
+Different aa: 
+Distribution for 349: 
+Same aa: 65	65	
+Different aa: 		
+Distribution for 350: 
+Same aa: 
+Different aa: 
+Distribution for 351: 
+Same aa: 
+Different aa: 
+Distribution for 352: 
+Same aa: 	
+Different aa: 	
+Distribution for 353: 
+Same aa: 
+Different aa: 
+Distribution for 354: 
+Same aa: 
+Different aa: 
+Distribution for 355: 
+Same aa: 	
+Different aa: 	
+Distribution for 356: 
+Same aa: 	57	57		
+Different aa: 31			31	
+
+Probability:   0.333333, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 7      /      4
+----------------------------------------------------------------
+   2    |      2    |                 3      /      4
+----------------------------------------------------------------
+N (size of both datasets):       4
+Probability:   0.333333, exact
+Not significant (at 0.05 level)
+Warning: sample size (4) too small (<5)!
+
+Distribution for 357: 
+Same aa: 	20	20	23	51	
+Different aa: 42	69	73	72	42	
+
+Probability:   0.063492, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                12      /     18
+----------------------------------------------------------------
+   2    |      5    |                33      /     22
+----------------------------------------------------------------
+N (size of both datasets):       9
+Probability:   0.063492, exact
+Not significant (at 0.05 level)
+
+Distribution for 358: 
+Same aa: 20	42	37		37	7	7	21		20	
+Different aa: 	46	41	16	16	15	10	29	10		
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |                70      /     64
+----------------------------------------------------------------
+   2    |      8    |                66      /     64
+----------------------------------------------------------------
+N (size of both datasets):      16
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 359: 
+Same aa: 		
+Different aa: 79	79	
+Distribution for 360: 
+Same aa: 141	141	12	21	21	12	7	38	7	
+Different aa: 140	5	5	43	44	13	5	5	10	
+
+Probability:   0.249198, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |                99      /     81
+----------------------------------------------------------------
+   2    |      9    |                72      /     81
+----------------------------------------------------------------
+N (size of both datasets):      18
+Probability:   0.249198, exact
+Not significant (at 0.05 level)
+
+Distribution for 361: 
+Same aa: 
+Different aa: 
+Distribution for 362: 
+Same aa: 	
+Different aa: 	
+Distribution for 363: 
+Same aa: 	
+Different aa: 	
+Distribution for 364: 
+Same aa: 
+Different aa: 
+Distribution for 365: 
+Same aa: 
+Different aa: 
+Distribution for 366: 
+Same aa: 	
+Different aa: 	
+Distribution for 367: 
+Same aa: 	14	54	49	20	9	9	77	49	12	12	44		14		
+Different aa: 71		20	22	25	34	31	25	11	17	11	22	20		71	
+
+Probability:   0.643840, normal approx w. mean: 156.000000, std deviation:  18.384776, z:  -0.462339----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     12    |               147      /    150
+----------------------------------------------------------------
+   2    |     13    |               178      /    162
+----------------------------------------------------------------
+N (size of both datasets):      25
+Probability:   0.643840, normal approx w. mean: 156.000000, std deviation:  18.384776, z:  -0.462339
+Not significant (at 0.05 level)
+
+Distribution for 368: 
+Same aa: 	128	128	133		133	
+Different aa: 	29	50	50	66	29	
+
+Probability:   0.015873, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                30      /     18
+----------------------------------------------------------------
+   2    |      5    |                15      /     22
+----------------------------------------------------------------
+N (size of both datasets):       9
+Probability:   0.015873, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 369: 
+Same aa: 		39	32	32	39	42	
+Different aa: 		17	24	50	24	17	
+
+Probability:   0.142857, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                35      /     25
+----------------------------------------------------------------
+   2    |      5    |                20      /     25
+----------------------------------------------------------------
+N (size of both datasets):      10
+Probability:   0.142857, exact
+Not significant (at 0.05 level)
+
+Distribution for 370: 
+Same aa: 		20	16	16		44	32		11	7	9	9	7	13	32	31	41	38	16	16	20	
+Different aa: 		21	21	11		15	15								27	27	11	11	11	15	33	
+
+Probability:   0.718980, normal approx w. mean: 186.000000, std deviation:  23.622024, z:  -0.359834----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     18    |               288      /    270
+----------------------------------------------------------------
+   2    |     12    |               177      /    180
+----------------------------------------------------------------
+N (size of both datasets):      30
+Probability:   0.718980, normal approx w. mean: 186.000000, std deviation:  23.622024, z:  -0.359834
+Not significant (at 0.05 level)
+
+Distribution for 371: 
+Same aa: 	
+Different aa: 	
+Distribution for 372: 
+Same aa: 103		70	41	8	8	23		22	22	11	11	18	9	41		
+Different aa: 68	27	27	4	4	8	29	29	52	32				15	35	48	
+
+Probability:   0.681620, normal approx w. mean: 175.500000, std deviation:  19.500000, z:  -0.410256----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     13    |               167      /    169
+----------------------------------------------------------------
+   2    |     13    |               184      /    169
+----------------------------------------------------------------
+N (size of both datasets):      26
+Probability:   0.681620, normal approx w. mean: 175.500000, std deviation:  19.500000, z:  -0.410256
+Not significant (at 0.05 level)
+
+Distribution for 373: 
+Same aa: 
+Different aa: 
+Distribution for 374: 
+Same aa: 		
+Different aa: 112	112	
+Distribution for 375: 
+Same aa: 
+Different aa: 
+Distribution for 376: 
+Same aa: 38	38	
+Different aa: 		
+Distribution for 377: 
+Same aa: 
+Different aa: 
+Distribution for 378: 
+Same aa: 81	81		
+Different aa: 76	27	27	
+
+Probability:   0.200000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 9      /      5
+----------------------------------------------------------------
+   2    |      3    |                 6      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.200000, exact
+Not significant (at 0.05 level)
+
+Distribution for 379: 
+Same aa: 
+Different aa: 
+Distribution for 380: 
+Same aa: 36	36				
+Different aa: 25	23	9	9	68	
+
+Probability:   0.380952, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                11      /      7
+----------------------------------------------------------------
+   2    |      5    |                17      /     17
+----------------------------------------------------------------
+N (size of both datasets):       7
+Probability:   0.380952, exact
+Not significant (at 0.05 level)
+
+Distribution for 381: 
+Same aa: 						
+Different aa: 159	80	3	3		159	
+Distribution for 382: 
+Same aa: 
+Different aa: 
+Distribution for 383: 
+Same aa: 	
+Different aa: 	
+Distribution for 384: 
+Same aa: 143	143	
+Different aa: 		
+Distribution for 385: 
+Same aa: 30	59	59			59	59	30	
+Different aa: 	57	56	21	21	11	11		
+
+Probability:   0.017316, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      6    |                53      /     36
+----------------------------------------------------------------
+   2    |      6    |                25      /     36
+----------------------------------------------------------------
+N (size of both datasets):      12
+Probability:   0.017316, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 386: 
+Same aa: 48	18	15	11	4	4	12	7	12	12	5	5	17	37	30	52	37	
+Different aa: 47	29	23	18	7	9	7	10	9	7	18	17	26	13	13	26	26	
+
+Probability:   0.730520, normal approx w. mean: 297.500000, std deviation:  29.033027, z:  -0.344435----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     17    |               287      /    289
+----------------------------------------------------------------
+   2    |     17    |               308      /    289
+----------------------------------------------------------------
+N (size of both datasets):      34
+Probability:   0.730520, normal approx w. mean: 297.500000, std deviation:  29.033027, z:  -0.344435
+Not significant (at 0.05 level)
+
+Distribution for 387: 
+Same aa: 	18	6	6		18	
+Different aa: 31	16			12	12	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                16      /     16
+----------------------------------------------------------------
+   2    |      4    |                20      /     16
+----------------------------------------------------------------
+N (size of both datasets):       8
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 388: 
+Same aa: 	
+Different aa: 	
+Distribution for 389: 
+Same aa: 		
+Different aa: 102	102	
+Distribution for 390: 
+Same aa: 				
+Different aa: 	33	33	147	
+Distribution for 391: 
+Same aa: 	
+Different aa: 	
+Distribution for 392: 
+Same aa: 148	24	22	18	33	9	7	36	22	16	16	37	4	4	4	8	9	27	33	22	21	13	13	13	13	24	
+Different aa: 94	63	5	14	14	12	7	12	12	12	16	2	4	4	2	8	9	6	5	23	25	6	6	8	8	77	
+
+Probability:   0.026176, normal approx w. mean: 689.000000, std deviation:  54.641254, z:  -2.223595----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     26    |               811      /    676
+----------------------------------------------------------------
+   2    |     26    |               567      /    676
+----------------------------------------------------------------
+N (size of both datasets):      52
+Probability:   0.026176, normal approx w. mean: 689.000000, std deviation:  54.641254, z:  -2.223595
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 393: 
+Same aa: 	20	20		
+Different aa: 26	37	35	26	
+
+Probability:   0.133333, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 3      /      6
+----------------------------------------------------------------
+   2    |      4    |                18      /     12
+----------------------------------------------------------------
+N (size of both datasets):       6
+Probability:   0.133333, exact
+Not significant (at 0.05 level)
+
+Distribution for 394: 
+Same aa: 45	45	
+Different aa: 		
+Distribution for 395: 
+Same aa: 
+Different aa: 
+Distribution for 396: 
+Same aa: 18	18		
+Different aa: 136	132	132	
+
+Probability:   0.200000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 3      /      5
+----------------------------------------------------------------
+   2    |      3    |                12      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.200000, exact
+Not significant (at 0.05 level)
+
+Distribution for 397: 
+Same aa: 	
+Different aa: 	
+Distribution for 398: 
+Same aa: 45	45	
+Different aa: 		
+Distribution for 399: 
+Same aa: 37	24	6	12	6	12	23	36	36	
+Different aa: 77	22	8	6	6	10	21	56	64	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |                85      /     81
+----------------------------------------------------------------
+   2    |      9    |                86      /     81
+----------------------------------------------------------------
+N (size of both datasets):      18
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 400: 
+Same aa: 		57	41	26	26	18	20	13	13		57	41	
+Different aa: 47	47	26	26	32	50	55	65	63	72	32	34	37	
+
+Probability:   0.058554, normal approx w. mean: 120.000000, std deviation:  16.124515, z:  -1.891530----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     10    |                89      /    115
+----------------------------------------------------------------
+   2    |     13    |               187      /    149
+----------------------------------------------------------------
+N (size of both datasets):      23
+Probability:   0.058554, normal approx w. mean: 120.000000, std deviation:  16.124515, z:  -1.891530
+Not significant (at 0.05 level)
+
+Distribution for 401: 
+Same aa: 			13	13	30		26	23	23	14	14	23	23	42	7	7	26	48	40	19	19		80	
+Different aa: 38	7		7	8	33		22	16	17	25	17	16	19	13	13	14	29	51	61	28	23	31	65	
+
+Probability:   0.885660, normal approx w. mean: 399.000000, std deviation:  38.249183, z:   0.143794----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     19    |               405      /    389
+----------------------------------------------------------------
+   2    |     22    |               456      /    451
+----------------------------------------------------------------
+N (size of both datasets):      41
+Probability:   0.885660, normal approx w. mean: 399.000000, std deviation:  38.249183, z:   0.143794
+Not significant (at 0.05 level)
+
+Distribution for 402: 
+Same aa: 	6	6	18	70		
+Different aa: 103	138	138	130	110	103	
+
+Probability:   0.009524, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                10      /     20
+----------------------------------------------------------------
+   2    |      6    |                45      /     30
+----------------------------------------------------------------
+N (size of both datasets):      10
+Probability:   0.009524, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 403: 
+Same aa: 39	16	60	39	16	
+Different aa: 33	22	76	20	20	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                27      /     25
+----------------------------------------------------------------
+   2    |      5    |                28      /     25
+----------------------------------------------------------------
+N (size of both datasets):      10
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 404: 
+Same aa: 23	23	33	
+Different aa: 			
+Distribution for 405: 
+Same aa: 
+Different aa: 
+Distribution for 406: 
+Same aa: 
+Different aa: 
+Distribution for 407: 
+Same aa: 
+Different aa: 
+Distribution for 408: 
+Same aa: 	
+Different aa: 	
+Distribution for 409: 
+Same aa: 	
+Different aa: 	
+Distribution for 410: 
+Same aa: 	
+Different aa: 	
+Distribution for 411: 
+Same aa: 
+Different aa: 
+Distribution for 412: 
+Same aa: 	
+Different aa: 	
+Distribution for 413: 
+Same aa: 
+Different aa: 
+Distribution for 414: 
+Same aa: 64	24	45	24	24	45	9	9	12	13	12			141	
+Different aa: 30	30	22	22	19	19	30	33	49	60	57	38	38	101	
+
+Probability:   0.207620, normal approx w. mean: 162.000000, std deviation:  19.442222, z:  -1.260144----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     12    |               137      /    156
+----------------------------------------------------------------
+   2    |     14    |               214      /    182
+----------------------------------------------------------------
+N (size of both datasets):      26
+Probability:   0.207620, normal approx w. mean: 162.000000, std deviation:  19.442222, z:  -1.260144
+Not significant (at 0.05 level)
+
+Distribution for 415: 
+Same aa: 	
+Different aa: 	
+Distribution for 416: 
+Same aa: 28	64		19	31	19	41	43	64		28	
+Different aa: 50	9	8	8	28	9	38	9	9	12	64	
+
+Probability:   0.043129, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |               121      /     90
+----------------------------------------------------------------
+   2    |     11    |                89      /    110
+----------------------------------------------------------------
+N (size of both datasets):      20
+Probability:   0.043129, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 417: 
+Same aa: 
+Different aa: 
+Distribution for 418: 
+Same aa: 69	69		
+Different aa: 18	79	18	
+
+Probability:   0.600000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 7      /      5
+----------------------------------------------------------------
+   2    |      3    |                 8      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.600000, exact
+Not significant (at 0.05 level)
+
+Distribution for 419: 
+Same aa: 	
+Different aa: 	
+Distribution for 420: 
+Same aa: 	
+Different aa: 	
+Distribution for 421: 
+Same aa: 	
+Different aa: 	
+Distribution for 422: 
+Same aa: 
+Different aa: 
+Distribution for 423: 
+Same aa: 	
+Different aa: 	
+Distribution for 424: 
+Same aa: 
+Different aa: 
+Distribution for 425: 
+Same aa: 
+Different aa: 
+Distribution for 426: 
+Same aa: 20	20	
+Different aa: 		
+Distribution for 427: 
+Same aa: 217		72	61	61	217	
+Different aa: 14	17	14	81	74	151	
+
+Probability:   0.311688, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                36      /     27
+----------------------------------------------------------------
+   2    |      6    |                30      /     33
+----------------------------------------------------------------
+N (size of both datasets):      11
+Probability:   0.311688, exact
+Not significant (at 0.05 level)
+
+Distribution for 428: 
+Same aa: 
+Different aa: 
+Distribution for 429: 
+Same aa: 
+Different aa: 
+Distribution for 430: 
+Same aa: 	59	40		40	
+Different aa: 25	38	4	4	40	
+
+Probability:   0.107143, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      3    |                20      /     12
+----------------------------------------------------------------
+   2    |      5    |                16      /     20
+----------------------------------------------------------------
+N (size of both datasets):       8
+Probability:   0.107143, exact
+Not significant (at 0.05 level)
+
+Distribution for 431: 
+Same aa: 	45	17	17	24	21	80		80	16	16	45	
+Different aa: 		24	19	27	12	12	28	50	86	84		
+
+Probability:   0.733270, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     10    |                95      /     95
+----------------------------------------------------------------
+   2    |      9    |                94      /     85
+----------------------------------------------------------------
+N (size of both datasets):      19
+Probability:   0.733270, exact
+Not significant (at 0.05 level)
+
+Distribution for 432: 
+Same aa: 31	40	23	23	23	31			65	52	52	65	
+Different aa: 24	53				27	21	21	24	28	35	35	
+
+Probability:   0.232913, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     10    |               115      /     95
+----------------------------------------------------------------
+   2    |      9    |                75      /     85
+----------------------------------------------------------------
+N (size of both datasets):      19
+Probability:   0.232913, exact
+Not significant (at 0.05 level)
+
+Distribution for 433: 
+Same aa: 11	13	10	18		10	8	4	4		13	8	8	11	6	6	131	
+Different aa: 31	33	30	30	12	14	14	12	12		23	28	28	93	88	88	163	
+
+Probability:   0.000219, normal approx w. mean: 240.000000, std deviation:  25.298221, z:  -3.695912----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     15    |               146      /    232
+----------------------------------------------------------------
+   2    |     16    |               350      /    248
+----------------------------------------------------------------
+N (size of both datasets):      31
+Probability:   0.000219, normal approx w. mean: 240.000000, std deviation:  25.298221, z:  -3.695912
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 434: 
+Same aa: 	42	39	19	12	12	39	13	13	12	29	39	18			18		9	9	
+Different aa: 	33	23	23	12	10	10	25	20	10	11	11	13	5	5	13	16	23	26	
+
+Probability:   0.262360, normal approx w. mean: 306.000000, std deviation:  27.658633, z:  -1.120807----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     15    |               286      /    247
+----------------------------------------------------------------
+   2    |     18    |               274      /    297
+----------------------------------------------------------------
+N (size of both datasets):      33
+Probability:   0.262360, normal approx w. mean: 306.000000, std deviation:  27.658633, z:  -1.120807
+Not significant (at 0.05 level)
+
+Distribution for 435: 
+Same aa: 92		13	17		21	24	17	13	76	92	
+Different aa: 		5	5	8	8	8	11	11	79		
+
+Probability:   0.003702, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |               110      /     76
+----------------------------------------------------------------
+   2    |      8    |                43      /     68
+----------------------------------------------------------------
+N (size of both datasets):      17
+Probability:   0.003702, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 436: 
+Same aa: 	
+Different aa: 	
+Distribution for 437: 
+Same aa: 30	23	23	17	17	30	31	
+Different aa: 							
+Distribution for 438: 
+Same aa: 	
+Different aa: 	
+Distribution for 439: 
+Same aa: 
+Different aa: 
+Distribution for 440: 
+Same aa: 
+Different aa: 
+Distribution for 441: 
+Same aa: 	
+Different aa: 	
+Distribution for 442: 
+Same aa: 
+Different aa: 
+Distribution for 443: 
+Same aa: 17	9	9		
+Different aa: 31	29	24	24	
+
+Probability:   0.057143, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      3    |                 6      /     10
+----------------------------------------------------------------
+   2    |      4    |                22      /     14
+----------------------------------------------------------------
+N (size of both datasets):       7
+Probability:   0.057143, exact
+Not significant (at 0.05 level)
+
+Distribution for 444: 
+Same aa: 129	129		
+Different aa: 153	46	46	
+
+Probability:   0.600000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 7      /      5
+----------------------------------------------------------------
+   2    |      3    |                 8      /      7
+----------------------------------------------------------------
+N (size of both datasets):       5
+Probability:   0.600000, exact
+Not significant (at 0.05 level)
+
+Distribution for 445: 
+Same aa: 78			78	
+Different aa: 	10	10		
+
+Probability:   0.333333, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 7      /      4
+----------------------------------------------------------------
+   2    |      2    |                 3      /      4
+----------------------------------------------------------------
+N (size of both datasets):       4
+Probability:   0.333333, exact
+Not significant (at 0.05 level)
+Warning: sample size (4) too small (<5)!
+
+Distribution for 446: 
+Same aa: 	
+Different aa: 	
+Distribution for 447: 
+Same aa: 
+Different aa: 
+Distribution for 448: 
+Same aa: 
+Different aa: 
+Distribution for 449: 
+Same aa: 	
+Different aa: 	
+Distribution for 450: 
+Same aa: 5	5	
+Different aa: 		
+Distribution for 451: 
+Same aa: 73	43	8	8	43	
+Different aa: 45	37	41	37	45	
+
+Probability:   1.000000, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                26      /     25
+----------------------------------------------------------------
+   2    |      5    |                29      /     25
+----------------------------------------------------------------
+N (size of both datasets):      10
+Probability:   1.000000, exact
+Not significant (at 0.05 level)
+
+Distribution for 452: 
+Same aa: 	
+Different aa: 	
+Distribution for 453: 
+Same aa: 55	55	
+Different aa: 		
+Distribution for 454: 
+Same aa: 
+Different aa: 
+Distribution for 455: 
+Same aa: 151	6	6	
+Different aa: 			
+Distribution for 456: 
+Same aa: 
+Different aa: 
+Distribution for 457: 
+Same aa: 
+Different aa: 
+Distribution for 458: 
+Same aa: 60	60				
+Different aa: 65	11	11	26	43	
+
+Probability:   0.380952, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                11      /      7
+----------------------------------------------------------------
+   2    |      5    |                17      /     17
+----------------------------------------------------------------
+N (size of both datasets):       7
+Probability:   0.380952, exact
+Not significant (at 0.05 level)
+
+Distribution for 459: 
+Same aa: 			
+Different aa: 80	36	36	
+Distribution for 460: 
+Same aa: 		
+Different aa: 44	44	
+Distribution for 461: 
+Same aa: 26	26	
+Different aa: 		
+Distribution for 462: 
+Same aa: 18		18		81		11	11	22	
+Different aa: 40		36	44	73	36	64	71	68	
+
+Probability:   0.039294, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      6    |                29      /     42
+----------------------------------------------------------------
+   2    |      8    |                76      /     56
+----------------------------------------------------------------
+N (size of both datasets):      14
+Probability:   0.039294, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 463: 
+Same aa: 	57		19	12	24	26	13	16	31	10	10		8	8	22	24	12	40	19		44	34	57	
+Different aa: 	103	32	37	9	7	23	21	25	6	12	6		23	21	7	9	13	42	22		22	26	158	
+
+Probability:   0.666940, normal approx w. mean: 441.000000, std deviation:  38.340579, z:  -0.430353----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     20    |               437      /    410
+----------------------------------------------------------------
+   2    |     21    |               424      /    430
+----------------------------------------------------------------
+N (size of both datasets):      41
+Probability:   0.666940, normal approx w. mean: 441.000000, std deviation:  38.340579, z:  -0.430353
+Not significant (at 0.05 level)
+
+Distribution for 464: 
+Same aa: 	17	17		95		
+Different aa: 24	17	6	6	66	66	
+
+Probability:   0.690476, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      3    |                17      /     13
+----------------------------------------------------------------
+   2    |      6    |                28      /     27
+----------------------------------------------------------------
+N (size of both datasets):       9
+Probability:   0.690476, exact
+Not significant (at 0.05 level)
+
+Distribution for 465: 
+Same aa: 99		73	33	94				41	12	12	41	39	39	77	73	78	
+Different aa: 42	31	31	20	16	12	16	12	16	24	16	37	44	21	6	6	42	
+
+Probability:   0.005741, normal approx w. mean: 263.500000, std deviation:  23.893863, z:  -2.762216----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     13    |               268      /    195
+----------------------------------------------------------------
+   2    |     17    |               197      /    255
+----------------------------------------------------------------
+N (size of both datasets):      30
+Probability:   0.005741, normal approx w. mean: 263.500000, std deviation:  23.893863, z:  -2.762216
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 466: 
+Same aa: 	10	41	10	14		31	14	24	24		
+Different aa: 	19	25	17	13	18	18	3	3	21	55	
+
+Probability:   0.744550, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |                80      /     72
+----------------------------------------------------------------
+   2    |     10    |                91      /     90
+----------------------------------------------------------------
+N (size of both datasets):      18
+Probability:   0.744550, exact
+Not significant (at 0.05 level)
+
+Distribution for 467: 
+Same aa: 	51	51			
+Different aa: 21	56	55	5	5	
+
+Probability:   0.761905, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 9      /      7
+----------------------------------------------------------------
+   2    |      5    |                19      /     17
+----------------------------------------------------------------
+N (size of both datasets):       7
+Probability:   0.761905, exact
+Not significant (at 0.05 level)
+
+Distribution for 468: 
+Same aa: 51	54		87	51	54		87	188	
+Different aa: 18	9	9	12	39	14	14	42	184	
+
+Probability:   0.005070, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                85      /     56
+----------------------------------------------------------------
+   2    |      9    |                51      /     72
+----------------------------------------------------------------
+N (size of both datasets):      16
+Probability:   0.005070, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+
+Distribution for 469: 
+Same aa: 51		51		
+Different aa: 24	24	45	82	
+
+Probability:   0.533333, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      2    |                 9      /      6
+----------------------------------------------------------------
+   2    |      4    |                12      /     12
+----------------------------------------------------------------
+N (size of both datasets):       6
+Probability:   0.533333, exact
+Not significant (at 0.05 level)
+
+Distribution for 470: 
+Same aa: 
+Different aa: 
+Distribution for 471: 
+Same aa: 
+Different aa: 
+Distribution for 472: 
+Same aa: 
+Different aa: 
+Distribution for 473: 
+Same aa: 
+Different aa: 
+Distribution for 474: 
+Same aa: 
+Different aa: 
+Distribution for 475: 
+Same aa: 
+Different aa: 
+Distribution for 476: 
+Same aa: 
+Different aa: 
+Distribution for 477: 
+Same aa: 
+Different aa: 
+Distribution for 478: 
+Same aa: 
+Different aa: 
+Distribution for 479: 
+Same aa: 
+Different aa: 
+Distribution for 480: 
+Same aa: 
+Different aa: 
+Distribution for 481: 
+Same aa: 
+Different aa: 
+Distribution for 482: 
+Same aa: 
+Different aa: 
+Distribution for 483: 
+Same aa: 
+Different aa: 
+Distribution for 484: 
+Same aa: 
+Different aa: 
+Distribution for 485: 
+Same aa: 
+Different aa: 
+Distribution for 486: 
+Same aa: 
+Different aa: 
+Distribution for 487: 
+Same aa: 
+Different aa: 
+Distribution for 488: 
+Same aa: 
+Different aa: 
+Distribution for 489: 
+Same aa: 
+Different aa: 
+Distribution for 490: 
+Same aa: 
+Different aa: 
+Distribution for 491: 
+Same aa: 
+Different aa: 
+Distribution for 492: 
+Same aa: 
+Different aa: 
+Distribution for 493: 
+Same aa: 
+Different aa: 
+Distribution for 494: 
+Same aa: 
+Different aa: 
+Distribution for 495: 
+Same aa: 
+Different aa: 
+Distribution for 496: 
+Same aa: 
+Different aa: 
+Distribution for 497: 
+Same aa: 
+Different aa: 
+Distribution for 498: 
+Same aa: 
+Different aa: 
+Distribution for 499: 
+Same aa: 
+Different aa: 
+Distribution for 500: 
+Same aa: 
+Different aa: 
+Distribution for 501: 
+Same aa: 
+Different aa: 
+Distribution for 502: 
+Same aa: 
+Different aa: 
+Distribution for 503: 
+Same aa: 
+Different aa: 
+Distribution for 504: 
+Same aa: 
+Different aa: 
+Distribution for 505: 
+Same aa: 
+Different aa: 
+Distribution for 506: 
+Same aa: 
+Different aa: 
+Distribution for 507: 
+Same aa: 
+Different aa: 
+Distribution for 508: 
+Same aa: 
+Different aa: 
+Distribution for 509: 
+Same aa: 
+Different aa: 
+Distribution for 510: 
+Same aa: 
+Different aa: 
+Distribution for 511: 
+Same aa: 
+Different aa: 
+Distribution for 512: 
+Same aa: 
+Different aa: 
+Distribution for 513: 
+Same aa: 
+Different aa: 
+Distribution for 514: 
+Same aa: 
+Different aa: 
+Distribution for 515: 
+Same aa: 
+Different aa: 
+Distribution for 516: 
+Same aa: 
+Different aa: 
+Distribution for 517: 
+Same aa: 
+Different aa: 
+Distribution for 518: 
+Same aa: 
+Different aa: 
+Distribution for 519: 
+Same aa: 
+Different aa: 
+Distribution for 520: 
+Same aa: 
+Different aa: 
+Distribution for 521: 
+Same aa: 
+Different aa: 
+Distribution for 522: 
+Same aa: 
+Different aa: 
+Distribution for 523: 
+Same aa: 
+Different aa: 
+Distribution for 524: 
+Same aa: 
+Different aa: 
+Distribution for 525: 
+Same aa: 
+Different aa: 
+Distribution for 526: 
+Same aa: 
+Different aa: 
+Distribution for 527: 
+Same aa: 
+Different aa: 
+Distribution for 528: 
+Same aa: 
+Different aa: 
+Distribution for 529: 
+Same aa: 
+Different aa: 
+Distribution for 530: 
+Same aa: 
+Different aa: 
+Distribution for 531: 
+Same aa: 
+Different aa: 
+Distribution for 532: 
+Same aa: 
+Different aa: 
+Distribution for 533: 
+Same aa: 
+Different aa: 
+Distribution for 534: 
+Same aa: 
+Different aa: 
+Distribution for 535: 
+Same aa: 
+Different aa: 
+Distribution for 536: 
+Same aa: 
+Different aa: 
+Distribution for 537: 
+Same aa: 
+Different aa: 
+Distribution for 538: 
+Same aa: 
+Different aa: 
+Distribution for 539: 
+Same aa: 
+Different aa: 
+Distribution for 540: 
+Same aa: 
+Different aa: 
+Distribution for 541: 
+Same aa: 
+Different aa: 
+Distribution for 542: 
+Same aa: 
+Different aa: 
+Distribution for 543: 
+Same aa: 
+Different aa: 
+Distribution for 544: 
+Same aa: 
+Different aa: 
+Distribution for 545: 
+Same aa: 
+Different aa: 
+Distribution for 546: 
+Same aa: 
+Different aa: 
+Distribution for 547: 
+Same aa: 
+Different aa: 
+Distribution for 548: 
+Same aa: 
+Different aa: 
+Distribution for 549: 
+Same aa: 
+Different aa: 
+Distribution for 550: 
+Same aa: 
+Different aa: 
+Distribution for 551: 
+Same aa: 
+Different aa: 
+Distribution for 552: 
+Same aa: 
+Different aa: 
+Distribution for 553: 
+Same aa: 
+Different aa: 
+Distribution for 554: 
+Same aa: 
+Different aa: 
+Distribution for 555: 
+Same aa: 
+Different aa: 
+Distribution for 556: 
+Same aa: 
+Different aa: 
+Distribution for 557: 
+Same aa: 
+Different aa: 
+Distribution for 558: 
+Same aa: 
+Different aa: 
+Distribution for 559: 
+Same aa: 
+Different aa: 
+Distribution for 560: 
+Same aa: 
+Different aa: 
+Distribution for 561: 
+Same aa: 
+Different aa: 
+Distribution for 562: 
+Same aa: 
+Different aa: 
+Distribution for 563: 
+Same aa: 
+Different aa: 
+Distribution for 564: 
+Same aa: 
+Different aa: 
+Distribution for 565: 
+Same aa: 
+Different aa: 
