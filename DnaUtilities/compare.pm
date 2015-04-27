@@ -5,7 +5,7 @@ use vars qw(@ISA @EXPORT $VERSION);
 use Exporter;
 $VERSION = 1.00; # Or higher
 @ISA = qw(Exporter);
-@EXPORT = qw(count_substitutions, nsyn_substitutions, syn_substitutions); # Symbols to autoexport (:DEFAULT tag)
+@EXPORT = qw(count_substitutions nsyn_substitutions syn_substitutions); # Symbols to autoexport (:DEFAULT tag)
 
 use Bio::Tools::CodonTable;
 use Class::Struct;

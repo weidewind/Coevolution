@@ -4,7 +4,7 @@
 
 use strict;
 use Bio::Phylo::IO;
-use DnaUtilities::compare qw(nsyn_substitutions, syn_substitutions);
+use DnaUtilities::compare qw(nsyn_substitutions syn_substitutions);
 
 use TreeUtils::Phylo::FigTree;
 use Bio::SeqIO;
@@ -299,7 +299,7 @@ foreach my $trn(@{$nodes_with_sub{$site}}){
 #onemtest(214);
 #onemtest(136);
 
-logic_general();
+#logic_general();
 #logic_unrestricted();
 #logic();
 
@@ -687,22 +687,29 @@ my @mutmaps = mutmap($tree, \%fasta);
 my %subs_on_node = %{$mutmaps[0]};
 my %nodes_with_sub = %{$mutmaps[1]};
 
- compute_min_distances_in_subtree($tree, \%subs_on_node);
+ compute_all_distances_in_subtree($tree, \%subs_on_node);
  my $root = $tree->get_root();
 	$root->visit_depth_first(
 				-post => sub{ #all daughters have been processed
 					my $node=shift;
-					my %min_dists = compute_min_distances_global($node, \%subs_on_node);
-					print $node->get_name."\t";
-					for my $site(keys %min_dists){
-						print ($site."_".$min_dists{$site}."\t");
+					my %dists = compute_all_distances_global($node, \%subs_on_node);
+					print "node name ";
+					print $node->get_name;
+					print "\n";
+					for my $site(keys %dists){
+						print ("site name ".$site);
+						print "\n";
+						for my $d(@{$dists{$site}}){
+							print ($d."_");
+							print "\t";
+						}
 					}
 					print "\n";
 				}
 	);
 }
 
-#subtreetest();
+subtreetest();
 
 ## For every node of the given tree sets a hash -min_distances_in_subtree:
 ## key = index of site (in protein sequence)
@@ -752,6 +759,67 @@ sub compute_min_distances_global{
 	
 }
 
+sub compute_all_distances_global{
+	my $node = $_[0];
+	my %subs_on_node = %{$_[1]};
+	#my $seq_length = $_[2];
+	
+	my %dists = %{$node->get_generic("-all_distances_in_subtree")};
+
+	my $tnode = $node;
+	
+	#print ("My node name ".$node->get_name()."\t");
+	#my @ancestors = $node->get_ancestors();
+	#for my $anc(@ancestors){
+		while(!$tnode->is_root()){
+			my $sister = ${$tnode->get_sisters()}[1]; #some strange manipulations to get the correct () sister (#supposing that every node (except the root) has one and only one sister )
+			if ($sister->get_name() eq $tnode->get_name()){
+				$sister = ${$tnode->get_sisters()}[0];
+			}
+		#print ("sister ".$sister->get_name()."\t");
+			my %sister_all_dists = %{$sister->get_generic("-all_distances_in_subtree")}; 
+		#print (" number of subs ".(scalar keys %sister_min_dists)."\t");	
+			my %sister_subs = %{$subs_on_node{$sister->get_name()}};
+			my $dist_to_sister = $tnode->get_branch_length() + $sister->get_branch_length();
+			for my $site_index(keys %sister_subs){ # if there is a mutation in this site in sister node, check if it's closer than the closest mutation in your own subtree 
+				if (!exists $dists{$site_index}){
+								my @dist_array;
+								push @dist_array, $dist_to_sister;
+								$dists{$site_index} = \@dist_array;
+				}
+				else {
+								my @dist_array = @{$dists{$site_index}};
+								push @dist_array, $dist_to_sister;
+								$dists{$site_index} = \@dist_array;
+								#todo: check 
+				}
+			}
+			for my $site_index(keys %sister_all_dists ){
+	 #  distances from the sister subtree
+					if(!exists $dists{$site_index}){
+						my @dist_array;
+						for my $sisdist(@{$sister_all_dists{$site_index}}){
+							push @dist_array, $sisdist + $dist_to_sister;
+						}
+						$dists{$site_index} = \@dist_array;
+					}
+					else {
+								my @dist_array = @{$dists{$site_index}};
+								for my $sisdist(@{$sister_all_dists{$site_index}}){
+									push @dist_array, $sisdist + $dist_to_sister;
+								}
+								$dists{$site_index} = \@dist_array;
+								#todo: check 
+					}
+				
+			}
+		
+			$tnode = $tnode->get_parent();
+		}
+	#print "\n";
+	return %dists;
+	
+}
 
 sub compute_min_distances_in_subtree{
 	my $tree = $_[0];
@@ -784,6 +852,67 @@ sub compute_min_distances_in_subtree{
 					#print (" number of sites with muutations in the subtree ".(scalar keys %min_dists)."\n");
 					$node->set_generic("-min_distances_in_subtree" => \%min_dists);
 					#print $node->get_name()."\t";
+					#print Dumper (%min_dists);
+					#print "\n";
+					
+				}
+			);
+}
+
+
+sub compute_all_distances_in_subtree {
+	my $tree = $_[0];
+	my %subs_on_node = %{$_[1]};
+	
+	my $root = $tree->get_root();
+	$root->visit_depth_first(
+				-post => sub{ #all daughters have been processed
+					my $node=shift;
+					my $i = 0;
+					my %dists;
+					print ("Node name: ".$node->get_name()."\t");
+					while (my $child = $node->get_child($i)){
+						$i++;
+						print ("Child $i name: ".$child->get_name()."\t");
+						my %child_dists = %{$child->get_generic("-all_distances_in_subtree")};
+						foreach my $site(keys %child_dists){ # add child branch length to child distances
+							foreach my $new_dist(@{$child_dists{$site}}){
+								$new_dist += $child->get_branch_length();
+								if (!exists $dists{$site}){
+									my @dist_array;
+									push @dist_array, $new_dist;
+									print " pushing in new $new_dist ";
+									$dists{$site} = \@dist_array;
+								}
+								else {
+									my @dist_array = @{$dists{$site}};
+									push @dist_array, $new_dist;
+									print " pushing in existing $new_dist ";
+									$dists{$site} = \@dist_array;
+									#todo: check 
+								}
+							}
+						}
+						foreach my $new_site(keys %{$subs_on_node{$child->get_name()}}){ # add distances to mutations in the child itself.
+							my $new_dist = $child->get_branch_length();
+							if (!exists $dists{$new_site}){ 
+								my @dist_array;
+								push @dist_array, $new_dist;
+								print " pushing in new child distance $new_dist ";
+								$dists{$new_site} = \@dist_array;
+							}
+							else {
+								my @dist_array = @{$dists{$new_site}};
+								push @dist_array, $new_dist;
+								print " pushing in existing child distance $new_dist ";
+								$dists{$new_site} = \@dist_array;
+								#todo: check 
+							}
+						}
+					}
+					print (" number of sites with muutations in the subtree ".(scalar keys %dists)."\n");
+					$node->set_generic("-all_distances_in_subtree" => \%dists);
+					print $node->get_name()."\t";
 					#print Dumper (%min_dists);
 					#print "\n";
 					
