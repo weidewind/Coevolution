@@ -1,0 +1,9650 @@
+mutmap: 223	AGG	AGA
+mutmap: 223	AGA	AGG
+mutmap: 500	GGG	GGT
+mutmap: 500	GGG	GGT
+mutmap: 556	CAG	CAA
+mutmap: 228	ACT	ACC
+mutmap: 490	GAC	GAT
+mutmap: 353	GGT	GGC
+mutmap: 223	AGG	AGA
+mutmap: 263	AGT	AGC
+mutmap: 265	GGG	GGA
+mutmap: 25	AGC	AGT
+mutmap: 84	GAT	GAC
+mutmap: 95	TTT	TTC
+mutmap: 254	AAG	AAA
+mutmap: 331	AAG	AAA
+mutmap: 416	TCA	TCT
+mutmap: 61	AGC	AGT
+mutmap: 349	GGC	GGA
+mutmap: 214	GCA	GCG
+mutmap: 399	AGG	AGA
+mutmap: 406	GAG	GAA
+mutmap: 468	AGG	AGA
+mutmap: 177	TAT	TAC
+mutmap: 454	GAC	GAT
+mutmap: 235	TCC	TCT
+mutmap: 398	AAC	AAT
+mutmap: 58	CTA	CTG
+mutmap: 94	GGT	GGC
+mutmap: 254	AAG	AAA
+mutmap: 268	ATC	ATT
+mutmap: 319	GGA	GGG
+mutmap: 397	TTG	CTG
+mutmap: 525	TCT	TCA
+mutmap: 3	ACC	ACT
+mutmap: 210	CTG	CTA
+mutmap: 321	TGC	TGT
+mutmap: 449	AAT	AAC
+mutmap: 476	GAA	GAG
+mutmap: 491	AAC	AAT
+mutmap: 61	AGC	AGT
+mutmap: 139	GAG	GAA
+mutmap: 140	GGT	GGC
+mutmap: 291	GGT	GGC
+mutmap: 293	TGT	TGC
+mutmap: 462	AAG	AAA
+mutmap: 221	TCT	TCC
+mutmap: 65	GGG	GGT
+mutmap: 273	TAT	TAC
+mutmap: 329	ACC	ACT
+mutmap: 556	CAG	CAA
+mutmap: 40	ACA	ACG
+mutmap: 46	ACA	ACG
+mutmap: 183	ACT	ACC
+mutmap: 294	AGT	AGC
+mutmap: 94	GGC	GGA
+mutmap: 157	AGG	AGA
+mutmap: 180	CAG	CAA
+mutmap: 374	TCT	TCC
+mutmap: 500	GGG	GGT
+mutmap: 556	CAA	CAG
+mutmap: 209	GAC	GAT
+mutmap: 343	CAA	CAG
+mutmap: 441	GCG	GCA
+mutmap: 57	GAG	GAA
+mutmap: 265	GGG	GGA
+mutmap: 133	ACT	ACC
+mutmap: 557	AAA	AAG
+mutmap: 28	ACG	ACT
+mutmap: 189	AAT	AAC
+mutmap: 15	TTC	TTT
+mutmap: 280	AAA	AAG
+mutmap: 335	GGG	GGA
+mutmap: 198	GTT	GTC
+mutmap: 472	AGG	AGA
+mutmap: 551	ATC	ATA
+mutmap: 35	GCG	GCA
+mutmap: 64	ACG	ACA
+mutmap: 103	TTC	TTT
+mutmap: 133	ACT	ACC
+mutmap: 163	TTT	TTC
+mutmap: 193	CTA	CTG
+mutmap: 253	GTT	GTA
+mutmap: 403	AAG	AAA
+mutmap: 500	GGG	GGA
+mutmap: 522	GAA	GAG
+mutmap: 197	GGG	GGA
+mutmap: 289	CCT	CCC
+mutmap: 263	AGT	AGC
+mutmap: 264	AAT	AAC
+mutmap: 468	AGG	AGA
+mutmap: 404	ACG	ACA
+mutmap: 285	AGG	AGA
+mutmap: 197	GGA	GGG
+mutmap: 400	GTA	GTG
+mutmap: 471	CTG	CTA
+mutmap: 481	GGT	GGC
+mutmap: 508	AGA	AGG
+mutmap: 155	TGC	TGT
+mutmap: 253	GTA	GTG
+mutmap: 182	GTG	GTA
+mutmap: 297	TGC	TGT
+mutmap: 15	TTC	TTT
+mutmap: 378	GGA	GGG
+mutmap: 20	CCA	CCC
+mutmap: 88	GGG	GGA
+mutmap: 221	TCC	TCT
+mutmap: 247	AGC	AGT
+mutmap: 150	GGG	GGA
+mutmap: 227	CAA	CAG
+mutmap: 319	GGG	GGA
+mutmap: 447	CTG	TTG
+mutmap: 556	CAA	CAG
+mutmap: 72	CAT	CAC
+mutmap: 77	GGA	GGG
+mutmap: 145	GGG	GGA
+mutmap: 389	GCC	GCA
+mutmap: 440	AAT	AAC
+mutmap: 168	AAC	AAT
+mutmap: 312	AAC	AAT
+mutmap: 33	CAT	CAC
+mutmap: 312	AAT	AAC
+mutmap: 96	CAA	CAG
+mutmap: 244	AGT	AGC
+mutmap: 247	AGT	AGC
+mutmap: 19	CTT	CTC
+mutmap: 442	GAG	GAA
+mutmap: 160	GAT	GAC
+mutmap: 95	TTT	TTC
+mutmap: 119	CCA	CCG
+mutmap: 130	TCG	TCA
+mutmap: 167	CTG	TTG
+mutmap: 193	CTG	TTG
+mutmap: 263	AGT	AGC
+mutmap: 308	AAG	AAA
+mutmap: 394	AAT	AAC
+mutmap: 428	TAC	TAT
+mutmap: 446	GCT	GCC
+mutmap: 458	TCG	TCA
+mutmap: 532	CTG	CTA
+mutmap: 31	CTG	TTG
+mutmap: 457	GAC	GAT
+mutmap: 303	AGC	AGT
+mutmap: 265	GGG	GGA
+mutmap: 319	GGG	GGA
+mutmap: 398	AAT	AAC
+mutmap: 186	AAC	AAT
+mutmap: 469	AAG	AAA
+mutmap: 51	GAA	GAG
+mutmap: 61	AGT	AGC
+mutmap: 125	AGG	AGA
+mutmap: 134	CTG	TTG
+mutmap: 157	AGG	AGA
+mutmap: 210	CTA	TTA
+mutmap: 407	AAA	AAG
+mutmap: 134	CTG	TTG
+mutmap: 107	AGC	AGT
+mutmap: 300	CCA	CCG
+mutmap: 342	AAA	AAG
+mutmap: 49	CAG	CAA
+mutmap: 77	GGG	GGA
+mutmap: 247	AGT	AGC
+mutmap: 260	TTA	TTG
+mutmap: 331	AAG	AAA
+mutmap: 243	TCT	TCC
+mutmap: 149	AGT	AGC
+mutmap: 193	TTG	CTG
+mutmap: 395	GGG	GGA
+mutmap: 237	CCC	CCA
+mutmap: 325	GTT	GTC
+mutmap: 396	AAA	AAG
+mutmap: 500	GGA	GGG
+mutmap: 512	TTA	TTG
+mutmap: 17	CAA	CAG
+mutmap: 19	CTT	CTG
+mutmap: 60	CAG	CAA
+mutmap: 66	AGA	CGA
+mutmap: 239	GTA	GTG
+mutmap: 240	AGG	AGA
+mutmap: 274	TTC	TTT
+mutmap: 289	CCT	CCC
+mutmap: 329	ACT	ACC
+mutmap: 516	TTT	TTC
+mutmap: 264	ACT	ACC
+mutmap: 323	AGG	AGA
+mutmap: 484	AAA	AAG
+mutmap: 492	GCT	GCC
+mutmap: 323	AGA	AGG
+mutmap: 294	AGT	AGC
+mutmap: 532	CTA	TTA
+mutmap: 397	CTG	CTA
+mutmap: 510	GAA	GAG
+mutmap: 476	GAG	GAA
+mutmap: 40	ACG	ACT
+mutmap: 125	AGG	AGA
+mutmap: 200	CAC	CAT
+mutmap: 203	ACG	ACA
+mutmap: 77	GGA	GGG
+mutmap: 122	GCC	GCT
+mutmap: 241	GGT	GGC
+mutmap: 355	ATA	ATC
+mutmap: 20	CCC	CCT
+mutmap: 81	ACA	ACG
+mutmap: 118	GTG	GTA
+mutmap: 203	ACG	ACA
+mutmap: 302	GGA	GGG
+mutmap: 440	AAC	AAT
+mutmap: 82	CTG	TTG
+mutmap: 125	AGG	AGA
+mutmap: 375	GAG	GAA
+mutmap: 49	CAG	CAA
+mutmap: 223	AAG	AAA
+mutmap: 277	CGC	CGA
+mutmap: 289	CCT	CCC
+mutmap: 351	ATA	ATC
+mutmap: 164	TTC	TTT
+mutmap: 226	CAG	CAA
+mutmap: 259	CTG	CTT
+mutmap: 309	CCC	CCT
+mutmap: 445	GTC	GTT
+mutmap: 484	AAG	AAA
+mutmap: 529	GAC	GAT
+mutmap: 304	ATT	ATC
+mutmap: 16	GCC	GCT
+mutmap: 55	GCT	GCC
+mutmap: 339	GTA	GTT
+mutmap: 360	GAG	GAA
+mutmap: 235	TCT	TCC
+mutmap: 282	TCA	TCG
+mutmap: 32	GGA	GGG
+mutmap: 40	ACG	ACT
+mutmap: 75	CTT	CTC
+mutmap: 112	AAC	AAT
+mutmap: 119	CCG	CCA
+mutmap: 141	TTC	TTT
+mutmap: 192	AAA	AAG
+mutmap: 266	AAC	AAT
+mutmap: 277	CGA	CGG
+mutmap: 351	ATC	ATT
+mutmap: 375	GAG	GAA
+mutmap: 68	TGC	TGT
+mutmap: 79	AAC	AAT
+mutmap: 221	TCT	TCC
+mutmap: 229	GTA	GTG
+mutmap: 253	GTA	GTG
+mutmap: 285	AGG	AGA
+mutmap: 312	AAT	AAC
+mutmap: 235	TCC	TCT
+mutmap: 20	CCC	CCT
+mutmap: 337	CGG	CGA
+mutmap: 16	GCC	GCT
+mutmap: 264	ACC	ACA
+mutmap: 266	AAC	AAT
+mutmap: 320	GCA	GCC
+mutmap: 321	TGT	TGC
+mutmap: 413	AAG	AAA
+mutmap: 455	CTG	CTA
+mutmap: 118	GTG	GTA
+mutmap: 455	CTA	CTT
+mutmap: 532	CTA	CTG
+mutmap: 562	TGC	TGT
+mutmap: 177	TAT	TAC
+mutmap: 509	GAC	GAT
+mutmap: 58	CTG	TTG
+mutmap: 157	AGG	AGA
+mutmap: 315	AGG	AGA
+mutmap: 77	GGA	GGG
+mutmap: 408	TTC	TTT
+mutmap: 40	ACG	ACA
+mutmap: 503	GAC	GAT
+mutmap: 41	CTA	CTG
+mutmap: 483	TTC	TTT
+mutmap: 420	GGG	GGA
+mutmap: 33	CAT	CAC
+mutmap: 73	CGA	AGA
+mutmap: 265	GGG	GGA
+mutmap: 324	TAT	TAC
+mutmap: 500	GGA	GGG
+mutmap: 285	AGG	AGA
+mutmap: 456	ACT	ACG
+mutmap: 523	CTG	CTA
+mutmap: 372	CAA	CAG
+mutmap: 490	GAC	GAT
+mutmap: 33	CAT	CAC
+mutmap: 134	CTG	CTA
+mutmap: 146	GTC	GTA
+mutmap: 86	CTA	CTG
+mutmap: 45	ATC	ATT
+mutmap: 551	ATC	ATT
+mutmap: 56	ACT	ACC
+mutmap: 73	CGA	CGC
+mutmap: 469	AAG	AAA
+mutmap: 511	GCA	GCG
+mutmap: 146	GTA	GTG
+mutmap: 277	CGA	AGA
+mutmap: 295	TCT	TCC
+mutmap: 41	CTA	TTA
+mutmap: 231	CCG	CCA
+mutmap: 174	GAA	GAG
+mutmap: 31	CTG	CTA
+mutmap: 548	CTG	CTA
+mutmap: 512	TTA	CTA
+mutmap: 541	TTT	TTC
+mutmap: 331	AAA	AAG
+mutmap: 35	GCA	GCG
+mutmap: 277	CGA	CGG
+mutmap: 325	GTT	GTA
+mutmap: 33	CAC	CAT
+mutmap: 419	GAA	GAG
+mutmap: 477	GAC	GAT
+mutmap: 85	GCT	GCC
+mutmap: 177	TAT	TAC
+mutmap: 382	GAT	GAC
+mutmap: 72	CAC	CAT
+mutmap: 104	GTT	GTC
+mutmap: 150	GGG	GGA
+mutmap: 410	CAA	CAG
+mutmap: 39	GGA	GGG
+mutmap: 11	TTA	CTA
+mutmap: 254	AAA	AAG
+mutmap: 548	CTG	TTG
+mutmap: 195	ATT	ATA
+mutmap: 68	TGC	TGT
+mutmap: 109	GCT	GCC
+mutmap: 157	AGG	CGG
+mutmap: 188	GGC	GGA
+mutmap: 413	AAA	AAG
+mutmap: 77	GGA	GGG
+mutmap: 29	CTG	CTA
+mutmap: 351	ATC	ATT
+mutmap: 203	ACG	ACA
+mutmap: 406	GAG	GAA
+mutmap: 33	CAC	CAT
+mutmap: 82	CTG	CTA
+mutmap: 289	CCC	CCT
+mutmap: 334	ACA	ACG
+mutmap: 170	TTG	CTG
+mutmap: 521	GTT	GTC
+mutmap: 171	CAC	CAT
+mutmap: 395	GGG	GGA
+mutmap: 183	ACT	ACC
+mutmap: 188	GGC	GGA
+mutmap: 77	GGA	GGG
+mutmap: 468	AGG	AGA
+mutmap: 241	GGT	GGC
+mutmap: 160	GTT	GTC
+mutmap: 193	TTG	TTA
+mutmap: 495	GGG	GGA
+mutmap: 22	AAT	AAC
+mutmap: 148	CAG	CAA
+mutmap: 324	TAT	TAC
+mutmap: 501	ACT	ACC
+mutmap: 509	GAC	GAT
+mutmap: 112	AAC	AAT
+mutmap: 289	CCC	CCA
+mutmap: 425	CTC	CTT
+mutmap: 78	AAA	AAG
+mutmap: 138	AAT	AAC
+mutmap: 212	GTT	GTC
+mutmap: 237	CCC	CCA
+mutmap: 380	GCA	GCT
+mutmap: 440	AAC	AAT
+mutmap: 446	GCC	GCT
+mutmap: 482	TGC	TGT
+mutmap: 548	CTG	CTT
+mutmap: 73	CGA	CGG
+mutmap: 133	ACC	ACA
+mutmap: 231	CCG	CCA
+mutmap: 240	AGG	AGA
+mutmap: 317	ACA	ACT
+mutmap: 348	TTC	TTT
+mutmap: 372	CAA	CAG
+mutmap: 463	CTG	CTA
+mutmap: 95	TTC	TTT
+mutmap: 135	GAG	GAA
+mutmap: 316	ATC	ATA
+mutmap: 545	GTT	GTG
+mutmap: 134	CTG	CTT
+mutmap: 532	CTA	CTG
+mutmap: 42	GTG	GTT
+mutmap: 381	GCA	GCG
+mutmap: 472	AGG	AGA
+mutmap: 329	ACT	ACA
+mutmap: 449	AAC	AAT
+mutmap: 470	CAA	CAG
+mutmap: 501	ACT	ACC
+mutmap: 53	ACT	ACC
+mutmap: 302	GGA	GGG
+mutmap: 517	CAG	CAA
+mutmap: 12	TGT	TGC
+mutmap: 242	CTG	CTT
+mutmap: 356	GAA	GAG
+mutmap: 234	GGG	GGA
+mutmap: 43	AAA	AAG
+mutmap: 472	AGG	AGA
+mutmap: 19	CTT	CTC
+mutmap: 235	TCT	TCC
+mutmap: 225	AGC	AGT
+mutmap: 356	GAA	GAG
+mutmap: 179	GCG	GCA
+mutmap: 262	AAT	AAC
+mutmap: 321	TGC	TGT
+mutmap: 331	AAA	AAG
+mutmap: 271	CGG	CGA
+mutmap: 285	AGG	AGA
+mutmap: 399	AGG	AGA
+mutmap: 322	CCC	CCT
+mutmap: 157	AGG	AGA
+mutmap: 203	ACG	ACA
+mutmap: 313	GTA	GTG
+mutmap: 526	GGA	GGT
+mutmap: 46	ACG	ACA
+mutmap: 168	AAT	AAC
+mutmap: 498	AGA	AGG
+mutmap: 531	ATC	ATT
+mutmap: 396	AAA	AAG
+mutmap: 406	GAG	GAA
+mutmap: 334	ACA	ACT
+mutmap: 372	CAA	CAG
+mutmap: 79	AAC	AAT
+mutmap: 400	TTA	CTA
+mutmap: 542	TTG	CTG
+mutmap: 282	TCA	TCC
+mutmap: 526	GGA	GGG
+mutmap: 401	ATC	ATT
+mutmap: 178	CCA	CCT
+mutmap: 267	CTA	TTA
+mutmap: 235	TCT	TCC
+mutmap: 239	GTA	GTG
+mutmap: 391	GAC	GAT
+mutmap: 449	AAC	AAT
+mutmap: 241	GGT	GGC
+mutmap: 193	TTG	CTG
+mutmap: 418	GTA	GTG
+mutmap: 394	AAC	AAT
+mutmap: 542	TTG	CTG
+mutmap: 86	CTA	CTG
+mutmap: 33	CAC	CAT
+mutmap: 477	GAC	GAT
+mutmap: 423	CAG	CAA
+mutmap: 525	TCA	TCG
+mutmap: 535	TCC	TCT
+mutmap: 82	CTG	CTA
+mutmap: 204	GAC	GAT
+mutmap: 404	ACG	ACA
+mutmap: 506	GTA	GTG
+mutmap: 191	GAC	GAT
+mutmap: 421	AGA	AGG
+mutmap: 46	ACG	ACA
+mutmap: 115	CCT	CCA
+mutmap: 468	AGG	AGA
+mutmap: 26	ACA	ACG
+mutmap: 48	GAT	GAC
+mutmap: 131	TCA	TCC
+mutmap: 150	GGG	GGA
+mutmap: 202	AGC	AGT
+mutmap: 244	AGT	AGC
+mutmap: 79	AAC	AAT
+mutmap: 85	GCT	GCC
+mutmap: 77	GGA	GGG
+mutmap: 134	CTG	CTT
+mutmap: 252	ATA	ATT
+mutmap: 415	TTC	TTT
+mutmap: 234	GGG	GGA
+mutmap: 309	CCT	CCA
+mutmap: 438	TCT	TCG
+mutmap: 540	TGC	TGT
+mutmap: 164	TTT	TTC
+mutmap: 493	TGC	TGT
+mutmap: 255	CCG	CCT
+mutmap: 393	ATC	ATA
+mutmap: 430	GAA	GAG
+mutmap: 546	GTT	GTG
+mutmap: 242	GTC	GTA
+mutmap: 109	GCT	GCC
+mutmap: 411	ATC	ATT
+mutmap: 477	GAC	GAT
+mutmap: 482	TGC	TGT
+mutmap: 471	CTG	CTA
+mutmap: 7	TTG	TTA
+mutmap: 320	GCC	GCA
+mutmap: 231	CCG	CCA
+mutmap: 262	AAC	AAT
+mutmap: 441	GCG	GCA
+mutmap: 482	TGT	TGC
+mutmap: 516	TTC	TTT
+mutmap: 13	CTG	CTT
+mutmap: 153	TAT	TAC
+mutmap: 351	ATC	ATA
+mutmap: 206	GAC	GAT
+mutmap: 394	AAC	AAT
+mutmap: 440	AAC	AAT
+mutmap: 183	ACT	ACC
+mutmap: 26	ACG	ACA
+mutmap: 342	AAA	AAG
+mutmap: 133	ACC	ACT
+mutmap: 73	CGA	AGA
+mutmap: 158	AGA	AGG
+mutmap: 353	GGT	GGC
+mutmap: 5	ATT	ATC
+mutmap: 356	GAA	GAG
+mutmap: 118	GTG	GTA
+mutmap: 371	CAT	CAC
+mutmap: 351	ATC	ATT
+mutmap: 75	CTT	CTC
+mutmap: 46	ACG	ACA
+mutmap: 469	AAG	AAA
+mutmap: 40	ACG	ACA
+mutmap: 561	AGG	AGA
+mutmap: 566	ATT	ATC
+mutmap: 291	GGC	GGA
+mutmap: 375	GAG	GAA
+mutmap: 20	CCC	CCT
+mutmap: 364	GAC	GAT
+mutmap: 154	GCT	GCC
+mutmap: 209	AGC	AGT
+mutmap: 260	TTG	CTG
+mutmap: 74	ATC	ATT
+mutmap: 89	GAC	GAT
+mutmap: 118	GTG	GTA
+mutmap: 123	TCC	TCT
+mutmap: 199	CAC	CAT
+mutmap: 271	CGG	CGA
+mutmap: 298	ATC	ATA
+mutmap: 45	ATC	ATA
+mutmap: 68	TGC	TGT
+mutmap: 325	GTT	GTC
+mutmap: 370	AGG	AGA
+mutmap: 316	ATC	ATT
+mutmap: 237	CCC	CCT
+mutmap: 329	ACT	ACC
+mutmap: 97	AAT	AAC
+mutmap: 202	AGT	AGC
+mutmap: 104	GTT	GTC
+mutmap: 111	AGC	AGT
+mutmap: 242	GTC	GTT
+mutmap: 253	GTA	GTG
+mutmap: 471	CTG	TTG
+mutmap: 201	CCG	CCA
+mutmap: 57	GAG	GAA
+mutmap: 12	TGT	TGC
+mutmap: 261	ATT	ATC
+mutmap: 557	AAA	AAG
+mutmap: 15	TTC	TTT
+mutmap: 349	GGC	GGT
+mutmap: 269	GCT	GCC
+mutmap: 70	AGT	AGC
+mutmap: 304	ATT	ATC
+mutmap: 391	AAC	AAT
+mutmap: 303	AGC	AGT
+mutmap: 396	AAA	AAG
+mutmap: 509	GAC	GAT
+mutmap: 523	CTG	CTT
+mutmap: 78	GAA	GAG
+mutmap: 28	ACG	ACA
+mutmap: 125	AGG	AGA
+mutmap: 455	CTA	TTA
+mutmap: 170	TTG	TTA
+mutmap: 234	GGA	GGC
+mutmap: 13	CTG	TTG
+mutmap: 514	AAC	AAT
+mutmap: 352	GCA	GCG
+mutmap: 363	GTA	GTG
+mutmap: 65	GGT	GGC
+mutmap: 349	GGC	GGT
+mutmap: 181	AAC	AAT
+mutmap: 82	CTG	CTA
+mutmap: 133	ACC	ACA
+mutmap: 32	GGA	GGG
+mutmap: 349	GGC	GGT
+mutmap: 51	GAA	GAG
+mutmap: 170	TTG	TTA
+mutmap: 375	GAG	GAA
+mutmap: 198	GTT	GTC
+mutmap: 136	TTT	TTC
+mutmap: 136	TTC	TTT
+mutmap: 132	GGC	GGA
+mutmap: 393	ATC	ATT
+mutmap: 45	ATC	ATA
+mutmap: 373	AAT	AAC
+mutmap: 71	CCT	CCC
+mutmap: 531	ATC	ATT
+mutmap: 82	CTA	CTG
+mutmap: 390	ATC	ATT
+mutmap: 253	GTA	GTG
+mutmap: 335	GGG	GGA
+mutmap: 376	GGC	GGT
+mutmap: 98	AAG	AAA
+mutmap: 540	TGT	TGC
+mutmap: 185	CCA	CCG
+mutmap: 236	AGT	AGC
+mutmap: 404	ACG	ACA
+mutmap: 52	GTG	GTA
+mutmap: 270	CCT	CCC
+mutmap: 11	TTA	CTA
+mutmap: 13	CTG	CTA
+mutmap: 122	GCC	GCT
+mutmap: 135	GAG	GAA
+mutmap: 396	AAA	AAG
+mutmap: 451	CAT	CAC
+mutmap: 131	TCC	TCA
+mutmap: 133	ACA	ACG
+mutmap: 203	ACG	ACA
+mutmap: 339	GTA	GTG
+mutmap: 349	GGC	GGT
+mutmap: 353	GGT	GGC
+mutmap: 440	AAC	AAT
+mutmap: 378	GGA	GGG
+mutmap: 512	TTA	TTG
+mutmap: 231	CCG	CCA
+mutmap: 260	TTG	TTA
+mutmap: 375	GAG	GAA
+mutmap: 397	CTG	CTA
+mutmap: 451	CAT	CAC
+mutmap: 193	TTG	TTA
+mutmap: 12	TGT	TGC
+mutmap: 52	GTG	GTA
+mutmap: 339	GTG	GTA
+mutmap: 62	TCC	TCT
+mutmap: 79	AAC	AAT
+mutmap: 295	TCT	TCA
+mutmap: 386	ACT	ACA
+mutmap: 406	GAG	GAA
+mutmap: 209	AGC	AGT
+mutmap: 224	AGA	AGG
+mutmap: 234	GGA	GGG
+mutmap: 33	CAC	CAT
+mutmap: 213	CAA	CAG
+mutmap: 361	GGA	GGG
+mutmap: 49	CAA	CAG
+mutmap: 519	AAA	AAG
+mutmap: 7	TTG	CTG
+mutmap: 401	ATC	ATT
+mutmap: 449	AAC	AAT
+mutmap: 480	AAT	AAC
+mutmap: 27	GCA	GCG
+mutmap: 361	GGA	GGG
+mutmap: 223	AAA	AAG
+mutmap: 286	TCA	TCC
+mutmap: 515	CGG	CGA
+mutmap: 335	GGG	GGA
+mutmap: 27	GCA	GCG
+mutmap: 471	CTG	CTA
+mutmap: 130	TCA	TCG
+mutmap: 506	GTA	GTG
+mutmap: 304	ATT	ATC
+mutmap: 202	GGT	GGC
+mutmap: 399	AGG	AGA
+mutmap: 526	GGA	GGG
+mutmap: 391	AAC	AAT
+mutmap: 400	TTA	TTG
+mutmap: 433	AAA	AAG
+mutmap: 87	TTG	TTA
+mutmap: 509	GAC	GAT
+mutmap: 72	CAC	CAT
+mutmap: 135	GAG	GAA
+mutmap: 429	GTT	GTC
+mutmap: 547	TTG	TTA
+mutmap: 400	TTA	TTG
+mutmap: 401	ATC	ATT
+mutmap: 107	AGC	AGT
+mutmap: 277	CGA	AGA
+mutmap: 314	AAC	AAT
+mutmap: 436	CTC	CTT
+mutmap: 59	GTT	GTC
+mutmap: 216	GGG	GGA
+mutmap: 285	AGG	AGA
+mutmap: 311	CAA	CAG
+mutmap: 350	GCA	GCG
+mutmap: 519	AAA	AAG
+mutmap: 92	TGT	TGC
+mutmap: 294	AAT	AAC
+mutmap: 198	GTT	GTC
+mutmap: 510	GAA	GAG
+mutmap: 274	TTC	TTT
+mutmap: 372	CAA	CAG
+mutmap: 33	CAC	CAT
+mutmap: 234	GGA	GGG
+mutmap: 265	GGG	GGA
+mutmap: 15	TTC	TTT
+mutmap: 140	AGC	AGT
+mutmap: 371	CAT	CAC
+mutmap: 506	GTA	GTG
+mutmap: 509	GAC	GAT
+mutmap: 512	TTG	TTA
+mutmap: 522	GAG	GAA
+mutmap: 167	TTG	CTG
+mutmap: 52	GTA	GTG
+mutmap: 320	GCC	GCA
+mutmap: 204	GAC	GAT
+mutmap: 542	TTG	TTA
+mutmap: 201	CCG	CCT
+mutmap: 253	GTA	GTG
+mutmap: 112	AAC	AAT
+mutmap: 255	CCG	CCT
+mutmap: 285	AGG	CGG
+mutmap: 293	TGC	TGT
+mutmap: 500	GGA	GGG
+mutmap: 12	TGC	TGT
+mutmap: 97	AAT	AAC
+mutmap: 159	TCT	TCC
+mutmap: 33	CAC	CAT
+mutmap: 30	TGC	TGT
+mutmap: 215	TCA	TCG
+mutmap: 9	TAC	TAT
+mutmap: 208	ATC	ATT
+mutmap: 159	TCT	TCC
+mutmap: 179	GCA	GCG
+mutmap: 239	GTA	GTG
+mutmap: 90	CCT	CCC
+mutmap: 369	TTC	TTT
+mutmap: 19	CTT	CTC
+mutmap: 320	GCC	GCA
+mutmap: 51	GAA	GAG
+mutmap: 541	TTT	TTC
+mutmap: 299	ACT	ACC
+mutmap: 46	ACG	ACT
+mutmap: 107	AGC	AGT
+mutmap: 215	TCG	TCA
+mutmap: 11	TTA	CTA
+mutmap: 81	ACA	ACG
+mutmap: 180	CTG	TTG
+mutmap: 294	AAT	AAC
+mutmap: 521	GTT	GTC
+mutmap: 105	GAA	GAG
+mutmap: 523	CTG	CTA
+mutmap: 170	TTG	TTA
+mutmap: 292	AAA	AAG
+mutmap: 399	AGG	AGA
+mutmap: 396	AAA	AAG
+mutmap: 320	GCC	GCA
+mutmap: 175	TAC	TAT
+mutmap: 90	CCT	CCC
+mutmap: 405	AAC	AAT
+mutmap: 383	CTT	CTC
+mutmap: 72	CAC	CAT
+mutmap: 77	GGA	GGG
+mutmap: 87	TTG	CTG
+mutmap: 334	ACA	ACC
+mutmap: 398	AAT	AAC
+mutmap: 516	TTC	TTT
+mutmap: 235	TCT	TCC
+mutmap: 352	GCG	GCA
+mutmap: 527	TAC	TAT
+mutmap: 118	GTG	GTA
+mutmap: 544	TGT	TGC
+mutmap: 35	GCA	GCG
+mutmap: 72	CAC	CAT
+mutmap: 270	CCT	CCA
+mutmap: 393	ATC	ATT
+mutmap: 547	TTG	CTG
+mutmap: 260	TTG	TTA
+mutmap: 179	GCA	GCT
+mutmap: 429	GTT	GTG
+mutmap: 51	GAA	GAG
+mutmap: 179	GCA	GCT
+mutmap: 319	GGG	GGA
+mutmap: 413	AAA	AAG
+mutmap: 13	CTG	TTG
+mutmap: 33	CAC	CAT
+mutmap: 234	GGA	GGG
+mutmap: 273	TAC	TAT
+mutmap: 255	CCG	CCT
+mutmap: 483	TTC	TTT
+mutmap: 57	GAG	GAA
+mutmap: 402	GAG	GAA
+mutmap: 171	CAC	CAT
+mutmap: 178	CCA	CCG
+mutmap: 334	ACA	ACG
+mutmap: 28	ACG	ACA
+mutmap: 210	CTA	TTA
+mutmap: 322	CCC	CCT
+mutmap: 372	CAA	CAG
+mutmap: 166	AGA	AGG
+mutmap: 185	CCA	CCG
+mutmap: 322	CCC	CCT
+mutmap: 210	CTA	TTA
+mutmap: 471	CTG	CTA
+mutmap: 171	CAC	CAT
+mutmap: 181	AAC	AAT
+mutmap: 426	GAG	GAA
+mutmap: 157	AGG	AGA
+mutmap: 401	ATC	ATT
+mutmap: 255	CCG	CCA
+mutmap: 228	ACT	ACC
+mutmap: 232	AAT	AAC
+mutmap: 431	GAC	GAT
+mutmap: 122	GTC	GTT
+mutmap: 413	AAA	AAG
+mutmap: 500	GGA	GGG
+mutmap: 22	AAT	AAC
+mutmap: 110	TAC	TAT
+mutmap: 315	AGG	AGA
+mutmap: 273	TAC	TAT
+mutmap: 389	GCA	GCG
+mutmap: 225	AGC	AGT
+mutmap: 232	AAT	AAC
+mutmap: 392	CAA	CAG
+mutmap: 422	ATT	ATC
+mutmap: 561	AGG	AGA
+mutmap: 233	ATC	ATT
+mutmap: 150	GGA	GGG
+mutmap: 515	CGG	CGA
+mutmap: 53	ACT	ACC
+mutmap: 155	TGC	TGT
+mutmap: 302	GGA	GGG
+mutmap: 26	ACG	ACA
+mutmap: 16	GCT	GCC
+mutmap: 40	ACG	ACA
+mutmap: 152	AGC	AGT
+mutmap: 210	CTA	TTA
+mutmap: 222	ACC	ACA
+mutmap: 315	AGG	AGA
+mutmap: 383	CTT	CTA
+mutmap: 11	TTA	CTA
+mutmap: 446	GCC	GCA
+mutmap: 486	TAC	TAT
+mutmap: 506	GTA	GTG
+mutmap: 7	TTG	TTA
+mutmap: 142	AAT	AAC
+mutmap: 341	GAG	GAA
+mutmap: 11	TTA	CTA
+mutmap: 337	CGG	CGA
+mutmap: 12	TGT	TGC
+mutmap: 29	CTG	CTT
+mutmap: 180	CTG	TTG
+mutmap: 230	ATC	ATT
+mutmap: 271	CGG	AGG
+mutmap: 497	ATC	ATT
+mutmap: 512	TTG	TTA
+mutmap: 281	AGC	AGT
+mutmap: 351	ATC	ATT
+mutmap: 353	GGC	GGT
+mutmap: 292	AAA	AAG
+mutmap: 260	TTG	TTA
+mutmap: 19	CTT	CTC
+mutmap: 199	CAC	CAT
+mutmap: 330	CTG	CTA
+mutmap: 566	ATT	ATC
+mutmap: 396	AAA	AAG
+mutmap: 499	AAT	AAC
+mutmap: 501	ACT	ACC
+mutmap: 5	ATT	ATA
+mutmap: 305	CCC	CCT
+mutmap: 409	CAT	CAC
+mutmap: 32	GGG	GGA
+mutmap: 179	GCA	GCG
+mutmap: 202	GGT	GGC
+mutmap: 337	CGG	CGA
+mutmap: 560	ATT	ATC
+mutmap: 242	ATC	ATA
+mutmap: 271	CGG	CGA
+mutmap: 340	CCA	CCG
+mutmap: 524	AAG	AAA
+mutmap: 230	ATC	ATT
+mutmap: 447	CTG	CTA
+mutmap: 175	AAC	AAT
+mutmap: 32	GGG	GGA
+mutmap: 159	TCT	TCA
+mutmap: 173	TTA	TTG
+mutmap: 189	AAA	AAG
+mutmap: 200	CAC	CAT
+mutmap: 242	GTC	GTA
+mutmap: 248	ATC	ATA
+mutmap: 291	GGC	GGT
+mutmap: 293	TGC	TGT
+mutmap: 376	GGC	GGA
+mutmap: 400	TTA	TTG
+mutmap: 404	ACG	ACA
+mutmap: 413	AAA	AAG
+mutmap: 514	AAC	AAT
+mutmap: 522	GAG	GAA
+mutmap: 177	TAT	TAC
+mutmap: 546	GTT	GTC
+mutmap: 383	CTT	CTC
+mutmap: 418	GTA	GTG
+mutmap: 450	CAA	CAG
+mutmap: 500	GGA	GGG
+mutmap: 549	GGG	GGA
+mutmap: 344	ACT	ACC
+mutmap: 144	ACT	ACA
+mutmap: 32	GGG	GGA
+mutmap: 210	CTA	TTA
+mutmap: 53	ACT	ACC
+mutmap: 463	CTG	CTA
+mutmap: 125	AGG	AGA
+mutmap: 446	GCC	GCT
+mutmap: 375	GAG	GAA
+mutmap: 349	GGC	GGA
+mutmap: 438	TCG	TCA
+mutmap: 254	AAA	AAG
+mutmap: 205	AGT	AGC
+mutmap: 255	CCG	CCA
+mutmap: 395	GGG	GGA
+mutmap: 33	CAC	CAT
+mutmap: 561	AGG	AGA
+mutmap: 197	GGG	GGA
+mutmap: 319	GGG	GGA
+mutmap: 465	GAA	GAG
+mutmap: 75	CTT	CTA
+mutmap: 300	CCA	CCG
+mutmap: 468	AAG	AAA
+mutmap: 440	AAC	AAT
+mutmap: 48	GAC	GAT
+mutmap: 523	CTG	TTG
+mutmap: 417	GAA	GAG
+mutmap: 458	TCA	TCC
+mutmap: 374	TCT	TCC
+mutmap: 368	GGT	GGC
+mutmap: 52	GTG	GTA
+mutmap: 423	CAG	CAA
+mutmap: 46	ACG	ACC
+mutmap: 20	CCC	CCA
+mutmap: 467	ACA	ACG
+mutmap: 438	TCG	TCA
+mutmap: 46	ACG	ACA
+mutmap: 26	ACG	ACA
+mutmap: 27	GCA	GCG
+mutmap: 125	AGG	AGA
+mutmap: 180	CTG	TTG
+mutmap: 205	AGT	AGC
+mutmap: 287	GAT	GAC
+mutmap: 323	AGA	AGG
+mutmap: 370	AGG	AGA
+mutmap: 495	GGG	GGA
+mutmap: 566	ATT	ATC
+mutmap: 103	TTT	TTC
+mutmap: 158	AGA	AGG
+mutmap: 173	TTA	TTG
+mutmap: 227	CAA	CAG
+mutmap: 349	GGC	GGT
+mutmap: 481	GGT	GGC
+mutmap: 291	GGC	GGT
+mutmap: 123	TCC	TCT
+mutmap: 406	GAG	GAA
+mutmap: 244	AGC	AGT
+mutmap: 547	TTG	TTA
+mutmap: 203	ACG	ACA
+mutmap: 36	GTG	GTA
+mutmap: 285	AGG	AGA
+mutmap: 177	TAC	TAT
+mutmap: 418	GTA	GTG
+mutmap: 420	GGG	GGA
+mutmap: 72	CAC	CAT
+mutmap: 98	AAG	AAA
+mutmap: 129	GCC	GCA
+mutmap: 304	ATT	ATC
+mutmap: 351	ATC	ATA
+mutmap: 367	TAC	TAT
+mutmap: 410	CAA	CAG
+mutmap: 111	AGC	AGT
+mutmap: 40	ACG	ACA
+mutmap: 113	TGT	TGC
+mutmap: 146	GTC	GTT
+mutmap: 233	ATC	ATT
+mutmap: 514	AAC	AAT
+mutmap: 554	GCC	GCA
+mutmap: 3	ACT	ACC
+mutmap: 29	CTG	CTA
+mutmap: 557	AAA	AAG
+mutmap: 561	AGG	AGA
+mutmap: 39	GGA	GGG
+mutmap: 98	AAG	AAA
+mutmap: 181	AAC	AAT
+mutmap: 199	CAC	CAT
+mutmap: 487	CAC	CAT
+mutmap: 26	ACG	ACA
+mutmap: 266	AAT	AAC
+mutmap: 296	GAA	GAG
+mutmap: 371	CAT	CAC
+mutmap: 446	GCC	GCT
+mutmap: 456	ACT	ACA
+mutmap: 20	CCC	CCA
+mutmap: 26	ACA	ACT
+mutmap: 82	CTA	TTA
+mutmap: 256	GGA	GGG
+mutmap: 321	TGT	TGC
+mutmap: 352	GCG	GCA
+mutmap: 39	GGA	GGT
+mutmap: 98	AAG	AAA
+mutmap: 224	AGA	AGG
+mutmap: 383	CTT	CTC
+mutmap: 436	CTC	CTA
+mutmap: 509	GAC	GAT
+mutmap: 39	GGT	GGG
+mutmap: 486	TAC	TAT
+mutmap: 500	GGA	GGT
+mutmap: 74	ATC	ATT
+mutmap: 134	CTG	CTA
+mutmap: 200	CAC	CAT
+mutmap: 304	ATT	ATC
+mutmap: 341	GAG	GAA
+mutmap: 514	AAC	AAT
+mutmap: 70	AGT	AGC
+mutmap: 106	CGC	CGT
+mutmap: 186	AAC	AAT
+mutmap: 193	TTG	TTA
+mutmap: 195	ATT	ATC
+mutmap: 353	GGT	GGC
+mutmap: 430	GAG	GAA
+mutmap: 364	GAC	GAT
+mutmap: 502	TAT	TAC
+mutmap: 6	GCT	GCA
+mutmap: 52	GTG	GTA
+mutmap: 98	AAA	AAG
+mutmap: 71	CCT	CCC
+mutmap: 180	CTG	TTG
+mutmap: 44	ACA	ACG
+mutmap: 90	CCT	CCC
+mutmap: 111	AGC	AGT
+mutmap: 160	AAT	AAC
+mutmap: 31	CTG	CTT
+mutmap: 72	CAC	CAT
+mutmap: 73	CAA	CAG
+mutmap: 404	ACG	ACA
+mutmap: 438	TCG	TCA
+mutmap: 509	GAC	GAT
+mutmap: 238	AGG	CGG
+mutmap: 404	ACA	ACG
+mutmap: 109	GCC	GCA
+mutmap: 197	GGG	GGA
+mutmap: 479	GGC	GGT
+mutmap: 394	AAC	AAT
+mutmap: 242	GTC	GTT
+mutmap: 349	GGC	GGT
+mutmap: 561	AGG	AGA
+mutmap: 68	TGC	TGT
+mutmap: 358	GGT	GGC
+mutmap: 472	AGG	AGA
+mutmap: 352	GCG	GCA
+mutmap: 358	GGC	GGT
+mutmap: 487	CAC	CAT
+mutmap: 187	AAT	AAC
+mutmap: 296	GAA	GAG
+mutmap: 330	CTG	TTG
+mutmap: 407	AAA	AAG
+mutmap: 548	CTG	CTT
+mutmap: 233	ATC	ATT
+mutmap: 352	GCG	GCA
+mutmap: 477	GAT	GAC
+mutmap: 38	AAC	AAT
+mutmap: 134	CTG	TTG
+mutmap: 350	GCA	GCG
+mutmap: 48	GAC	GAT
+mutmap: 309	CCA	CCG
+mutmap: 28	ACG	ACT
+mutmap: 109	GCC	GCA
+mutmap: 532	CTA	CTG
+mutmap: 15	TTC	TTT
+mutmap: 124	CTT	CTC
+mutmap: 138	AAT	AAC
+mutmap: 279	GGG	GGA
+mutmap: 135	GAG	GAA
+mutmap: 340	CCA	CCG
+mutmap: 420	GGG	GGA
+mutmap: 11	TTA	CTA
+mutmap: 52	GTG	GTT
+mutmap: 216	GGG	GGA
+mutmap: 337	CGG	CGA
+mutmap: 348	TTC	TTT
+mutmap: 383	CTT	CTC
+mutmap: 548	CTG	TTG
+mutmap: 360	GAG	GAA
+mutmap: 214	GCA	GCT
+mutmap: 400	TTA	CTA
+mutmap: 415	TTC	TTT
+mutmap: 523	CTG	TTG
+mutmap: 370	AGG	CGG
+mutmap: 279	GGG	GGA
+mutmap: 361	GGA	GGG
+mutmap: 16	GCT	GCC
+mutmap: 455	CTA	CTG
+mutmap: 319	GGG	GGA
+mutmap: 267	CTA	CTG
+mutmap: 172	CAT	CAC
+mutmap: 18	AAA	AAG
+mutmap: 199	CAC	CAT
+mutmap: 125	AGG	AGA
+mutmap: 367	TAC	TAT
+mutmap: 531	ATC	ATT
+mutmap: 293	TGC	TGT
+mutmap: 320	GCC	GCT
+mutmap: 435	GAT	GAC
+mutmap: 290	ATT	ATA
+mutmap: 424	GAC	GAT
+mutmap: 265	GGG	GGA
+mutmap: 448	GAG	GAA
+mutmap: 7	TTG	TTA
+mutmap: 265	GGA	GGG
+mutmap: 452	ACA	ACG
+mutmap: 66	GGA	GGG
+mutmap: 423	CAG	CAA
+mutmap: 489	TGT	TGC
+mutmap: 493	TGC	TGT
+mutmap: 419	GAA	GAG
+mutmap: 407	AAA	AAG
+mutmap: 46	ACG	ACT
+mutmap: 233	ATC	ATT
+mutmap: 269	GCT	GCC
+mutmap: 15	TTC	TTT
+mutmap: 391	AAC	AAT
+mutmap: 75	CTT	CTC
+mutmap: 91	CAG	CAA
+mutmap: 266	AAT	AAC
+mutmap: 396	AAA	AAG
+mutmap: 245	AGA	CGA
+mutmap: 506	GTA	GTG
+mutmap: 416	TCA	TCG
+mutmap: 420	GGG	GGA
+mutmap: 182	GTG	GTA
+mutmap: 71	CCT	CCC
+mutmap: 523	CTG	TTG
+mutmap: 157	AGG	AGA
+mutmap: 517	CAG	CAA
+mutmap: 42	GTG	GTT
+mutmap: 517	CAA	CAG
+mutmap: 141	TTC	TTT
+mutmap: 290	ATT	ATC
+mutmap: 311	CAA	CAG
+mutmap: 323	AGA	AGG
+mutmap: 46	ACG	ACA
+mutmap: 401	ATC	ATT
+mutmap: 371	CAT	CAC
+mutmap: 201	CCG	CCA
+mutmap: 293	TGC	TGT
+mutmap: 202	GGT	GGG
+mutmap: 370	AGG	AGA
+mutmap: 559	AAC	AAT
+mutmap: 104	GTT	GTC
+mutmap: 85	GCT	GCC
+mutmap: 160	GAT	GAC
+mutmap: 183	ACT	ACC
+mutmap: 503	GAC	GAT
+mutmap: 180	TTG	TTA
+mutmap: 44	ACA	ACC
+mutmap: 523	CTG	CTC
+mutmap: 548	TTG	CTG
+mutmap: 238	AGG	AGA
+mutmap: 523	CTG	TTG
+mutmap: 556	CAA	CAG
+mutmap: 244	AGC	AGT
+mutmap: 272	GGT	GGC
+mutmap: 195	ATT	ATC
+mutmap: 542	TTG	TTA
+mutmap: 561	AGG	AGA
+mutmap: 364	GAC	GAT
+mutmap: 555	TGC	TGT
+mutmap: 312	AAT	AAC
+mutmap: 446	GCC	GCT
+mutmap: 308	AAA	AAG
+mutmap: 405	AAC	AAT
+mutmap: 486	TAC	TAT
+mutmap: 529	GAT	GAC
+mutmap: 427	AAA	AAG
+mutmap: 162	AGT	AGC
+mutmap: 107	AGC	AGT
+mutmap: 29	CTG	CTA
+mutmap: 31	CTT	CTC
+mutmap: 313	GTA	GTC
+mutmap: 440	AAC	AAT
+mutmap: 525	TCA	TCG
+mutmap: 17	CAA	CAG
+mutmap: 207	CAA	CAG
+mutmap: 261	ATT	ATC
+mutmap: 229	GTA	GTG
+mutmap: 516	TTC	TTT
+mutmap: 267	CTA	CTG
+mutmap: 113	TGT	TGC
+mutmap: 203	ACG	ACA
+mutmap: 315	AGG	AGA
+mutmap: 512	TTA	TTG
+mutmap: 203	ACG	ACT
+mutmap: 466	AGA	AGG
+mutmap: 56	ACT	ACC
+mutmap: 173	TTA	TTG
+mutmap: 315	AGG	AGA
+mutmap: 302	GGA	GGG
+mutmap: 50	ATT	ATC
+mutmap: 245	CGA	CGG
+mutmap: 268	ATT	ATA
+mutmap: 401	ATC	ATA
+mutmap: 10	ATT	ATC
+mutmap: 127	CTA	TTA
+mutmap: 238	AGG	AGA
+mutmap: 89	GAC	GAT
+mutmap: 526	GGA	GGG
+mutmap: 527	TAC	TAT
+mutmap: 46	ACG	ACA
+mutmap: 12	TGT	TGC
+mutmap: 469	AAG	AAA
+mutmap: 235	TCT	TCC
+mutmap: 273	TAC	TAT
+mutmap: 479	GGC	GGT
+mutmap: 288	GCA	GCG
+mutmap: 493	TGC	TGT
+mutmap: 477	GAT	GAC
+mutmap: 515	CGG	CGA
+mutmap: 122	GCC	GCT
+mutmap: 542	TTG	TTA
+mutmap: 15	TTC	TTT
+mutmap: 15	TTT	TTC
+mutmap: 26	ACG	ACT
+mutmap: 351	ATC	ATT
+mutmap: 299	ACT	ACA
+mutmap: 548	TTG	CTG
+mutmap: 74	ATC	ATT
+mutmap: 82	CTA	TTA
+mutmap: 58	CTG	TTG
+mutmap: 369	TTC	TTT
+mutmap: 225	AGC	AGT
+mutmap: 255	CCG	CCA
+mutmap: 451	CAT	CAC
+mutmap: 441	GCG	GCA
+mutmap: 352	GCG	GCA
+mutmap: 321	TGT	TGC
+mutmap: 331	AAA	AAG
+mutmap: 176	AAA	AAG
+mutmap: 305	CCC	CCA
+mutmap: 129	GCC	GCT
+mutmap: 514	AAC	AAT
+mutmap: 202	GGT	GGC
+mutmap: 461	AAC	AAT
+mutmap: 495	GGG	GGC
+mutmap: 457	GAC	GAT
+mutmap: 236	AGA	CGA
+mutmap: 57	GAG	GAA
+mutmap: 368	GGT	GGC
+mutmap: 33	CAC	CAT
+mutmap: 183	ACT	ACC
+mutmap: 248	ATC	ATT
+mutmap: 325	GTT	GTC
+mutmap: 59	GTT	GTA
+mutmap: 134	CTG	CTA
+mutmap: 477	GAT	GAC
+mutmap: 29	CTG	TTG
+mutmap: 325	ATT	ATC
+mutmap: 296	GAA	GAG
+mutmap: 378	GGA	GGG
+mutmap: 154	GCT	GCC
+mutmap: 262	AAC	AAT
+mutmap: 11	CTA	TTA
+mutmap: 237	CCC	CCA
+mutmap: 335	GGG	GGA
+mutmap: 11	TTA	TTG
+mutmap: 200	CAC	CAT
+mutmap: 180	TTG	TTA
+mutmap: 295	TCT	TCC
+mutmap: 338	AAT	AAC
+mutmap: 367	TAC	TAT
+mutmap: 458	TCA	TCG
+mutmap: 9	TAC	TAT
+mutmap: 330	CTG	TTG
+mutmap: 353	GGT	GGC
+mutmap: 243	TCC	TCT
+mutmap: 157	AGG	AGA
+mutmap: 159	TCT	TCC
+mutmap: 346	GGC	GGA
+mutmap: 447	CTG	CTA
+mutmap: 302	GGA	GGG
+mutmap: 549	GGG	GGT
+mutmap: 378	GGA	GGG
+mutmap: 399	AGG	AGA
+mutmap: 203	ACG	ACA
+mutmap: 237	CCC	CCA
+mutmap: 36	GTA	GTG
+mutmap: 229	GTA	GTG
+mutmap: 467	ACA	ACT
+mutmap: 459	GAA	GAG
+mutmap: 199	CAC	CAT
+mutmap: 472	AGG	AGA
+mutmap: 138	AAT	AAC
+mutmap: 423	CAG	CAA
+mutmap: 384	AAA	AAG
+mutmap: 316	ATC	ATT
+mutmap: 255	CCG	CCA
+mutmap: 135	GAG	GAA
+mutmap: 41	ATA	ATC
+mutmap: 52	GTT	GTC
+mutmap: 316	ATT	ATC
+mutmap: 471	CTG	CTA
+mutmap: 358	GGT	GGC
+mutmap: 390	ATC	ATT
+mutmap: 3	ACT	ACA
+mutmap: 512	TTA	TTG
+mutmap: 525	TCA	TCT
+mutmap: 220	GTC	GTT
+mutmap: 329	ACT	ACC
+mutmap: 406	GAG	GAA
+mutmap: 208	ATC	ATT
+mutmap: 299	ACT	ACC
+mutmap: 308	AAA	AAG
+mutmap: 320	GCC	GCT
+mutmap: 82	CTA	TTA
+mutmap: 146	GTC	GTT
+mutmap: 405	AAC	AAT
+mutmap: 531	ATC	ATT
+mutmap: 255	CCG	CCA
+mutmap: 73	CAG	CAA
+mutmap: 199	CAC	CAT
+mutmap: 173	TTA	TTG
+mutmap: 524	AAG	AAA
+mutmap: 201	CCG	CCA
+mutmap: 340	CCA	CCG
+mutmap: 115	CCT	CCC
+mutmap: 172	CAC	CAT
+mutmap: 455	CTA	TTA
+mutmap: 415	TTC	TTT
+mutmap: 238	AGG	AGA
+mutmap: 532	CTA	CTT
+mutmap: 151	ACA	ACC
+mutmap: 230	ATC	ATT
+mutmap: 148	CAG	CAA
+mutmap: 376	GGC	GGA
+mutmap: 396	AAA	AAG
+mutmap: 400	TTA	TTG
+mutmap: 28	ACG	ACA
+mutmap: 420	GGG	GGA
+mutmap: 524	AAG	AAA
+mutmap: 253	GTA	GTG
+mutmap: 181	AAC	AAT
+mutmap: 495	GGG	GGA
+mutmap: 521	GTT	GTC
+mutmap: 238	AGG	AGA
+mutmap: 40	ACG	ACA
+mutmap: 380	GCA	GCT
+mutmap: 402	GGG	GGA
+mutmap: 338	AAT	AAC
+mutmap: 152	AGC	AGT
+mutmap: 312	AAT	AAC
+mutmap: 242	GTC	GTT
+mutmap: 486	TAC	TAT
+mutmap: 104	GTT	GTC
+mutmap: 410	CAG	CAA
+mutmap: 57	GAG	GAA
+mutmap: 61	AGT	AGC
+mutmap: 165	AGT	AGC
+mutmap: 12	TGT	TGC
+mutmap: 82	CTA	TTA
+mutmap: 109	GCC	GCA
+mutmap: 325	GTT	GTC
+mutmap: 383	CTC	CTT
+mutmap: 135	GAG	GAA
+mutmap: 406	GAG	GAA
+mutmap: 152	AGC	AGT
+mutmap: 238	AGG	AGA
+mutmap: 312	AAT	AAC
+mutmap: 345	AGA	AGG
+mutmap: 468	AAG	AAA
+mutmap: 548	TTG	CTG
+mutmap: 301	AAT	AAC
+mutmap: 364	GAC	GAT
+mutmap: 404	ACA	ACC
+mutmap: 19	CTT	CTC
+mutmap: 212	GCT	GCC
+mutmap: 237	CCC	CCT
+mutmap: 321	TGT	TGC
+mutmap: 429	GTT	GTC
+mutmap: 440	AAC	AAT
+mutmap: 471	CTG	TTG
+mutmap: 232	AAT	AAC
+mutmap: 510	GAA	GAG
+mutmap: 60	CAG	CAA
+mutmap: 266	AAT	AAC
+mutmap: 294	AAG	AAA
+mutmap: 472	AGG	AGA
+mutmap: 15	TTC	TTT
+mutmap: 131	TCC	TCT
+mutmap: 142	AAT	AAC
+mutmap: 505	GAT	GAC
+mutmap: 197	GGG	GGA
+mutmap: 402	GGG	GGA
+mutmap: 393	ATC	ATT
+mutmap: 464	TTT	TTC
+mutmap: 369	TTC	TTT
+mutmap: 144	ACT	ACA
+mutmap: 406	GAG	GAA
+mutmap: 46	ACG	ACA
+mutmap: 370	AGG	AGA
+mutmap: 482	TGT	TGC
+mutmap: 234	GGA	GGG
+mutmap: 64	ACA	ACT
+mutmap: 180	TTG	CTG
+mutmap: 193	TTG	TTA
+mutmap: 183	ACT	ACC
+mutmap: 378	GGA	GGG
+mutmap: 390	ATC	ATA
+mutmap: 351	ATC	ATT
+mutmap: 363	GTG	GTT
+mutmap: 269	GCT	GCC
+mutmap: 166	AGA	AGG
+mutmap: 349	GGC	GGT
+mutmap: 193	TTG	CTG
+mutmap: 390	ATC	ATT
+mutmap: 214	GCA	GCT
+mutmap: 16	GCT	GCC
+mutmap: 118	GTG	GTA
+mutmap: 396	AAG	AAA
+mutmap: 66	GGA	GGC
+mutmap: 399	AGG	AGA
+mutmap: 127	CTA	CTG
+mutmap: 297	TGC	TGT
+mutmap: 487	CAC	CAT
+mutmap: 135	GAG	GAA
+mutmap: 512	TTA	TTG
+mutmap: 240	AGG	AGA
+mutmap: 33	CAC	CAT
+mutmap: 510	GAA	GAG
+mutmap: 407	AAA	AAG
+mutmap: 197	GGG	GGA
+mutmap: 496	TCA	TCT
+mutmap: 115	CCT	CCC
+mutmap: 496	TCT	TCG
+mutmap: 245	AGA	AGG
+mutmap: 342	AAA	AAG
+mutmap: 368	GGT	GGC
+mutmap: 428	TAT	TAC
+mutmap: 441	GCG	GCA
+mutmap: 549	GGG	GGA
+mutmap: 118	GTG	GTA
+mutmap: 125	AGG	AGA
+mutmap: 232	AAT	AAC
+mutmap: 242	ATC	ATT
+mutmap: 501	ACT	ACC
+mutmap: 18	AAA	AAG
+mutmap: 217	AGA	AGG
+mutmap: 309	CCA	CCG
+mutmap: 441	GCG	GCA
+mutmap: 22	AAT	AAC
+mutmap: 299	ACT	ACA
+mutmap: 469	AAG	AAA
+mutmap: 526	GGA	GGG
+mutmap: 441	GCG	GCA
+mutmap: 183	ACT	ACC
+mutmap: 230	ATC	ATT
+mutmap: 456	ACT	ACC
+mutmap: 181	AAC	AAT
+mutmap: 441	GCA	GCG
+mutmap: 413	AAA	AAG
+mutmap: 351	ATC	ATT
+mutmap: 515	CGG	CGA
+mutmap: 208	ATC	ATT
+mutmap: 155	TGC	TGT
+mutmap: 248	ATC	ATA
+mutmap: 154	GCT	GCA
+mutmap: 66	GGA	GGG
+mutmap: 201	CCG	CCA
+mutmap: 48	GAC	GAT
+mutmap: 326	AAG	AAA
+mutmap: 364	GAT	GAC
+mutmap: 373	AAT	AAC
+mutmap: 431	GAC	GAT
+mutmap: 470	CAA	CAG
+mutmap: 113	TGT	TGC
+mutmap: 367	TAC	TAT
+mutmap: 220	GTC	GTA
+mutmap: 441	GCG	GCA
+mutmap: 329	ACT	ACC
+mutmap: 172	CAC	CAT
+mutmap: 318	TAT	TAC
+mutmap: 28	ACG	ACA
+mutmap: 310	TTT	TTC
+mutmap: 346	GGC	GGA
+mutmap: 506	GTA	GTG
+mutmap: 443	CTT	CTC
+mutmap: 42	GTG	GTA
+mutmap: 370	AGG	AGA
+mutmap: 62	TCC	TCT
+mutmap: 244	AGC	AGT
+mutmap: 454	GAT	GAC
+mutmap: 555	TGC	TGT
+mutmap: 435	GAT	GAC
+mutmap: 132	GGC	GGA
+mutmap: 557	AAA	AAG
+mutmap: 440	AAC	AAT
+mutmap: 10	ATT	ATC
+mutmap: 332	TTG	TTA
+mutmap: 432	ACT	ACC
+mutmap: 311	CAA	CAG
+mutmap: 503	GAC	GAT
+mutmap: 166	AGA	AGG
+mutmap: 510	GAA	GAG
+mutmap: 420	GGG	GGA
+mutmap: 549	GGG	GGA
+mutmap: 561	AGG	AGA
+mutmap: 112	AAC	AAT
+mutmap: 289	CCC	CCT
+mutmap: 374	TCT	TCG
+mutmap: 375	GAG	GAA
+mutmap: 129	GCC	GCA
+mutmap: 222	ACC	ACT
+mutmap: 253	GTA	GTG
+mutmap: 17	CAA	CAG
+mutmap: 189	AAA	AAG
+mutmap: 6	GCT	GCC
+mutmap: 29	CTG	CTA
+mutmap: 90	CCT	CCC
+mutmap: 85	GCT	GCC
+mutmap: 275	AAA	AAG
+mutmap: 135	GAG	GAA
+mutmap: 299	ACT	ACC
+mutmap: 39	GGA	GGG
+mutmap: 52	GTT	GTC
+mutmap: 452	ACA	ACC
+mutmap: 31	CTT	CTC
+mutmap: 203	ACG	ACA
+mutmap: 409	CAT	CAC
+mutmap: 335	GGG	GGA
+mutmap: 95	TTC	TTT
+mutmap: 512	TTA	CTA
+mutmap: 51	GAA	GAG
+mutmap: 197	GGG	GGA
+mutmap: 138	AAT	AAC
+mutmap: 93	GAT	GAC
+mutmap: 424	GAC	GAT
+mutmap: 493	TGC	TGT
+mutmap: 243	CCC	CCA
+mutmap: 319	GGG	GGA
+mutmap: 70	AGT	AGC
+mutmap: 267	CTA	TTA
+mutmap: 245	AGA	AGG
+mutmap: 203	ACG	ACA
+mutmap: 234	GGA	GGG
+mutmap: 492	GCC	GCA
+mutmap: 118	GTG	GTT
+mutmap: 162	AGT	AGC
+mutmap: 121	TAT	TAC
+mutmap: 73	CAG	CAA
+mutmap: 344	ACT	ACC
+mutmap: 185	CCA	CCT
+mutmap: 455	CTA	TTA
+mutmap: 88	GGA	GGG
+mutmap: 484	AAA	AAG
+mutmap: 512	TTA	CTA
+mutmap: 426	GAG	GAA
+mutmap: 531	ATC	ATT
+mutmap: 220	GTC	GTG
+mutmap: 10	ATT	ATC
+mutmap: 491	AAT	AAC
+mutmap: 291	GGC	GGA
+mutmap: 341	GAG	GAA
+mutmap: 241	GAT	GAC
+mutmap: 167	TTG	TTA
+mutmap: 58	CTG	TTG
+mutmap: 370	AGG	AGA
+mutmap: 235	TCT	TCC
+mutmap: 506	GTA	GTG
+mutmap: 447	CTG	CTA
+mutmap: 65	GGT	GGG
+mutmap: 349	GGC	GGT
+mutmap: 432	ACT	ACC
+mutmap: 352	GCG	GCA
+mutmap: 325	GTT	GTC
+mutmap: 414	GAA	GAG
+mutmap: 325	GTC	GTT
+mutmap: 97	AAT	AAC
+mutmap: 77	GGA	GGG
+mutmap: 397	CTG	TTG
+mutmap: 540	TGT	TGC
+mutmap: 486	TAC	TAT
+mutmap: 28	ACG	ACA
+mutmap: 193	TTG	TTA
+mutmap: 48	GAC	GAT
+mutmap: 193	TTA	TTG
+mutmap: 482	TGT	TGC
+mutmap: 367	TAC	TAT
+mutmap: 10	ATT	ATC
+mutmap: 492	GCC	GCT
+mutmap: 46	ACG	ACA
+mutmap: 528	AAA	AAG
+mutmap: 73	CAG	CAA
+mutmap: 447	CTG	TTG
+mutmap: 238	AGG	CGG
+mutmap: 157	AGG	AGA
+mutmap: 517	CAG	CAA
+mutmap: 242	ATC	ATT
+mutmap: 274	TTC	TTT
+mutmap: 298	ATC	ATT
+mutmap: 418	GTA	GTG
+mutmap: 422	ATT	ATC
+mutmap: 335	GGG	GGA
+mutmap: 420	GGG	GGA
+mutmap: 515	CGG	CGA
+mutmap: 321	TGT	TGC
+mutmap: 249	TAT	TAC
+mutmap: 321	TGC	TGT
+mutmap: 526	GGA	GGG
+mutmap: 314	AAC	AAT
+mutmap: 15	TTC	TTT
+mutmap: 106	CGC	CGA
+mutmap: 133	ACA	ACC
+mutmap: 150	GGA	GGG
+mutmap: 293	TGC	TGT
+mutmap: 330	CTG	CTA
+mutmap: 238	AGG	CGG
+mutmap: 87	TTG	CTG
+mutmap: 97	AAT	AAC
+mutmap: 139	GAA	GAG
+mutmap: 512	TTA	CTA
+mutmap: 238	CGG	CGA
+mutmap: 57	GAG	GAA
+mutmap: 60	CAG	CAA
+mutmap: 282	TCA	TCG
+mutmap: 345	AGA	CGA
+mutmap: 353	GGT	GGG
+mutmap: 198	GTT	GTC
+mutmap: 242	ATC	ATT
+mutmap: 441	GCG	GCA
+mutmap: 535	TCC	TCA
+mutmap: 47	AAT	AAC
+mutmap: 230	ATC	ATT
+mutmap: 473	GAA	GAG
+mutmap: 391	GAC	GAT
+mutmap: 454	GAT	GAC
+mutmap: 378	GGA	GGG
+mutmap: 20	CCC	CCT
+mutmap: 33	CAC	CAT
+mutmap: 67	ATA	ATC
+mutmap: 310	TTT	TTC
+mutmap: 358	GGT	GGC
+mutmap: 454	GAT	GAC
+mutmap: 463	CTG	TTG
+mutmap: 468	AAG	AAA
+mutmap: 26	ACG	ACA
+mutmap: 226	CAA	CAG
+mutmap: 229	GTA	GTG
+mutmap: 432	ACT	ACC
+mutmap: 238	AGG	AGA
+mutmap: 210	CTA	CTG
+mutmap: 271	CGG	AGG
+mutmap: 391	AAC	AAT
+mutmap: 495	GGG	GGA
+mutmap: 520	GGT	GGC
+mutmap: 304	ATT	ATC
+mutmap: 134	CTG	CTA
+mutmap: 140	AGC	AGT
+mutmap: 291	GGC	GGT
+mutmap: 439	TAC	TAT
+mutmap: 238	AGA	AGG
+mutmap: 200	CAC	CAT
+mutmap: 228	ACT	ACC
+mutmap: 27	GCA	GCG
+mutmap: 277	CGA	AGA
+mutmap: 29	CTG	CTA
+mutmap: 46	ACG	ACA
+mutmap: 117	GAT	GAC
+mutmap: 368	GGT	GGC
+mutmap: 470	CAA	CAG
+mutmap: 507	TAC	TAT
+mutmap: 349	GGC	GGA
+mutmap: 71	CCT	CCC
+mutmap: 81	ACA	ACT
+mutmap: 413	AAA	AAG
+mutmap: 62	TCC	TCT
+mutmap: 79	AAC	AAT
+mutmap: 514	AAC	AAT
+mutmap: 3	ACT	ACC
+mutmap: 55	GCT	GCC
+mutmap: 150	GGA	GGG
+mutmap: 353	GGT	GGG
+mutmap: 410	CAG	CAA
+mutmap: 490	GAC	GAT
+mutmap: 240	AGG	AGA
+mutmap: 493	TGC	TGT
+mutmap: 502	TAT	TAC
+mutmap: 479	GGC	GGA
+mutmap: 532	CTA	TTA
+mutmap: 367	TAC	TAT
+mutmap: 56	ACT	ACC
+mutmap: 129	GCC	GCA
+mutmap: 515	CGG	CGT
+mutmap: 170	TTG	CTG
+mutmap: 182	GTG	GTA
+mutmap: 354	TTC	TTT
+mutmap: 374	TCT	TCC
+mutmap: 451	CAT	CAC
+mutmap: 468	AAG	AAA
+mutmap: 255	CCG	CCA
+mutmap: 386	ACT	ACG
+mutmap: 403	AAA	AAG
+mutmap: 423	CAG	CAA
+mutmap: 521	GTT	GTC
+mutmap: 286	TCA	TCT
+mutmap: 486	TAC	TAT
+mutmap: 273	TAC	TAT
+mutmap: 236	AGA	AGG
+mutmap: 521	GTT	GTG
+mutmap: 15	TTC	TTT
+mutmap: 318	TAT	TAC
+mutmap: 74	ATC	ATT
+mutmap: 486	TAC	TAT
+mutmap: 486	TAC	TAT
+mutmap: 68	TGC	TGT
+mutmap: 303	AGC	AGT
+mutmap: 68	TGT	TGC
+mutmap: 234	GGA	GGG
+mutmap: 315	AGG	AGA
+mutmap: 441	GCG	GCA
+mutmap: 449	AAC	AAT
+mutmap: 463	CTG	CTA
+mutmap: 212	GCT	GCC
+mutmap: 351	ATC	ATT
+mutmap: 503	GAC	GAT
+mutmap: 351	ATC	ATA
+mutmap: 235	TCT	TCC
+mutmap: 167	TTG	CTG
+mutmap: 237	CCC	CCT
+mutmap: 315	AGG	AGA
+mutmap: 337	CGA	AGA
+mutmap: 352	GCG	GCA
+mutmap: 51	GAA	GAG
+mutmap: 566	ATT	ATA
+mutmap: 57	GAG	GAA
+mutmap: 85	GCT	GCC
+mutmap: 148	CAA	CAG
+mutmap: 232	AAT	AAC
+mutmap: 417	GAA	GAG
+mutmap: 472	AGG	AGA
+mutmap: 483	TTC	TTT
+mutmap: 210	CTG	TTG
+mutmap: 235	TCT	TCC
+mutmap: 291	GGC	GGT
+mutmap: 352	GCG	GCT
+mutmap: 472	AGG	AGA
+mutmap: 33	CAC	CAT
+mutmap: 167	TTG	CTG
+mutmap: 260	TTG	CTG
+mutmap: 506	GTA	GTG
+mutmap: 526	GGA	GGC
+mutmap: 38	AAC	AAT
+mutmap: 58	CTG	CTA
+mutmap: 220	GTC	GTA
+mutmap: 233	ATC	ATT
+mutmap: 131	TCC	TCT
+mutmap: 144	ACT	ACG
+mutmap: 327	CAA	CAG
+mutmap: 329	ACT	ACC
+mutmap: 3	ACT	ACC
+mutmap: 147	ACT	ACC
+mutmap: 440	AAC	AAT
+mutmap: 549	GGG	GGA
+mutmap: 122	GCC	GCA
+mutmap: 456	ACT	ACG
+mutmap: 87	TTG	TTA
+mutmap: 199	CAC	CAT
+mutmap: 361	GGA	GGG
+mutmap: 463	CTG	TTG
+mutmap: 290	ATT	ATC
+mutmap: 85	GCT	GCC
+mutmap: 335	GGG	GGA
+mutmap: 472	AGG	AGA
+mutmap: 339	GTA	GTG
+mutmap: 174	AAA	AAG
+mutmap: 40	ACG	ACA
+mutmap: 124	CTT	CTA
+mutmap: 443	CTT	CTC
+mutmap: 124	CTA	CTG
+mutmap: 400	TTG	CTG
+mutmap: 506	GTA	GTG
+mutmap: 20	CCC	CCT
+mutmap: 39	GGA	GGT
+mutmap: 396	AAG	AAA
+mutmap: 299	ACT	ACC
+mutmap: 70	AGT	AGC
+mutmap: 427	AAA	AAG
+mutmap: 419	GAA	GAG
+mutmap: 70	AGT	AGC
+mutmap: 419	GAG	GAA
+mutmap: 524	AAG	AAA
+mutmap: 224	AGA	AGG
+mutmap: 31	CTT	CTC
+mutmap: 139	GAA	GAG
+mutmap: 58	CTG	TTG
+mutmap: 256	GGA	GGT
+mutmap: 547	TTG	TTA
+mutmap: 46	ACG	ACA
+mutmap: 56	ACT	ACA
+mutmap: 227	CAA	CAG
+mutmap: 515	CGG	CGA
+mutmap: 77	GGA	GGG
+mutmap: 146	GTC	GTT
+mutmap: 455	CTA	CTG
+mutmap: 441	GCG	GCA
+mutmap: 40	ACG	ACA
+mutmap: 493	TGC	TGT
+mutmap: 503	GAC	GAT
+mutmap: 16	GCT	GCC
+mutmap: 441	GCA	GCG
+mutmap: 506	GTA	GTT
+mutmap: 325	GTT	GTC
+mutmap: 457	GAC	GAT
+mutmap: 234	GGA	GGT
+mutmap: 318	TAT	TAC
+mutmap: 175	TTC	TTT
+mutmap: 519	AAA	AAG
+mutmap: 289	CCC	CCT
+mutmap: 294	AAT	AAC
+mutmap: 318	TAT	TAC
+mutmap: 409	CAT	CAC
+mutmap: 516	TTC	TTT
+mutmap: 466	AAA	AAG
+mutmap: 7	TTG	CTG
+mutmap: 10	ATT	ATC
+mutmap: 396	AAG	AAA
+mutmap: 313	GTA	GTG
+mutmap: 315	AGG	AGA
+mutmap: 384	AAA	AAG
+mutmap: 198	GTT	GTC
+mutmap: 225	AGC	AGT
+mutmap: 325	GTT	GTC
+mutmap: 346	GGC	GGT
+mutmap: 157	AGG	AGA
+mutmap: 255	CCG	CCT
+mutmap: 370	AGG	AGA
+mutmap: 146	GTC	GTT
+mutmap: 463	CTG	CTA
+mutmap: 546	GCT	GCA
+mutmap: 179	GCA	GCT
+mutmap: 237	CCC	CCT
+mutmap: 399	AGG	AGA
+mutmap: 514	AAC	AAT
+mutmap: 255	CCG	CCA
+mutmap: 349	GGC	GGT
+mutmap: 242	ATC	ATT
+mutmap: 197	GGG	GGA
+mutmap: 349	GGC	GGT
+mutmap: 410	CAG	CAA
+mutmap: 323	AGA	AGG
+mutmap: 3	ACT	ACC
+mutmap: 16	GCT	GCC
+mutmap: 119	CCG	CCA
+mutmap: 201	CCG	CCA
+mutmap: 253	GTA	GTG
+mutmap: 318	TAC	TAT
+mutmap: 291	GGC	GGT
+mutmap: 378	GGA	GGG
+mutmap: 395	GGG	GGA
+mutmap: 441	GCG	GCA
+mutmap: 466	AAG	AAA
+mutmap: 550	TTC	TTT
+mutmap: 367	TAC	TAT
+mutmap: 56	ACT	ACA
+mutmap: 492	GCC	GCT
+mutmap: 160	AAT	AAC
+mutmap: 441	GCG	GCA
+mutmap: 476	GAG	GAA
+mutmap: 149	AAT	AAC
+mutmap: 225	AGC	AGT
+mutmap: 455	CTA	TTA
+mutmap: 316	ATC	ATA
+mutmap: 338	AAT	AAC
+mutmap: 349	GGC	GGT
+mutmap: 440	AAC	AAT
+mutmap: 203	ACG	ACA
+mutmap: 405	AAC	AAT
+mutmap: 329	ACT	ACC
+mutmap: 342	AAA	AAG
+mutmap: 255	CCG	CCA
+mutmap: 310	TTT	TTC
+mutmap: 418	GTA	GTC
+mutmap: 425	CTC	CTT
+mutmap: 504	CAT	CAC
+mutmap: 59	GTT	GTA
+mutmap: 447	CTG	CTA
+mutmap: 432	ACT	ACC
+mutmap: 20	CCC	CCT
+mutmap: 38	AAC	AAT
+mutmap: 401	ATC	ATT
+mutmap: 352	GCG	GCA
+mutmap: 56	ACT	ACC
+mutmap: 18	AAA	AAG
+mutmap: 505	GAT	GAC
+mutmap: 479	GGC	GGA
+mutmap: 390	ATC	ATA
+mutmap: 241	AAT	AAC
+mutmap: 82	CTA	CTG
+mutmap: 353	GGT	GGC
+mutmap: 457	GAC	GAT
+mutmap: 119	CCG	CCA
+mutmap: 132	GGC	GGT
+mutmap: 423	CAG	CAA
+mutmap: 463	CTG	CTA
+mutmap: 380	GCA	GCG
+mutmap: 62	TCC	TCT
+mutmap: 173	TTA	TTG
+mutmap: 305	CCC	CCA
+mutmap: 498	AGA	AGG
+mutmap: 410	CAG	CAA
+mutmap: 504	CAC	CAT
+mutmap: 515	CGG	CGA
+mutmap: 484	AAA	AAG
+mutmap: 168	AAT	AAC
+mutmap: 386	ACT	ACC
+mutmap: 545	GTT	GTA
+mutmap: 418	GTC	GTT
+mutmap: 177	TAC	TAT
+mutmap: 177	TAC	TAT
+mutmap: 159	TCT	TCC
+mutmap: 203	ACG	ACA
+mutmap: 421	AGA	AGG
+mutmap: 395	GGG	GGA
+mutmap: 524	AAG	AAA
+mutmap: 337	CGA	CGG
+mutmap: 401	ATC	ATT
+mutmap: 468	AAG	AAA
+mutmap: 269	GCT	GCC
+mutmap: 77	GGA	GGG
+mutmap: 370	AGG	AGA
+mutmap: 390	ATC	ATT
+mutmap: 395	GGG	GGA
+mutmap: 529	GAT	GAC
+mutmap: 470	CAA	CAG
+mutmap: 519	AAG	AAA
+mutmap: 194	TAC	TAT
+mutmap: 202	GGT	GGC
+mutmap: 53	ACT	ACC
+mutmap: 302	GGA	GGG
+mutmap: 231	CCG	CCA
+mutmap: 400	TTG	CTG
+mutmap: 447	CTG	CTA
+mutmap: 125	AGG	AGA
+mutmap: 349	GGC	GGT
+mutmap: 291	GGC	GGT
+mutmap: 7	TTG	TTA
+mutmap: 171	ACC	ACT
+mutmap: 215	TCA	TCG
+mutmap: 481	GGT	GGC
+mutmap: 164	TTT	TTC
+mutmap: 230	ATC	ATA
+mutmap: 360	GAG	GAA
+mutmap: 195	ATT	ATC
+mutmap: 350	GCA	GCC
+mutmap: 209	TTC	TTT
+mutmap: 342	AAA	AAG
+mutmap: 230	ATC	ATT
+mutmap: 330	CTG	TTG
+mutmap: 499	AAT	AAC
+mutmap: 379	CAA	CAG
+mutmap: 13	CTG	CTT
+mutmap: 40	ACG	ACA
+mutmap: 422	ATT	ATC
+mutmap: 85	GCT	GCC
+mutmap: 39	GGA	GGG
+mutmap: 525	TCA	TCT
+mutmap: 131	TCC	TCT
+mutmap: 408	TTC	TTT
+mutmap: 93	GAT	GAC
+mutmap: 29	CTG	TTG
+mutmap: 434	ATA	ATT
+mutmap: 541	TTT	TTC
+mutmap: 566	ATT	ATC
+mutmap: 506	GTA	GTG
+mutmap: 263	AGC	AGT
+mutmap: 497	ATC	ATT
+mutmap: 157	AGG	AGA
+mutmap: 318	TAC	TAT
+mutmap: 11	CTA	TTA
+mutmap: 35	GCA	GCG
+mutmap: 91	CAG	CAA
+mutmap: 255	CCG	CCA
+mutmap: 135	GAG	GAA
+mutmap: 135	GAA	GAG
+mutmap: 29	CTG	TTG
+mutmap: 88	GGA	GGG
+mutmap: 391	GAT	GAC
+mutmap: 440	AAC	AAT
+mutmap: 411	ATT	ATC
+mutmap: 342	AAA	AAG
+mutmap: 28	ACG	ACT
+mutmap: 515	CGG	CGA
+mutmap: 507	TAC	TAT
+mutmap: 203	ACG	ACA
+mutmap: 342	AAA	AAG
+mutmap: 302	GGA	GGG
+mutmap: 413	AAA	AAG
+mutmap: 120	GAT	GAC
+mutmap: 131	TCC	TCT
+mutmap: 335	GGG	GGA
+mutmap: 447	CTG	CTA
+mutmap: 12	TGT	TGC
+mutmap: 26	ACG	ACT
+mutmap: 39	GGA	GGG
+mutmap: 313	GTA	GTT
+mutmap: 335	GGG	GGA
+mutmap: 395	GGG	GGA
+mutmap: 243	CCC	CCT
+mutmap: 399	AGG	AGA
+mutmap: 520	GGC	GGA
+mutmap: 526	GGA	GGG
+mutmap: 432	ACC	ACT
+mutmap: 201	CCG	CCT
+mutmap: 378	GGA	GGG
+mutmap: 329	ACT	ACC
+mutmap: 516	TTC	TTT
+mutmap: 238	AGA	AGG
+mutmap: 159	TCT	TCA
+mutmap: 492	GCC	GCA
+mutmap: 528	AAA	AAG
+mutmap: 540	TGT	TGC
+mutmap: 375	GAG	GAA
+mutmap: 394	AAT	AAC
+mutmap: 503	GAC	GAT
+mutmap: 228	ACT	ACC
+mutmap: 118	GTG	GTA
+mutmap: 342	AAA	AAG
+mutmap: 237	CCC	CCT
+mutmap: 315	AGG	AGA
+mutmap: 424	GAC	GAT
+mutmap: 463	CTG	CTA
+mutmap: 320	GCC	GCT
+mutmap: 390	ATC	ATT
+mutmap: 82	CTA	CTG
+mutmap: 46	ACG	ACA
+mutmap: 438	TCA	TCG
+mutmap: 502	TAT	TAC
+mutmap: 353	GGT	GGC
+mutmap: 53	ACT	ACG
+mutmap: 129	GCC	GCT
+mutmap: 399	AGA	AGG
+mutmap: 561	AGG	AGA
+mutmap: 87	TTG	TTA
+mutmap: 126	TCA	TCG
+mutmap: 339	GTA	GTG
+mutmap: 390	ATC	ATA
+mutmap: 395	GGG	GGA
+mutmap: 274	TTC	TTT
+mutmap: 440	AAC	AAT
+mutmap: 451	CAT	CAC
+mutmap: 180	TTG	TTA
+mutmap: 185	CCA	CCG
+mutmap: 238	AGA	CGA
+mutmap: 33	CAC	CAT
+mutmap: 561	AGG	AGA
+mutmap: 58	CTG	CTA
+mutmap: 180	TTG	TTA
+mutmap: 352	GCG	GCA
+mutmap: 133	ACA	ACG
+mutmap: 279	GGG	GGA
+mutmap: 267	CTA	CTG
+mutmap: 484	AAA	AAG
+mutmap: 307	GAC	GAT
+mutmap: 368	GGT	GGA
+mutmap: 233	ATC	ATT
+mutmap: 500	GGA	GGG
+mutmap: 545	GTT	GTC
+mutmap: 82	CTA	CTG
+mutmap: 109	GCC	GCA
+mutmap: 160	AAT	AAC
+mutmap: 181	AAC	AAT
+mutmap: 183	ACT	ACC
+mutmap: 192	AAA	AAG
+mutmap: 223	AAA	AAG
+mutmap: 299	ACT	ACC
+mutmap: 302	GGA	GGG
+mutmap: 330	CTG	CTA
+mutmap: 397	CTG	CTT
+mutmap: 471	CTG	TTG
+mutmap: 513	AAC	AAT
+mutmap: 525	TCA	TCG
+mutmap: 550	TTC	TTT
+mutmap: 206	GAC	GAT
+mutmap: 204	GAC	GAT
+mutmap: 531	ATC	ATA
+mutmap: 3	ACT	ACC
+mutmap: 52	GTT	GTA
+mutmap: 435	GAT	GAC
+mutmap: 364	GAT	GAC
+mutmap: 162	AGT	AGC
+mutmap: 441	GCG	GCA
+mutmap: 490	GAC	GAT
+mutmap: 447	CTG	TTG
+mutmap: 189	CAA	CAG
+mutmap: 150	GGA	GGG
+mutmap: 167	TTG	TTA
+mutmap: 50	ATT	ATC
+mutmap: 390	ATC	ATT
+mutmap: 486	TAC	TAT
+mutmap: 199	CAC	CAT
+mutmap: 523	CTG	CTA
+mutmap: 72	CAT	CAC
+mutmap: 279	GGG	GGA
+mutmap: 315	AGG	AGA
+mutmap: 216	GGA	GGG
+mutmap: 209	TTC	TTT
+mutmap: 526	GGG	GGA
+mutmap: 149	AAC	AAT
+mutmap: 211	TAT	TAC
+mutmap: 227	CAA	CAG
+mutmap: 320	GCC	GCA
+mutmap: 106	CGC	CGA
+mutmap: 349	GGC	GGA
+mutmap: 106	CGA	CGC
+mutmap: 442	GAG	GAA
+mutmap: 313	GTA	GTG
+mutmap: 349	GGA	GGT
+mutmap: 479	GGC	GGT
+mutmap: 549	GGG	GGA
+mutmap: 26	ACG	ACT
+mutmap: 57	GAG	GAA
+mutmap: 188	GAA	GAG
+mutmap: 203	ACG	ACT
+mutmap: 220	GTC	GTA
+mutmap: 335	GGG	GGA
+mutmap: 351	ATC	ATA
+mutmap: 229	GTA	GTC
+mutmap: 161	AAC	AAT
+mutmap: 314	AAC	AAT
+mutmap: 12	TGT	TGC
+mutmap: 29	CTG	CTA
+mutmap: 506	GTA	GTT
+mutmap: 289	CCC	CCT
+mutmap: 430	GAG	GAA
+mutmap: 36	GTA	GTC
+mutmap: 256	GGA	GGG
+mutmap: 203	ACG	ACT
+mutmap: 244	AGC	AGT
+mutmap: 486	TAC	TAT
+mutmap: 418	GTC	GTT
+mutmap: 548	TTG	CTG
+mutmap: 7	TTG	TTA
+mutmap: 327	CAA	CAG
+mutmap: 554	GCC	GCT
+mutmap: 395	GGG	GGA
+mutmap: 53	ACT	ACC
+mutmap: 495	GGA	GGG
+mutmap: 255	CCG	CCA
+mutmap: 418	GTC	GTT
+mutmap: 245	AGA	AGG
+mutmap: 551	ATC	ATT
+mutmap: 58	CTG	CTA
+mutmap: 468	AAG	AAA
+mutmap: 106	CGA	CGG
+mutmap: 523	CTG	CTT
+mutmap: 367	TAC	TAT
+mutmap: 422	ATT	ATC
+mutmap: 512	TTA	TTG
+mutmap: 519	AAG	AAA
+mutmap: 497	ATC	ATT
+mutmap: 391	GAT	GAC
+mutmap: 508	AGA	AGG
+mutmap: 330	CTG	CTA
+mutmap: 420	GGG	GGC
+mutmap: 520	GGA	GGG
+mutmap: 520	GGA	GGG
+mutmap: 54	AAT	AAC
+mutmap: 335	GGA	GGG
+mutmap: 181	AAC	AAT
+mutmap: 265	GGG	GGA
+mutmap: 351	ATC	ATA
+mutmap: 526	GGG	GGA
+mutmap: 145	GGA	GGG
+mutmap: 245	AGA	AGG
+mutmap: 106	CGC	CGA
+mutmap: 172	CAC	CAT
+mutmap: 410	CAG	CAA
+mutmap: 519	AAG	AAA
+mutmap: 523	CTG	CTT
+mutmap: 144	ACT	ACC
+mutmap: 294	AAT	AAC
+mutmap: 257	GAC	GAT
+mutmap: 321	TGT	TGC
+mutmap: 168	AAT	AAC
+mutmap: 402	GGG	GGT
+mutmap: 182	GTG	GTA
+mutmap: 423	CAG	CAA
+mutmap: 431	GAC	GAT
+mutmap: 72	CAT	CAC
+mutmap: 106	CGC	CGT
+mutmap: 455	CTA	CTG
+mutmap: 61	AGT	AGC
+mutmap: 148	CAA	CAG
+mutmap: 168	AAT	AAC
+mutmap: 398	AAT	AAC
+mutmap: 445	GTT	GTA
+mutmap: 508	AGA	AGG
+mutmap: 541	TTT	TTC
+mutmap: 46	ACG	ACT
+mutmap: 40	ACG	ACA
+mutmap: 131	TCC	TCA
+mutmap: 131	TCA	TCT
+mutmap: 227	CAA	CAG
+mutmap: 432	ACT	ACC
+mutmap: 468	AAG	AAA
+mutmap: 432	ACT	ACC
+mutmap: 468	AAA	AAG
+mutmap: 180	TTG	TTA
+mutmap: 134	CTG	CTA
+mutmap: 363	GTG	GTA
+mutmap: 503	GAC	GAT
+mutmap: 274	TTC	TTT
+mutmap: 288	GCA	GCG
+mutmap: 315	AGG	AGA
+mutmap: 349	GGC	GGT
+mutmap: 528	AAA	AAG
+mutmap: 33	CAC	CAT
+mutmap: 39	GGA	GGG
+mutmap: 211	TAT	TAC
+mutmap: 238	AGA	AGG
+mutmap: 424	GAC	GAT
+mutmap: 439	TAC	TAT
+mutmap: 440	AAC	AAT
+mutmap: 554	GCC	GCT
+mutmap: 11	CTA	CTG
+mutmap: 218	ATC	ATT
+mutmap: 402	GGG	GGA
+mutmap: 413	AAA	AAG
+mutmap: 216	GGA	GGG
+mutmap: 498	AGA	AGG
+mutmap: 89	GAC	GAT
+mutmap: 508	AGA	AGG
+mutmap: 561	AGG	AGA
+mutmap: 519	AAG	AAA
+mutmap: 447	CTG	CTA
+mutmap: 199	CAC	CAT
+mutmap: 260	TTG	CTG
+mutmap: 391	GAT	GAC
+mutmap: 515	CGG	CGA
+mutmap: 20	CCT	CCC
+mutmap: 198	GTT	GTC
+mutmap: 543	CTT	CTC
+mutmap: 236	AGA	AGG
+mutmap: 256	GGA	GGG
+mutmap: 320	GCC	GCA
+mutmap: 374	TCT	TCC
+mutmap: 451	CAT	CAC
+mutmap: 38	AAC	AAT
+mutmap: 352	GCG	GCA
+mutmap: 476	GAG	GAA
+mutmap: 181	AAC	AAT
+mutmap: 149	AAC	AAT
+mutmap: 40	ACG	ACA
+mutmap: 524	AAG	AAA
+mutmap: 176	AAA	AAG
+mutmap: 181	AAT	AAC
+mutmap: 299	ACT	ACA
+mutmap: 402	GGG	GGA
+mutmap: 147	ACT	ACC
+mutmap: 337	CGA	CGG
+mutmap: 441	GCG	GCT
+mutmap: 16	GCT	GCC
+mutmap: 45	ATC	ATA
+mutmap: 167	TTG	TTA
+mutmap: 471	CTG	TTG
+mutmap: 554	GCC	GCT
+mutmap: 149	AAT	AAC
+mutmap: 320	GCC	GCT
+mutmap: 264	ACA	ACT
+mutmap: 404	ACC	ACT
+mutmap: 7	TTG	CTG
+mutmap: 351	ATC	ATA
+mutmap: 274	TTC	TTT
+mutmap: 399	AGA	AGG
+mutmap: 430	GAG	GAA
+mutmap: 109	GCC	GCT
+mutmap: 136	TTT	TTC
+mutmap: 235	TCT	TCC
+mutmap: 326	AAG	AAA
+mutmap: 397	CTG	TTG
+mutmap: 418	GTC	GTA
+mutmap: 512	TTA	CTA
+mutmap: 87	TTG	CTG
+mutmap: 409	CAT	CAC
+mutmap: 126	TCA	TCG
+mutmap: 400	TTG	TTA
+mutmap: 532	CTA	TTA
+mutmap: 472	AGG	AGA
+mutmap: 463	CTG	TTG
+mutmap: 244	AGC	AGT
+mutmap: 190	TTT	TTC
+mutmap: 367	TAC	TAT
+mutmap: 101	GAC	GAT
+mutmap: 170	TTG	CTG
+mutmap: 411	ATT	ATC
+mutmap: 493	TGC	TGT
+mutmap: 421	AGA	AGG
+mutmap: 21	GGA	GGG
+mutmap: 70	AGT	AGC
+mutmap: 131	TCC	TCT
+mutmap: 320	GCC	GCA
+mutmap: 535	TCC	TCT
+mutmap: 72	CAT	CAC
+mutmap: 519	AAG	AAA
+mutmap: 526	GGG	GGA
+mutmap: 180	TTG	TTA
+mutmap: 220	GTC	GTT
+mutmap: 509	GAT	GAC
+mutmap: 125	AGG	AGA
+mutmap: 89	GAC	GAT
+mutmap: 131	TCC	TCT
+mutmap: 269	GCT	GCC
+mutmap: 102	CTT	CTG
+mutmap: 2	AAG	AAA
+mutmap: 512	TTA	TTG
+mutmap: 49	CAA	CAG
+mutmap: 159	TCT	TCC
+mutmap: 198	GTT	GTC
+mutmap: 226	CAA	CAG
+mutmap: 40	ACG	ACA
+mutmap: 46	ACG	ACA
+mutmap: 274	TTC	TTT
+mutmap: 36	GTA	GTG
+mutmap: 29	CTG	CTT
+mutmap: 441	GCG	GCA
+mutmap: 135	GAG	GAA
+mutmap: 91	CAG	CAA
+mutmap: 242	ATC	ATT
+mutmap: 375	GAG	GAA
+mutmap: 130	TCA	TCG
+mutmap: 532	CTA	TTA
+mutmap: 274	TTT	TTC
+mutmap: 150	GGA	GGG
+mutmap: 443	CTT	CTG
+mutmap: 523	CTG	CTA
+mutmap: 561	AGG	AGA
+mutmap: 13	CTG	CTA
+mutmap: 519	AAG	AAA
+mutmap: 37	CCA	CCG
+mutmap: 418	GTC	GTT
+mutmap: 59	GTT	GTC
+mutmap: 18	AAA	AAG
+mutmap: 222	ACC	ACA
+mutmap: 45	ATC	ATT
+mutmap: 370	AGG	AGA
+mutmap: 203	ACG	ACA
+mutmap: 240	AGG	AGA
+mutmap: 56	ACT	ACG
+mutmap: 33	CAC	CAT
+mutmap: 396	AAG	AAA
+mutmap: 493	TGC	TGT
+mutmap: 297	TGC	TGT
+mutmap: 402	GGG	GGA
+mutmap: 87	TTG	TTA
+mutmap: 299	ACT	ACC
+mutmap: 416	TCA	TCG
+mutmap: 346	GGC	GGA
+mutmap: 180	TTA	TTG
+mutmap: 134	CTG	TTG
+mutmap: 420	GGG	GGA
+mutmap: 127	CTA	TTA
+mutmap: 180	TTA	TTG
+mutmap: 354	TTC	TTT
+mutmap: 117	GAT	GAC
+mutmap: 172	CAC	CAT
+mutmap: 352	GCG	GCA
+mutmap: 180	TTA	TTG
+mutmap: 50	ATT	ATC
+mutmap: 88	GGA	GGG
+mutmap: 457	GAC	GAT
+mutmap: 485	ATA	ATC
+mutmap: 352	GCG	GCT
+mutmap: 235	TCT	TCC
+mutmap: 370	AGG	CGG
+mutmap: 519	AAG	AAA
+mutmap: 40	ACG	ACA
+mutmap: 149	AAC	AAT
+mutmap: 181	AAC	AAT
+mutmap: 53	ACT	ACC
+mutmap: 112	AAC	AAT
+mutmap: 173	TTA	TTG
+mutmap: 198	GTT	GTC
+mutmap: 210	CTG	TTG
+mutmap: 506	GTA	GTC
+mutmap: 544	TGT	TGC
+mutmap: 141	TTC	TTT
+mutmap: 225	AGC	AGT
+mutmap: 381	GCA	GCT
+mutmap: 77	GGA	GGG
+mutmap: 97	AAT	AAC
+mutmap: 119	CCG	CCA
+mutmap: 463	CTG	TTG
+mutmap: 229	GTA	GTG
+mutmap: 469	AAG	AAA
+mutmap: 561	AGG	AGA
+mutmap: 134	CTG	CTA
+mutmap: 279	GGG	GGA
+mutmap: 35	GCA	GCG
+mutmap: 448	GAG	GAA
+mutmap: 198	GTT	GTC
+mutmap: 36	GTA	GTG
+mutmap: 345	AGA	AGG
+mutmap: 27	GCA	GCG
+mutmap: 73	CAG	CAA
+mutmap: 181	AAC	AAT
+mutmap: 382	GAT	GAC
+mutmap: 125	AGG	AGA
+mutmap: 375	GAG	GAA
+mutmap: 243	CCT	CCA
+mutmap: 511	GCA	GCT
+mutmap: 433	AAA	AAG
+mutmap: 6	GCT	GCC
+mutmap: 551	ATC	ATT
+mutmap: 368	GGT	GGC
+mutmap: 26	ACG	ACT
+mutmap: 166	AGA	AGG
+mutmap: 407	AAA	AAG
+mutmap: 40	ACG	ACA
+mutmap: 181	AAC	AAT
+mutmap: 225	AGC	AGT
+mutmap: 564	ATT	ATC
+mutmap: 432	ACC	ACT
+mutmap: 46	ACG	ACA
+mutmap: 545	GTT	GTC
+mutmap: 183	ACT	ACC
+mutmap: 273	TAC	TAT
+mutmap: 428	TAT	TAC
+mutmap: 468	AAG	AAA
+mutmap: 561	AGG	AGA
+mutmap: 131	TCC	TCT
+mutmap: 167	TTG	CTG
+mutmap: 28	ACG	ACA
+mutmap: 233	ATC	ATT
+mutmap: 159	TCT	TCC
+mutmap: 540	TGT	TGC
+mutmap: 57	GAG	GAA
+mutmap: 255	CCG	CCA
+mutmap: 531	ATC	ATT
+mutmap: 318	TAC	TAT
+mutmap: 368	GGT	GGC
+mutmap: 524	AAG	AAA
+mutmap: 154	GCT	GCC
+mutmap: 515	CGG	CGT
+mutmap: 183	ACT	ACC
+mutmap: 260	TTG	TTA
+mutmap: 506	GTA	GTG
+mutmap: 423	CAG	CAA
+mutmap: 7	TTG	CTG
+mutmap: 329	ACT	ACA
+mutmap: 50	ATT	ATC
+mutmap: 463	CTG	CTA
+mutmap: 441	GCG	GCA
+mutmap: 304	ATT	ATC
+mutmap: 520	GGC	GGA
+mutmap: 13	CTG	TTG
+mutmap: 124	CTT	CTG
+mutmap: 296	GAA	GAG
+mutmap: 506	GTA	GTG
+mutmap: 557	AAA	AAG
+mutmap: 248	ATC	ATT
+mutmap: 16	GCT	GCC
+mutmap: 298	ATC	ATA
+mutmap: 341	GAG	GAA
+mutmap: 203	ACG	ACA
+mutmap: 152	AGC	AGT
+mutmap: 248	ATC	ATT
+mutmap: 269	GCT	GCC
+mutmap: 514	AAC	AAT
+mutmap: 21	GGA	GGG
+mutmap: 183	ACT	ACC
+mutmap: 353	GGT	GGG
+mutmap: 410	CAG	CAA
+mutmap: 352	GCG	GCT
+mutmap: 52	GTT	GTC
+mutmap: 301	AAT	AAC
+mutmap: 131	TCC	TCT
+mutmap: 294	AAT	AAC
+mutmap: 129	GCC	GCA
+mutmap: 349	GGC	GGT
+mutmap: 488	AAA	AAG
+mutmap: 400	TTG	CTG
+mutmap: 448	GAG	GAA
+mutmap: 514	AAC	AAT
+mutmap: 201	CCG	CCA
+mutmap: 106	CGC	CGA
+mutmap: 410	CAG	CAA
+mutmap: 420	GGG	GGA
+mutmap: 72	CAT	CAC
+mutmap: 229	GTA	GTG
+mutmap: 85	GCT	GCC
+mutmap: 174	AAA	AAG
+mutmap: 185	CCA	CCC
+mutmap: 382	GAT	GAC
+mutmap: 416	TCA	TCG
+mutmap: 33	CAC	CAT
+mutmap: 58	CTG	CTA
+mutmap: 132	GGC	GGA
+mutmap: 492	GCC	GCA
+mutmap: 115	CCT	CCC
+mutmap: 155	TGC	TGT
+mutmap: 231	CCG	CCA
+mutmap: 225	AGC	AGT
+mutmap: 267	CTA	TTA
+mutmap: 401	ATC	ATT
+mutmap: 549	GGG	GGA
+mutmap: 318	TAC	TAT
+mutmap: 180	TTG	TTA
+mutmap: 515	CGG	AGG
+mutmap: 370	AGG	AGA
+mutmap: 62	TCC	TCA
+mutmap: 520	GGC	GGT
+mutmap: 244	AGC	AGT
+mutmap: 248	ATC	ATA
+mutmap: 495	GGA	GGG
+mutmap: 189	AAA	AAG
+mutmap: 220	GTC	GTT
+mutmap: 293	TGC	TGT
+mutmap: 432	ACT	ACC
+mutmap: 442	GAG	GAA
+mutmap: 520	GGC	GGT
+mutmap: 230	ATC	ATT
+mutmap: 555	TGC	TGT
+mutmap: 62	TCC	TCA
+mutmap: 221	TCT	TCC
+mutmap: 425	CTC	CTT
+mutmap: 321	TGT	TGC
+mutmap: 46	ACG	ACA
+mutmap: 468	AAG	AAA
+mutmap: 495	GGG	GGA
+mutmap: 255	CCG	CCA
+mutmap: 441	GCG	GCA
+mutmap: 345	AGA	AGG
+mutmap: 378	GGA	GGG
+mutmap: 508	AGA	AGG
+mutmap: 371	CAT	CAC
+mutmap: 125	AGG	AGA
+mutmap: 329	ACT	ACC
+mutmap: 344	ACT	ACC
+mutmap: 397	CTG	TTG
+mutmap: 564	ATT	ATC
+mutmap: 58	CTG	CTA
+mutmap: 180	TTG	TTA
+mutmap: 52	GTT	GTC
+mutmap: 193	TTG	CTG
+mutmap: 445	GTT	GTG
+mutmap: 523	CTG	TTG
+mutmap: 57	GAG	GAA
+mutmap: 228	ACT	ACC
+mutmap: 363	GTG	GTA
+mutmap: 15	TTC	TTT
+mutmap: 125	AGG	AGA
+mutmap: 221	TCT	TCC
+mutmap: 234	GGA	GGG
+mutmap: 78	GAA	GAG
+mutmap: 122	GCC	GCA
+mutmap: 535	TCC	TCT
+mutmap: 153	TCT	TCA
+mutmap: 68	TGC	TGT
+mutmap: 232	AGT	AGC
+mutmap: 275	AAA	AAG
+mutmap: 400	TTG	CTG
+mutmap: 352	GCG	GCA
+mutmap: 46	ACG	ACA
+mutmap: 75	CTT	CTC
+mutmap: 383	CTC	CTT
+mutmap: 490	GAC	GAT
+mutmap: 212	GCT	GCC
+mutmap: 98	AAG	AAA
+mutmap: 146	GTC	GTA
+mutmap: 383	CTT	CTC
+mutmap: 97	AAT	AAC
+mutmap: 187	AAT	AAC
+mutmap: 271	CGG	CGA
+mutmap: 277	CGA	AGA
+mutmap: 337	CGA	CGG
+mutmap: 441	GCG	GCA
+mutmap: 423	CAG	CAA
+mutmap: 55	GCT	GCC
+mutmap: 92	TGT	TGC
+mutmap: 163	TTC	TTT
+mutmap: 203	ACG	ACA
+mutmap: 241	GAT	GAC
+mutmap: 279	GGG	GGA
+mutmap: 288	GCA	GCT
+mutmap: 36	GTA	GTG
+mutmap: 58	CTG	TTG
+mutmap: 395	GGG	GGA
+mutmap: 545	GTT	GTG
+mutmap: 353	GGT	GGC
+mutmap: 397	CTG	TTG
+mutmap: 511	GCA	GCT
+mutmap: 351	ATC	ATT
+mutmap: 486	TAC	TAT
+mutmap: 321	TGT	TGC
+mutmap: 441	GCG	GCA
+mutmap: 554	GCC	GCT
+mutmap: 128	GTT	GTA
+mutmap: 4	ATC	ATT
+mutmap: 274	TTC	TTT
+mutmap: 72	CAT	CAC
+mutmap: 255	CCG	CCA
+mutmap: 402	GGG	GGA
+mutmap: 409	CAT	CAC
+mutmap: 454	GAT	GAC
+mutmap: 165	AGT	AGC
+mutmap: 52	GTT	GTC
+mutmap: 98	AAG	AAA
+mutmap: 442	GAG	GAA
+mutmap: 6	GCT	GCC
+mutmap: 58	CTG	CTA
+mutmap: 242	GTC	GTT
+mutmap: 279	GGG	GGA
+mutmap: 415	TTC	TTT
+mutmap: 485	ATA	ATT
+mutmap: 548	TTG	CTG
+mutmap: 165	AGT	AGC
+mutmap: 400	TTA	TTG
+mutmap: 564	ATT	ATC
+mutmap: 350	GCA	GCT
+mutmap: 46	ACG	ACT
+mutmap: 469	AAG	AAA
+mutmap: 77	GGA	GGG
+mutmap: 507	TAC	TAT
+mutmap: 321	TGT	TGC
+mutmap: 74	ATC	ATT
+mutmap: 206	GAC	GAT
+mutmap: 220	ATC	ATT
+mutmap: 390	ATC	ATA
+mutmap: 236	AGA	AGG
+mutmap: 463	CTG	CTA
+mutmap: 142	AAT	AAC
+mutmap: 241	GAT	GAC
+mutmap: 419	GAA	GAG
+mutmap: 210	CTA	CTG
+mutmap: 59	GTT	GTC
+mutmap: 291	GGC	GGA
+mutmap: 265	GGG	GGT
+mutmap: 370	AGG	AGA
+mutmap: 5	ATT	ATC
+mutmap: 131	TCC	TCT
+mutmap: 146	GTC	GTA
+mutmap: 235	TCT	TCC
+mutmap: 425	CTC	CTA
+mutmap: 472	AGG	AGA
+mutmap: 513	AAC	AAT
+mutmap: 436	CTC	CTA
+mutmap: 132	GGC	GGA
+mutmap: 157	AGG	AGA
+mutmap: 33	CAC	CAT
+mutmap: 260	TTG	CTG
+mutmap: 131	TCC	TCT
+mutmap: 302	GGA	GGG
+mutmap: 351	ATC	ATT
+mutmap: 237	CCC	CCA
+mutmap: 471	CTG	TTG
+mutmap: 10	ATT	ATC
+mutmap: 351	ATC	ATT
+mutmap: 372	CAA	CAG
+mutmap: 98	AAG	AAA
+mutmap: 226	CAA	CAG
+mutmap: 339	GTA	GTG
+mutmap: 40	ACG	ACA
+mutmap: 466	AGA	AGG
+mutmap: 57	GAG	GAA
+mutmap: 177	TAC	TAT
+mutmap: 331	AAA	AAG
+mutmap: 562	TGC	TGT
+mutmap: 29	CTG	TTG
+mutmap: 271	CGG	CGA
+mutmap: 68	TGC	TGT
+mutmap: 248	ATC	ATA
+mutmap: 410	CAG	CAA
+mutmap: 512	TTA	TTG
+mutmap: 389	GCA	GCT
+mutmap: 438	TCG	TCA
+mutmap: 56	ACT	ACC
+mutmap: 424	GAC	GAT
+mutmap: 483	TTC	TTT
+mutmap: 131	TCC	TCT
+mutmap: 142	AAT	AAC
+mutmap: 210	CTA	CTG
+mutmap: 231	CCG	CCA
+mutmap: 545	GTT	GTC
+mutmap: 404	ACG	ACA
+mutmap: 548	CTG	CTT
+mutmap: 297	TGC	TGT
+mutmap: 391	AAC	AAT
+mutmap: 486	TAC	TAT
+mutmap: 23	GAC	GAT
+mutmap: 29	CTG	CTA
+mutmap: 360	GAG	GAA
+mutmap: 373	AAT	AAC
+mutmap: 351	ATC	ATT
+mutmap: 388	GCA	GCT
+mutmap: 430	GAG	GAA
+mutmap: 86	CTA	CTG
+mutmap: 199	CAC	CAT
+mutmap: 432	ACT	ACC
+mutmap: 199	CAC	CAT
+mutmap: 561	AGG	AGA
+mutmap: 352	GCG	GCA
+mutmap: 266	AAT	AAC
+mutmap: 80	TGC	TGT
+mutmap: 209	AGC	AGT
+mutmap: 38	AAC	AAT
+mutmap: 183	ACT	ACC
+mutmap: 188	GAA	GAG
+mutmap: 516	TTC	TTT
+mutmap: 463	CTG	TTG
+mutmap: 516	TTC	TTT
+mutmap: 532	CTA	CTG
+mutmap: 556	CAA	CAG
+mutmap: 11	TTA	TTG
+mutmap: 170	TTG	TTA
+mutmap: 58	CTG	CTA
+mutmap: 320	GCC	GCA
+mutmap: 548	CTG	TTG
+mutmap: 32	GGA	GGG
+mutmap: 129	GCC	GCT
+mutmap: 349	GGC	GGT
+mutmap: 516	TTC	TTT
+mutmap: 274	TTC	TTT
+mutmap: 472	AGG	AGA
+mutmap: 170	TTG	TTA
+mutmap: 68	TGC	TGT
+mutmap: 81	ACA	ACG
+mutmap: 105	GAA	GAG
+mutmap: 189	AAA	AAG
+mutmap: 200	CAC	CAT
+mutmap: 320	GCC	GCA
+mutmap: 64	ACA	ACG
+mutmap: 279	GGG	GGA
+mutmap: 361	GGA	GGG
+mutmap: 218	GTC	GTA
+mutmap: 195	ATT	ATC
+mutmap: 430	GAG	GAA
+mutmap: 405	AAC	AAT
+mutmap: 377	ACA	ACG
+mutmap: 367	TAC	TAT
+mutmap: 58	CTG	TTG
+mutmap: 335	GGG	GGA
+mutmap: 363	GTG	GTA
+mutmap: 367	TAC	TAT
+mutmap: 456	ACT	ACA
+mutmap: 449	AAC	AAT
+mutmap: 130	TCA	TCC
+mutmap: 90	CCT	CCG
+mutmap: 234	GGA	GGG
+mutmap: 399	AGG	AGA
+mutmap: 57	GAG	GAA
+mutmap: 413	AAA	AAG
+mutmap: 561	AGG	AGA
+mutmap: 524	AAG	AAA
+mutmap: 62	TCC	TCT
+mutmap: 145	GGA	GGT
+mutmap: 267	CTA	CTG
+mutmap: 90	CCT	CCG
+mutmap: 239	GTA	GTG
+mutmap: 410	CAA	CAG
+mutmap: 96	CAA	CAG
+mutmap: 11	TTA	CTA
+mutmap: 118	GTG	GTA
+mutmap: 399	AGG	AGA
+mutmap: 516	TTC	TTT
+mutmap: 51	GAA	GAG
+mutmap: 91	CAT	CAC
+mutmap: 520	GGT	GGC
+mutmap: 210	CTA	CTG
+mutmap: 55	GCT	GCC
+mutmap: 364	GAC	GAT
+mutmap: 177	TAT	TAC
+mutmap: 29	CTG	CTA
+mutmap: 374	TCT	TCG
+mutmap: 514	AAC	AAT
+mutmap: 58	CTG	CTA
+mutmap: 73	CAA	CAG
+mutmap: 324	TAT	TAC
+mutmap: 216	GGG	GGA
+mutmap: 407	AAA	AAG
+mutmap: 180	CTG	TTG
+mutmap: 509	GAC	GAT
+mutmap: 352	GCG	GCA
+mutmap: 464	TTT	TTC
+mutmap: 90	CCT	CCC
+mutmap: 134	CTG	CTT
+mutmap: 200	CAC	CAT
+mutmap: 248	ATC	ATT
+mutmap: 469	AAG	AAA
+mutmap: 310	TTT	TTC
+mutmap: 138	AAT	AAC
+mutmap: 291	GGC	GGA
+mutmap: 326	AAG	AAA
+mutmap: 515	CGG	CGA
+mutmap: 420	GGG	GGA
+mutmap: 422	ATT	ATC
+mutmap: 20	CCC	CCT
+mutmap: 65	GGT	GGC
+mutmap: 323	AGA	AGG
+mutmap: 177	TAT	TAC
+mutmap: 423	CAG	CAA
+mutmap: 28	ACG	ACA
+mutmap: 199	CAC	CAT
+mutmap: 243	TCC	TCA
+mutmap: 346	GGC	GGA
+mutmap: 383	CTT	CTC
+mutmap: 395	GGG	GGA
+mutmap: 404	ACG	ACA
+mutmap: 68	TGC	TGT
+mutmap: 89	GAC	GAT
+mutmap: 228	ACT	ACA
+mutmap: 405	AAC	AAT
+mutmap: 90	CCT	CCA
+mutmap: 20	CCC	CCT
+mutmap: 90	CCA	CCC
+mutmap: 146	GTC	GTT
+mutmap: 199	CAC	CAT
+mutmap: 316	ATC	ATA
+mutmap: 347	ATA	ATC
+mutmap: 212	GCT	GCC
+mutmap: 235	TCT	TCC
+mutmap: 472	AGG	AGA
+mutmap: 551	ATC	ATT
+mutmap: 12	TGT	TGC
+mutmap: 231	CCG	CCA
+mutmap: 104	GTT	GTC
+mutmap: 320	GCC	GCA
+mutmap: 340	CCA	CCT
+mutmap: 446	GCC	GCT
+mutmap: 27	GCA	GCG
+mutmap: 94	GGC	GGT
+mutmap: 446	GCT	GCA
+mutmap: 518	ATC	ATT
+mutmap: 259	CTT	CTC
+mutmap: 353	GGT	GGG
+mutmap: 446	GCT	GCC
+mutmap: 503	GAC	GAT
+mutmap: 126	TCA	TCG
+mutmap: 150	GGA	GGG
+mutmap: 165	AGT	AGC
+mutmap: 367	TAC	TAT
+mutmap: 522	GAG	GAA
+mutmap: 432	ACT	ACC
+mutmap: 557	AAA	AAG
+mutmap: 404	ACG	ACA
+mutmap: 438	TCG	TCA
+mutmap: 233	ATC	ATT
+mutmap: 509	GAC	GAT
+mutmap: 220	GTC	GTT
+mutmap: 205	AGT	AGC
+mutmap: 339	GTA	GTT
+mutmap: 222	ACC	ACT
+mutmap: 133	ACC	ACT
+mutmap: 332	TTG	CTG
+mutmap: 171	CAC	CAT
+mutmap: 107	AGC	AGT
+mutmap: 386	ACT	ACC
+mutmap: 159	TCT	TCC
+mutmap: 232	AAT	AAC
+mutmap: 298	ATC	ATT
+mutmap: 517	CAG	CAA
+mutmap: 41	CTA	CTG
+mutmap: 140	AGC	AGT
+mutmap: 332	TTG	TTA
+mutmap: 363	GTG	GTA
+mutmap: 352	GCG	GCT
+mutmap: 423	CAG	CAA
+mutmap: 363	GTA	GTG
+mutmap: 528	AAA	AAG
+mutmap: 158	AGA	AGG
+mutmap: 54	AAT	AAC
+mutmap: 248	ATC	ATT
+mutmap: 401	ATC	ATT
+mutmap: 295	TCT	TCA
+mutmap: 329	ACT	ACC
+mutmap: 83	ATA	ATT
+mutmap: 382	GAT	GAC
+mutmap: 62	TCC	TCT
+mutmap: 181	AAC	AAT
+mutmap: 518	ATC	ATA
+mutmap: 113	TGT	TGC
+mutmap: 500	GGA	GGG
+mutmap: 363	GTA	GTG
+mutmap: 477	GAT	GAC
+mutmap: 58	CTG	CTT
+mutmap: 90	CCT	CCC
+mutmap: 158	AGA	AGG
+mutmap: 399	AGG	AGA
+mutmap: 82	CTG	TTG
+mutmap: 66	AGA	AGG
+mutmap: 68	TGC	TGT
+mutmap: 77	GGA	GGG
+mutmap: 381	GCA	GCG
+mutmap: 188	GAC	GAT
+mutmap: 11	TTA	CTA
+mutmap: 4	ATC	ATT
+mutmap: 147	GCT	GCC
+mutmap: 248	ATC	ATA
+mutmap: 131	TCC	TCA
+mutmap: 548	CTG	TTG
+mutmap: 195	ATT	ATC
+mutmap: 232	AAT	AAC
+mutmap: 395	GGG	GGA
+mutmap: 58	CTG	CTT
+mutmap: 411	ATC	ATT
+mutmap: 425	CTC	CTA
+mutmap: 486	TAC	TAT
+mutmap: 245	AGA	AGG
+mutmap: 279	GGG	GGA
+mutmap: 180	CTG	CTA
+mutmap: 408	TTC	TTT
+mutmap: 449	AAC	AAT
+mutmap: 492	GCC	GCA
+mutmap: 130	TCA	TCT
+mutmap: 87	TTG	TTA
+mutmap: 524	AAG	AAA
+mutmap: 39	GGA	GGG
+mutmap: 261	ATT	ATC
+mutmap: 98	AAG	AAA
+mutmap: 147	GCT	GCC
+mutmap: 351	ATC	ATT
+mutmap: 420	GGG	GGA
+mutmap: 468	AGG	AGA
+mutmap: 286	TCA	TCG
+mutmap: 375	GAG	GAA
+mutmap: 298	ATC	ATT
+mutmap: 551	ATC	ATT
+mutmap: 135	GAG	GAA
+mutmap: 561	AGG	AGA
+mutmap: 144	ACT	ACC
+mutmap: 398	AAT	AAC
+mutmap: 89	GAC	GAT
+mutmap: 509	GAC	GAT
+mutmap: 363	GTA	GTG
+mutmap: 464	TTT	TTC
+mutmap: 30	TGC	TGT
+mutmap: 77	GGA	GGG
+mutmap: 373	AAT	AAC
+mutmap: 503	GAC	GAT
+mutmap: 514	AAC	AAT
+mutmap: 515	CGG	AGG
+mutmap: 330	CTG	CTA
+mutmap: 486	TAC	TAT
+mutmap: 493	TGC	TGT
+mutmap: 93	GAT	GAC
+mutmap: 192	AAA	AAG
+mutmap: 234	GGG	GGA
+mutmap: 302	GGA	GGG
+mutmap: 312	AAT	AAC
+mutmap: 344	ACT	ACC
+mutmap: 335	GGG	GGA
+mutmap: 513	AAC	AAT
+mutmap: 405	AAC	AAT
+mutmap: 261	ATT	ATC
+mutmap: 185	CCA	CCG
+mutmap: 471	CTG	CTA
+mutmap: 53	ACT	ACC
+mutmap: 55	GCT	GCC
+mutmap: 61	AGT	AGC
+mutmap: 245	AGA	AGG
+mutmap: 325	GTT	GTC
+mutmap: 25	AGC	AGT
+mutmap: 48	GAC	GAT
+mutmap: 107	AGC	AGT
+mutmap: 234	GGA	GGG
+mutmap: 376	GGC	GGA
+mutmap: 142	AAT	AAC
+mutmap: 440	AAC	AAT
+mutmap: 482	TGC	TGT
+mutmap: 77	GGA	GGG
+mutmap: 271	CGG	CGT
+mutmap: 278	AGT	AGC
+mutmap: 415	TTC	TTT
+mutmap: 423	CAG	CAA
+mutmap: 122	GCC	GCT
+mutmap: 72	CAC	CAT
+mutmap: 242	GTC	GTT
+mutmap: 245	AGA	AGG
+mutmap: 404	ACG	ACA
+mutmap: 435	GAT	GAC
+mutmap: 241	GGT	GGG
+mutmap: 262	AAC	AAT
+mutmap: 269	GCT	GCC
+mutmap: 394	AAC	AAT
+mutmap: 441	GCG	GCA
+mutmap: 311	CAA	CAG
+mutmap: 134	CTG	CTA
+mutmap: 210	CTA	CTT
+mutmap: 426	GAG	GAA
+mutmap: 40	ACG	ACA
+mutmap: 76	GAT	GAC
+mutmap: 77	GGA	GGG
+mutmap: 495	GGG	GGT
+mutmap: 204	GAC	GAT
+mutmap: 229	GTA	GTG
+mutmap: 268	ATT	ATA
+mutmap: 279	GGG	GGA
+mutmap: 58	CTG	TTG
+mutmap: 299	ACT	ACC
+mutmap: 345	AGA	AGG
+mutmap: 159	TCT	TCA
+mutmap: 341	GAG	GAA
+mutmap: 468	AGG	AGA
+mutmap: 520	GGT	GGA
+mutmap: 76	GAT	GAC
+mutmap: 133	ACC	ACT
+mutmap: 411	ATC	ATA
+mutmap: 454	GAT	GAC
+mutmap: 3	ACT	ACC
+mutmap: 48	GAT	GAC
+mutmap: 66	AGA	CGA
+mutmap: 59	GTT	GTC
+mutmap: 221	TCT	TCC
+mutmap: 339	GTA	GTG
+mutmap: 31	CTG	CTA
+mutmap: 140	GAC	GAT
+mutmap: 446	GCC	GCT
+mutmap: 395	GGG	GGA
+mutmap: 523	CTG	CTA
+mutmap: 233	ATC	ATT
+mutmap: 108	AAA	AAG
+mutmap: 256	GGA	GGG
+mutmap: 201	CCG	CCT
+mutmap: 330	CTG	CTA
+mutmap: 549	GGG	GGA
+mutmap: 171	CAC	CAT
+mutmap: 289	CCT	CCC
+mutmap: 468	AGG	AGA
+mutmap: 23	GAC	GAT
+mutmap: 82	CTG	CTT
+mutmap: 112	AAC	AAT
+mutmap: 189	AAA	AAG
+mutmap: 200	CAC	CAT
+mutmap: 227	CAA	CAG
+mutmap: 242	CTG	CTA
+mutmap: 259	CTG	CTT
+mutmap: 337	CGG	CGA
+mutmap: 392	CAA	CAG
+mutmap: 526	GGA	GGG
+mutmap: 33	CAT	CAC
+mutmap: 326	AAG	AAA
+mutmap: 495	GGG	GGA
+mutmap: 512	TTA	TTG
+mutmap: 542	TTG	TTA
+mutmap: 77	GGA	GGG
+mutmap: 265	GGG	GGA
+mutmap: 36	GTG	GTA
+mutmap: 59	GTT	GTC
+mutmap: 60	CAG	CAA
+mutmap: 101	GAC	GAT
+mutmap: 113	TGT	TGC
+mutmap: 171	TAC	TAT
+mutmap: 172	GAA	GAG
+mutmap: 201	CCG	CCT
+mutmap: 270	CCT	CCC
+mutmap: 313	GTA	GTG
+mutmap: 327	CAA	CAG
+mutmap: 340	CCA	CCT
+mutmap: 341	GAG	GAA
+mutmap: 427	AAA	AAG
+mutmap: 445	GTC	GTT
+mutmap: 543	CTT	CTC
+mutmap: 551	ATC	ATA
+mutmap: 224	AGA	AGG
+mutmap: 244	AGT	AGC
+mutmap: 365	GGT	GGC
+mutmap: 145	GGA	GGG
+mutmap: 199	CAC	CAT
+mutmap: 241	GGT	GGC
+mutmap: 273	TAC	TAT
+mutmap: 310	TTT	TTC
+mutmap: 331	AAG	AAA
+mutmap: 279	GGG	GGA
+mutmap: 3	ACT	ACC
+mutmap: 45	ATC	ATA
+mutmap: 214	GCA	GCG
+mutmap: 253	GTA	GTG
+mutmap: 404	ACG	ACT
+mutmap: 441	GCG	GCA
+mutmap: 64	GCA	GCG
+mutmap: 40	ACG	ACA
+mutmap: 49	CAG	CAA
+mutmap: 53	ACT	ACC
+mutmap: 71	CCT	CCC
+mutmap: 89	GAC	GAT
+mutmap: 328	AAC	AAT
+mutmap: 330	CTG	CTA
+mutmap: 445	GTC	GTT
+mutmap: 48	GAT	GAC
+mutmap: 73	CGA	AGA
+mutmap: 322	CCC	CCA
+mutmap: 330	CTG	CTA
+mutmap: 364	GAC	GAT
+mutmap: 420	GGG	GGA
+mutmap: 61	AGT	AGC
+mutmap: 120	GAT	GAC
+mutmap: 233	GTC	GTT
+mutmap: 280	AAA	AAG
+mutmap: 389	GCC	GCT
+mutmap: 80	TGC	TGT
+mutmap: 324	TAT	TAC
+mutmap: 325	GTT	GTC
+mutmap: 556	CAA	CAG
+mutmap: 103	TTC	TTT
+mutmap: 112	AAC	AAT
+mutmap: 118	GTG	GTA
+mutmap: 160	GAT	GAC
+mutmap: 301	AAT	AAC
+mutmap: 21	GGA	GGG
+mutmap: 335	GGG	GGA
+mutmap: 428	TAC	TAT
+mutmap: 86	CTA	CTG
+mutmap: 222	ACC	ACA
+mutmap: 86	CTA	TTA
+mutmap: 124	CTT	CTC
+mutmap: 173	TCA	TCG
+mutmap: 225	AGC	AGT
+mutmap: 279	GGG	GGA
+mutmap: 308	AAG	AAA
+mutmap: 319	GGG	GGT
+mutmap: 411	ATC	ATA
+mutmap: 75	CTT	CTC
+mutmap: 131	TCA	TCT
+mutmap: 179	GTG	GTA
+mutmap: 378	GGA	GGG
+mutmap: 395	GGG	GGA
+mutmap: 414	GAA	GAG
+mutmap: 222	ACC	ACT
+mutmap: 322	CCC	CCT
+mutmap: 38	AAC	AAT
+mutmap: 57	GAG	GAA
+mutmap: 69	AAC	AAT
+mutmap: 556	CAG	CAA
+mutmap: 274	TTC	TTT
+mutmap: 319	GGG	GGA
+mutmap: 534	ATT	ATA
+mutmap: 535	TCC	TCG
+mutmap: 2	AAG	AAA
+mutmap: 358	GGT	GGG
+mutmap: 181	AAC	AAT
+mutmap: 256	GGA	GGG
+mutmap: 134	CTG	TTG
+mutmap: 255	CCG	CCA
+mutmap: 18	GAC	GAT
+mutmap: 337	CGG	CGA
+mutmap: 186	AAC	AAT
+mutmap: 262	AAT	AAC
+mutmap: 426	GAG	GAA
+mutmap: 547	TTG	TTA
+mutmap: 385	AGC	AGT
+mutmap: 32	GGA	GGG
+mutmap: 18	GAC	GAT
+mutmap: 308	AAG	AAA
+mutmap: 524	AAG	AAA
+mutmap: 556	CAG	CAA
+mutmap: 212	GTT	GTA
+mutmap: 312	AAC	AAT
+mutmap: 4	ATC	ATT
+mutmap: 35	GCG	GCA
+mutmap: 115	CCT	CCC
+mutmap: 125	AGG	AGA
+mutmap: 134	CTG	CTT
+mutmap: 197	GGG	GGA
+mutmap: 306	AAT	AAC
+mutmap: 391	GAC	GAT
+mutmap: 401	ATC	ATT
+mutmap: 404	ACG	ACA
+mutmap: 540	TGC	TGT
+mutmap: 30	TGC	TGT
+mutmap: 441	GCG	GCA
+mutmap: 134	CTT	CTG
+mutmap: 255	CCG	CCC
+mutmap: 256	GGA	GGG
+mutmap: 398	AAT	AAC
+mutmap: 401	ATT	ATC
+mutmap: 168	AAC	AAT
+mutmap: 331	AAG	AAA
+mutmap: 349	GGC	GGT
+mutmap: 454	GAT	GAC
+mutmap: 442	GAG	GAA
+mutmap: 45	ATC	ATA
+mutmap: 399	AGG	AGA
+mutmap: 145	GGG	GGA
+mutmap: 469	AGG	AGA
+mutmap: 199	CAC	CAT
+mutmap: 549	GGG	GGA
+mutmap: 234	GGG	GGA
+mutmap: 308	AAG	AAA
+mutmap: 436	CTC	CTA
+mutmap: 462	AAG	AAA
+mutmap: 468	AGG	AGA
+mutmap: 515	CGG	AGG
+mutmap: 26	AAA	AAG
+mutmap: 60	CAG	CAA
+mutmap: 176	ACA	ACC
+mutmap: 259	CTG	CTT
+mutmap: 330	CTG	CTA
+mutmap: 344	ACT	ACC
+mutmap: 380	GCA	GCG
+mutmap: 125	AGG	AGA
+mutmap: 307	GAC	GAT
+mutmap: 323	AAG	AAA
+mutmap: 335	GGG	GGA
+mutmap: 353	GGT	GGC
+mutmap: 390	ATC	ATT
+mutmap: 441	GCG	GCA
+mutmap: 445	GTC	GTT
+mutmap: 517	CAG	CAA
+mutmap: 343	CAA	CAG
+mutmap: 411	ATC	ATA
+mutmap: 87	TTG	CTG
+mutmap: 118	GTG	GTA
+mutmap: 331	AAG	AAA
+mutmap: 376	GGC	GGA
+mutmap: 405	AAC	AAT
+mutmap: 451	CAT	CAC
+mutmap: 524	AAG	AAA
+mutmap: 223	AGA	AGG
+mutmap: 199	CAC	CAT
+mutmap: 122	GCC	GCA
+mutmap: 220	GTC	GTT
+mutmap: 227	CAA	CAG
+mutmap: 308	AAG	AAA
+mutmap: 468	AGG	AGA
+mutmap: 494	ATA	ATT
+mutmap: 50	ATT	ATC
+mutmap: 118	GTG	GTA
+mutmap: 217	AGA	AGG
+mutmap: 360	GAG	GAA
+mutmap: 389	GCC	GCA
+mutmap: 441	GCG	GCT
+mutmap: 223	AGG	AGA
+mutmap: 420	GGG	GGA
+mutmap: 492	GCT	GCA
+mutmap: 223	AGG	AGA
+mutmap: 125	AGG	AGA
+mutmap: 550	TTC	TTT
+mutmap: 76	GAT	GAC
+mutmap: 161	AGC	AGT
+Same:
+274
+274
+
+55
+
+15
+15
+20
+26
+73
+73
+78
+78
+207
+61
+
+61
+
+32
+46
+32
+33
+94
+33
+49
+33
+27
+27
+25
+25
+61
+61
+22
+13
+6
+6
+28
+22
+55
+12
+12
+12
+12
+33
+50
+
+50
+
+
+12
+31
+71
+23
+7
+
+7
+23
+23
+28
+28
+23
+99
+33
+85
+33
+99
+85
+85
+51
+51
+43
+49
+20
+12
+12
+
+20
+21
+21
+20
+25
+25
+54
+20
+14
+14
+20
+22
+20
+155
+33
+33
+25
+25
+12
+12
+15
+15
+92
+
+81
+14
+14
+66
+
+47
+47
+20
+26
+26
+41
+32
+32
+
+29
+20
+23
+23
+256
+80
+74
+74
+118
+118
+212
+212
+
+24
+28
+25
+24
+
+59
+48
+22
+22
+27
+
+9
+9
+36
+31
+31
+36
+211
+23
+32
+61
+11
+11
+13
+61
+32
+23
+66
+101
+21
+27
+26
+23
+23
+12
+12
+44
+101
+26
+10
+10
+65
+65
+213
+
+37
+
+26
+19
+19
+37
+92
+13
+39
+40
+39
+13
+137
+30
+14
+14
+5
+5
+24
+7
+8
+7
+9
+28
+14
+17
+23
+17
+16
+18
+16
+17
+14
+30
+81
+79
+79
+20
+20
+81
+131
+21
+
+22
+22
+21
+131
+
+32
+24
+24
+25
+32
+209
+46
+48
+74
+
+37
+74
+22
+22
+29
+46
+
+47
+47
+45
+33
+42
+33
+13
+19
+19
+15
+7
+9
+7
+24
+17
+13
+39
+113
+63
+
+
+63
+123
+123
+
+
+
+
+137
+18
+18
+92
+137
+117
+117
+
+15
+15
+27
+62
+
+27
+13
+13
+13
+14
+13
+18
+18
+12
+49
+12
+12
+13
+17
+13
+
+53
+33
+33
+19
+19
+55
+53
+63
+30
+30
+105
+105
+57
+52
+6
+6
+16
+278
+121
+14
+8
+8
+29
+29
+14
+16
+18
+
+16
+18
+
+23
+15
+
+27
+15
+22
+56
+33
+33
+20
+
+20
+20
+56
+126
+101
+101
+64
+37
+37
+54
+54
+62
+35
+18
+21
+21
+18
+
+51
+50
+28
+33
+12
+21
+26
+37
+24
+24
+21
+12
+28
+50
+
+41
+20
+24
+19
+24
+25
+25
+22
+19
+20
+24
+8
+54
+8
+16
+16
+41
+77
+43
+43
+54
+54
+56
+56
+40
+19
+19
+40
+157
+47
+47
+78
+51
+51
+94
+78
+32
+16
+16
+21
+18
+18
+21
+21
+
+
+
+
+
+24
+
+24
+33
+38
+
+38
+
+33
+
+42
+42
+15
+13
+30
+
+30
+13
+15
+15
+23
+
+40
+40
+17
+7
+7
+32
+10
+10
+37
+37
+163
+
+38
+6
+9
+6
+19
+19
+7
+12
+7
+14
+45
+38
+59
+
+
+59
+27
+30
+7
+7
+46
+27
+97
+41
+41
+15
+29
+15
+84
+54
+
+16
+16
+146
+75
+75
+155
+
+
+24
+12
+8
+8
+19
+53
+27
+27
+19
+19
+32
+21
+20
+24
+19
+24
+
+68
+68
+50
+24
+24
+57
+82
+182
+182
+110
+34
+
+34
+80
+31
+31
+51
+76
+43
+18
+18
+23
+11
+8
+8
+80
+
+
+
+31
+31
+30
+24
+29
+24
+17
+17
+25
+25
+65
+130
+
+67
+82
+43
+41
+21
+43
+21
+67
+280
+
+35
+10
+10
+18
+48
+10
+10
+18
+41
+141
+8
+8
+32
+46
+11
+11
+32
+
+
+42
+46
+12
+12
+
+82
+82
+38
+38
+97
+
+
+
+124
+124
+126
+126
+139
+139
+41
+41
+15
+15
+47
+32
+13
+14
+11
+11
+
+12
+12
+30
+39
+206
+206
+
+33
+
+33
+58
+20
+30
+30
+20
+33
+33
+97
+43
+9
+
+
+9
+97
+14
+95
+14
+14
+55
+32
+37
+
+54
+54
+14
+14
+35
+61
+
+
+24
+6
+6
+51
+51
+85
+50
+50
+59
+98
+33
+31
+31
+33
+119
+
+28
+28
+38
+270
+37
+37
+56
+56
+13
+13
+33
+18
+18
+
+51
+22
+71
+51
+51
+
+167
+27
+15
+15
+254
+254
+
+64
+39
+
+46
+37
+37
+39
+289
+31
+31
+218
+
+
+
+218
+34
+15
+15
+32
+29
+29
+21
+22
+16
+17
+16
+22
+21
+23
+32
+23
+17
+17
+97
+57
+
+57
+
+56
+57
+14
+14
+63
+18
+57
+
+108
+108
+
+
+
+41
+22
+22
+9
+10
+91
+
+14
+14
+8
+8
+15
+15
+44
+41
+
+39
+19
+
+29
+19
+39
+39
+74
+17
+74
+100
+
+100
+17
+84
+8
+8
+33
+46
+46
+48
+65
+34
+32
+26
+65
+26
+52
+33
+92
+194
+
+54
+26
+26
+28
+23
+15
+8
+8
+12
+
+12
+51
+92
+
+92
+78
+26
+24
+24
+45
+
+27
+27
+
+46
+79
+46
+
+142
+70
+70
+24
+23
+23
+24
+46
+66
+66
+
+125
+125
+95
+222
+
+222
+95
+99
+
+32
+37
+26
+26
+27
+27
+32
+43
+43
+16
+16
+104
+104
+50
+50
+
+
+5
+5
+
+25
+102
+29
+29
+37
+28
+27
+6
+6
+37
+
+74
+13
+13
+40
+
+
+64
+52
+
+52
+174
+71
+32
+32
+82
+75
+34
+
+34
+52
+16
+13
+23
+29
+29
+13
+9
+25
+9
+22
+14
+14
+114
+51
+12
+114
+13
+12
+35
+118
+60
+
+59
+183
+38
+38
+60
+
+
+32
+32
+44
+
+
+
+102
+102
+15
+15
+15
+57
+68
+6
+6
+43
+
+89
+40
+8
+8
+14
+14
+20
+103
+129
+16
+16
+16
+103
+123
+22
+13
+26
+28
+28
+6
+6
+57
+11
+11
+
+29
+61
+
+
+19
+19
+14
+14
+
+33
+33
+22
+22
+19
+19
+
+
+40
+40
+
+
+
+60
+60
+
+182
+22
+22
+11
+34
+5
+5
+34
+10
+10
+
+
+
+23
+9
+9
+23
+88
+
+
+14
+14
+25
+21
+15
+15
+
+10
+11
+8
+8
+5
+4
+4
+22
+23
+21
+
+11
+29
+22
+18
+18
+20
+10
+10
+
+21
+19
+16
+11
+180
+203
+38
+31
+31
+131
+56
+18
+16
+16
+10
+10
+29
+14
+14
+15
+18
+24
+24
+
+93
+
+51
+90
+139
+90
+39
+39
+16
+16
+95
+95
+
+
+36
+23
+
+23
+36
+116
+
+
+70
+138
+70
+
+
+68
+77
+68
+38
+38
+10
+14
+10
+
+14
+
+
+34
+54
+55
+34
+36
+84
+
+33
+33
+10
+10
+13
+29
+84
+187
+24
+24
+45
+37
+14
+14
+17
+17
+20
+27
+22
+11
+11
+16
+39
+11
+11
+4
+4
+20
+20
+105
+9
+9
+26
+35
+33
+38
+38
+15
+15
+26
+62
+106
+20
+20
+21
+27
+106
+27
+39
+39
+
+
+21
+21
+
+51
+51
+18
+18
+28
+28
+14
+14
+18
+60
+18
+8
+8
+14
+6
+4
+13
+13
+13
+4
+28
+52
+81
+105
+52
+27
+27
+31
+63
+53
+53
+
+68
+25
+25
+
+27
+30
+13
+13
+27
+
+137
+5
+5
+12
+32
+26
+40
+40
+26
+12
+12
+
+13
+13
+
+20
+20
+20
+62
+
+
+126
+21
+21
+126
+97
+
+97
+45
+43
+9
+9
+43
+294
+294
+
+
+31
+16
+
+16
+30
+28
+28
+
+58
+237
+
+
+33
+21
+21
+33
+107
+72
+107
+72
+207
+205
+2
+2
+
+
+117
+117
+2
+2
+3
+33
+33
+63
+142
+75
+61
+37
+14
+14
+22
+22
+14
+141
+
+35
+42
+35
+66
+71
+32
+7
+7
+66
+102
+244
+69
+27
+32
+27
+
+24
+13
+13
+29
+
+19
+19
+24
+28
+28
+22
+17
+21
+
+23
+17
+28
+28
+19
+29
+14
+14
+19
+19
+11
+11
+15
+15
+29
+
+32
+32
+33
+28
+25
+25
+28
+18
+18
+33
+94
+
+49
+17
+
+10
+10
+11
+12
+12
+19
+
+22
+34
+17
+
+197
+
+31
+
+24
+24
+34
+20
+20
+8
+8
+29
+29
+20
+34
+
+
+31
+31
+32
+68
+68
+68
+8
+8
+21
+21
+21
+38
+17
+37
+15
+15
+17
+7
+13
+4
+4
+
+7
+30
+19
+
+19
+72
+57
+36
+36
+82
+82
+17
+17
+29
+50
+24
+24
+25
+
+22
+22
+
+55
+
+50
+37
+
+50
+36
+28
+21
+21
+21
+35
+35
+28
+37
+
+
+
+
+
+
+
+29
+77
+46
+30
+18
+11
+11
+18
+29
+
+
+10
+10
+18
+18
+23
+25
+23
+
+32
+32
+45
+47
+17
+8
+8
+17
+44
+31
+31
+48
+
+
+
+47
+79
+19
+19
+27
+9
+9
+29
+47
+27
+27
+84
+84
+44
+18
+18
+30
+30
+9
+9
+15
+9
+94
+14
+9
+15
+24
+15
+18
+22
+199
+
+89
+
+20
+20
+94
+56
+56
+
+38
+
+38
+162
+
+49
+14
+10
+10
+32
+34
+98
+32
+38
+63
+23
+23
+146
+33
+60
+33
+146
+91
+48
+48
+
+
+
+
+
+71
+71
+18
+66
+62
+58
+
+58
+
+18
+37
+37
+23
+27
+27
+23
+105
+15
+15
+31
+51
+31
+45
+
+127
+127
+40
+24
+24
+15
+17
+15
+40
+129
+
+129
+47
+42
+76
+45
+76
+36
+36
+
+
+
+6
+6
+37
+24
+24
+158
+102
+33
+32
+13
+15
+7
+7
+
+32
+33
+102
+23
+23
+
+45
+85
+45
+78
+38
+38
+
+21
+21
+12
+12
+19
+23
+21
+36
+36
+61
+61
+74
+26
+26
+
+135
+
+135
+92
+30
+20
+20
+38
+
+38
+
+
+
+
+66
+66
+
+63
+26
+25
+120
+
+23
+23
+33
+25
+
+47
+47
+
+27
+36
+36
+29
+12
+12
+24
+18
+29
+27
+17
+17
+
+52
+52
+19
+19
+29
+29
+85
+85
+20
+20
+
+19
+14
+14
+94
+35
+94
+35
+25
+25
+28
+50
+166
+44
+44
+69
+93
+70
+93
+39
+39
+67
+32
+26
+32
+15
+15
+25
+45
+25
+108
+131
+131
+34
+34
+228
+69
+50
+57
+13
+13
+5
+5
+28
+13
+50
+107
+75
+75
+69
+29
+34
+26
+26
+23
+23
+
+48
+48
+
+328
+328
+84
+25
+25
+25
+25
+24
+24
+
+
+39
+39
+23
+23
+26
+75
+156
+75
+32
+32
+75
+81
+72
+61
+25
+13
+13
+61
+81
+95
+
+38
+
+38
+95
+80
+47
+47
+84
+9
+9
+13
+13
+11
+11
+24
+11
+11
+13
+75
+58
+58
+
+85
+75
+
+16
+10
+8
+8
+15
+13
+13
+15
+
+46
+46
+31
+31
+20
+20
+
+65
+
+19
+14
+6
+6
+18
+18
+19
+12
+12
+19
+13
+7
+7
+19
+
+
+
+43
+14
+9
+9
+
+39
+10
+17
+14
+71
+7
+7
+
+164
+
+105
+38
+52
+52
+38
+
+24
+24
+70
+135
+87
+
+41
+25
+
+20
+20
+
+21
+21
+41
+87
+49
+49
+70
+117
+44
+44
+191
+
+
+101
+158
+12
+18
+11
+17
+17
+24
+158
+11
+12
+55
+27
+27
+52
+49
+24
+24
+55
+53
+40
+40
+125
+31
+38
+16
+16
+15
+15
+38
+31
+46
+69
+
+69
+86
+
+
+86
+28
+15
+24
+24
+10
+10
+23
+17
+17
+17
+
+15
+45
+28
+78
+53
+17
+17
+48
+
+27
+27
+60
+53
+107
+20
+20
+29
+86
+56
+
+50
+50
+50
+86
+104
+54
+27
+27
+131
+131
+40
+40
+34
+34
+57
+57
+108
+70
+22
+15
+7
+6
+6
+23
+94
+94
+53
+19
+19
+53
+221
+19
+
+43
+19
+137
+29
+29
+
+38
+56
+
+111
+111
+248
+16
+12
+12
+14
+72
+12
+26
+13
+13
+27
+7
+7
+20
+8
+27
+
+23
+8
+17
+215
+59
+59
+
+
+
+44
+34
+30
+21
+35
+30
+17
+7
+7
+17
+27
+6
+6
+14
+21
+16
+16
+21
+28
+
+29
+19
+9
+9
+18
+24
+25
+19
+10
+16
+15
+10
+10
+10
+18
+9
+9
+75
+30
+27
+27
+
+34
+21
+24
+24
+18
+18
+26
+21
+81
+30
+31
+31
+
+23
+23
+49
+24
+
+24
+39
+
+84
+42
+43
+42
+174
+6
+6
+41
+41
+33
+6
+
+55
+55
+24
+24
+5
+5
+34
+26
+30
+22
+22
+38
+38
+26
+136
+
+22
+14
+14
+12
+12
+13
+16
+15
+15
+7
+7
+21
+50
+28
+27
+27
+
+23
+23
+63
+26
+26
+35
+35
+56
+23
+12
+12
+13
+19
+15
+15
+56
+19
+23
+28
+42
+28
+29
+29
+25
+25
+25
+11
+11
+63
+11
+55
+11
+48
+188
+72
+69
+36
+36
+69
+50
+50
+19
+16
+24
+16
+43
+17
+17
+21
+31
+
+66
+66
+66
+234
+
+61
+55
+10
+10
+8
+21
+36
+37
+8
+61
+
+115
+115
+318
+318
+58
+
+58
+54
+25
+25
+54
+31
+
+22
+22
+32
+21
+21
+
+23
+47
+47
+
+
+
+87
+87
+
+107
+
+
+
+107
+43
+23
+25
+23
+24
+16
+9
+24
+9
+25
+248
+115
+23
+31
+25
+115
+25
+17
+16
+16
+23
+189
+132
+132
+
+24
+24
+53
+
+29
+34
+37
+
+29
+32
+47
+24
+37
+11
+11
+17
+22
+22
+51
+24
+36
+32
+101
+70
+44
+23
+23
+12
+12
+11
+11
+33
+33
+33
+34
+
+118
+118
+21
+
+53
+21
+27
+
+95
+69
+114
+69
+138
+20
+36
+12
+12
+28
+28
+28
+28
+15
+15
+4
+4
+34
+20
+
+90
+9
+9
+44
+90
+10
+32
+10
+
+10
+44
+10
+42
+14
+12
+12
+53
+
+16
+16
+26
+34
+191
+
+
+10
+10
+
+15
+12
+12
+23
+
+
+85
+35
+9
+25
+16
+
+
+
+9
+14
+16
+35
+
+85
+32
+23
+23
+38
+13
+13
+42
+235
+185
+21
+21
+32
+32
+18
+18
+19
+124
+26
+26
+26
+47
+37
+40
+117
+40
+68
+21
+21
+26
+26
+69
+21
+28
+20
+20
+10
+19
+13
+10
+44
+21
+18
+9
+9
+18
+122
+76
+76
+
+74
+3
+3
+38
+17
+17
+20
+20
+30
+254
+254
+24
+10
+10
+17
+24
+
+51
+25
+25
+84
+84
+60
+16
+16
+54
+
+12
+8
+8
+
+12
+103
+14
+28
+
+14
+41
+26
+27
+19
+14
+14
+14
+
+16
+16
+26
+41
+95
+109
+128
+9
+9
+40
+35
+18
+18
+40
+33
+26
+25
+17
+26
+17
+20
+17
+17
+22
+22
+33
+24
+24
+18
+18
+44
+118
+24
+24
+74
+74
+61
+75
+61
+167
+40
+40
+172
+69
+37
+37
+69
+67
+
+67
+
+26
+16
+16
+9
+9
+66
+39
+39
+10
+15
+10
+18
+18
+6
+6
+18
+18
+24
+24
+106
+106
+
+23
+23
+36
+82
+
+36
+36
+246
+
+6
+6
+21
+
+14
+18
+35
+35
+
+64
+52
+29
+23
+23
+31
+12
+12
+24
+21
+20
+20
+22
+42
+71
+32
+21
+7
+8
+4
+
+4
+20
+8
+8
+
+21
+8
+9
+325
+9
+12
+9
+11
+11
+32
+71
+47
+47
+325
+103
+31
+31
+33
+103
+24
+24
+
+55
+
+
+55
+76
+148
+
+49
+
+24
+24
+45
+28
+
+
+49
+206
+75
+33
+33
+42
+12
+8
+8
+42
+13
+45
+20
+20
+
+37
+28
+41
+79
+41
+28
+
+27
+27
+37
+36
+16
+16
+263
+
+
+
+23
+23
+23
+30
+146
+152
+
+
+60
+34
+28
+26
+32
+26
+32
+130
+28
+
+130
+28
+151
+34
+21
+5
+5
+
+
+
+
+
+46
+46
+84
+56
+40
+25
+37
+25
+14
+21
+18
+18
+14
+37
+76
+64
+50
+50
+
+13
+
+
+13
+
+
+15
+71
+28
+22
+64
+21
+23
+17
+9
+14
+11
+
+9
+17
+22
+37
+37
+15
+15
+67
+51
+30
+15
+25
+46
+15
+30
+
+128
+25
+25
+31
+139
+31
+61
+14
+14
+58
+26
+31
+31
+26
+35
+136
+27
+27
+26
+16
+19
+19
+14
+14
+25
+16
+18
+18
+
+
+159
+31
+31
+33
+33
+45
+26
+10
+10
+40
+32
+32
+19
+19
+61
+
+167
+84
+84
+52
+36
+72
+21
+21
+36
+67
+24
+80
+24
+
+
+38
+15
+15
+
+
+35
+30
+27
+22
+19
+6
+5
+5
+10
+10
+24
+30
+20
+20
+21
+21
+43
+
+
+177
+114
+30
+30
+36
+
+
+
+35
+33
+33
+24
+24
+96
+
+22
+16
+16
+18
+11
+11
+6
+6
+22
+
+61
+64
+
+13
+14
+39
+39
+13
+
+61
+
+
+95
+20
+20
+127
+15
+15
+96
+96
+7
+7
+68
+
+64
+60
+17
+17
+26
+
+90
+26
+29
+29
+79
+79
+59
+31
+31
+47
+28
+14
+10
+10
+21
+21
+55
+47
+
+
+33
+33
+82
+19
+21
+19
+23
+15
+15
+18
+18
+39
+9
+39
+
+11
+9
+29
+29
+41
+207
+9
+14
+9
+37
+24
+24
+14
+19
+19
+18
+18
+
+19
+14
+36
+119
+76
+9
+9
+9
+
+56
+56
+15
+108
+34
+21
+21
+14
+14
+24
+13
+13
+13
+12
+47
+12
+31
+15
+72
+72
+86
+22
+36
+25
+25
+36
+19
+19
+10
+10
+22
+36
+13
+13
+27
+12
+12
+24
+20
+8
+8
+19
+24
+106
+38
+106
+208
+
+18
+34
+42
+25
+25
+5
+5
+6
+6
+70
+32
+
+32
+59
+212
+
+
+22
+22
+79
+12
+8
+10
+6
+7
+6
+15
+67
+10
+4
+4
+10
+7
+7
+67
+
+81
+68
+19
+19
+
+
+46
+41
+41
+44
+99
+85
+45
+16
+3
+
+3
+12
+18
+18
+12
+20
+44
+36
+20
+20
+24
+13
+20
+13
+36
+49
+67
+67
+
+101
+77
+56
+56
+77
+
+69
+58
+27
+16
+16
+
+38
+3
+3
+6
+72
+58
+58
+49
+23
+23
+70
+
+54
+54
+55
+41
+15
+15
+28
+
+45
+
+153
+33
+33
+39
+
+25
+8
+8
+39
+
+108
+
+53
+53
+
+204
+60
+44
+29
+29
+204
+77
+77
+22
+22
+19
+19
+69
+12
+12
+138
+209
+209
+104
+104
+122
+
+12
+12
+122
+85
+
+
+
+22
+
+22
+66
+194
+
+53
+71
+35
+44
+18
+18
+30
+58
+26
+35
+36
+36
+63
+
+13
+13
+27
+29
+29
+115
+136
+55
+55
+307
+100
+36
+31
+31
+42
+36
+100
+
+27
+25
+25
+62
+27
+14
+14
+34
+21
+13
+42
+55
+55
+13
+27
+21
+186
+25
+26
+31
+31
+25
+
+
+24
+31
+19
+18
+18
+27
+27
+11
+11
+12
+12
+16
+12
+11
+11
+37
+104
+104
+45
+24
+24
+Different:
+
+
+
+39
+36
+36
+45
+50
+56
+130
+195
+
+
+
+36
+36
+61
+53
+57
+89
+53
+36
+11
+11
+45
+28
+15
+25
+20
+15
+
+
+
+
+
+
+
+
+76
+12
+32
+34
+30
+43
+62
+
+20
+20
+6
+6
+35
+
+
+
+
+
+
+
+
+
+
+11
+11
+18
+25
+11
+10
+10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+50
+50
+66
+135
+129
+159
+
+116
+99
+31
+27
+31
+67
+76
+74
+
+32
+27
+
+
+
+
+
+
+
+
+
+
+
+61
+65
+62
+39
+
+31
+31
+40
+42
+47
+
+
+
+
+
+
+
+182
+45
+46
+31
+31
+31
+38
+9
+9
+40
+79
+28
+18
+13
+13
+26
+31
+19
+15
+16
+15
+18
+33
+31
+
+
+
+35
+58
+71
+
+
+
+35
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+65
+16
+16
+32
+62
+
+
+
+
+
+
+
+
+77
+11
+11
+
+29
+29
+44
+42
+51
+57
+
+50
+45
+45
+85
+119
+110
+137
+161
+158
+171
+174
+177
+175
+184
+176
+128
+74
+77
+11
+11
+
+58
+125
+32
+32
+
+45
+45
+51
+51
+59
+14
+14
+100
+175
+
+64
+63
+26
+33
+3
+3
+12
+19
+12
+25
+24
+34
+30
+8
+6
+6
+10
+21
+14
+13
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+34
+48
+
+44
+34
+34
+55
+35
+10
+10
+44
+54
+159
+107
+96
+17
+17
+17
+29
+133
+247
+
+
+
+
+
+
+
+122
+41
+8
+8
+15
+13
+13
+70
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+48
+20
+13
+12
+12
+42
+41
+24
+13
+18
+24
+9
+7
+7
+36
+36
+69
+72
+13
+18
+18
+13
+131
+165
+
+
+
+
+
+
+
+
+
+
+
+
+73
+7
+9
+20
+9
+7
+63
+68
+
+65
+65
+
+
+71
+71
+79
+94
+38
+6
+6
+69
+69
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+19
+19
+30
+50
+
+
+
+
+
+
+92
+
+
+
+
+
+107
+29
+29
+51
+57
+211
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+165
+83
+73
+73
+29
+42
+35
+20
+17
+17
+42
+46
+39
+39
+50
+44
+20
+29
+
+
+
+
+
+
+
+
+
+
+138
+157
+198
+14
+14
+14
+14
+33
+33
+18
+9
+9
+69
+241
+
+
+
+
+
+
+
+
+
+
+
+30
+32
+20
+58
+17
+16
+18
+16
+
+24
+
+
+
+
+
+
+
+
+
+
+180
+180
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+72
+55
+10
+15
+15
+17
+10
+22
+
+
+
+
+
+
+
+
+
+78
+76
+55
+32
+32
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+94
+94
+110
+128
+192
+
+
+161
+121
+73
+76
+78
+17
+21
+17
+52
+69
+237
+313
+294
+
+
+
+
+
+
+
+
+148
+60
+
+28
+39
+28
+89
+148
+
+
+55
+30
+
+30
+257
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+34
+34
+41
+
+26
+27
+27
+32
+20
+20
+26
+
+40
+100
+40
+51
+164
+17
+38
+30
+14
+15
+8
+
+10
+8
+11
+13
+54
+49
+17
+32
+164
+84
+34
+13
+13
+47
+
+
+65
+9
+9
+74
+56
+56
+12
+65
+69
+67
+22
+22
+15
+33
+23
+23
+30
+14
+14
+20
+42
+15
+45
+45
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+56
+24
+24
+31
+56
+
+93
+93
+147
+
+57
+
+46
+20
+39
+51
+25
+20
+57
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+75
+25
+25
+35
+
+
+
+
+135
+79
+24
+24
+34
+83
+113
+110
+120
+142
+141
+101
+
+
+
+
+48
+46
+37
+66
+21
+16
+16
+27
+37
+91
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+86
+19
+23
+19
+11
+21
+11
+
+
+
+
+
+
+60
+60
+62
+84
+65
+81
+65
+65
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+75
+75
+
+9
+9
+10
+17
+94
+
+
+62
+58
+58
+47
+29
+28
+9
+43
+48
+41
+35
+
+
+
+23
+9
+46
+46
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+64
+76
+43
+28
+28
+103
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+58
+26
+26
+63
+57
+4
+4
+10
+
+14
+
+47
+87
+109
+142
+69
+47
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+46
+46
+60
+50
+37
+34
+13
+13
+103
+126
+
+
+68
+71
+18
+18
+55
+142
+148
+104
+100
+55
+45
+8
+8
+14
+27
+29
+26
+16
+14
+11
+16
+11
+14
+29
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+98
+25
+22
+32
+22
+70
+
+
+54
+22
+26
+45
+
+
+169
+
+
+
+
+169
+
+271
+187
+200
+187
+
+
+
+
+
+
+
+
+
+
+
+
+19
+12
+12
+10
+6
+6
+10
+
+67
+284
+
+
+
+
+
+
+46
+37
+37
+46
+24
+24
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+225
+27
+69
+95
+60
+27
+169
+61
+60
+43
+18
+25
+18
+169
+95
+105
+43
+33
+42
+5
+5
+22
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+29
+39
+43
+40
+17
+19
+8
+8
+29
+29
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+20
+32
+61
+20
+106
+66
+61
+22
+22
+22
+37
+46
+63
+23
+29
+29
+30
+25
+10
+21
+7
+5
+
+5
+31
+5
+5
+20
+
+
+
+
+
+
+
+
+
+70
+36
+24
+
+
+
+
+24
+115
+75
+21
+21
+83
+41
+47
+75
+86
+83
+92
+102
+107
+75
+28
+75
+
+55
+28
+28
+
+55
+
+
+
+
+
+
+
+
+
+21
+
+23
+21
+61
+53
+66
+84
+79
+
+
+
+41
+28
+28
+18
+24
+18
+34
+41
+20
+20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+38
+18
+6
+6
+30
+49
+50
+46
+21
+8
+8
+18
+29
+47
+38
+35
+52
+55
+55
+66
+37
+41
+37
+162
+252
+304
+
+
+
+
+
+
+30
+34
+32
+30
+27
+23
+23
+51
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+269
+224
+157
+111
+66
+14
+
+60
+14
+153
+
+
+
+
+
+
+58
+22
+31
+22
+30
+30
+58
+
+
+
+
+
+
+
+
+
+
+23
+23
+148
+36
+39
+24
+24
+33
+33
+39
+36
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+45
+12
+12
+85
+121
+113
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+38
+38
+109
+180
+112
+86
+78
+26
+26
+32
+58
+79
+58
+
+28
+68
+28
+
+
+
+13
+13
+123
+128
+155
+
+19
+19
+36
+
+29
+40
+28
+18
+18
+28
+40
+34
+31
+28
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+47
+58
+55
+47
+
+
+
+
+
+
+
+
+16
+35
+35
+16
+39
+65
+22
+22
+12
+12
+19
+26
+13
+13
+131
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+60
+60
+92
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+104
+56
+36
+22
+22
+175
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+69
+18
+43
+
+43
+18
+
+
+
+
+
+
+
+
+
+
+60
+90
+208
+207
+225
+243
+23
+23
+
+55
+64
+62
+62
+51
+57
+12
+12
+16
+15
+17
+52
+51
+58
+
+
+
+
+
+
+
+
+
+
+
+
+106
+160
+159
+80
+80
+
+
+
+
+
+
+
+
+
+
+
+61
+44
+55
+104
+
+111
+117
+
+122
+135
+44
+132
+
+
+
+
+
+
+
+
+
+79
+66
+74
+51
+35
+32
+25
+19
+19
+44
+66
+44
+44
+36
+36
+17
+29
+17
+63
+130
+187
+167
+270
+
+
+
+
+
+
+
+
+
+61
+10
+10
+27
+27
+19
+19
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+32
+32
+37
+40
+
+
+
+
+
+30
+30
+
+90
+112
+64
+30
+30
+44
+46
+59
+44
+153
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+28
+15
+50
+15
+146
+49
+32
+32
+32
+87
+
+
+
+16
+37
+23
+17
+25
+17
+19
+35
+14
+23
+14
+18
+19
+16
+13
+13
+
+14
+13
+28
+16
+75
+24
+44
+24
+
+87
+53
+9
+9
+35
+24
+35
+13
+14
+6
+6
+31
+35
+35
+31
+30
+36
+24
+31
+
+36
+25
+40
+41
+34
+20
+10
+10
+6
+24
+23
+12
+8
+6
+26
+23
+22
+22
+233
+24
+33
+
+45
+32
+31
+22
+12
+24
+12
+31
+24
+255
+
+
+
+
+
+
+215
+
+235
+258
+215
+
+
+
+
+
+
+
+
+
+
+
+18
+43
+18
+64
+68
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+90
+54
+40
+35
+19
+20
+19
+
+
+
+52
+53
+15
+20
+28
+24
+29
+38
+19
+18
+18
+25
+15
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+183
+23
+24
+24
+48
+23
+
+
+
+
+
+
+
+
+
+
+
+27
+27
+45
+45
+259
+
+
+
+
+
+
+
+
+
+
+
+
+142
+35
+35
+204
+164
+118
+118
+
+
+
+
+14
+14
+31
+35
+53
+
+
+
+34
+
+
+
+32
+23
+23
+32
+
+45
+25
+25
+45
+74
+46
+19
+5
+5
+10
+10
+9
+9
+12
+19
+292
+
+
+
+
+
+
+
+
+
+
+
+
+
+30
+30
+48
+77
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+143
+69
+60
+32
+32
+59
+68
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+74
+56
+57
+60
+12
+14
+38
+14
+12
+12
+52
+12
+94
+68
+64
+62
+14
+14
+53
+57
+49
+58
+271
+
+
+45
+37
+11
+14
+13
+11
+60
+
+
+42
+122
+152
+175
+166
+30
+30
+
+153
+156
+152
+127
+42
+119
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+82
+
+
+76
+76
+174
+232
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+270
+270
+316
+313
+
+
+120
+76
+68
+26
+26
+22
+24
+28
+16
+16
+
+
+
+
+
+153
+87
+73
+60
+47
+45
+47
+13
+13
+21
+105
+124
+228
+315
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+49
+43
+27
+27
+49
+
+
+
+
+
+
+
+
+
+
+
+7
+7
+70
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+39
+39
+61
+257
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+81
+104
+61
+47
+49
+42
+
+42
+58
+37
+33
+
+46
+29
+15
+14
+14
+18
+47
+65
+60
+128
+128
+37
+42
+37
+
+
+
+
+
+42
+40
+40
+
+54
+54
+
+
+
+
+91
+36
+36
+36
+69
+38
+8
+8
+112
+178
+88
+35
+8
+8
+17
+11
+15
+4
+4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+24
+24
+
+
+
+
+
+
+
+
+65
+52
+12
+12
+26
+14
+14
+22
+73
+53
+24
+24
+69
+
+
+
+
+
+
+52
+52
+
+
+
+
+77
+23
+32
+20
+20
+33
+15
+10
+10
+19
+15
+39
+23
+
+
+
+
+
+
+
+
+53
+53
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+156
+12
+12
+45
+37
+19
+27
+73
+66
+19
+43
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+46
+36
+29
+14
+14
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+52
+52
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+135
+5
+5
+23
+39
+23
+97
+135
+
+
+
+
+
+
+
+
+
+
+43
+58
+20
+20
+29
+
+
+25
+43
+88
+
+
+
+
+
+
+
+
+
+
+78
+79
+32
+32
+126
+86
+46
+35
+26
+26
+86
+34
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+122
+87
+92
+86
+32
+21
+24
+10
+20
+10
+14
+21
+14
+19
+17
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+105
+143
+105
+56
+55
+65
+
+
+32
+24
+8
+8
+13
+14
+19
+19
+19
+43
+55
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+61
+60
+34
+15
+19
+9
+9
+11
+11
+22
+11
+11
+52
+52
+244
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+19
+19
+
+
+
+
+
+
+
+
+
+
+150
+23
+
+
+19
+20
+19
+99
+99
+119
+80
+20
+3
+3
+
+
+
+
+56
+23
+32
+23
+21
+6
+6
+7
+11
+13
+11
+17
+29
+84
+
+
+
+
+
+
+
+
+
+
+
+
+93
+14
+14
+37
+37
+14
+14
+75
+29
+18
+18
+18
+22
+
+
+
+78
+
+
+
+
+
+
+
+
+
+133
+82
+51
+52
+41
+20
+20
+
+49
+49
+60
+30
+30
+32
+53
+57
+57
+
+119
+37
+52
+37
+162
+
+
+
+
+
+
+
+
+
+
+76
+77
+82
+99
+95
+76
+
+
+
+
+79
+6
+12
+6
+46
+57
+26
+26
+
+8
+8
+26
+86
+212
+18
+21
+18
+18
+18
+
+
+
+
+
+5
+5
+33
+55
+32
+33
+32
+47
+59
+52
+150
+270
+
+
+
+135
+77
+219
+212
+127
+105
+77
+51
+97
+94
+93
+51
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Probability:   0.000000, normal approx w. mean: 2980732.000000, std deviation: 37356.115492, z:   8.017201----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |   2809    |           5630307      /5928394
+----------------------------------------------------------------
+   2    |   1412    |           3280224      /2980026
+----------------------------------------------------------------
+N (size of both datasets):    4221
+Probability:   0.000000, normal approx w. mean: 2980732.000000, std deviation: 37356.115492, z:   8.017201
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+

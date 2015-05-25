@@ -4,17 +4,20 @@
 
 use strict;
 use Bio::Phylo::IO;
-use DnaUtilities::compare qw(nsyn_substitutions syn_substitutions);
-
+use DnaUtilities::compare qw(nsyn_substitutions syn_substitutions nsyn_substitutions_codons);
+use Bio::Tools::CodonTable;
 use TreeUtils::Phylo::FigTree;
 use Bio::SeqIO;
 use Data::Dumper;
 use Bit::Vector;
 use Statistics::Test::WilcoxonRankSum;
 use Try::Tiny;
+use List::Util qw(sum);
 
 use List::Util qw/shuffle/; 
 use Statistics::Basic qw(:all);
+
+$| = 1;
 
 ## This method gets two files (.newick tree and .fasta with sequences of all its nodes)
 ## and returns a map of mutations (node name -> array of substitution structs).
@@ -77,7 +80,7 @@ sub mutmap {
 	return (\%subs_on_node, \%nodes_with_sub);
 };
 
-sub synmutmap {
+sub codonmutmap {
 
 	my $tree = $_[0];
 	my %nodeseqs = %{$_[1]};
@@ -90,6 +93,31 @@ sub synmutmap {
 		my $name = $node ->get_name();
 		#my @nsyn = nsyn_substitutions($nodeseqs{$node->get_ancestors()->[0]->get_name()},
 		#							  $nodeseqs{$name});
+		my %nsyn = nsyn_substitutions_codons($nodeseqs{$node->get_ancestors()->[0]->get_name()},
+									  $nodeseqs{$name});					  
+		$subs_on_node{$name}=\%nsyn;
+		for	my $site_index(keys %nsyn){
+			if (! exists $nodes_with_sub{$site_index}){
+				$nodes_with_sub{$site_index} = ();
+			}
+			push (@{$nodes_with_sub{$site_index}}, \$node);
+		}	
+	}
+
+	return (\%subs_on_node, \%nodes_with_sub);
+};
+
+sub synmutmap {
+
+	my $tree = $_[0];
+	my %nodeseqs = %{$_[1]};
+	my %subs_on_node;
+	my %nodes_with_sub;
+	
+	my @nodes = $tree -> get_nodes;
+	foreach my $node(@nodes){
+		if ($node->is_root()) {next;}
+		my $name = $node ->get_name();
 		my %nsyn = syn_substitutions($nodeseqs{$node->get_ancestors()->[0]->get_name()},
 									  $nodeseqs{$name});					  
 		$subs_on_node{$name}=\%nsyn;
@@ -247,6 +275,33 @@ sub get_mrcn {
         }
         return $patristic_distance;
     }
+    
+    
+## like calc_patristic_distance, but returns 0 for two sequential nodes    
+    sub calc_my_distance {
+        my ( $node, $other_node ) = @_;
+        my $patristic_distance = 0;
+        my $mrca    = get_mrcn($node, $other_node);
+        my $mrca_id = $mrca->get_id;
+        if ( $node->get_id == $mrca_id || $other_node->get_id == $mrca_id){
+        	return 0;
+        }
+        while ( $node->get_id != $mrca_id ) {
+            my $branch_length = $node->get_branch_length;
+            if ( defined $branch_length ) {
+                $patristic_distance += $branch_length;
+            }
+            $node = $node->get_parent;
+        }
+        while ( $other_node and $other_node->get_id != $mrca_id ) {
+            my $branch_length = $other_node->get_branch_length;
+            if ( defined $branch_length ) {
+                $patristic_distance += $branch_length;
+            }
+            $other_node = $other_node->get_parent;
+        }
+        return $patristic_distance;
+    }
 
 
 sub load_data{
@@ -261,18 +316,23 @@ sub print_tree_with_mutations{
 my $site = shift;
 my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
 my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
-my @mutmaps = synmutmap($tree, \%fasta);
+my @mutmaps = codonmutmap($tree, \%fasta);
+my $myCodonTable   = Bio::Tools::CodonTable->new();
 my %subs_on_node = %{$mutmaps[0]};
 my %nodes_with_sub = %{$mutmaps[1]};
 
 my %sites;
 my %color;
 foreach my $n(@{$nodes_with_sub{$site}}){
-	$sites{$$n->get_name()} = $$n->get_name()."_".$site.${$subs_on_node{$$n->get_name()}}{$site}->{"Substitution::derived_allele"};
+	my $sub = ${$subs_on_node{$$n->get_name()}}{$site};
+	$sites{$$n->get_name()} = $$n->get_name()."_".$site."_".$sub->{"Substitution::ancestral_allele"}.
+							  "(".$myCodonTable->translate($sub->{"Substitution::ancestral_allele"}).")->".
+							  $sub->{"Substitution::derived_allele"}.
+							  "(".$myCodonTable->translate($sub->{"Substitution::derived_allele"}).")";
 	$color{$$n->get_name()} = "-16776961";
 }
 
-open TREE, ">n1_syn_sites_".$site.".tre";
+open TREE, ">h3_sites_".$site.".tre";
 print TREE "#NEXUS\n\nbegin trees;\n";
 print TREE "\ttree $site = [&R] ";
 my $tree_name=tree2str($tree,sites => \%sites, color=>\%color);
@@ -295,33 +355,58 @@ foreach my $trn(@{$nodes_with_sub{$site}}){
 }
 }
 
+sub mean_ignore_nulls{
+	if (!defined $_[0]){
+		return 0;
+	}
+
+	my @arr = @{$_[0]};
+	my $count = 0;
+	my $sum = 0;
+	for my $num(@arr){
+		if (defined $num){
+			$count++;
+			$sum += $num;
+		}
+	}
+	if ($count == 0){
+		return 0;
+	}
+	return $sum/$count;
+	
+}
+
+
+#logic();
+#print_tree_with_mutations(105);
+#print_tree_with_mutations(80);
+
 #onemtest(248);
 #onemtest(214);
 #onemtest(136);
-
-#logic_general();
+#logic_radius_compare();
+logic_radius_compare_except_sequential();
 #logic_unrestricted();
 #logic();
+#logic("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick", "C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
+print "==============";
+#logic("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.l.r.newick", "C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.all.fa");
 
+#logic_general_same_ancestor();
+#logic_general_same_ancestor_unrestricted();
 sub logic{
-my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
-my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
+my $tree = parse_tree($_[0]);
+my %fasta = parse_fasta($_[1]);
 my @mutmaps = synmutmap($tree, \%fasta);
 my %subs_on_node = %{$mutmaps[0]};
 my %nodes_with_sub = %{$mutmaps[1]};
 
 
-#my @sieved = sieve(\@{$nodes_with_sub{10}},\%subs_on_node, 10, "Y", 1);
-#print "Sieved: ";
-#foreach my $s(@sieved){
-#	print $$s->get_name()."\t";
-#}
 my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
 #470
 for (my $ind = 1; $ind <566; $ind++){
-	compute_bitvectors($tree, \%subs_on_node, $ind);
-#print ("Nodes with sub: ".scalar @{$nodes_with_sub{$ind}});
-my @distr = find_min_distances_naive($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+	#compute_bitvectors($tree, \%subs_on_node, $ind);
+my @distr = find_all_distances($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
 
 print "Distribution for ".$ind.": ";
 print "\nSame aa: ";
@@ -423,6 +508,484 @@ foreach my $diff(@general_diff){
 
 }
 
+## 30.04: for ancestral codon A in site i: (1) normalize summ of distances between the same muts by n of branches that have such mut;
+## (2) same normalization - for summ of distances between different muts
+## divide 1 by 2
+## summ for all sites which have ancestral codon A
+
+sub logic_3 {
+		my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
+		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
+		my @mutmaps = synmutmap($tree, \%fasta);
+		my %subs_on_node = %{$mutmaps[0]};
+		my %nodes_with_sub = %{$mutmaps[1]};
+
+		my @general;
+
+		my $r;
+		#print ("MEANTEST: ".mean_ignore_nulls(1,5,$r,6,18));
+		my $codon = "CCG";
+		
+		my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+	#470
+	
+	for (my $ind = 1; $ind <566; $ind++){
+		
+	#compute_bitvectors($tree, \%subs_on_node, $ind);
+	#print ("Nodes with sub: ".scalar @{$nodes_with_sub{$ind}});
+		my %distr = find_all_distances_3($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+print "site number $ind";
+print "\n";
+foreach my $codon(keys %distr){
+
+	my $diff = mean_ignore_nulls(($distr{$codon})->[1]);
+	if ($diff == 0) {
+		$diff = 0.0001;
+	}
+
+	push @general, mean_ignore_nulls(($distr{$codon})->[0])/$diff;
+}
+	}
+
+foreach my $number(@general){
+	print $number."\n";
+}
+
+	
+}
+
+
+sub logic_4 {
+		my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
+		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
+		my @mutmaps = synmutmap($tree, \%fasta);
+		my %subs_on_node = %{$mutmaps[0]};
+		my %nodes_with_sub = %{$mutmaps[1]};
+
+		my @general;
+
+		my $r;
+		#print ("MEANTEST: ".mean_ignore_nulls(1,5,$r,6,18));
+		my $codon = "CCG";
+		
+		my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+	#470
+	
+	for (my $ind = 1; $ind <566; $ind++){
+		
+	#compute_bitvectors($tree, \%subs_on_node, $ind);
+	#print ("Nodes with sub: ".scalar @{$nodes_with_sub{$ind}});
+		my %distr = find_all_distances_3($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+print "site number $ind";
+print "\n";
+foreach my $codon(keys %distr){
+
+	my $diff = mean_ignore_nulls(($distr{$codon})->[1]);
+	if ($diff == 0) {
+		$diff = 0.0001;
+	}
+
+	push @general, mean_ignore_nulls(($distr{$codon})->[0])/$diff;
+}
+	}
+
+foreach my $number(@general){
+	print $number."\n";
+}
+
+	
+}
+
+sub logic_radius {
+		my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
+		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
+		my @mutmaps = synmutmap($tree, \%fasta);
+		my %subs_on_node = %{$mutmaps[0]};
+		my %nodes_with_sub = %{$mutmaps[1]};
+
+		my $step = 10;
+		my %bins;
+
+		
+		my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+	
+	for (my $ind = 1; $ind <566; $ind++){
+print "site number $ind";
+print "\n";
+		my %distr = find_all_distances_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+
+foreach my $subst(keys %distr){
+	print "subst $subst \n";
+	if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+	my $same_size = $distr{$subst}->[2]->[0];
+	my $diff_size = $distr{$subst}->[2]->[1];
+	if ($same_size > 1 && $diff_size > 0){
+		my %stemp;
+		my %dtemp;
+		foreach my $s_distance (@{$distr{$subst}->[0]}){
+			$stemp{int($s_distance/$step)} = $stemp{int($s_distance/$step)}+1;
+			print "Same: distance $s_distance, interval ".int($s_distance/$step)." count ".$stemp{int($s_distance/$step)};
+			print "\n";
+		}
+		foreach my $d_distance (@{$distr{$subst}->[1]}){
+			$dtemp{int($d_distance/$step)} = $dtemp{int($d_distance/$step)}+1;
+			print "Diff: distance $d_distance, interval ".int($d_distance/$step)." count ".$dtemp{int($d_distance/$step)};
+			print "\n";
+		}
+	
+		foreach my $interval((0..50)){
+			my $count = $stemp{$interval};
+			if (!defined $count){
+				$count = 0;
+			}
+			my $r =  $count/($same_size*($same_size-1));
+						print "count: $count, same size: $same_size result $r \n";
+			push @{$bins{$interval}->[0]},  $count/($same_size*($same_size-1));  
+		}
+		foreach my $interval((0..50)){
+			my $count =$dtemp{$interval};
+						if (!defined $count){
+				$count = 0;
+			}
+			my $r = $count/($same_size*$diff_size);
+			print "count: $count, same size: $same_size, diff size: $diff_size result $r \n";
+			push @{$bins{$interval}->[1]}, $count/($same_size*$diff_size); 
+		}
+	}
+	}
+
+	
+}
+	}
+
+foreach my $interval(sort { $a <=> $b } keys %bins){
+print "$interval \t";
+print mean(@{$bins{$interval}->[0]})."\t";
+#print "\n";
+#foreach my $number (@{$bins{$interval}->[0]}){
+#	print $number."\n";
+#}
+print mean(@{$bins{$interval}->[1]})."\n";
+#print "\n";
+#foreach my $number (@{$bins{$interval}->[1]}){
+#	print $number."\n";
+#}
+
+}
+	
+}
+
+# for each interval prints two numbers (for each substitution, i.e. same ancestor and same derived aa or codon): observed number of convergent mutations and expected from the of divergent mutations in this interval
+# each subst (a, d) is analyzed separately
+sub logic_radius_compare {
+		my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
+		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
+		my @mutmaps = codonmutmap($tree, \%fasta);
+		my %subs_on_node = %{$mutmaps[0]};
+		my %nodes_with_sub = %{$mutmaps[1]};
+
+		my $step = 10;
+		my %bins;
+
+		
+		my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+	#566
+	for (my $ind = 1; $ind <566; $ind++){
+print "site number $ind";
+print "\n";
+		#my %distr = find_all_distances_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+		my %distr = find_all_distances_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+
+foreach my $subst(keys %distr){
+	print "subst $subst \n";
+	if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+	my $same_size = $distr{$subst}->[2]->[0];
+	my $diff_size = $distr{$subst}->[2]->[1];
+	if ($same_size > 0 && $diff_size > 0){
+		my %stemp;
+		my %dtemp;
+		foreach my $s_distance (@{$distr{$subst}->[0]}){
+			$stemp{int($s_distance/$step)} = $stemp{int($s_distance/$step)}+1;
+			print "Same: distance $s_distance, interval ".int($s_distance/$step)." count ".$stemp{int($s_distance/$step)};
+			print "\n";
+		}
+		foreach my $d_distance (@{$distr{$subst}->[1]}){
+			$dtemp{int($d_distance/$step)} = $dtemp{int($d_distance/$step)}+1;
+			print "Diff: distance $d_distance, interval ".int($d_distance/$step)." count ".$dtemp{int($d_distance/$step)};
+			print "\n";
+		}
+	
+my $obs;
+my $exp;	
+		foreach my $interval((0..50)){
+			my $scount = $stemp{$interval}/$same_size; # normalize to get average count of mutations in i-radius of a mutation
+			my $dcount = $dtemp{$interval}/$same_size; 
+			if (!defined $scount){
+				$scount = 0;
+			}
+			if (!defined $dcount){
+				$dcount = 0;
+			}
+			$exp +=($same_size-1)*$dcount/$diff_size;
+			print "expected ".($same_size-1)*$dcount/$diff_size."\n";
+			$obs += $scount;
+			print "observed ".$scount."\n";
+			push @{$bins{$interval}->[0]}, ($same_size-1)*$dcount/$diff_size;  # expected mean number of convergent mutations in i-radius
+			push @{$bins{$interval}->[1]}, $scount; # observed mean number
+		}
+	if ($exp ne $obs){
+		print "Discrepance found! obs $obs, exp $exp \n";
+	}	
+	else {
+		print "OK: obs $obs, exp $exp \n";
+	}
+
+	}
+	}
+
+	
+}
+	}
+
+foreach my $interval(sort { $a <=> $b } keys %bins){
+	print "interval: $interval expected ".sum(@{$bins{$interval}->[0]})." in ".scalar @{$bins{$interval}->[0]}." observed ".sum(@{$bins{$interval}->[1]})." in ".scalar @{$bins{$interval}->[1]}."\n";
+	for (my $num = 0; $num < scalar @{$bins{$interval}->[0]}; $num++){
+		print $bins{$interval}->[0]->[$num]."\t".$bins{$interval}->[1]->[$num];
+		print "\n";
+	}
+
+
+#  try {$wilcox_test->load_data(\@{$bins{$interval}->[0]}, \@{$bins{$interval}->[1]});
+#  my $prob = $wilcox_test->probability();
+#  my $pf = sprintf '%f', $prob; # prints 0.091022
+#  print "\n";
+#  print $wilcox_test->probability_status();
+#  print $wilcox_test->summary();
+#    print "\n";
+#  }
+}
+	
+}
+
+# for each interval prints two numbers (for each substitution, i.e. same ancestor and same derived aa or codon): observed number of convergent mutations and expected from the of divergent mutations in this interval
+# each subst (a, d) is analyzed separately
+# counts each pair only once
+sub logic_radius_compare_except_sequential {
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
+		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
+		my @mutmaps = synmutmap($tree, \%fasta);
+		my %subs_on_node = %{$mutmaps[0]};
+		my %nodes_with_sub = %{$mutmaps[1]};
+
+		my $step = 10;
+		my %bins;
+
+		
+		my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+	#566
+	for (my $ind = 1; $ind <566; $ind++){
+print "site number $ind";
+print "\n";
+		#my %distr = find_all_distances_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+		my %distr = find_all_distances_except_sequential_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+
+foreach my $subst(keys %distr){
+	print "subst $subst \n";
+	if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+	my $same_size = $distr{$subst}->[2]->[0];
+	my $diff_size = $distr{$subst}->[2]->[1];
+	if ($same_size > 0 && $diff_size > 0){
+		my %stemp;
+		my %dtemp;
+		foreach my $s_distance (@{$distr{$subst}->[0]}){
+			$stemp{int($s_distance/$step)} = $stemp{int($s_distance/$step)}+1;
+			print "Same: distance $s_distance, interval ".int($s_distance/$step)." count ".$stemp{int($s_distance/$step)};
+			print "\n";
+		}
+		foreach my $d_distance (@{$distr{$subst}->[1]}){
+			$dtemp{int($d_distance/$step)} = $dtemp{int($d_distance/$step)}+1;
+			print "Diff: distance $d_distance, interval ".int($d_distance/$step)." count ".$dtemp{int($d_distance/$step)};
+			print "\n";
+		}
+	
+my $obs;
+my $exp;	
+		foreach my $interval((0..50)){
+			my $scount = $stemp{$interval}/$same_size; # normalize to get average count of mutations in i-radius of a mutation
+			my $dcount = $dtemp{$interval}/$same_size; 
+			if (!defined $scount){
+				$scount = 0;
+			}
+			if (!defined $dcount){
+				$dcount = 0;
+			}
+			$exp +=($same_size-1)*$dcount/$diff_size;
+			print "expected ".($same_size-1)*$dcount/$diff_size."\n";
+			$obs += $scount;
+			print "observed ".$scount."\n";
+			push @{$bins{$interval}->[0]}, ($same_size-1)*$dcount/$diff_size;  # expected mean number of convergent mutations in i-radius
+			push @{$bins{$interval}->[1]}, $scount; # observed mean number
+		}
+	if ($exp ne $obs){
+		print "Discrepance found! obs $obs, exp $exp \n";
+	}	
+	else {
+		print "OK: obs $obs, exp $exp \n";
+	}
+
+	}
+	}
+
+	
+}
+	}
+
+foreach my $interval(sort { $a <=> $b } keys %bins){
+	print "interval: $interval expected ".sum(@{$bins{$interval}->[0]})." in ".scalar @{$bins{$interval}->[0]}." observed ".sum(@{$bins{$interval}->[1]})." in ".scalar @{$bins{$interval}->[1]}."\n";
+	for (my $num = 0; $num < scalar @{$bins{$interval}->[0]}; $num++){
+		print $bins{$interval}->[0]->[$num]."\t".$bins{$interval}->[1]->[$num];
+		print "\n";
+	}
+
+
+#  try {$wilcox_test->load_data(\@{$bins{$interval}->[0]}, \@{$bins{$interval}->[1]});
+#  my $prob = $wilcox_test->probability();
+#  my $pf = sprintf '%f', $prob; # prints 0.091022
+#  print "\n";
+#  print $wilcox_test->probability_status();
+#  print $wilcox_test->summary();
+#    print "\n";
+#  }
+}
+	
+}
+
+
+# for each interval prints two numbers (for each substitution, i.e. same ancestor and same derived aa or codon): observed number of convergent mutations and expected from the of divergent mutations in this interval
+# data for different substs from one site is summed up
+sub logic_radius_compare_heap {
+		my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
+		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
+		my @mutmaps = codonmutmap($tree, \%fasta);
+		my %subs_on_node = %{$mutmaps[0]};
+		my %nodes_with_sub = %{$mutmaps[1]};
+
+		my $step = 10;
+		my %bins;
+
+		
+		my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+	
+	for (my $ind = 1; $ind <566; $ind++){
+print "site number $ind";
+print "\n";
+		my %distr = find_all_distances_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+
+my $same_size;
+my $diff_size;
+
+		my %stemp;
+		my %dtemp;
+
+foreach my $subst(keys %distr){
+	print "subst $subst \n";
+	if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+		$same_size += $distr{$subst}->[2]->[0];
+		$diff_size += $distr{$subst}->[2]->[1];
+
+
+		foreach my $s_distance (@{$distr{$subst}->[0]}){
+			$stemp{int($s_distance/$step)} = $stemp{int($s_distance/$step)}+1;
+			print "Same: distance $s_distance, interval ".int($s_distance/$step)." count ".$stemp{int($s_distance/$step)};
+			print "\n";
+		}
+		foreach my $d_distance (@{$distr{$subst}->[1]}){
+			$dtemp{int($d_distance/$step)} = $dtemp{int($d_distance/$step)}+1;
+			print "Diff: distance $d_distance, interval ".int($d_distance/$step)." count ".$dtemp{int($d_distance/$step)};
+			print "\n";
+		}
+
+
+	
+	}
+
+	
+}
+		if ($same_size >0 && $diff_size>0){
+			foreach my $interval((0..50)){
+				my $scount = $stemp{$interval}/$same_size; # normalize to get average count of mutations in i-radius of a mutation
+				my $dcount = $dtemp{$interval}/$same_size; 
+				if (!defined $scount){
+					$scount = 0;
+				}
+				if (!defined $dcount){
+					$dcount = 0;
+				}
+				print $scount/($same_size-1)."\t";
+				push @{$bins{$interval}->[0]}, ($same_size-1)*$dcount/$diff_size;  # expected mean number of convergent mutations in i-radius
+				push @{$bins{$interval}->[1]}, $scount; # observed mean number
+			}
+		}
+
+	}
+
+foreach my $interval(sort { $a <=> $b } keys %bins){
+	print "interval: $interval \n";
+	foreach (my $num = 0; $num < scalar @{$bins{$interval}->[0]}; $num++){
+		print $bins{$interval}->[0]->[$num]."\t".$bins{$interval}->[1]->[$num];
+		print "\n";
+	}
+
+  try {$wilcox_test->load_data(\@{$bins{$interval}->[0]}, \@{$bins{$interval}->[1]});
+#  my $prob = $wilcox_test->probability();
+#  my $pf = sprintf '%f', $prob; # prints 0.091022
+#  print "\n";
+#  print $wilcox_test->probability_status();
+#  print $wilcox_test->summary();
+#    print "\n";
+  }
+}
+	
+}
+
+#todo
+
+sub logic_gold {
+		my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
+		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
+		my @mutmaps = synmutmap($tree, \%fasta);
+		my %subs_on_node = %{$mutmaps[0]};
+		my %nodes_with_sub = %{$mutmaps[1]};
+
+		my @general;
+
+		my $r;
+		#print ("MEANTEST: ".mean_ignore_nulls(1,5,$r,6,18));
+		my $codon = "CCG";
+		
+		my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+	#470
+	
+	for (my $ind = 1; $ind <566; $ind++){
+
+		my %distr = find_all_distances_gold($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+		print "site number $ind";
+		print "\n";
+
+	}
+my %pairhash = pairhash();
+foreach my $key(%pairhash){
+	print "conv: ";
+	print $pairhash{$key} -> {"conv_count"};
+	print " div: ";
+	print $pairhash{$key} -> {"div_count"};
+	print " dist: ";
+	print $pairhash{$key} -> {"distance"};
+	print "\n";
+}
+
+	
+}
 
 
 sub logic_general_groups {
@@ -574,8 +1137,8 @@ sub print_info_for_hist{
 }
 
 sub logic_general {
-	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n2.l.r.newick");
-my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n2.all.fa");
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
+my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
 my @mutmaps = synmutmap($tree, \%fasta);
 my %subs_on_node = %{$mutmaps[0]};
 my %nodes_with_sub = %{$mutmaps[1]};
@@ -591,9 +1154,55 @@ my @general_diff;
 my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
 #470
 for (my $ind = 1; $ind <566; $ind++){
+	#compute_bitvectors($tree, \%subs_on_node, $ind);
+#print ("Nodes with sub: ".scalar @{$nodes_with_sub{$ind}});
+#my @distr = find_min_distances_naive($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+my @distr = find_all_distances($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+push @general_same, @{$distr[0]};
+push @general_diff, @{$distr[1]};
+
+}
+print "Same:\n";
+foreach my $same(@general_same){
+	print $same."\n";
+}
+print "Different:\n";
+foreach my $diff(@general_diff){
+	print $diff."\n";
+}
+  try {$wilcox_test->load_data(\@general_same, \@general_diff);
+  my $prob = $wilcox_test->probability();
+  my $pf = sprintf '%f', $prob; # prints 0.091022
+  print "\n";
+  print $wilcox_test->probability_status();
+  print $wilcox_test->summary();
+    print "\n";
+  }
+	
+}
+
+
+## compare overall distribution of min distances between the same mutations and between different mutations in one site.
+## Difference from logic_general: only considers mutations with the same ancestor aa (or codon) 
+## (_unrestricted) -> ignores oaks between maples
+
+sub logic_general_same_ancestor_unrestricted {
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
+my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
+my @mutmaps = codonmutmap($tree, \%fasta);
+my %subs_on_node = %{$mutmaps[0]};
+my %nodes_with_sub = %{$mutmaps[1]};
+
+my @general_same;
+my @general_diff;
+
+my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+#470 n1 468 n2
+#566 h1
+for (my $ind = 1; $ind <566; $ind++){
 	compute_bitvectors($tree, \%subs_on_node, $ind);
 #print ("Nodes with sub: ".scalar @{$nodes_with_sub{$ind}});
-my @distr = find_min_distances_naive($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+my @distr = find_min_distances_same_ancestor_unrestricted($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
 
 push @general_same, @{$distr[0]};
 push @general_diff, @{$distr[1]};
@@ -617,6 +1226,7 @@ foreach my $diff(@general_diff){
   }
 	
 }
+
 
 #logic_2();
 ## mutmap or synmutmap inside - for nsyn or syn substitutions respectively
@@ -709,7 +1319,6 @@ my %nodes_with_sub = %{$mutmaps[1]};
 	);
 }
 
-subtreetest();
 
 ## For every node of the given tree sets a hash -min_distances_in_subtree:
 ## key = index of site (in protein sequence)
@@ -821,6 +1430,10 @@ sub compute_all_distances_global{
 	
 }
 
+
+
+
+
 sub compute_min_distances_in_subtree{
 	my $tree = $_[0];
 	my %subs_on_node = %{$_[1]};
@@ -920,6 +1533,9 @@ sub compute_all_distances_in_subtree {
 			);
 }
 
+
+
+
 sub find_min_distances_unrestricted {
 	my $tree = $_[0];
 	my @nodes = @{$_[1]};
@@ -945,6 +1561,469 @@ sub find_min_distances_unrestricted {
 				}
 		}
 
+	}
+	return (\@min_distances_same, \@min_distances_diff);	
+}
+
+
+## collects all distances,  ignores oaks between maples
+
+sub find_all_distances_same_ancestor_unrestricted {
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+	#my $same_derived = $_[4];
+		my $myCodonTable   = Bio::Tools::CodonTable->new();
+	my @distances_same;
+	my @distances_diff;
+	
+	for (my $i = 0; $i < scalar @nodes; $i++){
+
+#		my $min_dist_same;
+#		my $min_dist_diff;
+		
+		my $sub1 = ${$subs_on_node{${$nodes[$i]}->get_name()}}{$site_index};
+		my $derived1 = $myCodonTable->translate($sub1->{"Substitution::derived_allele"});
+		my $ancestor1 = $sub1->{"Substitution::ancestral_allele"};
+
+		for (my $j = 0; $j < scalar @nodes; $j++){
+			if ($j == $i){ next; }
+			my $sub2 = ${$subs_on_node{${$nodes[$j]}->get_name()}}{$site_index};
+			my $derived2 = $myCodonTable->translate($sub2->{"Substitution::derived_allele"});
+			my $ancestor2 = $sub2->{"Substitution::ancestral_allele"};
+			if ($ancestor1 ne $ancestor2 ){ next; }
+			my $dist = calc_true_patristic_distance(${$nodes[$i]}, ${$nodes[$j]});
+			if ($derived1 eq $derived2){
+				push @distances_same, $dist;
+			}
+			else {
+				push @distances_diff, $dist;
+			}
+		}
+
+	}
+	return (\@distances_same, \@distances_diff);	
+}
+
+
+## collects all distances,  ignores oaks between maples. Same ancestor. Returns arrays. For synmutmap, logic_3
+
+sub find_all_distances {
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+
+	my @distances_same;
+	my @distances_diff;
+	
+	for (my $i = 0; $i < scalar @nodes; $i++){
+		
+		my $sub1 = ${$subs_on_node{${$nodes[$i]}->get_name()}}{$site_index};
+		my $derived1 = $sub1->{"Substitution::derived_allele"};
+		my $ancestor1 = $sub1->{"Substitution::ancestral_allele"};
+			
+		for (my $j = 0; $j < scalar @nodes; $j++){
+			if ($j == $i){ next; }
+			my $sub2 = ${$subs_on_node{${$nodes[$j]}->get_name()}}{$site_index};
+			my $derived2 = $sub2->{"Substitution::derived_allele"};
+			my $ancestor2 = $sub2->{"Substitution::ancestral_allele"};
+			if ($ancestor1 ne $ancestor2 ){ next; }
+			my $dist = calc_true_patristic_distance(${$nodes[$i]}, ${$nodes[$j]});
+
+			if ($derived1 eq $derived2){
+				push @distances_same, $dist;
+			}
+			else {
+				push @distances_diff, $dist;
+			}
+		}
+	}
+	return  (\@distances_same, \@distances_diff);	
+}
+
+## 
+sub find_all_distances_radius {
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+
+	my %hash;
+	my @distances_same;
+	my @distances_diff;
+	my $myCodonTable   = Bio::Tools::CodonTable->new();
+	
+	for (my $i = 0; $i < scalar @nodes; $i++){
+
+		
+		my $sub1 = ${$subs_on_node{${$nodes[$i]}->get_name()}}{$site_index};
+		my $derived1 = $myCodonTable -> translate($sub1->{"Substitution::derived_allele"});
+	#	my $derived1 = ($sub1->{"Substitution::derived_allele"});
+		my $ancestor1 = $sub1->{"Substitution::ancestral_allele"};
+			
+		my $count_same = 1; # to add the node1 itself
+		my $count_diff;
+print "node 1:  $ancestor1 $derived1 \n";
+		for (my $j = 0; $j < scalar @nodes; $j++){
+			if ($j == $i){ next; }
+			my $sub2 = ${$subs_on_node{${$nodes[$j]}->get_name()}}{$site_index};
+			my $derived2 = $myCodonTable -> translate($sub2->{"Substitution::derived_allele"});
+		#	my $derived2 = ($sub2->{"Substitution::derived_allele"});
+			my $ancestor2 = $sub2->{"Substitution::ancestral_allele"};
+			if ($ancestor1 ne $ancestor2 ){ next; }
+			print "node 2:  $ancestor2 $derived2 \n";
+			my $dist = calc_true_patristic_distance(${$nodes[$i]}, ${$nodes[$j]});
+			if (!exists $hash{"$ancestor1$derived1"} ){
+				my @same = ();
+				my @diff = ();
+				$hash{"$ancestor1$derived1"} = (\@same, \@diff);
+			}
+
+			if ($derived1 eq $derived2){
+				push @{ ($hash{"$ancestor1$derived1"})->[0] }, $dist;
+				$count_same++;
+			}
+			else {
+				push @{ ($hash{"$ancestor1$derived1"})->[1] }, $dist;
+				$count_diff++;
+			}
+
+
+		}
+		
+		print " count same: $count_same, count diff: $count_diff \n";
+		push @{ ($hash{"$ancestor1$derived1"})->[2] }, $count_same;
+		push @{ ($hash{"$ancestor1$derived1"})->[2] }, $count_diff;
+		
+
+	}
+	return %hash;	
+}
+
+# ignore sequential nodes; all counts are kept separately for each node
+sub find_all_distances_except_sequential_radius {
+		my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+
+	my %hash;
+	my @distances_same;
+	my @distances_diff;
+	my $myCodonTable   = Bio::Tools::CodonTable->new();
+	
+	for (my $i = 0; $i < scalar @nodes; $i++){
+
+		
+		my $sub1 = ${$subs_on_node{${$nodes[$i]}->get_name()}}{$site_index};
+	#	my $derived1 = $myCodonTable -> translate($sub1->{"Substitution::derived_allele"});
+		my $derived1 = ($sub1->{"Substitution::derived_allele"});
+		my $ancestor1 = $sub1->{"Substitution::ancestral_allele"};
+			
+		my $count_same = 1; # to add the node1 itself
+		my $count_diff;
+print "node 1:  $ancestor1 $derived1 \n";
+		for (my $j = 0; $j < scalar @nodes; $j++){
+			if ($j == $i){ next; }
+			my $sub2 = ${$subs_on_node{${$nodes[$j]}->get_name()}}{$site_index};
+		#	my $derived2 = $myCodonTable -> translate($sub2->{"Substitution::derived_allele"});
+			my $derived2 = ($sub2->{"Substitution::derived_allele"});
+			my $ancestor2 = $sub2->{"Substitution::ancestral_allele"};
+			if ($ancestor1 ne $ancestor2 ){ next; }
+			print "node 2:  $ancestor2 $derived2 \n";
+			my $dist = calc_my_distance(${$nodes[$i]}, ${$nodes[$j]});
+			if ($dist > 0){ # ie these nodes are not sequential
+				if (!exists $hash{"$ancestor1$derived1$i"} ){
+					my @same = ();
+					my @diff = ();
+					$hash{"$ancestor1$derived1$i"} = (\@same, \@diff);
+				}
+				if ($derived1 eq $derived2){
+					push @{ ($hash{"$ancestor1$derived1$i"})->[0] }, $dist;
+					$count_same++;
+				}
+				else {
+					push @{ ($hash{"$ancestor1$derived1$i"})->[1] }, $dist;
+					$count_diff++;
+				}
+			}
+			else {
+				print "WOA! sequential nodes here!\n";
+			}
+
+		}
+		
+		print " count same: $count_same, count diff: $count_diff \n";
+		push @{ ($hash{"$ancestor1$derived1$i"})->[2] }, $count_same;
+		push @{ ($hash{"$ancestor1$derived1$i"})->[2] }, $count_diff;
+		
+
+	}
+	return %hash;	
+}
+
+## undone and abandoned
+sub find_all_distances_gold {
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+
+	my @distances_same;
+	my @distances_diff;
+	
+	for (my $i = 0; $i < scalar @nodes; $i++){
+		
+		my $sub1 = ${$subs_on_node{${$nodes[$i]}->get_name()}}{$site_index};
+		my $derived1 = $sub1->{"Substitution::derived_allele"};
+		my $ancestor1 = $sub1->{"Substitution::ancestral_allele"};
+		
+			
+		for (my $j = 0; $j < scalar @nodes; $j++){
+			if ($j == $i){ next; }
+			my $sub2 = ${$subs_on_node{${$nodes[$j]}->get_name()}}{$site_index};
+			my $derived2 = $sub2->{"Substitution::derived_allele"};
+			my $ancestor2 = $sub2->{"Substitution::ancestral_allele"};
+			if ($ancestor1 ne $ancestor2 ){ next; }
+			my $dist = calc_true_patristic_distance(${$nodes[$i]}, ${$nodes[$j]});
+			set_distance($nodes[$i], $nodes[$j], $dist);
+			if ($derived1 eq $derived2){
+				push @distances_same, $dist;
+				convergent_plus($nodes[$i], $nodes[$j]);
+			}
+			else {
+				push @distances_diff, $dist;
+				divergent_plus($nodes[$i], $nodes[$j]);
+			}
+		}
+	}
+	return  (\@distances_same, \@distances_diff);	
+}
+
+## collects all distances,  ignores oaks between maples. Same ancestor. returns hash. For synmutmap, logic_3
+
+sub find_all_distances_3 {
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+	#my $same_derived = $_[4];
+
+    my %hash;
+	my @distances_same;
+	my @distances_diff;
+	
+	for (my $i = 0; $i < scalar @nodes; $i++){
+
+#		my $min_dist_same;
+#		my $min_dist_diff;
+		
+		my $sub1 = ${$subs_on_node{${$nodes[$i]}->get_name()}}{$site_index};
+		my $derived1 = $sub1->{"Substitution::derived_allele"};
+		my $ancestor1 = $sub1->{"Substitution::ancestral_allele"};
+			
+		for (my $j = 0; $j < scalar @nodes; $j++){
+			if ($j == $i){ next; }
+			my $sub2 = ${$subs_on_node{${$nodes[$j]}->get_name()}}{$site_index};
+			my $derived2 = $sub2->{"Substitution::derived_allele"};
+			my $ancestor2 = $sub2->{"Substitution::ancestral_allele"};
+			if ($ancestor1 ne $ancestor2 ){ next; }
+			my $dist = calc_true_patristic_distance(${$nodes[$i]}, ${$nodes[$j]});
+			if (!exists $hash{$ancestor1} ){
+				my @same = ();
+				my @diff = ();
+				$hash{$ancestor1} = (\@same, \@diff);
+			}
+
+			if ($derived1 eq $derived2){
+				push @{ ($hash{$ancestor1})->[0] }, $dist;
+			}
+			else {
+				push @{ ($hash{$ancestor1})->[1] }, $dist;
+			}
+
+
+		}
+
+	}
+	return %hash;	
+}
+
+
+
+## method for logic_general_same_ancestor: only considers mutations with the same ancestor allele
+## supposed to be used with codonmutmap: tries to translate the resulting codon into an aa
+sub find_min_distances_same_ancestor{
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+	#my $same_derived = $_[4];
+	my $myCodonTable   = Bio::Tools::CodonTable->new();
+	
+	
+	my @min_distances_same;
+	my @min_distances_diff;
+	
+	for (my $i = 0; $i < scalar @nodes; $i++){
+		my $min_dist_same;
+		my $min_dist_diff;
+		my $bit_vect1 = ${$nodes[$i]}->get_generic("-mutations_on_path")->Clone();
+		$bit_vect1->Move_Left(1);
+		my $sub1 = ${$subs_on_node{${$nodes[$i]}->get_name()}}{$site_index};
+		my $derived1 = $myCodonTable->translate($sub1->{"Substitution::derived_allele"});
+		my $ancestor1 = $sub1->{"Substitution::ancestral_allele"};
+
+		for (my $j = 0; $j < scalar @nodes; $j++){
+			if ($j == $i ){ next; }
+			my $sub2 = ${$subs_on_node{${$nodes[$j]}->get_name()}}{$site_index};
+			my $derived2 = $myCodonTable->translate($sub2->{"Substitution::derived_allele"});
+			my $ancestor2 = $sub2->{"Substitution::ancestral_allele"};
+			if ($ancestor1 ne $ancestor2 ){ next; }
+			my $mrca = ${$nodes[$i]}->get_mrca(${$nodes[$j]})->get_generic("-mutations_on_path")->Size();
+			my $bit_vect2 = ${$nodes[$j]}->get_generic("-mutations_on_path")->Clone();
+			my $bit_vect1_t = $bit_vect1->Clone();
+			$bit_vect2->Move_Left(1);
+			$bit_vect2->Move_Right($mrca+1);
+			$bit_vect1_t->Move_Right($mrca+1);
+			if ($bit_vect2->is_empty() & $bit_vect1_t->is_empty()){
+				my $dist = calc_true_patristic_distance(${$nodes[$i]}, ${$nodes[$j]});
+				
+				if ($derived1 eq $derived2){
+					if(!defined $min_dist_same || $dist < $min_dist_same){
+						$min_dist_same = $dist;
+					}
+				}
+				else {
+					if(!defined $min_dist_diff || $dist < $min_dist_diff){
+						$min_dist_diff = $dist;
+					}
+				}
+			}
+		}
+		push @min_distances_same, $min_dist_same;
+		push @min_distances_diff, $min_dist_diff;
+	}
+	return (\@min_distances_same, \@min_distances_diff);	
+}
+
+
+
+## for usage with synmutmap, logic_3
+sub find_min_distances_3{
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+	
+	my %hash;
+	
+	for (my $i = 0; $i < scalar @nodes; $i++){
+		my $min_dist_same;
+		my $min_dist_diff;
+		my $bit_vect1 = ${$nodes[$i]}->get_generic("-mutations_on_path")->Clone();
+		$bit_vect1->Move_Left(1);
+		my $sub1 = ${$subs_on_node{${$nodes[$i]}->get_name()}}{$site_index};
+		my $derived1 = $sub1->{"Substitution::derived_allele"};
+		my $ancestor1 = $sub1->{"Substitution::ancestral_allele"};
+
+		for (my $j = 0; $j < scalar @nodes; $j++){
+			if ($j == $i ){ next; }
+			my $sub2 = ${$subs_on_node{${$nodes[$j]}->get_name()}}{$site_index};
+			my $derived2 = $sub2->{"Substitution::derived_allele"};
+			my $ancestor2 = $sub2->{"Substitution::ancestral_allele"};
+			if ($ancestor1 ne $ancestor2 ){ next; }
+			my $mrca = ${$nodes[$i]}->get_mrca(${$nodes[$j]})->get_generic("-mutations_on_path")->Size();
+			my $bit_vect2 = ${$nodes[$j]}->get_generic("-mutations_on_path")->Clone();
+			my $bit_vect1_t = $bit_vect1->Clone();
+			$bit_vect2->Move_Left(1);
+			$bit_vect2->Move_Right($mrca+1);
+			$bit_vect1_t->Move_Right($mrca+1);
+			if ($bit_vect2->is_empty() & $bit_vect1_t->is_empty()){
+				my $dist = calc_true_patristic_distance(${$nodes[$i]}, ${$nodes[$j]});
+				
+				if ($derived1 eq $derived2){
+					if(!defined $min_dist_same || $dist < $min_dist_same){
+						$min_dist_same = $dist;
+					}
+				}
+				else {
+					if(!defined $min_dist_diff || $dist < $min_dist_diff){
+						$min_dist_diff = $dist;
+					}
+				}
+			}
+		}
+		
+		if (!exists $hash{$ancestor1} ){
+			my @same;
+			my @diff;
+			$hash{$ancestor1} = (\@same, \@diff);
+		}
+
+		push @{ ($hash{$ancestor1})->[0] }, $min_dist_same;
+		push @{ ($hash{$ancestor1})->[1] }, $min_dist_diff;
+		print scalar @{ ($hash{$ancestor1})->[0] }." pushing $min_dist_same, $min_dist_diff";
+		print "\n";
+	}
+	return %hash;	
+}
+
+
+
+
+
+## for usage with synmutmap
+sub find_min_distances_same_ancestor_syn{
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+	
+	
+	my @min_distances_same;
+	my @min_distances_diff;
+	
+	for (my $i = 0; $i < scalar @nodes; $i++){
+		my $min_dist_same;
+		my $min_dist_diff;
+		my $bit_vect1 = ${$nodes[$i]}->get_generic("-mutations_on_path")->Clone();
+		$bit_vect1->Move_Left(1);
+		my $sub1 = ${$subs_on_node{${$nodes[$i]}->get_name()}}{$site_index};
+		my $derived1 = $sub1->{"Substitution::derived_allele"};
+		my $ancestor1 = $sub1->{"Substitution::ancestral_allele"};
+
+		for (my $j = 0; $j < scalar @nodes; $j++){
+			if ($j == $i ){ next; }
+			my $sub2 = ${$subs_on_node{${$nodes[$j]}->get_name()}}{$site_index};
+			my $derived2 = $sub2->{"Substitution::derived_allele"};
+			my $ancestor2 = $sub2->{"Substitution::ancestral_allele"};
+			if ($ancestor1 ne $ancestor2 ){ next; }
+			my $mrca = ${$nodes[$i]}->get_mrca(${$nodes[$j]})->get_generic("-mutations_on_path")->Size();
+			my $bit_vect2 = ${$nodes[$j]}->get_generic("-mutations_on_path")->Clone();
+			my $bit_vect1_t = $bit_vect1->Clone();
+			$bit_vect2->Move_Left(1);
+			$bit_vect2->Move_Right($mrca+1);
+			$bit_vect1_t->Move_Right($mrca+1);
+			if ($bit_vect2->is_empty() & $bit_vect1_t->is_empty()){
+				my $dist = calc_true_patristic_distance(${$nodes[$i]}, ${$nodes[$j]});
+				
+				if ($derived1 eq $derived2){
+					if(!defined $min_dist_same || $dist < $min_dist_same){
+						$min_dist_same = $dist;
+					}
+				}
+				else {
+					if(!defined $min_dist_diff || $dist < $min_dist_diff){
+						$min_dist_diff = $dist;
+					}
+				}
+			}
+		}
+		push @min_distances_same, $min_dist_same;
+		push @min_distances_diff, $min_dist_diff;
 	}
 	return (\@min_distances_same, \@min_distances_diff);	
 }
@@ -1058,6 +2137,38 @@ sub compute_bitvectors{
 			);
 }
 
+sub key_for_node_pair{
+	#my @pair = sort(@_);
+	my @pair = sort (${$_[0]}->get_name,  ${$_[1]}->get_name);	
+	return "$pair[0]_$pair[1]";
+}
 
+{
+	my %pairhash;
+	sub divergent_plus{
+		print " key ";
+		print key_for_node_pair($_[0], $_[1]);
+		print " div old ";
+		print $pairhash{key_for_node_pair($_[0], $_[1])} -> {"div_count"};
+		$pairhash{key_for_node_pair($_[0], $_[1])} -> {"div_count"} +=1; 
+		print " div after addition ";
+		print $pairhash{key_for_node_pair($_[0], $_[1])} -> {"div_count"};
+		print "\n";
+	}
+
+	sub convergent_plus{
+		$pairhash{key_for_node_pair($_[0], $_[1])} -> {"conv_count"} +=1; 
+	}
+	
+	sub set_distance{
+		$pairhash{key_for_node_pair($_[0], $_[1])} -> {"distance"} = $_[2]; 
+	}
+	
+	sub pairhash{
+		return %pairhash;
+	}
+
+	
+}
 
 

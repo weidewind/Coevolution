@@ -1,0 +1,507 @@
+Different aa: 		
+Distribution for 26: 
+Same aa: 	24	28	25	24		59	48	22	22	27		
+Different aa: 	61	65	62	39		31	31	40	42	47		
+
+Probability:   0.009667, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |                57      /     81
+----------------------------------------------------------------
+   2    |      9    |               114      /     81
+----------------------------------------------------------------
+N (size of both datasets):      18
+Probability:   0.009667, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+
+Distribution for 40: 
+Same aa: 	47	47	45	33	42	33	13	19	19	15	7	9	7	24	17	13	39	113	
+Different aa: 	50	45	45	85	119	110	137	161	158	171	174	177	175	184	176	128	74	77	
+
+Probability:   0.000002, normal approx w. mean: 333.000000, std deviation:  31.606961, z:  -4.729971----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     18    |               183      /    324
+----------------------------------------------------------------
+   2    |     18    |               483      /    324
+----------------------------------------------------------------
+N (size of both datasets):      36
+Probability:   0.000002, normal approx w. mean: 333.000000, std deviation:  31.606961, z:  -4.729971
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 							
+Distribution for 52: 
+Same aa: 16	18		16	18		23	15		27	15	22	
+Different aa: 34	48		44	34	34	55	35	10	10	44	54	
+
+Probability:   0.014587, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |                63      /     90
+----------------------------------------------------------------
+   2    |     11    |               147      /    110
+----------------------------------------------------------------
+N (size of both datasets):      20
+Probability:   0.014587, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 		
+Distribution for 118: 
+Same aa: 56	56	13	13	33	18	18		51	22	71	51	51	
+Different aa: 161	121	73	76	78	17	21	17	52	69	237	313	294	
+
+Probability:   0.013328, normal approx w. mean: 156.000000, std deviation:  18.384776, z:  -2.474874----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     12    |               110      /    150
+----------------------------------------------------------------
+   2    |     13    |               215      /    162
+----------------------------------------------------------------
+N (size of both datasets):      25
+Probability:   0.013328, normal approx w. mean: 156.000000, std deviation:  18.384776, z:  -2.474874
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 
+Distribution for 157: 
+Same aa: 82	75	34		34	52	16	13	23	29	29	13	
+Different aa: 135	79	24	24	34	83	113	110	120	142	141	101	
+
+Probability:   0.004211, normal approx w. mean: 132.000000, std deviation:  16.248077, z:  -2.861877----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     11    |                85      /    126
+----------------------------------------------------------------
+   2    |     12    |               191      /    138
+----------------------------------------------------------------
+N (size of both datasets):      23
+Probability:   0.004211, normal approx w. mean: 132.000000, std deviation:  16.248077, z:  -2.861877
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 
+Distribution for 170: 
+Same aa: 123	22	13	26	28	28	6	6	
+Different aa: 60	60	62	84	65	81	65	65	
+
+Probability:   0.009324, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |                44      /     64
+----------------------------------------------------------------
+   2    |      8    |                92      /     64
+----------------------------------------------------------------
+N (size of both datasets):      16
+Probability:   0.009324, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+
+Distribution for 180: 
+Same aa: 	14	14	25	21	15	15		10	11	8	8	5	4	4	22	23	21		
+Different aa: 	62	58	58	47	29	28	9	43	48	41	35				23	9	46	46	
+
+Probability:   0.000148, normal approx w. mean: 256.000000, std deviation:  25.298221, z:  -3.794733----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     16    |               159      /    248
+----------------------------------------------------------------
+   2    |     15    |               336      /    232
+----------------------------------------------------------------
+N (size of both datasets):      31
+Probability:   0.000148, normal approx w. mean: 256.000000, std deviation:  25.298221, z:  -3.794733
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 	
+Distribution for 195: 
+Same aa: 	34	54	55	34	36	
+Different aa: 47	87	109	142	69	47	
+
+Probability:   0.043290, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                19      /     27
+----------------------------------------------------------------
+   2    |      6    |                47      /     33
+----------------------------------------------------------------
+N (size of both datasets):      11
+Probability:   0.043290, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 	
+Distribution for 214: 
+Same aa: 126	21	21	126	
+Different aa: 271	187	200	187	
+
+Probability:   0.028571, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                10      /     16
+----------------------------------------------------------------
+   2    |      4    |                26      /     16
+----------------------------------------------------------------
+N (size of both datasets):       8
+Probability:   0.028571, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+
+Distribution for 229: 
+Same aa: 24	13	13	29		19	19	24	
+Different aa: 169	61	60	43	18	25	18	169	
+
+Probability:   0.048485, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                39      /     52
+----------------------------------------------------------------
+   2    |      8    |                81      /     60
+----------------------------------------------------------------
+N (size of both datasets):      15
+Probability:   0.048485, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+
+Distribution for 242: 
+Same aa: 	50	37		50	36	28	21	21	21	35	35	28	37		
+Different aa: 75	21	21	83	41	47	75	86	83	92	102	107	75	28	75	
+
+Probability:   0.005835, normal approx w. mean: 168.000000, std deviation:  20.493902, z:  -2.756918----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     12    |               111      /    162
+----------------------------------------------------------------
+   2    |     15    |               267      /    202
+----------------------------------------------------------------
+N (size of both datasets):      27
+Probability:   0.005835, normal approx w. mean: 168.000000, std deviation:  20.493902, z:  -2.756918
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 									
+Distribution for 245: 
+Same aa: 		10	10	18	18	23	25	23	
+Different aa: 21		23	21	61	53	66	84	79	
+
+Probability:   0.018337, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                36      /     52
+----------------------------------------------------------------
+   2    |      8    |                84      /     60
+----------------------------------------------------------------
+N (size of both datasets):      15
+Probability:   0.018337, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 								
+Distribution for 319: 
+Same aa: 	46	46	31	31	20	20		65	
+Different aa: 	60	90	208	207	225	243	23	23	
+
+Probability:   0.049417, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                39      /     52
+----------------------------------------------------------------
+   2    |      8    |                81      /     60
+----------------------------------------------------------------
+N (size of both datasets):      15
+Probability:   0.049417, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+
+Distribution for 320: 
+Same aa: 	19	14	6	6	18	18	19	12	12	19	13	7	7	19	
+Different aa: 	55	64	62	62	51	57	12	12	16	15	17	52	51	58	
+
+Probability:   0.004717, normal approx w. mean: 203.000000, std deviation:  21.763884, z:  -2.825782----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     14    |               141      /    196
+----------------------------------------------------------------
+   2    |     14    |               265      /    196
+----------------------------------------------------------------
+N (size of both datasets):      28
+Probability:   0.004717, normal approx w. mean: 203.000000, std deviation:  21.763884, z:  -2.825782
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 				
+Distribution for 325: 
+Same aa: 87		41	25		20	20		21	21	41	87	
+Different aa: 61	44	55	104		111	117		122	135	44	132	
+
+Probability:   0.001234, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      9    |                53      /     85
+----------------------------------------------------------------
+   2    |     10    |               137      /     95
+----------------------------------------------------------------
+N (size of both datasets):      19
+Probability:   0.001234, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+
+Distribution for 401: 
+Same aa: 42	14	12	12	53		16	16	26	34	191		
+Different aa: 94	68	64	62	14	14	53	57	49	58	271		
+
+Probability:   0.034640, normal approx w. mean: 110.000000, std deviation:  14.200939, z:  -2.112536----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     10    |                79      /    105
+----------------------------------------------------------------
+   2    |     11    |               151      /    115
+----------------------------------------------------------------
+N (size of both datasets):      21
+Probability:   0.034640, normal approx w. mean: 110.000000, std deviation:  14.200939, z:  -2.112536
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 		
+Distribution for 404: 
+Same aa: 85	35	9	25	16				9	14	16	35		85	
+Different aa: 42	122	152	175	166	30	30		153	156	152	127	42	119	
+
+Probability:   0.001130, normal approx w. mean: 120.000000, std deviation:  16.124515, z:  -3.255912----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     10    |                67      /    115
+----------------------------------------------------------------
+   2    |     13    |               209      /    149
+----------------------------------------------------------------
+N (size of both datasets):      23
+Probability:   0.001130, normal approx w. mean: 120.000000, std deviation:  16.124515, z:  -3.255912
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 											
+Distribution for 411: 
+Same aa: 18	9	9	18	122	76	76	
+Different aa: 82			76	76	174	232	
+
+Probability:   0.045455, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                33      /     42
+----------------------------------------------------------------
+   2    |      5    |                45      /     30
+----------------------------------------------------------------
+N (size of both datasets):      12
+Probability:   0.045455, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 		
+Distribution for 418: 
+Same aa: 60	16	16	54		12	8	8		12	
+Different aa: 120	76	68	26	26	22	24	28	16	16	
+
+Probability:   0.030989, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |                52      /     72
+----------------------------------------------------------------
+   2    |     10    |               119      /     90
+----------------------------------------------------------------
+N (size of both datasets):      18
+Probability:   0.030989, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 					
+Distribution for 420: 
+Same aa: 41	26	27	19	14	14	14		16	16	26	41	95	109	
+Different aa: 153	87	73	60	47	45	47	13	13	21	105	124	228	315	
+
+Probability:   0.030818, normal approx w. mean: 182.000000, std deviation:  20.607442, z:  -2.159414----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     13    |               137      /    175
+----------------------------------------------------------------
+   2    |     14    |               241      /    189
+----------------------------------------------------------------
+N (size of both datasets):      27
+Probability:   0.030818, normal approx w. mean: 182.000000, std deviation:  20.607442, z:  -2.159414
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 															
+Distribution for 441: 
+Same aa: 71	32	21	7	8	4		4	20	8	8		21	8	9	325	9	12	9	11	11	32	71	47	47	325	
+Different aa: 81	104	61	47	49	42		42	58	37	33		46	29	15	14	14	18	47	65	60	128	128	37	42	37	
+
+Probability:   0.002052, normal approx w. mean: 588.000000, std deviation:  48.497423, z:  -3.082638----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     24    |               438      /    576
+----------------------------------------------------------------
+   2    |     24    |               738      /    576
+----------------------------------------------------------------
+N (size of both datasets):      48
+Probability:   0.002052, normal approx w. mean: 588.000000, std deviation:  48.497423, z:  -3.082638
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 										
+Distribution for 520: 
+Same aa: 67	10	4	4	10	7	7	67		
+Different aa: 150	23			19	20	19	99	99	
+
+Probability:   0.019270, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      8    |                44      /     60
+----------------------------------------------------------------
+   2    |      7    |                76      /     52
+----------------------------------------------------------------
+N (size of both datasets):      15
+Probability:   0.019270, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+--
+Different aa: 			
+Distribution for 551: 
+Same aa: 100	36	31	31	42	36	100	
+Different aa: 135	77	219	212	127	105	77	
+
+Probability:   0.005828, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                32      /     49
+----------------------------------------------------------------
+   2    |      7    |                73      /     49
+----------------------------------------------------------------
+N (size of both datasets):      14
+Probability:   0.005828, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are lower than expected
+Different aa: 										
+Distribution for 13: 
+Same aa: 99	33	85	33	99	85	85	
+Different aa: 11	11	18	25	11	10	10	
+
+Probability:   0.000583, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                77      /     49
+----------------------------------------------------------------
+   2    |      7    |                28      /     49
+----------------------------------------------------------------
+N (size of both datasets):      14
+Probability:   0.000583, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+--
+Different aa: 
+Distribution for 144: 
+Same aa: 66	66		125	125	
+Different aa: 56	24	24	31	56	
+
+Probability:   0.015873, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      4    |                30      /     18
+----------------------------------------------------------------
+   2    |      5    |                15      /     22
+----------------------------------------------------------------
+N (size of both datasets):       9
+Probability:   0.015873, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+--
+Different aa: 						
+Distribution for 222: 
+Same aa: 107	72	107	72	207	205	
+Different aa: 46	37	37	46	24	24	
+
+Probability:   0.002165, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      6    |                57      /     36
+----------------------------------------------------------------
+   2    |      6    |                21      /     36
+----------------------------------------------------------------
+N (size of both datasets):      12
+Probability:   0.002165, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+--
+
+Distribution for 271: 
+Same aa: 47	42	76	45	76	36	36		
+Different aa: 36	39	24	24	33	33	39	36	
+
+Probability:   0.008392, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      7    |                78      /     52
+----------------------------------------------------------------
+   2    |      8    |                42      /     60
+----------------------------------------------------------------
+N (size of both datasets):      15
+Probability:   0.008392, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+--
+Different aa: 				
+Distribution for 298: 
+Same aa: 93	70	93	39	39	
+Different aa: 16	35	35	16	39	
+
+Probability:   0.023810, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                39      /     25
+----------------------------------------------------------------
+   2    |      5    |                16      /     25
+----------------------------------------------------------------
+N (size of both datasets):      10
+Probability:   0.023810, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+--
+Different aa: 											
+Distribution for 316: 
+Same aa: 75	58	58		85	75	
+Different aa: 69	18	43		43	18	
+
+Probability:   0.023810, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |      5    |                38      /     25
+----------------------------------------------------------------
+   2    |      5    |                17      /     25
+----------------------------------------------------------------
+N (size of both datasets):      10
+Probability:   0.023810, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
+--
+
+Distribution for 548: 
+Same aa: 	53	71	35	44	18	18	30	58	26	35	36	36	
+Different aa: 18	21	18	18	18						5	5	33	
+
+Probability:   0.001826, exact----------------------------------------------------------------
+dataset |    n      | rank sum: observed / expected 
+----------------------------------------------------------------
+   1    |     12    |               164      /    120
+----------------------------------------------------------------
+   2    |      8    |                46      /     80
+----------------------------------------------------------------
+N (size of both datasets):      20
+Probability:   0.001826, exact
+Significant (at 0.05 level)
+Ranks of dataset 1 are higher than expected
