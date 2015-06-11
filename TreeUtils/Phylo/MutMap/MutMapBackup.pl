@@ -13,11 +13,120 @@ use Bit::Vector;
 use Statistics::Test::WilcoxonRankSum;
 use Try::Tiny;
 use List::Util qw(sum);
+use Const::Fast;
+	use Switch;
 
 use List::Util qw/shuffle/; 
 use Statistics::Basic qw(:all);
+use Statistics::TTest;
+use Statistics::Descriptive;
+use Storable;
 
 $| = 1;
+
+my $static_tree;
+	my %static_subs_on_node;
+	my %static_nodes_with_sub;
+	
+	my %static_ring_hash; 
+	my %static_depth_hash; 
+	
+{
+	my %distance_hash;
+	sub set_node_distance {
+		$distance_hash{$_[0]}->{$_[1]} = $_[2];	
+	}
+	sub has_node_distance {
+		if (!defined $distance_hash{$_[0]}->{$_[1]}){
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	sub get_node_distance {
+		return $distance_hash{$_[0]}->{$_[1]};
+	}
+	
+	
+	
+	sub set_mutmap {
+		$static_tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".l.r.newick");
+		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".all.fa");
+		my @mutmaps;
+		if($_[1] eq "syn"){
+			 @mutmaps = synmutmap($static_tree, \%fasta);
+		} 
+		elsif($_[1] eq "nsyn"){
+			 @mutmaps = codonmutmap($static_tree, \%fasta);
+		} 
+		else {
+			die "only syn or nsyn can be used as the second argument; unknown $_[1] was used instead";
+		}
+		%static_subs_on_node = %{$mutmaps[0]};
+		%static_nodes_with_sub = %{$mutmaps[1]};
+	}
+	
+	sub get_static_tree{
+		return  $static_tree;
+	}
+	
+	sub get_static_subs_on_node{
+		return  %static_subs_on_node;
+	}
+	
+	sub get_static_nodes_with_sub{
+		return  %static_nodes_with_sub;
+	}
+	
+
+}
+
+
+
+## according to http://www.biomedcentral.com/1471-2148/10/253
+		const my @n1_decreasing => ("AGG", "TCG", "GAT", "CGT", "ACC", "GCC", "CAG", "GGG", "GGC");
+
+		const my @h1_decreasing => ("ACG", "TCA", "CTC", "GCG", "GCA", "CCG", "TGC", "GTG");
+
+		const my @n2_decreasing => ("AAT", "CTC", "GAG", "TCT", "ACT", "TGT", "CCG", "GGC", "GAC", "AAA", "TCA");
+
+		const my @h3_decreasing => ("CTG", "CGC", "CCT", "TGC",  "GAC", "AGG", "TAT", "AAG", "GGG", "CGG");
+
+		const my @n1_increasing => ("AGA", "ACA", "GGA", "CAC", "TCA", "CTT", "CAA", "AGT");
+
+		const my @h1_increasing  => ("ACA", "GCC", "CCT", "TGT", "TCC", "AGC");
+
+		const my @n2_increasing => ("AAC", "TCC", "GAA", "GTT", "TGC", "GAT", "AAG", "GCC", "ACA");
+		
+		const my @h3_increasing => ("TTG", "AGA", "TGT", "GCC",  "CTA", "GAT", "TAC", "CCG", "GGA", "AAA", "CCC");
+
+		const my @all_codons => ("TCA", "TCC", "TCG", "TCT", "TTC", "TTT", "TTA", "TTG", "TAC", "TAT", "TAA", "TAG", "TGC", "TGT", "TGA", "TGG", "CTA", "CTC", "CTG", "CTT", "CCA", "CAT", "CAA", "CAG", "CGA", "CGC", "CGG", "CGT", "ATA", "ATC", "ATT", "ATG", "ACA", "ACC", "ACG", "ACT", "AAC", "AAT", "AAA", "AAG", "AGC", "AGT", "AGA", "AGG", "CCC", "CCG", "CCT", "CAC", "GTA", "GTC", "GTG", "GTT", "GCA", "GCC", "GCG", "GCT", "GAC", "GAT", "GAA", "GAG", "GGA", "GGC", "GGG", "GGT");
+
+		
+
+## returns a hash: key - codon, value - -1, if it is decreasing over time,  
+##                                       1, if it is increasing, 
+##										 0 otherwise.
+sub codon_evolution{
+	my $protein = $_[0];
+	my %hash;
+	@hash{@all_codons} = 0;
+	switch($protein){
+		case "n1" {	@hash{@n1_decreasing} = -1; 
+			        @hash{@n1_increasing} = 1; }
+		case "n2" {	@hash{@n2_decreasing} = -1; 
+					@hash{@n2_increasing} = 1; }
+		case "h1" {	@hash{@h1_decreasing} = -1; 
+					@hash{@h1_increasing} = 1; }
+		case "h3" {	@hash{@h3_decreasing} = -1; 
+					@hash{@h3_increasing} = 1; }
+		}
+	
+	return %hash;
+}
+
+
 
 ## This method gets two files (.newick tree and .fasta with sequences of all its nodes)
 ## and returns a map of mutations (node name -> array of substitution structs).
@@ -302,20 +411,36 @@ sub get_mrcn {
         }
         return $patristic_distance;
     }
+    
+    sub node_distance {
+    	my ( $node, $other_node ) = @_;
+    	if  (has_node_distance($node, $other_node)){
+    		return get_node_distance($node, $other_node);
+    	}
+    	else {
+    		## calc_true instead of calc_my since 02 06 2015
+    		my $dist = calc_true_patristic_distance($node, $other_node);
+    		set_node_distance($node, $other_node, $dist);
+    		return $dist;
+    	}
+    	
+    }
 
 
 sub load_data{
 	
 }
 
-#print_tree_with_mutations(6);
+#print_tree_with_mutations(87);
+#print_tree_with_mutations(503);
 #print_tree_with_mutations(465);
 # prints nexus tree, on wich all mutations in the specified site are shown 
 
 sub print_tree_with_mutations{
 my $site = shift;
-my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
-my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
+my $prot = shift;
+my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/$prot.l.r.newick");
+my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/$prot.all.fa");
 my @mutmaps = codonmutmap($tree, \%fasta);
 my $myCodonTable   = Bio::Tools::CodonTable->new();
 my %subs_on_node = %{$mutmaps[0]};
@@ -332,7 +457,7 @@ foreach my $n(@{$nodes_with_sub{$site}}){
 	$color{$$n->get_name()} = "-16776961";
 }
 
-open TREE, ">h3_sites_".$site.".tre";
+open TREE, ">".$prot."_sites_".$site.".tre";
 print TREE "#NEXUS\n\nbegin trees;\n";
 print TREE "\ttree $site = [&R] ";
 my $tree_name=tree2str($tree,sites => \%sites, color=>\%color);
@@ -377,19 +502,215 @@ sub mean_ignore_nulls{
 }
 
 
-#logic();
-#print_tree_with_mutations(105);
-#print_tree_with_mutations(80);
+my @h3_host_shift = (2,	3,	4,	9,	10,	11,	14,	16,	18,	19,	20,	22,	23,	25,	47,	66,	69,	73,	78,	79,	83,	97,	98,	99,	108,	110,	137,	142,	153,	159,	160,	161,	162,	176,	179,	206,	208,	212,	229,	230,	238,	244,	260,	264,	285,	291,	323,	328,	329,	400,	402,	462,	492,	506,	541);
+my @h1_host_shift = (2, 9, 14, 15, 22, 47, 61, 62, 71, 73, 78, 85, 88, 89, 97, 100, 102, 113, 130, 132, 138, 144, 146, 149, 151, 153, 154, 155, 157, 167, 168, 169, 171, 172, 173, 176, 177, 180, 186, 200, 201, 202, 203, 205, 206, 209, 210, 211, 212, 218, 223, 227, 230, 232, 235, 238, 240, 243, 251, 252, 257, 261, 268, 274, 275, 277, 278, 285, 286, 288, 289, 293, 294, 299, 302, 314, 323, 324, 325, 326, 331, 337, 389, 415, 420, 434, 453, 459, 466, 470, 515, 541, 542, 548);
+my @n1_host_shift = (3, 5, 8, 12, 13, 14, 16, 20, 26, 29, 34, 40, 41, 42, 43, 46, 47, 51, 52, 53, 59, 64, 66, 67, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 93, 95, 99, 101, 105, 111, 114, 116, 136, 149, 157, 189, 195, 200, 206, 210, 211, 214, 220, 221, 222, 223, 232, 241, 250, 257, 258, 263, 264, 267, 273, 274, 285, 287, 288, 289, 309, 311, 329, 339, 340, 341, 351, 354, 355, 365, 367, 369, 382, 386, 388, 390, 393, 394, 396, 427, 430, 432, 434, 451, 454, 455);
+my @n2_host_shift = (7, 9, 19, 22, 24, 26, 28, 31, 33, 38, 39, 40, 41, 42, 44, 45, 48, 50, 51, 52, 57, 58, 59, 60, 62, 66, 69, 70, 72, 73, 77, 79, 81, 83, 85, 86, 93, 95, 100, 113, 116, 125, 126, 143, 147, 149, 150, 155, 187, 192, 199, 206, 210, 212, 216, 220, 221, 234, 238, 257, 267, 275, 283, 284, 286, 290, 296, 305, 308, 310, 311, 312, 313, 315, 328, 331, 332, 336, 338, 342, 347, 356, 360, 367, 368, 369, 370, 378, 380, 381, 384, 385, 386, 390, 393, 396, 399, 400, 401, 403, 415, 431, 435, 437, 445, 466);
+my @h1_host_shift_001 = (203, 168, 299, 251, 288, 201, 167, 252, 302, 62, 9, 238, 314, 324, 275, 285, 154, 172, 176, 459, 420, 2, 211, 202, 130, 470, 274, 257, 14, 323, 89, 294, 261, 235, 100, 286, 415, 200, 206, 15, 85, 78, 210, 71, 453, 466, 337, 22);
+my @h3_host_shift_001 = (16, 108, 229, 244, 79, 73, 83, 161, 260, 20, 9 );
+my @n2_host_shift_001 = (386, 384, 381, 328, 83, 70, 81, 192, 51, 147, 125, 283, 41, 286, 77, 72, 378, 331, 126, 155, 50, 62, 338, 369, 60, 315, 216, 399, 396) ;
+my @n1_host_shift_001 = (189, 382, 214, 340, 311, 274, 157, 430, 455, 74, 341, 220, 221, 288, 351, 80, 264, 289, 365, 339, 52, 46, 59, 42, 34, 47, 393, 427, 3, 67, 309, 329, 29);
 
-#onemtest(248);
+my @h1_epitopes = qw(141 142 171 173 175 176 178 179 180 169 172 205 206 209 211 153 156 158 182 186 195 220 237 238 253 286 87 88 90 91 92 132);
+my @h1_increased_binding = qw(141 142 171 178 179 180 169 193 205 209 211 156 237 87 88 132 257 175 158 106);
+my @n1_epitopes = qw(380 381 382 383 384 385 386 388 389 390 393 397 398 199 200 201 202 223 329 330 332 331 333 336 337 339 340 341 343 344 356 363 364 365 366 367);
+my @h3_epitopes = qw( 138 140 142 147 148 146 149 151 153 154 156 158 159 160 161 162 166 168 184 144 145 171 172 173 174 175 176 179 180 181 202 203 204 205 206 208 209 210 212 213 214 60 61 62 63 64 66 67 69 70 289 291 292 294 295 296 310 313 315 316 320 321 323 324 325 326 327 328 112 118 119 133 137 183 186 187 188 189 190 191 192 193 195 198 217 219 223 224 225 228 229 230 231 232 233 234 235 242 243 244 245 246 254 256 258 260 262 263 264 73 75 78 79 83 91 94 96 97 98 99 102 103 104 107 108 110 125 276 277 278 281 );
+my @n2_epitopes = qw(383 384 385 386 387 389 390 391 392 393 394 396 399 400 401 403 197 198 199 200 221 222 328 329 330 331 332 334 336 338 339 341 342 343 344 346 347 357 358 359  366 367 368 369 370);
+my @n1_wan_epitopes = qw(248, 249, 250, 273, 309, 338, 339, 341, 343, 396, 397, 456);
+#h1 Huang (antigenic), as is in file Tables_main (Huang + 17, from msa)
+my @h1_antigenic = qw( 138 144 145 147 150 158 163 142 170 177 200 203 206 207 208 210 211 52 53 60 288 290 291 294 312 327 111 180 222 226 233 239 241 64 71 86 88 90 97 99 284 );
+
+
+my @n2_surface = (34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 88, 89, 90, 91, 92, 93, 95, 107, 110, 111, 112, 113, 118, 125, 126, 127, 128, 130, 141, 143, 146, 147, 149, 150, 151, 152, 153, 154, 160, 161, 162, 169, 171, 173, 187, 189, 196, 197, 198, 199, 200, 208, 209, 210, 212, 215, 216, 218, 219, 220, 221, 222, 224, 234, 236, 244, 245, 246, 247, 248, 249, 250, 251, 253, 258, 259, 261, 262, 263, 264, 265, 267, 268, 269, 270, 271, 273, 277, 283, 284, 285, 286, 292, 295, 296, 304, 306, 307, 308, 309, 310, 311, 312, 313, 315, 326, 328, 329, 330, 331, 332, 334, 336, 337, 338, 339, 341, 342, 343, 344, 346, 347, 356, 357, 358, 359, 366, 367, 368, 369, 370, 371, 378, 380, 381, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 396, 399, 400, 401, 402, 403, 413, 414, 415, 416, 417, 430, 431, 432, 433, 434, 435, 437, 450, 451, 452, 453, 455, 456, 457, 459, 461, 463, 464, 465, 466, 468, 469, 470);
+my @n1_surface = (34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 86, 88, 89, 90, 93, 94, 95, 111, 118, 126, 127, 128, 136, 141, 143, 146, 147, 148, 149, 150, 151, 152, 154, 162, 163, 165, 172, 174, 189, 191, 199, 200, 201, 202, 209, 210, 211, 214, 215, 217, 218, 220, 221, 222, 223, 224, 226, 236, 237, 247, 248, 249, 250, 251, 252, 255, 258, 260, 261, 263, 264, 265, 266, 267, 268, 269, 271, 273, 274, 275, 279, 285, 286, 287, 288, 290, 296, 297, 298, 304, 306, 307, 308, 309, 311, 312, 313, 314, 326, 328, 329, 330, 331, 332, 333, 334, 335, , , 336, 337, 338, 340, 341, 349, 350, 351, 352, 360, 361, 362, 363, 364, 365, 372, 374, 375, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 389, 391, 392, 393, 394, 395, 398, 406, 407, 408, 413, 414, 415, 416, 417, 426, 427, 429, 430, 431, 432, 433, 434, 435, 437, 439, 450, 451, 452, 454, 455, 456, 457, 461, 463, 464, 465, 467, 468);
+
+my @n1_internal = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,85,87,91,92,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,112,113,114,115,116,117,119,120,121,122,123,124,125,129,130,131,132,133,134,135,137,138,139,140,142,144,145,153,155,156,157,158,159,160,161,164,166,167,168,169,170,172,174,175,176,177,178,179,180,181,182,183,184,185,186,187,189,191,192,193,194,195,196,197,202,203,204,205,206,207,211,212,215,218,224,226,227,228,229,230,231,232,233,234,237,238,239,240,241,242,243,244,245,252,253,255,256,258,261,269,271,275,276,277,279,280,281,282,283,288,290,291,292,293,294,298,299,300,301,302,304,306,310,315,316,317,318,319,320,321,322,323,324,325,327,333,342,345,346,347,348,349,350,351,356,357,358,359,360,361,362,369,370,371,372,373,374,376,379,380,391,393,394,400,401,403,404,405,406,407,408,409,418,419,420,421,422,423,424,425,428,434,439,441,442,443,444,445,446,447,448,449,450,454,459,460,461,463,467,470,471,472);
+my @n2_internal = ( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 87, 94, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 108, 109, 114, 115, 116, 117, 119, 120, 121, 122, 123, 124, 129, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 142, 144, 145, 148, 155, 156, 157, 158, 159, 163, 164, 165, 166, 167, 168, 170, 172, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 188, 190, 191, 192, 193, 194, 195, 201, 202, 203, 204, 205, 206, 207, 211, 213, 214, 217, 223, 225, 226, 227, 228, 229, 230, 231, 232, 233, 235, 237, 238, 239, 240, 241, 242, 243, 252, 254, 255, 256, 257, 260, 266, 272, 274, 275, 276, 278, 279, 280, 281, 282, 287, 288, 289, 290, 291, 293, 294, 297, 298, 299, 300, 301, 302, 303, 305, 314, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 327, 333, 335, 340, 345, 348, 349, 350, 351, 352, 353, 354, 355, 360, 361, 362, 363, 364, 365, 372, 373, 374, 375, 376, 377, 379, 382, 395, 397, 398, 404, 405, 406, 407, 408, 409, 410, 411, 412, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 436, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 454, 458, 460, 462, 467);
+
+#h3 antigentic Steinbruck
+my @h3_antigenic  = qw( 138 160 171 223 161 205 233 294 66 153 174 276 140 151 230 278 78 172 212 292 41 91 99 147 202 218 238 241 19 204 69 180 190 209 217 229 246 98 149 159 162 176 213 18 70 188 260 206 242 );
+
+# h3 antigenic change Koel
+my @h3_antigenic_koel = (161, 171, 172, 174, 175, 205, 209);
+my @h3_antigenic_smith = (138, 160, 153, 161, 149, 159, 162, 140, 147, 171, 204, 180, 205, 209, 174, 172, 176, 213, 175, 206, 212, 294, 66, 70, 223, 190, 217, 229, 233, 246, 188, 260, 292, 98, 276, 78, 91, 99, 69);
+
+#my @h1_pocket_closest = (207,239,166,211,148,111,208,206,234,149,235,196,203,210,151,150,241,204,237,236,240,238,205,209,242,110,197,195,147,202,212,165,152,112,167,233,158,243,244,198,265,159,199,263,201,153,169,262,160);
+my @h1_pocket_closest = (207,239,166,111,149,196,203,241,147,168,240,242,110,169,146,197,195,148,206,238,150,204,208,202,167,165,112,243,244,235,198,265,158,199,263,144,205,151,236,159,201,237,152,145,200,143,113,209,245);
+my @h3_pocket_closest = (152,241,242,206,238,210,151,114,153,169,165,205,209,42,29,28,211,239,150,207,237,168,113,154,170,115,240,243,212,208,166,43,162,164,161,171,268,175,27,203,204,163,149,155,244,167,172,41,30,148,236,44,156,269);
+my @n2_pocket_closest = (151,277,406,150,407,276,278,152,405,226,350,425,291,225,292);
+my @n2_bigger_pocket_closest = (292,152,119,276,224,227,406,118,277,371,117,225,407,275,278,372,370,291,223,153,151,228,405,293,226,120,350,425,180,404,181,242,178,133,134,300,241,440,179,441,365,222,150,349);
+my @n1_pocket_closest = (402,151,278,152,403,401,277,279,150,227,425,347,292,424,226,228);
+
+my @h1_surface = (28,30,38,39,40,42,52,53,54,56,62,63,64,68,71,83,86,91,92,100,101,103,111,132,136,137,138,141,142,146,148,150,155,156,157,158,171,172,173,176,178,182,184,186,200,201,202,205,206,211,212,221,227,232,235,237,238,252,253,277,278,283,285,287,289,290,292,294,299,303,305,313,324,326,327,339,340,344,350,351,354,358,359,361,362,370,372,373,375,377,381,382,385,386,389,392,396,400,403,404,406,410,412,415,416,425,464,467,470,471,474,476,477,478,484,485,486,488,490,493,497,498,499,501,502,503);
+my @h1_internal = (20,22,23,24,25,26,33,35,36,41,43,44,49,50,58,59,66,67,69,72,74,75,76,77,78,79,80,81,82,84,87,93,95,96,97,98,104,105,107,108,109,112,117,118,119,121,122,125,128,133,134,140,143,149,151,152,160,161,163,164,165,166,167,174,177,183,189,190,191,192,193,194,195,196,197,198,199,204,208,213,215,216,217,218,219,226,231,233,241,242,243,245,246,247,248,250,254,256,258,259,260,262,263,264,265,266,267,270,271,272,273,280,282,284,293,295,296,297,298,300,301,302,307,308,309,315,316,319,320,323,325,328,330,331,333,334);
+
+my @h3_surface = (25,37,38,41,43,47,48,49,54,61,62,64,66,71,73,79,94,97,98,99,107,108,110,112,120,120,140,142,144,147,148,149,151,153,156,158,159,160,161,173,174,175,176,178,179,181,183,187,188,189,204,205,206,208,209,214,215,224,228,230,238,240,241,255,256,277,278,279,280,285,287,289,292,294,301,305,307,326,328,329,340,341,352,353,356,361,363,364,372,374,375,376,377,383,384,387,391,394,398,402,403,405,406,414,416,418,427,466,466,480,488,491,492,499,500,501,503,505,506,509,510,513,517,518);
+my @h3_internal = (27,29,31,32,33,35,42,44,45,50,52,53,58,59,60,67,68,72,75,77,80,82,83,84,85,86,87,88,89,92,95,100,102,103,104,105,106,113,114,115,118,123,124,125,126,127,128,129,131,132,133,134,136,141,143,146,155,163,164,166,167,168,169,170,177,180,182,186,192,193,194,195,196,197,198,199,200,201,202,207,211,216,218,219,220,221,222,229,231,236,244,245,246,247,248,251,253,257,259,260,261,263,265,266,267,268,269,270,272,273,274,281,282,283,284,286,288,291,297,298,299,302,303,304,310,311,318,319,321,322,325,330,332,333,335,336,338,349,350,351,355,358,359,362,367,368,369,373,385,386,389,393,396,411,420,423,425,426,428,429,430,432,434,435,436,437,438,440,441,444,445,446,448,449,452,453,454,455,456,457,458,459,460,463,464,467,469,471,474,476,477,481,483,485,486,487,489,493,494,497,502,508,511,512,515);
+
+
+my @h1_leading_kr = (4,11,13,16,52,60,73,74,86,88,90,91,97,99,111,113,128,144,151,156,157,162,169,170,171,172,173,178,182,184,199,202,203,205,206,207,209,210,232,240,261,268,269,283,287,289,290,293,326,361,415,488,489);
+my @h1_trailing_kr = (3,6,7,11,52,53,64,89,91,99,101,111,129,137,142,144,148,150,156,157,158,162,165,169,172,178,179,185,186,195,197,199,200,201,203,207,231,236,243,251,253,269,274,278,289,290,293,299,324,331,361,389,390,398,415,422,455,467,470,489,510,514,515,526,562);
+my @h3_leading_kr = (27,35,57,82,89,94,107,115,138,153,156,163,165,167,169,172,175,176,177,187,188,190,191,192,195,204,218,221,222,224,225,229,234,249,251,254,258,259,293,294,307,308,310,379,393,407,418,482,484,561);
+my @h3_trailing_kr = (19,26,27,29,32,59,65,77,79,80,81,82,83,85,88,89,107,117,120,124,126,128,138,144,160,163,169,170,172,174,182,189,191,192,195,196,203,204,205,206,224,225,226,231,233,234,239,241,246,248,252,254,255,257,258,261,276,280,292,301,305,308,311,323,355,358,393,407,417,418,450,458,482,500,521,532,554,562,579);
+my @n2_leading_kr = (18,20,23,30,52,93,143,150,194,197,199,208,216,220,221,249,265,307,308,310,313,328,336,339,344,346,368,369,370,372,381,385,387,390,432);
+my @n2_trailing_kr = (2,4,5,9,27,30,40,44,45,50,56,65,77,82,83,120,127,147,148,149,151,155,210,216,220,238,248,251,258,263,265,269,302,307,309,310,312,328,329,334,335,338,339,342,347,372,386,392,400,402,403,414,416,432,433,434,455,464);
+my @n1_leading_kr = (15,17,23,34,45,64,70,78,105,173,200,214,222,234,248,249,250,254,270,274,275,287,329,332,336,339,344,352,354,367,369,382,390,396,418,427,430,434,451);
+my @n1_trailing_kr = (15,17,21,23,38,39,40,42,45,47,48,52,57,67,68,70,73,77,81,82,83,93,100,101,114,130,147,149,188,200,249,254,259,262,264,267,270,273,275,329,331,340,346,352,364,366,367,390,416,418,419,427,435,452,453,455,462);
+
+
+my @h3_leading_neva = (18,176,159,175,243,242,162,260,264,161,377,213,202,19,292,69,208,178,531,138,172);
+my @h3_trailing_neva = (97,79,236,342,538,13,179,468,289,264,235,173,400);
+my @n2_leading_neva = (126,56,249,332,399,264,431,215,43,267,248,220,290,328,313,46,208,432,172,372,69,308,370);
+my @n2_trailing_neva = (401,372,155,335,220,339,432,430,44,127,263);
+
+my @h1_leading_neva = (4,113,171,257,178,138,290,52,415,184,223,16,102,86,199,157,162,361,200,111,74,145,221,169,64);
+my @h1_trailing_neva = (91,200,232,169,268);
+my @n1_leading_neva = (163,263,388,6,149,59,78,14,80,101,427,386,200);
+my @n1_trailing_neva = (434,275,15,267,83,287);
+
+#my @not_in_pdb_h1 = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563);
+#my @h3_best_sites = (235,202,183,478,538,189,66);
+#logic();
+
+#my @sites = (7,139);
+#for my $site(@sites){
+#	print_tree_with_mutations($site);
+#}
+
+#print_tree_with_mutations(176, "n2");
+
+#logic_medstat_groups_labelshuffler("h1", "nsyn", 1000, "leading", \@h1_leading_kr);
+#logic_medstat_groups("h1", "nsyn", 1000, "leading", \@h1_leading_kr);
+#logic_medstat_groups_labelshuffler("h1", "nsyn", 1000, "trailing", \@h1_trailing_kr);
+#logic_medstat_groups("h1", "nsyn", 1000, "trailing", \@h1_trailing_kr);
+
+#logic_medstat_groups("h3", "nsyn", 1000, "leading_inter", \@h3_leading_neva);
+#logic_medstat_groups_labelshuffler("h3", "nsyn", 1000, "leading_inter", \@h3_leading_neva);
+#logic_medstat_groups("h3", "nsyn", 1000, "trailing_inter", \@h3_trailing_neva);
+#logic_medstat_groups_labelshuffler("h3", "nsyn", 1000, "trailing_inter", \@h3_trailing_neva);
+
+#logic_medstat_groups("n2", "nsyn", 1000, "leading_inter", \@n2_leading_neva);
+#logic_medstat_groups_labelshuffler("n2", "nsyn", 1000, "leading_inter", \@n2_leading_neva);
+#logic_medstat_groups("n2", "nsyn", 1000, "trailing_inter", \@n2_trailing_neva);
+#logic_medstat_groups_labelshuffler("n2", "nsyn", 1000, "trailing_inter", \@n2_trailing_neva);
+
+#logic_medstat_groups("h1", "nsyn", 1000, "leading_inter", \@h1_leading_neva);
+#logic_medstat_groups_labelshuffler("h1", "nsyn", 1000, "leading_inter", \@h1_leading_neva);
+#logic_medstat_groups("h1", "nsyn", 1000, "trailing_inter", \@h1_trailing_neva);
+#logic_medstat_groups_labelshuffler("h1", "nsyn", 1000, "trailing_inter", \@h1_trailing_neva);
+
+#logic_medstat_groups("n1", "nsyn", 1000, "leading_inter", \@n1_leading_neva);
+#logic_medstat_groups_labelshuffler("n1", "nsyn", 1000, "leading_inter", \@n1_leading_neva);
+#logic_medstat_groups("n1", "nsyn", 1000, "trailing_inter", \@n1_trailing_neva);
+#logic_medstat_groups_labelshuffler("n1", "nsyn", 1000, "trailing_inter", \@n1_trailing_neva);
+
+#logic_medstat_groups("n1", "nsyn", 1000, "leading", \@n1_leading_kr);
+#logic_medstat_groups_labelshuffler("n1", "nsyn", 1000, "leading", \@n1_leading_kr);
+#logic_medstat_groups("n1", "nsyn", 1000, "trailing", \@n1_trailing_kr);
+#logic_medstat_groups_labelshuffler("n1", "nsyn", 1000, "trailing", \@n1_trailing_kr);
+
+#logic_medstat_groups_labelshuffler("n1", "nsyn", 1000, "internal", \@n1_internal);
+#logic_medstat_groups("n1", "nsyn", 1000, "internal_dd_norm", \@n1_internal);
+#logic_medstat_groups_labelshuffler("n2", "nsyn", 1000, "internal", \@n2_internal);
+#logic_medstat_groups("n2", "nsyn", 1000, "internal_dd_norm", \@n2_internal);
+
+#logic_medstat_groups_labelshuffler("h3", "nsyn", 1000, "surface", \@h3_surface);
+#logic_medstat_groups("h3", "nsyn", 1000, "surface_dd_norm", \@h3_surface);
+#logic_medstat_groups_labelshuffler("h1", "nsyn", 1000, "internal", \@h1_internal);
+#logic_medstat_groups("h3", "nsyn", 1000, "internal_dd_norm", \@h3_internal);
+
+#logic_medstat_groups_labelshuffler("n2", "nsyn", 1000, "internal", \@n2_internal);
+#logic_medstat_groups("n2", "nsyn", 1000, "internal_dd_norm", \@n2_internal);
+
+#logic_medstat_groups_labelshuffler("n1", "nsyn", 1000, "epitope", \@n1_epitopes);
+#logic_medstat_groups_labelshuffler("n2", "nsyn", 1000, "epitope", \@n2_epitopes);
+#logic_medstat_groups_labelshuffler("h1", "nsyn", 1000, "epitope", \@h1_epitopes);
+#logic_medstat_groups_labelshuffler("h3", "nsyn", 1000, "epitope", \@h3_epitopes);
+
+
+#logic_medstat_groups_labelshuffler("h1", "nsyn", 1000, "incrbinding", \@h1_increased_binding);
+#logic_medstat_groups_labelshuffler("n1", "nsyn", 1000, "wan_epitopes", \@n1_wan_epitopes);
+#logic_medstat_groups_labelshuffler("h1", "nsyn", 1000, "host001", \@h1_host_shift_001);
+#logic_medstat_groups_labelshuffler("h3", "nsyn", 1000, "host001", \@h3_host_shift_001);
+#logic_medstat_groups_labelshuffler("n1", "nsyn", 1000, "host001", \@n1_host_shift_001);
+#logic_medstat_groups_labelshuffler("n2", "nsyn", 1000, "host001", \@n2_host_shift_001);
+
+#logic_medstat_groups_labelshuffler("h3", "nsyn", 1000, "smith", \@h3_antigenic_smith);
+#logic_medstat_groups_labelshuffler("h3", "nsyn", 1000, "koel", \@h3_antigenic_koel);
+#logic_medstat_groups_labelshuffler("n2", "nsyn", 1000, "surface", \@n2_surface);
+
+#logic_medstat_groups("h1", "nsyn", 1000, "antigenic", \@h1_antigenic);
+#logic_medstat_groups("h3", "nsyn", 1000, "antigenic", \@h3_antigenic);
+##logic_medstat_groups_labelshuffler("h1", "nsyn", 1000, "antigenic", \@h1_antigenic);
+#logic_medstat_groups_labelshuffler("h3", "nsyn", 1000, "antigenic", \@h3_antigenic);
+
+#logic_medstat_groups("n1", "nsyn", 1000, "pocket_distance", \@n1_pocket_closest);
+#logic_medstat_groups_labelshuffler("n1", "nsyn", 1000, "pocket_distance", \@n1_pocket_closest);
+
+#logic_medstat_groups("h1", "nsyn", 1000, "not_in_pdb", \@h1_pocket_closest);
+
+#logic_medstat_groups("h1", "nsyn", 1000, "epitope_dd_norm", \@h1_epitopes);
+#logic_medstat_groups("h3", "nsyn", 1000, "epitope_dd_norm", \@h3_epitopes);
+#logic_medstat_groups("n1", "nsyn", 1000, "epitope_dd_norm", \@n1_epitopes);
+#logic_medstat_groups("n2", "nsyn", 1000, "epitope_dd_norm", \@n2_epitopes);
+
+
+
+
+
+
+#print "h1 nsyn\n";
+#logic_global_median_statistics("h3", "nsyn", 0, "koelhist", \@h3_antigenic_koel);
+#print "h1 syn\n";
+#logic_global_median_statistics("h1", "syn", 0, "dele");
+#print "h3 nsyn\n";
+#logic_global_median_statistics("h3", "nsyn", 0, "dele");
+#print "h3 syn\n";
+#logic_global_median_statistics("h3", "syn", 0, "dele");
+#print "n1 nsyn\n";
+#logic_global_median_statistics("n1", "nsyn", 0, "dele");
+#print "n1 syn\n";
+#logic_global_median_statistics("n1", "syn", 0, "dele");
+
+##print "n2 nsyn\n";
+#logic_global_median_statistics("n2", "nsyn", 0, "dele");
+#print "n2 syn\n";
+#logic_global_median_statistics("n2", "syn", 0, "dele");
+
+
+
+
+#logic_global_median_statistics("h1", "nsyn", 1000, "norm");
+#logic_global_median_statistics("h3", "syn", 1000, "norm");
+#logic_global_median_statistics("h1", "syn", 1000, "norm");
+#logic_global_median_statistics("h3", "nsyn", 1000, "norm");
+#logic_global_median_statistics("n1", "syn", 1000, "norm");
+#logic_global_median_statistics("n2", "syn", 1000, "norm");
+#logic_global_median_statistics("n1", "nsyn", 1000, "norm");
+#logic_global_median_statistics("n2", "nsyn", 1000, "norm");
+
+#logic_median_statistics("h1", "syn", 1000);
+#logic_median_statistics("h3", "syn", 1000);
+#logic_median_statistics("h1", "nsyn", 1000, "norm");
+#logic_median_statistics("h3", "nsyn", 1000);
+#logic_median_statistics("n1", "syn", 1000);
+#logic_median_statistics("n2", "syn", 1000);
+#logic_median_statistics("n1", "nsyn", 1000);
+#logic_median_statistics("n2", "nsyn", 1000);
+#onemtest(128);
 #onemtest(214);
 #onemtest(136);
 #logic_radius_compare();
-logic_radius_compare_except_sequential();
+#logic_radius_compare_except_seq_and_sis();
+#logic_sites_seqsis();
+#logic_codon_groups();
+#logic_shuffler();
 #logic_unrestricted();
 #logic();
-#logic("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick", "C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
-print "==============";
+#logic_collector_general_shuffler("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.l.r.newick", "C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.all.fa");
+#logic_collector_sites("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n2.l.r.newick", "C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n2.all.fa");
+#logic_rcesas_sites("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.l.r.newick", "C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.all.fa");
+#print "==============";
 #logic("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.l.r.newick", "C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.all.fa");
 
 #logic_general_same_ancestor();
@@ -596,6 +917,8 @@ foreach my $number(@general){
 	
 }
 
+
+
 sub logic_radius {
 		my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
 		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
@@ -767,18 +1090,1234 @@ foreach my $interval(sort { $a <=> $b } keys %bins){
 	
 }
 
+
+sub logic_rcesas_sites{
+	my $tree = parse_tree($_[0]);
+	my %fasta = parse_fasta($_[1]);
+	my @mutmaps = codonmutmap($tree, \%fasta);
+	my %subs_on_node = %{$mutmaps[0]};
+	my %nodes_with_sub = %{$mutmaps[1]};
+
+
+	my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+	#470
+	for (my $ind = 1; $ind <566; $ind++){
+		#compute_bitvectors($tree, \%subs_on_node, $ind);
+		my %distr = find_all_distances_except_seq_and_sis_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+
+	my @same;
+	my @diff;
+	foreach my $subst(keys %distr){
+		print "subst $subst \n";
+		if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+			print " all defined, pushing \n";
+			push @same, @{$distr{$subst}->[0]};
+			push @diff, @{$distr{$subst}->[1]};
+		}
+	}
+
+	print "Distribution for ".$ind.": ";
+	print "\nSame aa: ";
+	foreach my $dist(@same){
+		print ($dist."\t")
+	};
+	print "\n";
+	print "Different aa: ";
+	foreach my $dist(@diff){
+		print ($dist."\t")
+	};
+	print "\n";
+	
+  try {$wilcox_test->load_data(\@same, \@diff);
+  my $prob = $wilcox_test->probability();
+  my $pf = sprintf '%f', $prob; # prints 0.091022
+  print "\n";
+  print $wilcox_test->probability_status();
+  print $wilcox_test->summary();
+    print "\n";
+  }
+}
+	
+}
+
+sub logic_collector_sites{
+	my $tree = parse_tree($_[0]);
+	my %fasta = parse_fasta($_[1]);
+	my @mutmaps = codonmutmap($tree, \%fasta);
+	my %subs_on_node = %{$mutmaps[0]};
+	my %nodes_with_sub = %{$mutmaps[1]};
+
+
+	my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+	#470
+	for (my $ind = 1; $ind <566; $ind++){
+		#compute_bitvectors($tree, \%subs_on_node, $ind);
+		my %distr = collector($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+
+	my @same;
+	my @diff;
+	foreach my $subst(keys %distr){
+		print "subst $subst \n";
+		if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+			print " all defined, pushing \n";
+			push @same, @{$distr{$subst}->[0]};
+			push @diff, @{$distr{$subst}->[1]};
+		}
+	}
+
+	print "Distribution for ".$ind.": ";
+	print "\nSame aa: ";
+	foreach my $dist(@same){
+		print ($dist."\t")
+	};
+	print "\n";
+	print "Different aa: ";
+	foreach my $dist(@diff){
+		print ($dist."\t")
+	};
+	print "\n";
+	
+  try {$wilcox_test->load_data(\@same, \@diff);
+  my $prob = $wilcox_test->probability();
+  my $pf = sprintf '%f', $prob; # prints 0.091022
+  print "\n";
+  print $wilcox_test->probability_status();
+  print $wilcox_test->summary();
+    print "\n";
+  }
+}
+	
+}
+
+sub logic_collector_general_shuffler {
+	my $tree = parse_tree($_[0]);
+	my %fasta = parse_fasta($_[1]);
+	my @mutmaps = codonmutmap($tree, \%fasta);
+	my %subs_on_node = %{$mutmaps[0]};
+	my %nodes_with_sub = %{$mutmaps[1]};
+
+	for (my $i = 0; $i <1000; $i++){
+	my $ttest = new Statistics::TTest;  
+	
+	my @same;
+	my @diff;
+	#470
+	for (my $ind = 1; $ind <566; $ind++){
+		#compute_bitvectors($tree, \%subs_on_node, $ind);
+		my %distr = collector($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+
+	foreach my $subst(keys %distr){
+		if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+			push @same, @{$distr{$subst}->[0]};
+			push @diff, @{$distr{$subst}->[1]};
+		}
+	}
+
+}
+
+	
+  try {
+  	$ttest ->load_data(\@same, \@diff);
+    print "$ttest->f_statistic()";
+    print "\n";
+  }
+	}
+}
+
+sub logic_collector_general {
+	my $tree = parse_tree($_[0]);
+	my %fasta = parse_fasta($_[1]);
+	my @mutmaps = codonmutmap($tree, \%fasta);
+	my %subs_on_node = %{$mutmaps[0]};
+	my %nodes_with_sub = %{$mutmaps[1]};
+
+
+	my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+	
+	my @same;
+	my @diff;
+	#470
+	for (my $ind = 1; $ind <566; $ind++){
+		#compute_bitvectors($tree, \%subs_on_node, $ind);
+		my %distr = collector($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+
+	foreach my $subst(keys %distr){
+		print "subst $subst \n";
+		if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+			print " all defined, pushing \n";
+			push @same, @{$distr{$subst}->[0]};
+			push @diff, @{$distr{$subst}->[1]};
+		}
+	}
+
+}
+
+	print "\nSame aa: ";
+	foreach my $dist(@same){
+		print ($dist."\n")
+	};
+	print "\n";
+	print "Different aa: ";
+	foreach my $dist(@diff){
+		print ($dist."\n")
+	};
+	print "\n";
+	
+  try {$wilcox_test->load_data(\@same, \@diff);
+  my $prob = $wilcox_test->probability();
+  my $pf = sprintf '%f', $prob; # prints 0.091022
+  print "\n";
+  print $wilcox_test->probability_status();
+  print $wilcox_test->summary();
+    print "\n";
+  }
+}
+
+
 # for each interval prints two numbers (for each substitution, i.e. same ancestor and same derived aa or codon): observed number of convergent mutations and expected from the of divergent mutations in this interval
 # each subst (a, d) is analyzed separately
 # counts each pair only once
-sub logic_radius_compare_except_sequential {
-	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
+sub logic_radius_compare_except_seq_and_sis {
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.l.r.newick");
+		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.all.fa");
+		my @mutmaps = codonmutmap($tree, \%fasta);
+		my %subs_on_node = %{$mutmaps[0]};
+		my %nodes_with_sub = %{$mutmaps[1]};
+		my $neva = 1;
+		my $step = 10;
+		my %bins;
+
+		
+		my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
+	#566
+	for (my $ind = 183; $ind <184; $ind++){
+#print "site number $ind";
+#print "\n";
+		#my %distr = find_all_distances_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+		my %distr = find_all_distances_except_seq_and_sis_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+my $testers = 0;
+my $testerd = 0;
+foreach my $subst(keys %distr){
+	#print "subst $subst \n";
+	if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+	my $same_size = $distr{$subst}->[2]->[0];
+	my $diff_size = $distr{$subst}->[2]->[1];
+	if ($same_size > 0 && $diff_size > 0){
+		my %stemp;
+		my %dtemp;
+		foreach my $s_distance (@{$distr{$subst}->[0]}){
+			$stemp{int($s_distance/$step)} = $stemp{int($s_distance/$step)}+1;
+			#print "Same: distance $s_distance, interval ".int($s_distance/$step)." count ".$stemp{int($s_distance/$step)};
+			##print "\n";
+		}
+		foreach my $d_distance (@{$distr{$subst}->[1]}){
+			$dtemp{int($d_distance/$step)} = $dtemp{int($d_distance/$step)}+1;
+			#print "Diff: distance $d_distance, interval ".int($d_distance/$step)." count ".$dtemp{int($d_distance/$step)};
+			#print "\n";
+		}
+	
+my $obs;
+my $exp;	
+		foreach my $interval((0..460)){
+			my $scount = $stemp{$interval}/$same_size; # normalize to get average count of mutations in i-radius of a mutation
+			my $dcount = $dtemp{$interval}/$same_size; 
+			if (!defined $scount){
+				$scount = 0;
+			}
+			if (!defined $dcount){
+				$dcount = 0;
+			}
+			#$exp +=($same_size-1)*$dcount/$diff_size;
+			#print "expected ".($same_size-1)*$dcount/$diff_size."\n";
+			#$obs += $scount;
+			#print "observed ".$scount."\n";
+			if ($neva == 1){
+				$testerd = $testerd + $dcount/$diff_size;
+				$testers = $testers + $scount/($same_size-1);
+				push @{$bins{$interval}->[0]}, $dcount/$diff_size;  # expected mean percent of convergent mutations in i-radius
+				push @{$bins{$interval}->[1]}, $scount/($same_size-1); # observed mean percent
+			}
+			else {
+				push @{$bins{$interval}->[0]}, ($same_size-1)*$dcount/$diff_size;  # expected mean number of convergent mutations in i-radius
+				push @{$bins{$interval}->[1]}, $scount; # observed mean number
+			}
+		}
+	#if ($exp ne $obs){
+	#	print "Discrepance found! obs $obs, exp $exp \n";
+	#}	
+	#else {
+	#	print "OK: obs $obs, exp $exp \n";
+	#}
+
+	#print "testerd $testerd\n";
+	#print "testers $testers\n";
+	}
+	}
+
+	
+}
+	}
+
+foreach my $interval(sort { $a <=> $b } keys %bins){
+	#print "interval: $interval expected ".sum(@{$bins{$interval}->[0]})." in ".scalar @{$bins{$interval}->[0]}." observed ".sum(@{$bins{$interval}->[1]})." in ".scalar @{$bins{$interval}->[1]}."\n";
+	print "$interval,".sum(@{$bins{$interval}->[0]}).",".sum(@{$bins{$interval}->[1]})."\n";
+	
+	#for (my $num = 0; $num < scalar @{$bins{$interval}->[0]}; $num++){
+	#	print $bins{$interval}->[0]->[$num]."\t".$bins{$interval}->[1]->[$num];
+	#	print "\n";
+	#}
+
+
+#  try {$wilcox_test->load_data(\@{$bins{$interval}->[0]}, \@{$bins{$interval}->[1]});
+#  my $prob = $wilcox_test->probability();
+#  my $pf = sprintf '%f', $prob; # prints 0.091022
+#  print "\n";
+#  print $wilcox_test->probability_status();
+#  print $wilcox_test->summary();
+#    print "\n";
+#  }
+}
+	
+}
+
+
+
+# analyze sites
+sub logic_median_statistics {
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".l.r.newick");
+	my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".all.fa");
+	my @mutmaps;
+	if($_[1] eq "syn"){
+		 @mutmaps = synmutmap($tree, \%fasta);
+	} 
+	elsif($_[1] eq "nsyn"){
+		 @mutmaps = codonmutmap($tree, \%fasta);
+	} 
+	else {
+		die "only syn or nsyn can be used as the second argument; unknown $_[1] was used instead";
+	}
+	my %subs_on_node = %{$mutmaps[0]};
+	my %nodes_with_sub = %{$mutmaps[1]};
+	my $step = 1;
+	my $iterate = $_[2];
+		my $outfile = $_[0]."_".$_[1]."_medstat".$_[3];
+	open OUT, ">$outfile" or die "cannot create output file $outfile: $!";
+	my @bootstrap_median_diff;
+	print OUT "site\tsame_median\tdiff_median\tmedian_difference\tpvalue\n";
+#my @arr = (183, 202, 213, 235, 538);
+#foreach my $ind(@arr){
+for (my $ind = 1; $ind <566; $ind++){
+	my @bootstrap_median_diff;
+	print OUT $ind."\t";
+
+	my %distr = find_all_distances_except_seq_and_sis_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1, $_[1]);
+	my @bins = distr_to_stathist(\%distr, $step);
+	my $same_median = hist_median(\@{$bins[0]});
+	my $diff_median = hist_median(\@{$bins[1]});
+	my $obs_difference = $diff_median-$same_median;
+	print OUT $same_median."\t"; #this have to be the median of "same" statistics
+	print OUT $diff_median."\t"; #this have to be the median of "diff" statistics
+	print OUT $obs_difference."\t";
+	
+	for (my $t = 0; $t < $iterate; $t++){
+		my %shuffled_distr = shuffler($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1, $_[1]);
+		my @shuffler_bins = distr_to_stathist(\%shuffled_distr, $step);
+		push @bootstrap_median_diff, hist_median(\@{$shuffler_bins[1]})-hist_median(\@{$shuffler_bins[0]});
+	}
+	
+	my @sorted_bootstrap = sort {$a <=> $b} @bootstrap_median_diff;
+	my $pvalue = 0;
+	for (my $i = 0; $i < $iterate; $i++){
+		if($sorted_bootstrap[$i] >= $obs_difference){
+			$pvalue = ($iterate - $i)/$iterate;
+			last;
+		}
+	}
+	print OUT $pvalue;
+	if ($pvalue < 0.01){
+		print OUT "\tSignif";
+	}
+	print OUT "\n";
+	}
+	close OUT;
+}
+
+#global analysis
+
+sub logic_global_median_statistics{
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".l.r.newick");
+	my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".all.fa");
+	my @mutmaps;
+	if($_[1] eq "syn"){
+		 @mutmaps = synmutmap($tree, \%fasta);
+	} 
+	elsif($_[1] eq "nsyn"){
+		 @mutmaps = codonmutmap($tree, \%fasta);
+	} 
+	else {
+		die "only syn or nsyn can be used as the second argument; unknown $_[1] was used instead";
+	}
+	my %subs_on_node = %{$mutmaps[0]};
+	my %nodes_with_sub = %{$mutmaps[1]};
+	my $iterate = $_[2];
+	my $outfile = $_[0]."_".$_[1]."_global_medstat_".$_[3];
+	my @array = @{$_[4]};
+	open OUT, ">$outfile" or die "cannot create output file $outfile: $!";
+	my $step = 10;
+	my @bootstrap_median_diff;
+	my @bins;
+	
+if (!@array){
+	@array = (1..565);
+}
+print OUT "site\tsame_median\tdiff_median\tmedian_difference\tpvalue\n";
+foreach my $ind(@array){
+	#for (my $ind = 1; $ind <566; $ind++){
+		print OUT $ind."\n";
+		my %distr = find_all_distances_except_seq_and_sis_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1, $_[1]);
+		my @site_bins = distr_to_stathist(\%distr, $step);
+
+		if (defined $site_bins[0]->[1] && defined $site_bins[1]->[1]){
+		for( my $interval = 0; $interval < scalar @{$site_bins[0]}; $interval++){
+			$bins[0]->[$interval] += $site_bins[0]->[$interval];
+			#print OUT $site_bins[0]->[$interval];
+			#print OUT "\t";
+			#print OUT $bins[0]->[$interval];
+			#print OUT "\t";
+		}
+		print OUT "\n";
+		for (my $interval = 0; $interval < scalar @{$site_bins[1]}; $interval++){
+			$bins[1]->[$interval] += $site_bins[1]->[$interval];
+			#print OUT $site_bins[1]->[$interval];
+			#print OUT "\t";			
+			#print OUT $bins[1]->[$interval];
+			#print OUT "\t";
+		}
+		#print OUT "\n";
+		}
+	}
+	
+	print OUT "Same\n";
+	for( my $interval = 0; $interval < scalar @{$bins[0]}; $interval++){
+		print OUT $interval."\t".$bins[0]->[$interval]."\n";
+	}
+	print OUT "Different\n";
+	for( my $interval = 0; $interval < scalar @{$bins[1]}; $interval++){
+		print OUT $interval."\t".$bins[1]->[$interval]."\n";
+	}
+	my $same_median = hist_median(\@{$bins[0]});
+	my $diff_median = hist_median(\@{$bins[1]});
+	my $obs_difference = $diff_median-$same_median;
+	print OUT $same_median."\t"; #this have to be the median of "same" statistics
+	print OUT $diff_median."\t"; #this have to be the median of "diff" statistics
+	print OUT $obs_difference."\t";
+	
+	my @bootstrap_median_diff;
+	for (my $t = 0; $t < $iterate; $t++){
+		my @shuffler_bins;
+		for (my $ind = 1; $ind <566; $ind++){
+			my %shuffled_distr = shuffler($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1, $_[1]);
+			my @shuffler_site_bins = distr_to_stathist(\%shuffled_distr, $step);
+				if (defined $shuffler_site_bins[0]->[1] && defined $shuffler_site_bins[1]->[1]){
+
+				for(my $interval = 0; $interval < scalar @{$shuffler_site_bins[0]}; $interval++){
+					$shuffler_bins[0]->[$interval] += $shuffler_site_bins[0]->[$interval];
+				}
+				for(my $interval = 0; $interval < scalar @{$shuffler_site_bins[1]}; $interval++){
+					$shuffler_bins[1]->[$interval] += $shuffler_site_bins[1]->[$interval];
+				}
+			}
+			
+		}
+		push @bootstrap_median_diff, hist_median(\@{$shuffler_bins[1]})-hist_median(\@{$shuffler_bins[0]});
+	}
+	
+	my @sorted_bootstrap = sort {$a <=> $b} @bootstrap_median_diff;
+	my $pvalue = 0;
+	for (my $i = 0; $i < $iterate; $i++){
+		if($sorted_bootstrap[$i] >= $obs_difference){
+			$pvalue = ($iterate - $i)/$iterate;
+			last;
+		}
+	}
+	print OUT $pvalue."\n";
+	close OUT;
+}
+
+
+#global analysis
+
+sub global_entrenchment_statistics{
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".l.r.newick");
+	my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".all.fa");
+	my @mutmaps;
+	if($_[1] eq "syn"){
+		 @mutmaps = synmutmap($tree, \%fasta);
+	} 
+	elsif($_[1] eq "nsyn"){
+		 @mutmaps = codonmutmap($tree, \%fasta);
+	} 
+	else {
+		die "only syn or nsyn can be used as the second argument; unknown $_[1] was used instead";
+	}
+	my %subs_on_node = %{$mutmaps[0]};
+	my %nodes_with_sub = %{$mutmaps[1]};
+	my $iterate = $_[2];
+	my $outfile = $_[0]."_".$_[1]."_global_entrenchment_".$_[3];
+	my @array = @{$_[4]};
+	open OUT, ">$outfile" or die "cannot create output file $outfile: $!";
+	my $step = 10;
+	my @bootstrap_median_diff;
+	my @bins;
+	
+if (!@array){
+	@array = (1..565);
+}
+print OUT "site\tsame_median\tdiff_median\tmedian_difference\tpvalue\n";
+foreach my $ind(@array){
+	#for (my $ind = 1; $ind <566; $ind++){
+		print OUT $ind."\n";
+		my %distr = find_all_distances_except_seq_and_sis_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1, $_[1]);
+		my @site_bins = distr_to_stathist(\%distr, $step);
+
+		if (defined $site_bins[0]->[1] && defined $site_bins[1]->[1]){
+		for( my $interval = 0; $interval < scalar @{$site_bins[0]}; $interval++){
+			$bins[0]->[$interval] += $site_bins[0]->[$interval];
+			#print OUT $site_bins[0]->[$interval];
+			#print OUT "\t";
+			#print OUT $bins[0]->[$interval];
+			#print OUT "\t";
+		}
+		print OUT "\n";
+		for (my $interval = 0; $interval < scalar @{$site_bins[1]}; $interval++){
+			$bins[1]->[$interval] += $site_bins[1]->[$interval];
+			#print OUT $site_bins[1]->[$interval];
+			#print OUT "\t";			
+			#print OUT $bins[1]->[$interval];
+			#print OUT "\t";
+		}
+		#print OUT "\n";
+		}
+	}
+	
+	print OUT "Same\n";
+	for( my $interval = 0; $interval < scalar @{$bins[0]}; $interval++){
+		print OUT $interval."\t".$bins[0]->[$interval]."\n";
+	}
+	print OUT "Different\n";
+	for( my $interval = 0; $interval < scalar @{$bins[1]}; $interval++){
+		print OUT $interval."\t".$bins[1]->[$interval]."\n";
+	}
+	my $same_median = hist_median(\@{$bins[0]});
+	my $diff_median = hist_median(\@{$bins[1]});
+	my $obs_difference = $diff_median-$same_median;
+	print OUT $same_median."\t"; #this have to be the median of "same" statistics
+	print OUT $diff_median."\t"; #this have to be the median of "diff" statistics
+	print OUT $obs_difference."\t";
+	
+	my @bootstrap_median_diff;
+	for (my $t = 0; $t < $iterate; $t++){
+		my @shuffler_bins;
+		for (my $ind = 1; $ind <566; $ind++){
+			my %shuffled_distr = shuffler($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1, $_[1]);
+			my @shuffler_site_bins = distr_to_stathist(\%shuffled_distr, $step);
+				if (defined $shuffler_site_bins[0]->[1] && defined $shuffler_site_bins[1]->[1]){
+
+				for(my $interval = 0; $interval < scalar @{$shuffler_site_bins[0]}; $interval++){
+					$shuffler_bins[0]->[$interval] += $shuffler_site_bins[0]->[$interval];
+				}
+				for(my $interval = 0; $interval < scalar @{$shuffler_site_bins[1]}; $interval++){
+					$shuffler_bins[1]->[$interval] += $shuffler_site_bins[1]->[$interval];
+				}
+			}
+			
+		}
+		push @bootstrap_median_diff, hist_median(\@{$shuffler_bins[1]})-hist_median(\@{$shuffler_bins[0]});
+	}
+	
+	my @sorted_bootstrap = sort {$a <=> $b} @bootstrap_median_diff;
+	my $pvalue = 0;
+	for (my $i = 0; $i < $iterate; $i++){
+		if($sorted_bootstrap[$i] >= $obs_difference){
+			$pvalue = ($iterate - $i)/$iterate;
+			last;
+		}
+	}
+	print OUT $pvalue."\n";
+	close OUT;
+}
+
+
+
+## wrong idea, correct implementation - tests medians of distances, not of our statistics.
+sub logic_median_test {
+		my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
 		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.all.fa");
 		my @mutmaps = synmutmap($tree, \%fasta);
 		my %subs_on_node = %{$mutmaps[0]};
 		my %nodes_with_sub = %{$mutmaps[1]};
+		my $iterate = 1000;
+		
+print OUT "site\tmedian(same)-median(diff)\tpvalue\n";
+#my @arr = (154,158,234,239);
+#foreach my $ind(@arr){
+	
+for (my $ind = 1; $ind <566; $ind++){
+	my @same;
+	my @diff;
+	my @bootstrap_median_diff;
+
+	print "$ind";
+	print "\t";
+
+	my %distr = find_all_distances_except_seq_and_sis_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+
+	foreach my $subst(keys %distr){
+
+		if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+			foreach my $s(@{$distr{$subst}->[0]}){
+				push @same, $s;
+
+			}
+			foreach my $d(@{$distr{$subst}->[1]}){
+				push @diff, $d;
+
+			}
+		}
+	}
+
+	
+	for (my $t = 0; $t < $iterate; $t++){
+		my @shsame;
+		my @shdiff;
+		my %shuffled_distr = shuffler($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+		foreach my $subst(keys %shuffled_distr){
+		
+			if (defined $shuffled_distr{$subst}->[0] && defined $shuffled_distr{$subst}->[1]) {
+				foreach my $s(@{$shuffled_distr{$subst}->[0]}){
+					push @shsame, $s;
+				}
+				foreach my $d(@{$shuffled_distr{$subst}->[1]}){
+					push @shdiff, $d;
+				}
+			}
+		}
+
+		#push @bootstrap_median_diff, median_difference(\@shdiff,\@shsame);
+		push @bootstrap_median_diff, median(@shdiff)-median(@shsame);
+	}
+	
+		#my $obs_difference = median_difference(\@diff,\@same);
+		my $obs_difference = median(@diff)-median(@same);
+		print $obs_difference."\t";
+		my @sorted = sort {$a <=> $b} @bootstrap_median_diff;
+		my $pvalue = 0;
+		for (my $i = 0; $i < $iterate; $i++){
+			if($sorted[$i] >= $obs_difference){
+				$pvalue = ($iterate - $i)/$iterate;
+				last;
+			}
+		}
+		print $pvalue;
+		#$final{$ind} = $pvalue;
+		print "\n";	
+
+	}
+
+
+#foreach my $site(sort { $a <=> $b } keys %final){
+#	print $site."\t".$final{$site}."\n";
+#}
+		
+		
+}
+
+
+sub logic_median_global_test {
+		my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.l.r.newick");
+		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.all.fa");
+		my @mutmaps = codonmutmap($tree, \%fasta);
+		my %subs_on_node = %{$mutmaps[0]};
+		my %nodes_with_sub = %{$mutmaps[1]};
+		my $iterate = 10;
+		
+	my @same;
+	my @diff;
+	my @bootstrap_median_diff;
+		
+for (my $ind = 1; $ind <566; $ind++){
+
+
+
+	my %distr = find_all_distances_except_seq_and_sis_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+
+	foreach my $subst(keys %distr){
+
+		if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+			foreach my $s(@{$distr{$subst}->[0]}){
+				push @same, $s;
+			}
+			foreach my $d(@{$distr{$subst}->[1]}){
+				push @diff, $d;
+			}
+		}
+	}	
+}
+
+	for (my $t = 0; $t < $iterate; $t++){
+		my @shsame;
+		my @shdiff;
+		for (my $ind = 1; $ind <566; $ind++){
+			my %shuffled_distr = shuffler($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+			foreach my $subst(keys %shuffled_distr){
+		
+				if (defined $shuffled_distr{$subst}->[0] && defined $shuffled_distr{$subst}->[1]) {
+					foreach my $s(@{$shuffled_distr{$subst}->[0]}){
+						push @shsame, $s;
+					}
+					foreach my $d(@{$shuffled_distr{$subst}->[1]}){
+						push @shdiff, $d;
+					}
+				}
+			}		
+		}
+		push @bootstrap_median_diff, median(@shdiff)-median(@shsame);
+		
+	}
+
+		my $obs_difference = median(@diff)-median(@same);
+		print $obs_difference."\t";
+		my @sorted = sort {$a <=> $b} @bootstrap_median_diff;
+		my $pvalue = 0;
+		for (my $i = 0; $i < $iterate; $i++){
+			if($sorted[$i] >= $obs_difference){
+				$pvalue = ($iterate - $i)/$iterate;
+				last;
+			}
+		}
+		print $pvalue;
+		print "\n";	
+		
+}
+
+
+sub test_distr_to_stathist_norm {
+	logic_global_median_statistics("h3", "nsyn", 0, "distrtest");
+}
+
+sub distr_to_stathist {
+	my %distr = %{$_[0]};
+	my $step = $_[1];
+	my $interval_count = 450/$step;
+	my @bins;
+	my %hash;
+	my %pruned_distr;
+	
+	# neva july normalization
+	foreach my $subst(keys %distr){
+		if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+			my $same_size = $distr{$subst}->[2]->[0];
+			my $diff_size = $distr{$subst}->[2]->[1];
+			if ($same_size > 0 && $diff_size > 0){
+				$pruned_distr{$subst} = $distr{$subst};
+				my $ancestor_derived = $subst =~ s/[0-9]//gr; 
+				$hash{$ancestor_derived} = 1;
+			}
+		}
+	}
+	
+	my $mutgroups_count = scalar keys %hash;
+
+	foreach my $subst(keys %pruned_distr){
+		
+				my $same_size = $pruned_distr{$subst}->[2]->[0];
+				my $diff_size = $pruned_distr{$subst}->[2]->[1];
+			
+					
+					my %stemp;
+					my %dtemp;
+					foreach my $s_distance (@{$pruned_distr{$subst}->[0]}){
+						$stemp{int($s_distance/$step)+1} = $stemp{int($s_distance/$step)+1}+1;
+					}
+					foreach my $d_distance (@{$pruned_distr{$subst}->[1]}){
+						$dtemp{int($d_distance/$step)+1} = $dtemp{int($d_distance/$step)+1}+1;
+					}
+		
+					foreach my $interval((0..$interval_count)){
+						my $scount = $stemp{$interval}/$same_size; # normalize to get average count of mutations in i-radius of a mutation
+						my $dcount = $dtemp{$interval}/$same_size; 
+						if (!defined $scount){
+							$scount = 0; # can be 0 for mutation on one branch
+						}
+						if (!defined $dcount){
+							$dcount = 0;
+						}
+
+							$bins[0]->[$interval] += $scount/(($same_size-1)*$mutgroups_count); # $mutgroups_count - for integral over all intervals to be 1
+							$bins[1]->[$interval] += $dcount/($diff_size*$mutgroups_count);
+					}
+
+	}
+	
+
+	return @bins;
+}
+
+
+sub distr_to_stathist_prev {
+	my %distr = %{$_[0]};
+	my $step = $_[1];
+	my $interval_count = 450/$step;
+	my @bins;
+	my %hash;
+	
+	# neva july normalization
+	foreach my $subst(keys %distr){
+		if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+			my $same_size = $distr{$subst}->[2]->[0];
+			my $diff_size = $distr{$subst}->[2]->[1];
+			if ($same_size > 0 && $diff_size > 0){
+				my $ancestor_derived = $subst =~ s/[0-9]//gr; 
+				$hash{$ancestor_derived} = 1;
+			}
+		}
+	}
+	
+	my $mutgroups_count = scalar keys %hash;
+	
+	foreach my $subst(keys %distr){
+		
+			if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+				my $same_size = $distr{$subst}->[2]->[0];
+				my $diff_size = $distr{$subst}->[2]->[1];
+			
+				if ($same_size > 0 && $diff_size > 0){
+					
+					my %stemp;
+					my %dtemp;
+					foreach my $s_distance (@{$distr{$subst}->[0]}){
+						$stemp{int($s_distance/$step)} = $stemp{int($s_distance/$step)}+1;
+					}
+					foreach my $d_distance (@{$distr{$subst}->[1]}){
+						$dtemp{int($d_distance/$step)} = $dtemp{int($d_distance/$step)}+1;
+					}
+		
+					foreach my $interval((0..$interval_count)){
+						my $scount = $stemp{$interval}/$same_size; # normalize to get average count of mutations in i-radius of a mutation
+						my $dcount = $dtemp{$interval}/$same_size; 
+						if (!defined $scount){
+							$scount = 0;
+						}
+						if (!defined $dcount){
+							$dcount = 0;
+						}
+
+							#push @{$bins[0]->[$interval]}, $dcount/$diff_size;  # expected mean number of convergent mutations in i-radius
+							#push @{$bins[1]->[$interval]}, $scount/($same_size-1); # observed mean number
+							$bins[0]->[$interval] += $scount/($same_size-1); 
+							$bins[1]->[$interval] += $dcount/$diff_size;
+					}
+
+				}
+			}
+	}
+	return @bins;
+		
+}
+
+sub testero {
+	my @a1 = (2,3,1,4,5,9,9,9);
+	my $m = my_median(\@a1);
+	print "mymedian $m ";
+	my @a2 = (1,1,1,3,5,10,5);
+	my $t = median_difference(\@a1, \@a2);
+	print "testero $t";
+}
+
+#testero();
+
+
+sub my_median{
+my @values = @{$_[0]};	
+my $median;
+my $mid = int @values/2;
+my @sorted_values = sort @values;
+if (@values % 2) {
+    $median = $sorted_values[ $mid ];
+} else {
+    $median = ($sorted_values[$mid-1] + $sorted_values[$mid])/2;
+} 
+return $median;
+}
+
+
+sub medtest {
+	my @array = (5,5,5,5);
+	print hist_median(\@array);
+}
+
+#takes an array of probabilities for 0,1,2...
+sub hist_median{
+	my @hist = @{$_[0]};
+	my $summ = sum (@hist);
+	my $head = 0;
+	my $interval = 0;
+	my $median = 0;
+	
+	while ($head < $summ/2){
+		$head += $hist[$interval];
+		$median = $interval;
+		$interval++;
+	}
+	
+	if ($head == $summ/2){
+		$median += 0.5;
+	}
+#print_hist(\@hist);
+	return $median;
+}
+
+## for hist->interval->site_index
+sub hist_median_group {
+	my @pre_hist = @{$_[0]};
+	my @group = @{$_[1]};
+	
+	my @hist;
+	foreach my $ind(@group){
+		for (my $interval = 0; $interval < scalar @pre_hist; $interval++){
+			$hist[$interval] += $pre_hist[$interval]->[$ind];
+		}
+	}
+	
+	return hist_median(\@hist);
+}
+
+sub print_hist {
+	my @hist = @{$_[0]};
+
+	my $counter = 0;
+	print "\n";
+	for (my $interval = 0; $interval < scalar @hist; $interval++){
+			print $hist[$interval]."\t";
+			$counter+=$hist[$interval];
+		}
+	print "\n";
+
+}
+
+#test_hist_median_group();
+
+sub test_hist_median_group {
+	my @hist = (
+				[1,2,0,7,8,9],
+				[0,2,1,7,9,8],
+				[8,7,9,0,2,1],
+	);
+	my @group1= (3,4,5);
+	my @t1= (24,24,3);
+	my @group2= (1,0,2);
+	my @t2= (3,3,24);
+	my  @group3= (1,0,2, 3,5,4);
+	my @t3= (27,27,27);
+	print hist_median_group(\@hist, \@group1)."\t" ;
+	print hist_median(\@t1)."\t";
+	print hist_median_group(\@hist, \@group2)."\t" ;
+	print hist_median(\@t2)."\t";
+	print hist_median_group(\@hist, \@group3)."\t" ;
+	print hist_median(\@t3)."\t";
+}
+
+
+sub median_difference{
+	my @a1 = @{$_[0]};
+	my @a2 = @{$_[1]};
+	my $stat = Statistics::Descriptive::Full->new();
+	$stat->add_data(@a1);
+	my $median1 = $stat->median();
+
+	$stat = Statistics::Descriptive::Full->new();
+	$stat->add_data(@a2);
+	my $median2 = $stat->median();
+	my $diff = $median1-$median2;
+	print "median1 $median1 median2 $median2 diff $diff\n";
+	return $diff;
+}
+
+
+sub logic_sites_seqsis {
+		my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h1.l.r.newick");
+		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h1.all.fa");
+		my @mutmaps = codonmutmap($tree, \%fasta);
+		my %subs_on_node = %{$mutmaps[0]};
+		my %nodes_with_sub = %{$mutmaps[1]};
+		my $neva = 1;
+		my $step = 20;
+		my $iterate = 10000;
+		my %final;
+
+	#566
+	my @arr = (398,238);
+	foreach my $ind(@arr){
+	#for (my $ind = 1; $ind <566; $ind++){
+	my %bins;
+	print "site number $ind";
+	print "\n";
+	my %distr = find_all_distances_except_seq_and_sis_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+#my $testers = 0;
+#my $testerd = 0;
+	foreach my $subst(keys %distr){
+#print "original key $subst\n";		
+	#print "subst $subst \n";
+	if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+	my $same_size = $distr{$subst}->[2]->[0];
+	my $diff_size = $distr{$subst}->[2]->[1];
+#print " original ss $same_size dd $diff_size\n";
+	if ($same_size > 0 && $diff_size > 0){
+		my %stemp;
+		my %dtemp;
+		foreach my $s_distance (@{$distr{$subst}->[0]}){
+			$stemp{int($s_distance/$step)} = $stemp{int($s_distance/$step)}+1;
+			#print "Same: distance $s_distance, interval ".int($s_distance/$step)." count ".$stemp{int($s_distance/$step)};
+			##print "\n";
+		}
+		foreach my $d_distance (@{$distr{$subst}->[1]}){
+			$dtemp{int($d_distance/$step)} = $dtemp{int($d_distance/$step)}+1;
+			#print "Diff: distance $d_distance, interval ".int($d_distance/$step)." count ".$dtemp{int($d_distance/$step)};
+			#print "\n";
+		}
+	
+my $obs;
+my $exp;	
+		foreach my $interval((0..230)){
+			my $scount = $stemp{$interval}/$same_size; # normalize to get average count of mutations in i-radius of a mutation
+			my $dcount = $dtemp{$interval}/$same_size; 
+			if (!defined $scount){
+				$scount = 0;
+			}
+			if (!defined $dcount){
+				$dcount = 0;
+			}
+			#$exp +=($same_size-1)*$dcount/$diff_size;
+			#print "expected ".($same_size-1)*$dcount/$diff_size."\n";
+			#$obs += $scount;
+			#print "observed ".$scount."\n";
+			if ($neva == 1){
+			#	$testerd = $testerd + $dcount/$diff_size;
+			#	$testers = $testers + $scount/($same_size-1);
+#if ($interval == 0) {
+#print "pushed $dcount/$diff_size and $scount/($same_size-1)\n";	
+#}
+				push @{$bins{$interval}->[0]}, $dcount/$diff_size;  # expected mean number of convergent mutations in i-radius
+				push @{$bins{$interval}->[1]}, $scount/($same_size-1); # observed mean number
+			}
+			else {
+				push @{$bins{$interval}->[0]}, ($same_size-1)*$dcount/$diff_size;  # expected mean number of convergent mutations in i-radius
+				push @{$bins{$interval}->[1]}, $scount; # observed mean number
+			}
+		}
+	#if ($exp ne $obs){
+	#	print "Discrepance found! obs $obs, exp $exp \n";
+	#}	
+	#else {
+	#	print "OK: obs $obs, exp $exp \n";
+	#}
+
+	#print "testerd $testerd\n";
+	#print "testers $testers\n";
+	}
+	}
+
+	
+}
+
+
+	my %shuffler_bins; 
+	for (my $t = 0; $t < $iterate; $t++){
+		my %shuffled_distr = shuffler($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+		foreach my $subst(keys %shuffled_distr){
+#print "shuffled key $subst\n";			
+			if (defined $shuffled_distr{$subst}->[0] && defined $shuffled_distr{$subst}->[1]) {
+				my $same_size = $shuffled_distr{$subst}->[2]->[0];
+				my $diff_size = $shuffled_distr{$subst}->[2]->[1];
+#print " shuffled ss $same_size dd $diff_size\n";				
+				if ($same_size > 0 && $diff_size > 0){
+					my %stemp;
+					my %dtemp;
+					foreach my $s_distance (@{$shuffled_distr{$subst}->[0]}){
+						$stemp{int($s_distance/$step)} = $stemp{int($s_distance/$step)}+1;
+					}
+					foreach my $d_distance (@{$shuffled_distr{$subst}->[1]}){
+						$dtemp{int($d_distance/$step)} = $dtemp{int($d_distance/$step)}+1;
+					}
+		
+					foreach my $interval((0..230)){
+						my $scount = $stemp{$interval}/$same_size; # normalize to get average count of mutations in i-radius of a mutation
+						my $dcount = $dtemp{$interval}/$same_size; 
+						if (!defined $scount){
+							$scount = 0;
+						}
+						if (!defined $dcount){
+							$dcount = 0;
+						}
+						if ($neva == 1){
+#if ($interval == 0) {
+#print "added $scount/($same_size-1) - $dcount/$diff_size\n";	
+#}							
+							$shuffler_bins{$interval}->[$t] += $scount/($same_size-1) - $dcount/$diff_size; # same-diff						
+						}
+						else {
+							$shuffler_bins{$interval}->[$t] += $scount - ($same_size-1)*$dcount/$diff_size; # same-diff
+						}
+					}
+
+				}
+			}
+		}
+	
+	}
+	
+	my $upper;
+	foreach my $interval(sort { $a <=> $b } keys %shuffler_bins){
+		my $diff = sum(@{$bins{$interval}->[1]})-sum(@{$bins{$interval}->[0]});
+		print "interval: $interval \t".$diff."\t";
+		my @sorted = sort {$a <=> $b} @{$shuffler_bins{$interval}};
+		my $pvalue = 0;
+		for (my $i = 0; $i < $iterate; $i++){
+			if($sorted[$i] >= $diff){
+				$pvalue = ($iterate - $i)/$iterate;
+				last;
+			}
+		}
+		print $pvalue;
+		$final{$ind}->{$interval} = $pvalue;
+		#my $stat = Statistics::Descriptive::Full->new();
+		#$stat->add_data(\@{$shuffler_bins{$interval}});
+		#my $upper = $stat->percentile(95);
+		#my $uppermore = $stat->percentile(99);
+		#my $uppermost = $stat->percentile(99.9);
+		#my $lower = $stat->percentile(5);
+		#print "upper\t$upper\tuppermore\t$uppermore\tuppermost\t$uppermost";
+		#print "\t";
+		#print "lower\t$lower";
+		#if ($upper < $diff) {
+		#	print "\tSignificant?";
+		#}
+		print "\n";	
+		
+	}
+
+
+
+
+	}
+
+
+foreach my $site(sort { $a <=> $b } keys %final){
+	print $site."\t";
+	foreach my $bin (sort { $a <=> $b } keys %{$final{$site}}){
+		print $final{$site}->{$bin};
+		print "\t";
+	}
+	print "\n";
+}
+
+	
+}
+
+
+
+
+
+
+#
+# 
+sub logic_shuffler {
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.l.r.newick");
+		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/h3.all.fa");
+		my @mutmaps = synmutmap($tree, \%fasta);
+		my %subs_on_node = %{$mutmaps[0]};
+		my %nodes_with_sub = %{$mutmaps[1]};
+		my $neva = 1;
+		my $step = 1;
+		my %bins;
+
+	#566
+	for (my $t = 0; $t < 10000; $t++){
+	for (my $ind = 1; $ind <566; $ind++){
+print "site number $ind";
+print "\n";
+		#my %distr = find_all_distances_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+		my %distr = shuffler($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+my $testers = 0;
+my $testerd = 0;
+foreach my $subst(keys %distr){
+	if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
+	my $same_size = $distr{$subst}->[2]->[0];
+	my $diff_size = $distr{$subst}->[2]->[1];
+	if ($same_size > 0 && $diff_size > 0){
+		my %stemp;
+		my %dtemp;
+		foreach my $s_distance (@{$distr{$subst}->[0]}){
+			$stemp{int($s_distance/$step)} = $stemp{int($s_distance/$step)}+1;
+		}
+		foreach my $d_distance (@{$distr{$subst}->[1]}){
+			$dtemp{int($d_distance/$step)} = $dtemp{int($d_distance/$step)}+1;
+		}
+		
+		foreach my $interval((0..460)){
+			my $scount = $stemp{$interval}/$same_size; # normalize to get average count of mutations in i-radius of a mutation
+			my $dcount = $dtemp{$interval}/$same_size; 
+			if (!defined $scount){
+				$scount = 0;
+			}
+			if (!defined $dcount){
+				$dcount = 0;
+			}
+
+			if ($neva == 1){
+				$testerd = $testerd + $dcount/$diff_size;
+				$testers = $testers + $scount/($same_size-1);
+				$bins{$interval}->[$t] += $scount/($same_size-1) - $dcount/$diff_size; # same-diff
+			}
+			else {
+				$bins{$interval}->[$t] += $scount - ($same_size-1)*$dcount/$diff_size; # same-diff
+			}
+		}
+
+	}
+	}
+
+	
+}
+	}
+}
+foreach my $interval(sort { $a <=> $b } keys %bins){
+	print "interval: $interval \n";
+	for (my $num = 0; $num < 10000; $num++){
+		print $bins{$interval}->[$num];
+		print "\n";
+	}
+
+}
+	
+}
+
+
+# for each interval prints two numbers (for each substitution, i.e. same ancestor and same derived aa or codon): observed number of convergent mutations and expected from the of divergent mutations in this interval
+# each subst (a, d) is analyzed separately
+# counts each pair only once
+sub logic_codon_groups {
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n2.l.r.newick");
+		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n2.all.fa");
+		my @mutmaps = synmutmap($tree, \%fasta);
+		my %subs_on_node = %{$mutmaps[0]};
+		my %nodes_with_sub = %{$mutmaps[1]};
+		my %codon_evolution = codon_evolution("n2");
 
 		my $step = 10;
-		my %bins;
+		my %bins_neutral;
+		my %bins_changing;
+		my $neva = 1;
 
 		
 		my $wilcox_test = Statistics::Test::WilcoxonRankSum->new();
@@ -787,13 +2326,15 @@ sub logic_radius_compare_except_sequential {
 print "site number $ind";
 print "\n";
 		#my %distr = find_all_distances_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
-		my %distr = find_all_distances_except_sequential_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1);
+		my %distr = find_all_distances_codon_groups($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, \%codon_evolution);
 
 foreach my $subst(keys %distr){
 	print "subst $subst \n";
 	if (defined $distr{$subst}->[0] && defined $distr{$subst}->[1]) {
 	my $same_size = $distr{$subst}->[2]->[0];
 	my $diff_size = $distr{$subst}->[2]->[1];
+	my $different_usefulness = $distr{$subst}->[2]->[2];
+	
 	if ($same_size > 0 && $diff_size > 0){
 		my %stemp;
 		my %dtemp;
@@ -823,8 +2364,26 @@ my $exp;
 			print "expected ".($same_size-1)*$dcount/$diff_size."\n";
 			$obs += $scount;
 			print "observed ".$scount."\n";
-			push @{$bins{$interval}->[0]}, ($same_size-1)*$dcount/$diff_size;  # expected mean number of convergent mutations in i-radius
-			push @{$bins{$interval}->[1]}, $scount; # observed mean number
+			if ($neva == 1){
+				if ($different_usefulness == 0){
+					push @{$bins_neutral{$interval}->[0]}, $dcount/$diff_size;  # expected mean number of convergent mutations in i-radius
+					push @{$bins_neutral{$interval}->[1]}, $scount/($same_size-1); # observed mean number
+				}
+				else{
+					push @{$bins_changing{$interval}->[0]}, $dcount/$diff_size;  # expected mean number of convergent mutations in i-radius
+					push @{$bins_changing{$interval}->[1]}, $scount/($same_size-1); # observed mean number
+				}
+			}
+			else {
+				if ($different_usefulness == 0){
+					push @{$bins_neutral{$interval}->[0]}, ($same_size-1)*$dcount/$diff_size;  # expected mean number of convergent mutations in i-radius
+					push @{$bins_neutral{$interval}->[1]}, $scount; # observed mean number
+				}
+				else{
+					push @{$bins_changing{$interval}->[0]}, ($same_size-1)*$dcount/$diff_size;  # expected mean number of convergent mutations in i-radius
+					push @{$bins_changing{$interval}->[1]}, $scount; # observed mean number
+				}
+			}
 		}
 	if ($exp ne $obs){
 		print "Discrepance found! obs $obs, exp $exp \n";
@@ -840,26 +2399,24 @@ my $exp;
 }
 	}
 
-foreach my $interval(sort { $a <=> $b } keys %bins){
-	print "interval: $interval expected ".sum(@{$bins{$interval}->[0]})." in ".scalar @{$bins{$interval}->[0]}." observed ".sum(@{$bins{$interval}->[1]})." in ".scalar @{$bins{$interval}->[1]}."\n";
-	for (my $num = 0; $num < scalar @{$bins{$interval}->[0]}; $num++){
-		print $bins{$interval}->[0]->[$num]."\t".$bins{$interval}->[1]->[$num];
+foreach my $interval(sort { $a <=> $b } keys %bins_neutral){
+	print "interval: $interval expected ".sum(@{$bins_neutral{$interval}->[0]})." in ".scalar @{$bins_neutral{$interval}->[0]}." observed ".sum(@{$bins_neutral{$interval}->[1]})." in ".scalar @{$bins_neutral{$interval}->[1]}."\n";
+	for (my $num = 0; $num < scalar @{$bins_neutral{$interval}->[0]}; $num++){
+		print $bins_neutral{$interval}->[0]->[$num]."\t".$bins_neutral{$interval}->[1]->[$num];
 		print "\n";
 	}
+}
 
-
-#  try {$wilcox_test->load_data(\@{$bins{$interval}->[0]}, \@{$bins{$interval}->[1]});
-#  my $prob = $wilcox_test->probability();
-#  my $pf = sprintf '%f', $prob; # prints 0.091022
-#  print "\n";
-#  print $wilcox_test->probability_status();
-#  print $wilcox_test->summary();
-#    print "\n";
-#  }
+foreach my $interval(sort { $a <=> $b } keys %bins_changing){
+	print "Changing\n";
+	print "interval: $interval expected ".sum(@{$bins_changing{$interval}->[0]})." in ".scalar @{$bins_changing{$interval}->[0]}." observed ".sum(@{$bins_changing{$interval}->[1]})." in ".scalar @{$bins_changing{$interval}->[1]}."\n";
+	for (my $num = 0; $num < scalar @{$bins_changing{$interval}->[0]}; $num++){
+		print $bins_changing{$interval}->[0]->[$num]."\t".$bins_changing{$interval}->[1]->[$num];
+		print "\n";
+	}
 }
 	
 }
-
 
 # for each interval prints two numbers (for each substitution, i.e. same ancestor and same derived aa or codon): observed number of convergent mutations and expected from the of divergent mutations in this interval
 # data for different substs from one site is summed up
@@ -987,6 +2544,304 @@ foreach my $key(%pairhash){
 	
 }
 
+## bootstrap: standard shuffler, shuffles labels on sites
+sub logic_medstat_groups_labelshuffler {
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".l.r.newick");
+	my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".all.fa");
+	my @mutmaps;
+	if($_[1] eq "syn"){
+		 @mutmaps = synmutmap($tree, \%fasta);
+	} 
+	elsif($_[1] eq "nsyn"){
+		 @mutmaps = codonmutmap($tree, \%fasta);
+	} 
+	else {
+		die "only syn or nsyn can be used as the second argument; unknown $_[1] was used instead";
+	}
+	my %subs_on_node = %{$mutmaps[0]};
+	my %nodes_with_sub = %{$mutmaps[1]};
+	my $iterate = $_[2];
+		my $outfile = $_[0]."_".$_[1]."_groups_labelshuffler_".$_[3];
+	my @group = @{$_[4]};
+	my @complement;
+	
+	open OUT, ">$outfile" or die "cannot create output file $outfile: $!";
+	my $step = 1;
+	my @bootstrap_median_diff;
+	my @bins;
+	my @meaningful_sites;
+	
+	
+	
+#my @arr = @h1_host_shift;
+print OUT "site\tsame_median\tdiff_median\tmedian_difference\tpvalue\n";
+#foreach my $ind(@arr){
+	for (my $ind = 1; $ind <566; $ind++){
+		print OUT $ind."\n";
+		my %distr = find_all_distances_except_seq_and_sis_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1, $_[1]);
+		my @site_bins = distr_to_stathist(\%distr, $step);
+
+		if (defined $site_bins[0]->[1] && defined $site_bins[1]->[1]){
+		push @meaningful_sites, $ind;	
+		for( my $interval = 0; $interval < scalar @{$site_bins[0]}; $interval++){
+			$bins[0]->[$interval]->[$ind] = $site_bins[0]->[$interval];
+		}
+
+		for (my $interval = 0; $interval < scalar @{$site_bins[1]}; $interval++){
+			$bins[1]->[$interval]->[$ind] = $site_bins[1]->[$interval];
+		}
+
+		#}
+		}
+	}
+	
+	my %group_hash;
+	foreach my $gs(@group){
+		$group_hash{$gs} = 1;
+	}
+	my @group;
+	
+	foreach my $ms(@meaningful_sites){
+		if (exists $group_hash{$ms}){
+			push @group, $ms;
+		}
+		else {
+			push @complement, $ms;
+		}
+	}
+
+	my $same_median_group = hist_median_group(\@{$bins[0]}, \@group);
+	my $diff_median_group = hist_median_group(\@{$bins[1]}, \@group);
+	my $obs_difference_group = $diff_median_group-$same_median_group;
+	print OUT "\t size \t same median \t diff median \t difference\n";
+	print OUT "group\t";
+	print OUT scalar @group;
+	print OUT "\t";
+	print OUT $same_median_group."\t"; #this have to be the median of "same" statistics
+	print OUT $diff_median_group."\t"; #this have to be the median of "diff" statistics
+	print OUT $obs_difference_group."\n";
+	
+	my $same_median_complement = hist_median_group(\@{$bins[0]}, \@complement);
+	my $diff_median_complement = hist_median_group(\@{$bins[1]}, \@complement);
+	my $obs_difference_complement = $diff_median_complement-$same_median_complement;
+	print OUT "complement\t";
+	print OUT scalar @complement;
+	print OUT "\t";
+	print OUT $same_median_complement."\t"; #this have to be the median of "same" statistics
+	print OUT $diff_median_complement."\t"; #this have to be the median of "diff" statistics
+	print OUT $obs_difference_complement."\n";
+	
+	my $diffdiff = $obs_difference_group - $obs_difference_complement;
+	print OUT $diffdiff."\n";
+	
+	my @bootstrap_median_diff;
+	my @group_bootstrap;
+	
+	my $group_count;
+	my $enrich_count;
+	my $depl_count;
+	
+	for (my $t = 0; $t < $iterate; $t++){
+		my @shuffler_bins;
+		
+		for (my $ind = 1; $ind <566; $ind++){
+	
+			my %distr = shuffler($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1, $_[1]);
+			my @site_bins = distr_to_stathist(\%distr, $step);
+			
+			if (defined $site_bins[0]->[1] && defined $site_bins[1]->[1]){
+			push @meaningful_sites, $ind;	
+			for( my $interval = 0; $interval < scalar @{$site_bins[0]}; $interval++){
+				$shuffler_bins[0]->[$interval]->[$ind] = $site_bins[0]->[$interval];
+			}
+
+			for (my $interval = 0; $interval < scalar @{$site_bins[1]}; $interval++){
+				$shuffler_bins[1]->[$interval]->[$ind] = $site_bins[1]->[$interval];
+			}
+
+			}
+			
+		}
+		my $bootstrap_difference_group = hist_median_group(\@{$shuffler_bins[1]}, \@group)-hist_median_group(\@{$shuffler_bins[0]}, \@group);
+		my $bootstrap_difference_complement = hist_median_group(\@{$shuffler_bins[1]}, \@complement)-hist_median_group(\@{$shuffler_bins[0]}, \@complement);	
+		if ($bootstrap_difference_group >= $obs_difference_group){
+			$group_count++;
+		}
+		if ($bootstrap_difference_group-$bootstrap_difference_complement >= $diffdiff){
+			$enrich_count++;
+		}
+		if ($bootstrap_difference_group-$bootstrap_difference_complement <= $diffdiff){
+			$depl_count++;
+		}
+
+	}
+	
+	print OUT "group pvalue ".$group_count/$iterate."\n";
+	print OUT "enrichment pvalue ".$enrich_count/$iterate."\n";
+	print OUT "depletion pvalue ".$depl_count/$iterate."\n";
+	close OUT;
+}
+
+## bootstrap: randomly chooses group of sites
+sub logic_medstat_groups {
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".l.r.newick");
+	my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".all.fa");
+	my @mutmaps;
+	if($_[1] eq "syn"){
+		 @mutmaps = synmutmap($tree, \%fasta);
+	} 
+	elsif($_[1] eq "nsyn"){
+		 @mutmaps = codonmutmap($tree, \%fasta);
+	} 
+	else {
+		die "only syn or nsyn can be used as the second argument; unknown $_[1] was used instead";
+	}
+	my %subs_on_node = %{$mutmaps[0]};
+	my %nodes_with_sub = %{$mutmaps[1]};
+	my $iterate = $_[2];
+	my $outfile = $_[0]."_".$_[1]."_groups_medstat_".$_[3];
+	my @group = @{$_[4]};
+	my @complement;
+	
+	
+	open OUT, ">$outfile" or die "cannot create output file $outfile: $!";
+	my $step = 1;
+	my @bootstrap_median_diff;
+	my @bins;
+	my %sites_hash;
+	my @meaningful_sites;
+	
+#my @arr = (154,158,234,239);
+print OUT "site\tsame_median\tdiff_median\tmedian_difference\tpvalue\n";
+#foreach my $ind(@arr){
+	for (my $ind = 1; $ind <566; $ind++){
+		print OUT $ind."\n";
+		my %distr = find_all_distances_except_seq_and_sis_radius($tree, \@{$nodes_with_sub{$ind}}, \%subs_on_node, $ind, 1, $_[1]);
+		my @site_bins = distr_to_stathist(\%distr, $step);
+		if (defined $site_bins[0]->[1] && defined $site_bins[1]->[1]){
+		push @meaningful_sites, $ind;	
+		for( my $interval = 0; $interval < scalar @{$site_bins[0]}; $interval++){
+			$bins[0]->[$interval]->[$ind] = $site_bins[0]->[$interval];
+		}
+
+		for (my $interval = 0; $interval < scalar @{$site_bins[1]}; $interval++){
+			$bins[1]->[$interval]->[$ind] = $site_bins[1]->[$interval];
+		}
+
+		
+		}
+	}
+	
+	my %group_hash;
+	foreach my $gs(@group){
+		$group_hash{$gs} = 1;
+	}
+	my @group;
+	
+	foreach my $ms(@meaningful_sites){
+		if (exists $group_hash{$ms}){
+			push @group, $ms;
+		}
+		else {
+			push @complement, $ms;
+		}
+	}
+	
+	
+	my $same_median_group = hist_median_group(\@{$bins[0]}, \@group);
+	my $diff_median_group = hist_median_group(\@{$bins[1]}, \@group);
+	my $obs_difference_group = $diff_median_group-$same_median_group;
+	print OUT "\t same median \t diff median \t difference\n";
+	print OUT "group\t";
+	print OUT $same_median_group."\t"; #this have to be the median of "same" statistics
+	print OUT $diff_median_group."\t"; #this have to be the median of "diff" statistics
+	print OUT $obs_difference_group."\n";
+	
+	my $same_median_complement = hist_median_group(\@{$bins[0]}, \@complement);
+	my $diff_median_complement = hist_median_group(\@{$bins[1]}, \@complement);
+	my $obs_difference_complement = $diff_median_complement-$same_median_complement;
+	print OUT "complement\t";
+	print OUT $same_median_complement."\t"; #this have to be the median of "same" statistics
+	print OUT $diff_median_complement."\t"; #this have to be the median of "diff" statistics
+	print OUT $obs_difference_complement."\n";
+	
+	my $diffdiff = $obs_difference_group - $obs_difference_complement;
+	print OUT $diffdiff."\n";
+	
+	#my @bootstrap_median_diff_group;
+	#my @bootstrap_median_diff_complement;
+	my $counter1 = 0;
+	my $counter2 = 0;
+	my $counter3 = 0;
+	my $counter4 = 0;
+	my $counter5;
+	my $counter6;
+
+
+	for (my $t = 0; $t < $iterate; $t++){
+		my @bootstrap_group = shuffle @meaningful_sites;
+		my @bootstrap_complement = splice (@bootstrap_group, scalar @group, scalar @meaningful_sites - scalar @group);
+		
+		my $same_median_group = hist_median_group(\@{$bins[0]}, \@bootstrap_group);
+		my $diff_median_group = hist_median_group(\@{$bins[1]}, \@bootstrap_group);
+	#print OUT $same_median_group."\t"; #this have to be the median of "same" statistics
+	#print OUT $diff_median_group."\t"; #this have to be the median of "diff" statistics	
+	#print OUT $diff_median_group-$same_median_group."\n";
+		#push @bootstrap_median_diff_group,  $diff_median_group-$same_median_group;
+	
+		my $same_median_complement = hist_median_group(\@{$bins[0]}, \@bootstrap_complement);
+		my $diff_median_complement = hist_median_group(\@{$bins[1]}, \@bootstrap_complement);
+	#print OUT $same_median_complement."\t"; #this have to be the median of "same" statistics
+	#print OUT $diff_median_complement."\t"; #this have to be the median of "diff" statistics
+	#print OUT $diff_median_complement-$same_median_complement."\n";
+	#print OUT "___\n";
+		#push @bootstrap_median_diff_complement, $diff_median_complement-$same_median_complement;
+		if ($diff_median_group-$same_median_group - $diff_median_complement+$same_median_complement >= $diffdiff){
+			$counter5++;
+		}
+		if ($diff_median_group-$same_median_group - $diff_median_complement+$same_median_complement <= $diffdiff){
+			$counter6++;
+		}
+		if ($diff_median_group-$same_median_group >= $obs_difference_group){ 
+			$counter1++;
+			if ($diff_median_complement-$same_median_complement <= $obs_difference_complement){
+				$counter2++;
+			}
+		}
+		
+		if ($diff_median_group-$same_median_group <= $obs_difference_group){ 
+			$counter3++;
+			if ($diff_median_complement-$same_median_complement >= $obs_difference_complement){
+				$counter4++;
+			}
+		}
+		
+	
+	}
+	
+	print OUT "pvalue e  ".$counter1/$iterate." pvalue enrichment  ".$counter2/$iterate."\n"; 
+	print OUT "pvalue d ".$counter3/$iterate." pvalue depletion ".$counter4/$iterate."\n";
+	print OUT "pvalue diffdiff enrichment ".$counter5/$iterate." pvalue diffdiff depletion ".$counter6/$iterate."\n";
+	close OUT;
+}
+
+
+
+sub test_group_bootstrap{
+		my @meaningful_sites = (1,2,3,6,7,8,11,12,13);
+		my @group = (1,2,3);
+		my @bootstrap_group = shuffle @meaningful_sites;
+		my @bootstrap_complement = splice (@bootstrap_group, scalar @group, scalar @meaningful_sites - scalar @group);
+		
+		foreach my $g(@bootstrap_group){
+			print $g.", ";
+		}
+		print "\n";
+		foreach my $c(@bootstrap_complement){
+			print $c.", ";
+		}
+}
+
 
 sub logic_general_groups {
 my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/n1.l.r.newick");
@@ -1073,6 +2928,8 @@ print_info_for_hist( \@general_same2, \@general_diff2 );
 print "Median difference distribution:\n";
 for (my $i = 0; $i < 200; $i++){
 	my @general_same1;
+	
+	
 	my @general_diff1;
 	my @general_same2;
 	my @general_diff2;
@@ -1702,9 +3559,329 @@ print "node 1:  $ancestor1 $derived1 \n";
 	return %hash;	
 }
 
+
+
+
+# ignore sequential nodes and immediate sisters; all counts are kept separately for each node
+sub find_all_distances_codon_groups {
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+	my %codon_evolution = %{$_[4]};
+
+	my %hash;
+	my @distances_same;
+	my @distances_diff;
+	my $myCodonTable   = Bio::Tools::CodonTable->new();
+	
+	for (my $i = 0; $i < scalar @nodes; $i++){
+
+		
+		my $sub1 = ${$subs_on_node{${$nodes[$i]}->get_name()}}{$site_index};
+	#	my $derived1 = $myCodonTable -> translate($sub1->{"Substitution::derived_allele"});
+		my $derived1 = ($sub1->{"Substitution::derived_allele"});
+		my $ancestor1 = $sub1->{"Substitution::ancestral_allele"};
+		
+		my $different_usefulness = 0;
+		my $prev_usefulness; 
+			## stopped here
+		my $count_same = 1; # to add the node1 itself
+		my $count_diff;
+print "node 1:  $ancestor1 $derived1 \n";
+		for (my $j = 0; $j < scalar @nodes; $j++){
+			if ($j == $i){ next; }
+			if (value_is_in_array(${$nodes[$j]}, \@{ ${$nodes[$i]}->get_sisters })){ 
+				print " Hello sister!\n";
+				next; 
+			}
+			my $sub2 = ${$subs_on_node{${$nodes[$j]}->get_name()}}{$site_index};
+	#		my $derived2 = $myCodonTable -> translate($sub2->{"Substitution::derived_allele"});
+			my $derived2 = ($sub2->{"Substitution::derived_allele"});
+			my $ancestor2 = $sub2->{"Substitution::ancestral_allele"};
+			my $usefulness = $codon_evolution{$derived2} - $codon_evolution{$ancestor2};
+			print " usefulness  $usefulness \n";
+			if (defined $prev_usefulness){
+				if ($prev_usefulness != $usefulness) {
+					$different_usefulness = 1;
+					print "Usefulness changed!\n";
+				}
+			}
+			$prev_usefulness = $usefulness;
+			if ($ancestor1 ne $ancestor2 ){ next; }
+			print "node 2:  $ancestor2 $derived2 \n";
+			my $dist = calc_my_distance(${$nodes[$i]}, ${$nodes[$j]});
+			if ($dist > 0){ # ie these nodes are not sequential
+				if (!exists $hash{"$ancestor1$derived1$i"} ){
+					my @same = ();
+					my @diff = ();
+					$hash{"$ancestor1$derived1$i"} = (\@same, \@diff);
+				}
+				if ($derived1 eq $derived2){
+					push @{ ($hash{"$ancestor1$derived1$i"})->[0] }, $dist;
+					$count_same++;
+				}
+				else {
+					push @{ ($hash{"$ancestor1$derived1$i"})->[1] }, $dist;
+					$count_diff++;
+				}
+			}
+			else {
+				print "WOA! sequential nodes here!\n";
+			}
+
+		}
+		
+		print " count same: $count_same, count diff: $count_diff \n";
+		push @{ ($hash{"$ancestor1$derived1$i"})->[2] }, $count_same;
+		push @{ ($hash{"$ancestor1$derived1$i"})->[2] }, $count_diff;
+		push @{ ($hash{"$ancestor1$derived1$i"})->[2] }, $different_usefulness; # for splitting into groups 
+
+	}
+	return %hash;		
+}
+
+#accepts sequentials (after 02 06 2015), does not accept sisters
+
+sub shuffler {
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+
+	my %hash;
+	my @distances_same;
+	my @distances_diff;
+	my $myCodonTable   = Bio::Tools::CodonTable->new();
+	my %hash_of_nodes;
+	
+	#split the array of nodes by the ancestor codon 
+	foreach my $node (@nodes){
+		my $ancestor = ${$subs_on_node{${$node}->get_name()}}{$site_index}->{"Substitution::ancestral_allele"};
+		push @{$hash_of_nodes{$ancestor}}, $node;
+	}
+	
+	foreach my $ancestor (keys %hash_of_nodes){
+		my @nodes_subset = @{$hash_of_nodes{$ancestor}};
+		my @shuffled = shuffle @nodes_subset;
+
+		for (my $i = 0; $i < scalar @nodes_subset; $i++){
+			my $sub1 = ${$subs_on_node{${$nodes_subset[$i]}->get_name()}}{$site_index};
+			my $derived1;
+			if ($_[5] eq "nsyn"){
+				$derived1 = $myCodonTable -> translate($sub1->{"Substitution::derived_allele"});
+			}
+			elsif ($_[5] eq "syn"){
+				$derived1 = ($sub1->{"Substitution::derived_allele"});
+			}
+			else {
+				die "wrong argument in sub shuffler; only syn or nsyn accepted as the 6th arg";
+			}
+			my $count_same = 1; # to add the node1 itself
+			my $count_diff;
+#print "node 1:  $ancestor $derived1 \n";
+			for (my $j = 0; $j < scalar @nodes_subset; $j++){
+				if ($j == $i){ next; }
+				if (value_is_in_array(${$shuffled[$j]}, \@{ ${$shuffled[$i]}->get_sisters })){ #!
+					next; 
+				}
+				my $sub2 = ${$subs_on_node{${$nodes_subset[$j]}->get_name()}}{$site_index}; ##mistake found: nodes instead of nodes_subset
+				my $derived2;
+				if ($_[5] eq "nsyn"){
+					$derived2 = $myCodonTable -> translate($sub2->{"Substitution::derived_allele"});
+				}
+				elsif ($_[5] eq "syn"){
+					$derived2 = ($sub2->{"Substitution::derived_allele"});
+				}
+				else {
+					die "wrong argument in sub shuffler; only syn or nsyn accepted as the 6th arg";
+				}
+#print "node 2:   $ancestor $derived2 \n";
+			#	my $dist = calc_my_distance(${$shuffled[$i]}, ${$shuffled[$j]});
+			    my $dist = node_distance(${$shuffled[$i]}, ${$shuffled[$j]}); #!
+#print " dist $dist\n";
+				if ($dist > 0){ # ie these nodes are not sequential; does not work since 02 06 2015
+					if (!exists $hash{"$ancestor$derived1$i"} ){
+						my @same = ();
+						my @diff = ();
+						$hash{"$ancestor$derived1$i"} = (\@same, \@diff);
+					}
+					if ($derived1 eq $derived2){
+						push @{ ($hash{"$ancestor$derived1$i"})->[0] }, $dist;
+						$count_same++;
+					}
+					else {
+						push @{ ($hash{"$ancestor$derived1$i"})->[1] }, $dist;
+						$count_diff++;
+					}
+				}
+
+		}
+		
+#print " count same: $count_same, count diff: $count_diff \n";
+		push @{ ($hash{"$ancestor$derived1$i"})->[2] }, $count_same;
+		push @{ ($hash{"$ancestor$derived1$i"})->[2] }, $count_diff;
+
+	}
+	}
+
+	return %hash;		
+}
+
+
+## careful! it does not ignore sequentials, if method is calc_true_patristic_distance instead og calc_my_distance
+sub find_all_distances_except_seq_and_sis_radius {
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+
+	my %hash;
+	my @distances_same;
+	my @distances_diff;
+	my $myCodonTable   = Bio::Tools::CodonTable->new();
+	
+	for (my $i = 0; $i < scalar @nodes; $i++){
+
+		
+		my $sub1 = ${$subs_on_node{${$nodes[$i]}->get_name()}}{$site_index};
+			my $derived1;
+			if ($_[5] eq "nsyn"){
+				$derived1 = $myCodonTable -> translate($sub1->{"Substitution::derived_allele"});
+			}
+			elsif ($_[5] eq "syn"){
+				$derived1 = ($sub1->{"Substitution::derived_allele"});
+			}
+			else {
+				die "wrong argument in sub shuffler; only syn or nsyn accepted as the 6th arg";
+			}
+		my $ancestor1 = $sub1->{"Substitution::ancestral_allele"};
+		
+		my $count_same = 1; # to add the node1 itself
+		my $count_diff;
+#print "node 1:  $ancestor1 $derived1 \n";
+		for (my $j = 0; $j < scalar @nodes; $j++){
+			if ($j == $i){ next; }
+			if (value_is_in_array(${$nodes[$j]}, \@{ ${$nodes[$i]}->get_sisters })){ 
+			#	print " Hello sister!\n";
+				next; 
+			}
+			my $sub2 = ${$subs_on_node{${$nodes[$j]}->get_name()}}{$site_index};
+			my $derived2;
+			if ($_[5] eq "nsyn"){
+				$derived2 = $myCodonTable -> translate($sub2->{"Substitution::derived_allele"});
+			}
+			elsif ($_[5] eq "syn"){
+				$derived2 = ($sub2->{"Substitution::derived_allele"});
+			}
+			else {
+				die "wrong argument in sub shuffler; only syn or nsyn accepted as the 6th arg";
+			}
+			my $ancestor2 = $sub2->{"Substitution::ancestral_allele"};
+
+			if ($ancestor1 ne $ancestor2 ){ next; }
+			#print "node 2:  $ancestor2 $derived2 \n";
+			my $dist = calc_true_patristic_distance(${$nodes[$i]}, ${$nodes[$j]});
+			if ($dist > 0){ # ie these nodes are not sequential
+				if (!exists $hash{"$ancestor1$derived1$i"} ){
+					my @same = ();
+					my @diff = ();
+					$hash{"$ancestor1$derived1$i"} = (\@same, \@diff);
+				}
+				if ($derived1 eq $derived2){
+					push @{ ($hash{"$ancestor1$derived1$i"})->[0] }, $dist;
+					$count_same++;
+				}
+				else {
+					push @{ ($hash{"$ancestor1$derived1$i"})->[1] }, $dist;
+					$count_diff++;
+				}
+			}
+			else {
+			#	print "WOA! sequential nodes here!\n";
+			}
+
+		}
+		
+#print " count same: $count_same, count diff: $count_diff \n";
+		push @{ ($hash{"$ancestor1$derived1$i"})->[2] }, $count_same;
+		push @{ ($hash{"$ancestor1$derived1$i"})->[2] }, $count_diff;
+
+	}
+
+	return %hash;		
+}
+
+
+
+## accepts sequentials, does not accept sisters
+
+sub collector {
+	my $tree = $_[0];
+	my @nodes = @{$_[1]};
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+
+	my %hash;
+	my @distances_same;
+	my @distances_diff;
+	my $myCodonTable   = Bio::Tools::CodonTable->new();
+	
+	for (my $i = 0; $i < scalar @nodes; $i++){
+
+		my $sub1 = ${$subs_on_node{${$nodes[$i]}->get_name()}}{$site_index};
+		my $derived1 = $myCodonTable -> translate($sub1->{"Substitution::derived_allele"});
+	#	my $derived1 = ($sub1->{"Substitution::derived_allele"});
+		my $ancestor1 = $sub1->{"Substitution::ancestral_allele"};
+		
+		my $count_same = 1; # to add the node1 itself
+		my $count_diff;
+print "node 1:  $ancestor1 $derived1 \n";
+		for (my $j = $i+1; $j < scalar @nodes; $j++){
+			if (value_is_in_array(${$nodes[$j]}, \@{ ${$nodes[$i]}->get_sisters })){ 
+				print " Hello sister!\n";
+				next; 
+			}
+			my $sub2 = ${$subs_on_node{${$nodes[$j]}->get_name()}}{$site_index};
+			my $derived2 = $myCodonTable -> translate($sub2->{"Substitution::derived_allele"});
+	#		my $derived2 = ($sub2->{"Substitution::derived_allele"});
+			my $ancestor2 = $sub2->{"Substitution::ancestral_allele"};
+
+			if ($ancestor1 ne $ancestor2 ){ next; }
+			print "node 2:  $ancestor2 $derived2 \n";
+			my $dist = calc_true_patristic_distance(${$nodes[$i]}, ${$nodes[$j]});
+
+				if (!exists $hash{"$ancestor1"} ){
+					my @same = ();
+					my @diff = ();
+					$hash{"$ancestor1"} = (\@same, \@diff);
+				}
+				if ($derived1 eq $derived2){
+					print "pushed $dist into same \n";
+					push @{ ($hash{"$ancestor1"})->[0] }, $dist;
+					$count_same++;
+				}
+				else {
+					print "pushed $dist into diff \n";
+					push @{ ($hash{"$ancestor1"})->[1] }, $dist;
+					$count_diff++;
+				}
+		
+
+		}
+		
+		print " count same: $count_same, count diff: $count_diff \n";
+		push @{ ($hash{"$ancestor1"})->[2] }, $count_same;
+		push @{ ($hash{"$ancestor1"})->[2] }, $count_diff;
+
+	}
+	return %hash;		
+}
+
+
 # ignore sequential nodes; all counts are kept separately for each node
 sub find_all_distances_except_sequential_radius {
-		my $tree = $_[0];
+	my $tree = $_[0];
 	my @nodes = @{$_[1]};
 	my %subs_on_node = %{$_[2]};
 	my $site_index = $_[3];
@@ -2078,6 +4255,566 @@ sub find_min_distances_naive{
 	return (\@min_distances_same, \@min_distances_diff);	
 }
 
+
+
+#test_my_visit_depth_first();
+
+sub test_tree_lengths {
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/Mock/h1.l.r.newick");
+	my $protein_name = "h1";
+	tree_lengths($protein_name,$tree);
+}
+
+sub test_subtree_lengths {
+	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/Mock/h1.l.r.newick");
+	my $protein_name = "h1";
+	my $hash = subtree_lengths($protein_name, $tree);
+	print $hash->{"alastar7"}." must be 13";
+}
+
+sub test_my_visit_depth_first {
+	    set_mutmap("h1", "nsyn"); # for this sub to work properly path in set_mutmap had to be changed to Mock
+		my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/Mock/h1.l.r.newick");
+	    my @array;
+	    my $root = $tree-> get_root;
+	    my @args = (2,5, $root);
+	    my_visit_depth_first ($root, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+	    print "1: up to 5 ".$static_ring_hash{2}{"alister1"}{1}[0]."\t_".$static_ring_hash{2}{"alister1"}{1}[1]."\n";
+	    print "2: up to 10 ".$static_ring_hash{2}{"alister1"}{2}[0]."\t_".$static_ring_hash{2}{"alister1"}{2}[1]."\n";
+	    
+}
+
+
+ set_mutmap("h1", "nsyn");
+#global_entrenchment_epsilon(3, 1);
+# neva_site_entrenchment(10);
+ depth_groups_entrenchment(10);
+ #maxdepths_hist();
+ 
+sub maxdepths_hist {
+	my @array;
+	my %hist;
+
+	
+	foreach my $ind (1..565){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			$node = ${$node};
+			if (!$node->is_terminal){
+			#print $node->get_name();
+			my @args = ($ind, 1, $node);
+			my_visit_depth_first ($node, \@array,\&max_depth,\&has_no_mutation,\@args,0);
+			print $static_depth_hash{$ind}{$node->get_name()}."\t";
+			my_visit_depth_first ($node, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+			my $total_muts;
+			my $total_length;
+			foreach my $bin (keys %{$static_ring_hash{$ind}{$node->get_name()}}){
+				$total_muts += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
+				$total_length += $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
+			}
+			if ($total_length == 0){
+				print "NA\n"
+			}
+			else {
+				print $total_muts/$total_length."\n";
+			}
+		}
+		}
+	}
+} 
+ 
+ 
+sub global_entrenchment {
+	my $step = $_[0];
+	my @group;
+	if ($_[1]){
+		@group = @{$_[1]};
+	}
+	else {
+		@group = (1..565);
+	}
+	my $root = $static_tree-> get_root;
+	my @array;
+	my %hist;
+
+	print "bin,observed,expected\n";
+	foreach my $ind (@group){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			$node = ${$node};
+			if (!$node->is_terminal){
+			#print $node->get_name();
+			my @args = ($ind, $step, $node);
+			my_visit_depth_first ($node, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+			my $total_muts;
+			my $total_length;
+			foreach my $bin (keys %{$static_ring_hash{$ind}{$node->get_name()}}){
+				$total_muts += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
+				$total_length += $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
+			}
+			foreach my $bin (keys %{$static_ring_hash{$ind}{$node->get_name()}}){
+				#print "bin $bin observed ".$static_ring_hash{$ind}{$node->get_name()}{$bin}[0]." totmut $total_muts totlen $total_length\n";
+				if ($total_length > 0){ #there are some internal nodes with 0-length terminal daughter branches
+					$hist{$bin}[0] += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0]; #observed
+					$hist{$bin}[1] += $total_muts*$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]/$total_length; #expected
+				}
+			}
+		}
+		}
+	}
+	
+	foreach my $bin (keys %hist){
+		print $bin*$step.",".$hist{$bin}[0].",".$hist{$bin}[1]."\n";
+	}
+	
+	
+}
+
+
+## full ring; each subtree has its own epsilon
+sub global_entrenchment_epsilon {
+	my $bin_count = $_[0];
+	my @group;
+	if ($_[2]){
+		@group = @{$_[2]};
+	}
+	else {
+		@group = (1..565);
+	}
+	my $scaled = $_[1];
+	my $root = $static_tree-> get_root;
+	my @array;
+	my %hist;
+
+	print "bin,observed,expected\n";
+	foreach my $ind (@group){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			$node = ${$node};
+			if (!$node->is_terminal){
+			print $node->get_name();
+			
+			my @args = ($ind, 1, $node);
+			my_visit_depth_first ($node, \@array,\&max_depth,\&has_no_mutation,\@args,0);
+			my $step = $static_depth_hash{$ind}{$node->get_name()}/$bin_count;
+			print " maxdepth ".$static_depth_hash{$ind}{$node->get_name()}." step ".$step."\n";
+			if ($step == 0){
+				next;
+			}
+			@args = ($ind, $step, $node);
+			my_visit_depth_first ($node, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+			
+			#if ($static_depth_hash{$ind}{$node->get_name()} < 100){
+			my $total_muts;
+			my $total_length;
+			foreach my $bin (keys %{$static_ring_hash{$ind}{$node->get_name()}}){
+				$total_muts += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
+				$total_length += $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
+			}
+			#my $cumulative_muts;
+			#my $cumulative_length;
+			foreach my $bin (sort {$a <=> $b} keys %{$static_ring_hash{$ind}{$node->get_name()}}){
+				my $histbin = $bin;
+				if (!$scaled){
+					$histbin = $step*$bin; # real radius
+				}
+				
+				print "bin $bin observed ".$static_ring_hash{$ind}{$node->get_name()}{$bin}[0]." totmut $total_muts totlen $total_length\n";
+				if ($total_length > 0){ #there are some internal nodes with 0-length terminal daughter branches
+					#$cumulative_muts += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
+					#$cumulative_length += $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
+					#$hist{$histbin}[0] += $cumulative_muts; #observed
+					#$hist{$histbin}[1] += $total_muts*$cumulative_length/$total_length; #expected
+				$hist{$histbin}[0] +=  $static_ring_hash{$ind}{$node->get_name()}{$bin}[0]; #observed
+				$hist{$histbin}[1] += $total_muts*$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]/$total_length;
+				}
+			}
+		}
+		}
+	}
+	
+	foreach my $bin (sort {$a <=> $b} keys %hist){
+		print $bin.",".$hist{$bin}[0].",".$hist{$bin}[1]."\n";
+	}
+	
+	
+}
+
+
+sub find_epsilon {
+	my @group;
+	if ($_[1]){
+		@group = @{$_[1]};
+	}
+	else {
+		@group = (1..566);
+	}
+	my $root = $static_tree-> get_root;
+	my @array;
+	my @lambdas;
+
+	foreach my $ind (@group){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			$node = ${$node};
+			if (!$node->is_terminal){
+			my @args = ($ind, 600, $node);
+			my_visit_depth_first ($node, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+			my $total_muts = $static_ring_hash{$ind}{$node->get_name()}{1}[0];
+			if ($total_muts > 0){
+				my $total_length = $static_ring_hash{$ind}{$node->get_name()}{1}[1];
+				my $lambda = $total_muts;
+				push @lambdas, $lambda;
+				print $lambda."\n";
+			}
+		}
+		}
+	}
+	
+	return median(\@lambdas);
+
+}
+
+
+sub neva_site_entrenchment {
+	my $step = $_[0];
+	my $root = $static_tree-> get_root;
+	my @array;
+	my %hist;
+	print "radius,site,node,observed,expected\n";
+	my @group;
+	if ($_[1]){
+		@group = @{$_[1]};
+	}
+	else {
+		@group = (1..565);
+	}
+	foreach my $ind (@group){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			$node = ${$node};
+			if (!$node->is_terminal){
+			my @args = ($ind, $step, $node);
+			my_visit_depth_first ($node, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+			my $total_muts;
+			my $total_length;
+			foreach my $bin (keys %{$static_ring_hash{$ind}{$node->get_name()}}){
+				$total_muts += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
+				$total_length += $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
+			}
+			foreach my $bin (sort {$a <=> $b} (keys %{$static_ring_hash{$ind}{$node->get_name()}})){
+				if ($total_length > 0 && $static_ring_hash{$ind}{$node->get_name()}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
+					$hist{$bin}[0] = $static_ring_hash{$ind}{$node->get_name()}{$bin}[0]/$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]; #observed
+					$hist{$bin}[1] = $total_muts/$total_length; #expected
+				}
+				if (!$hist{$bin}[0]){
+					$hist{$bin}[0] = 0;
+				}
+				if (!$hist{$bin}[1]){
+					$hist{$bin}[1] = 0;
+				}
+				print "$bin,$ind,".$node->get_name().",".$hist{$bin}[0].",".$hist{$bin}[1]."\n";
+			}
+		}
+		}
+	}
+	
+	foreach my $bin (keys %hist){
+		print " up to ".$bin*$step."\t".$hist{$bin}[0]."\t".$hist{$bin}[1]."\n";
+	}
+	
+	
+}
+
+sub depth_groups_entrenchment {
+	my $step = $_[0];
+	my $root = $static_tree-> get_root;
+	my @array;
+	my %hist;
+	print "radius,site,node,observed,expected\n";
+	my @group;
+	if ($_[1]){
+		@group = @{$_[1]};
+	}
+	else {
+		@group = (1..565);
+	}
+	foreach my $ind (@group){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			$node = ${$node};
+			if (!$node->is_terminal){
+			my @args = ($ind, $step, $node);
+			my_visit_depth_first ($node, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+			my_visit_depth_first ($node, \@array,\&max_depth,\&has_no_mutation,\@args,0);
+			my $total_muts;
+			my $total_length;
+	#print "depth ".$static_depth_hash{$ind}{$node->get_name()}."\n";
+			if ($static_depth_hash{$ind}{$node->get_name()} > 50){
+			foreach my $bin (keys %{$static_ring_hash{$ind}{$node->get_name()}}){
+				$total_muts += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
+				$total_length += $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
+			}
+			if ($total_length > 0 && $total_muts/$total_length >= 0.005){
+			foreach my $bin (sort {$a <=> $b} (keys %{$static_ring_hash{$ind}{$node->get_name()}})){
+				if ($total_length > 0 && $static_ring_hash{$ind}{$node->get_name()}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
+					$hist{$bin}[0] += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0]; #observed
+					$hist{$bin}[1] += $total_muts*$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]/$total_length; #expected
+				}
+				if (!$hist{$bin}[0]){
+					$hist{$bin}[0] += 0;
+				}
+				if (!$hist{$bin}[1]){
+					$hist{$bin}[1] += 0;
+				}
+				print "$bin,$ind,".$node->get_name().",".$hist{$bin}[0].",".$hist{$bin}[1]."\n";
+			}
+			}
+			}
+		}
+		}
+	}
+	
+	foreach my $bin (sort {$a <=> $b} keys %hist){
+		print " up to ".$bin*$step."\t".$hist{$bin}[0]."\t".$hist{$bin}[1]."\n";
+	}
+	
+	
+}
+
+
+
+# one hist for one ancestor aa in one site
+sub egor_site_entrenchment {
+	my $step = $_[0];
+	my $root = $static_tree-> get_root;
+	my @array;
+	print "radius,site,node,density\n";
+	for (my $ind = 1; $ind < 566; $ind++){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			$node = ${$node};
+			if (!$node->is_terminal){
+			my %hist;
+			#my $ancestor = ${$static_subs_on_node{$node->get_name()}}{$ind}->{"Substitution::ancestral_allele"};
+			my @args = ($ind, $step, $node);
+			my_visit_depth_first ($node, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+			
+			my $cumulative_muts;
+			my $cumulative_length;
+			foreach my $bin (sort {$a <=> $b} (keys %{$static_ring_hash{$ind}{$node->get_name()}})){
+				#print "bin $bin observed ".$static_ring_hash{$ind}{$node->get_name()}{$bin}[0]." totmut $total_muts totlen $total_length\n";
+				my $muts_in_bin = $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
+				my $length_of_bin = $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
+				if ($length_of_bin > 0){ #there are some internal nodes with 0-length terminal daughter branches
+					#	$hist{$bin}{$ancestor} += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0]/$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]; #density
+					$cumulative_muts += $muts_in_bin;
+					$cumulative_length += $length_of_bin;
+					$hist{$bin} = $cumulative_muts/$cumulative_length; #density
+				}
+				else {
+					$hist{$bin} = 0;
+				}
+				print "$bin,$ind,".$node->get_name().",".$hist{$bin}."\n";
+			}
+			
+
+		}
+		}
+	}
+	
+	
+	
+	
+}
+
+
+
+# input: name of the protein (for filepath), $tree.
+# returns a hash: key - node of the tree, value - total length of all branches of its subtree
+sub subtree_lengths {
+	my $protein_name = $_[0];
+	my $tree = $_[1];
+	my $file = "C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/".$_[0]."_subtree_hash";
+	my $hash;
+	if (-e $file){
+		$hash = retrieve($file);
+	}
+	else {
+		$tree->visit_depth_first(
+			-post_daughter  => sub {	my $node=shift; 
+										my $subtree_length = $node->get_first_daughter()->get_generic("-subtree_length") + $node->get_first_daughter()->get_branch_length;
+										$subtree_length += $node->get_last_daughter()->get_generic("-subtree_length") + $node->get_last_daughter()->get_branch_length;
+										$node->set_generic("-subtree_length" => $subtree_length);
+										my $name = $node->get_name;
+										$hash->{$name} = $subtree_length;
+										print "post_daughter: $name, $subtree_length\n" }
+		);
+		store (\%{$hash}, $file);
+	}
+	
+	return $hash;
+}
+
+
+sub distances_to_subtree_mutations {
+	my $tree = $_[0];
+	my $node = $_[1]; # a node, not a nodename
+	my %subs_on_node = %{$_[2]};
+	my $site_index = $_[3];
+	my $subtree = ${$node}->get_subtree;
+	$subtree->visit_depth_first(
+			-pre_daughter => sub {	my $node=shift; 
+									if (${$subs_on_node{${$node}->get_name()}}{$site_index}){
+										my $node = shift;
+									}
+		
+			}
+			
+		);
+}
+
+ sub my_visit_depth_first {
+		my $node = $_[0];
+		my @array = @{$_[1]};
+		my $action_callback = $_[2];
+		my $check_callback = $_[3];
+		my $callback_args = $_[4];
+		my $depth = $_[5];
+		
+		push @array, $node;
+		my $len = $node -> get_branch_length;
+		$depth += $len;
+		&$action_callback($node, $callback_args, $depth);
+		if (! $node->is_terminal && &$check_callback($node, $callback_args)){
+			@array = my_visit_depth_first($node->get_first_daughter, \@array, \&$action_callback, \&$check_callback, $callback_args, $depth);
+			@array = my_visit_depth_first($node->get_last_daughter, \@array, \&$action_callback, \&$check_callback, $callback_args, $depth);
+		}
+		
+		$node = pop @array;
+#print $node->get_name()."\t".$depth."\n";
+		$depth -= $len;
+		return @array;
+    }
+    
+     sub collect_ring_squares {
+		my $node = $_[0];
+		my $site_index = $_[1]->[0];
+		my $step = $_[1]->[1];
+
+		my $root = $static_tree -> get_root;
+		my_visit_depth_first($root, (), \&has_no_mutation, \&update_ring, \($site_index, $step));
+    }
+    
+ 	sub has_no_mutation {
+ 		my $node = $_[0];
+ 		my $site_index = $_[1]->[0];
+ 		my $starting_node = $_[1]->[2];
+ 		
+ 		if ($node eq $starting_node){
+ 			return 1;
+ 		}
+ 		if (${$static_subs_on_node{$node->get_name()}}{$site_index}){
+ 			return 0;
+ 		}
+ 		else {
+ 			return 1;
+ 		}
+ 	}  
+ 	
+# 	test_max_depth();
+ 	sub test_max_depth{
+ 		foreach my $ind (3..3){
+ 		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			$node = ${$node};
+			if (!$node->is_terminal){
+				my @array;
+				my @args = ($ind, 1, $node);
+				print "Now measuring max depth for ".$node->get_name()."\n";
+				my_visit_depth_first ($node, \@array,\&max_depth,\&has_no_mutation,\@args,0);
+				print $node->get_name()."\t".$static_depth_hash{$ind}{$node->get_name()}."\n";
+			}
+ 		}
+ 		}
+ 	}
+ 	
+ 	sub max_depth {
+ 		my $node = $_[0];
+		my $site_index = $_[1]->[0];
+		my $starting_node = $_[1]->[2];
+		my $depth = $_[2] - $starting_node->get_branch_length;
+	#	print " current node is ".$node-> get_name()."\n";
+	#	print " current depth is $depth\n";
+		if ($node eq $starting_node){
+	#		print $node-> get_name()." equal ";
+			return;
+		}
+		if ($starting_node -> is_terminal){
+	#		print $node-> get_name()." terminal ";
+			return;
+		}
+ 		
+ 			if ($static_depth_hash{$site_index}{$starting_node->get_name()}){
+ 	#			print "\n".$static_depth_hash{$site_index}{$starting_node->get_name()}.", ".$depth."; max is ";
+ 				$static_depth_hash{$site_index}{$starting_node->get_name()} = max($static_depth_hash{$site_index}{$starting_node->get_name()}, $depth);
+ 	#			print $static_depth_hash{$site_index}{$starting_node->get_name()}."\n";
+ 			}
+ 			else {
+ 	#			print "\n init: $depth\n";
+ 				$static_depth_hash{$site_index}{$starting_node->get_name()} = $depth;
+ 			}
+ 		
+ 	}
+ 	
+ 	sub max ($$) { $_[$_[0] < $_[1]] }
+ 	
+ 	sub update_ring {
+ 		my $node = $_[0];
+		my $site_index = $_[1]->[0];
+		my $step = $_[1]->[1];
+		my $starting_node = $_[1]->[2];
+		my $depth = $_[2] - $starting_node->get_branch_length ;
+		if ($node eq $starting_node){
+			#print " \n equality: ".$starting_node ->get_name."\t".$node ->get_name."\n";
+			return;
+		}
+		if ($starting_node -> is_terminal){
+			#print " \n terminal: ".$starting_node ->get_name."\n";
+			return;
+		}
+ 		#print "depth $depth step $step bin ".(bin($depth,$step))."\n";
+ 		if (!has_no_mutation($_[0], \@{$_[1]})){
+ 			$static_ring_hash{$site_index}{$starting_node->get_name()}{bin($depth,$step)}[0] += 1;
+ 		}
+ 		$static_ring_hash{$site_index}{$starting_node->get_name()}{bin($depth,$step)}[1] += $node->get_branch_length;
+ 		
+ 	}
+   
+   
+   sub bin {
+   	my $depth = $_[0];
+   	my $step = $_[1];
+   	
+   	my $bin = int($depth/$step);
+   	if (int($depth/$step) == $depth/$step && $depth != 0){
+   		$bin -= 1;
+   	}
+   	return $bin+1;
+   }
+    
+#sub distances_to_subtree_mutationss {
+#	my $tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/Mock/h1.l.r.newick");
+#	my $node = $_[1]; # a node, not a nodename
+#   $tree -> prune_tips()
+#	$tree->visit_depth_first(
+#			-pre_daughter => sub {	my $tnode=shift; 
+#									print $tnode -> get_name;
+#									print "\n";
+#									if ($tnode->get_name eq "alaster3"){
+#										$tnode = shift;
+#										$tnode = shift;
+#									}
+#									
+#
+#		}
+#		
+#		);
+#
+#}
+
 sub sieve {
 	my @nodes = @{$_[0]};
 	my %subs_on_node = %{$_[1]};
@@ -2167,6 +4904,19 @@ sub key_for_node_pair{
 	sub pairhash{
 		return %pairhash;
 	}
+	
+	sub value_is_in_array{
+		my $value = $_[0];
+		my @array = @{$_[1]};
+		
+		foreach my $v(@array){
+			if ($value eq $v){
+				return 1;
+			}
+		}
+		return 0;
+	}
+	
 
 	
 }

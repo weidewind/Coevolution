@@ -137,7 +137,7 @@ sub nsyn_substitutions_codons{
 			$p->ancestral_allele($acod);
 			$p->derived_allele($cod);
 			#push @{$ra_nsyn},$p;
-			print ("mutmap: ".$n."\t".$aa."\t".$aaa."\n");
+			#print ("mutmap: ".$n."\t".$aa."\t".$aaa."\n");
 			$ra_nsyn{$n} = $p;
 		};
 	};
@@ -180,7 +180,7 @@ sub syn_substitutions{
 			$p->ancestral_allele($acod);
 			$p->derived_allele($cod);
 			#push @{$ra_nsyn},$p;
-			print ("mutmap: ".$n."\t".$acod."\t".$cod."\n");
+			#print ("mutmap: ".$n."\t".$acod."\t".$cod."\n");
 			$ra_nsyn{$n} = $p;
 		};
 	};
