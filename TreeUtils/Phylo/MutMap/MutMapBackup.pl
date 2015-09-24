@@ -4,7 +4,7 @@
 
 use strict;
 use Bio::Phylo::IO;
-use DnaUtilities::compare qw(nsyn_substitutions syn_substitutions nsyn_substitutions_codons);
+use DnaUtilities::compare qw(nsyn_substitutions syn_substitutions nsyn_substitutions_codons is_neighbour_changing);
 use Bio::Tools::CodonTable;
 use TreeUtils::Phylo::FigTree;
 use Bio::SeqIO;
@@ -22,19 +22,41 @@ use Statistics::TTest;
 use Statistics::Descriptive;
 use Storable;
 
+use Class::Struct;
+
 $| = 1;
 
 my $static_tree;
+my %static_hash_of_nodes;
+my %static_fasta;
+my $static_protein;
 	my %static_subs_on_node;
 	my %static_nodes_with_sub;
 	
+	my %static_background_subs_on_node; # syn for nsyn and vice versa
+	my %static_background_nodes_with_sub;
+	
+	my $static_state; #s=syn or n=nsyn
+	
 	my %static_ring_hash; 
 	my %static_depth_hash; 
+	my $static_alignment_length;
+
+
+	my @static_sorted_nodnames;
+	my @static_sorted_sites;
+	
+	my %static_subtree_info;
+	my %static_distance_hash;
 	
 {
 	my %distance_hash;
 	sub set_node_distance {
 		$distance_hash{$_[0]}->{$_[1]} = $_[2];	
+	}
+	
+	sub set_alignment_length {
+		$static_alignment_length = $_[0]; 
 	}
 	sub has_node_distance {
 		if (!defined $distance_hash{$_[0]}->{$_[1]}){
@@ -49,22 +71,50 @@ my $static_tree;
 	}
 	
 	
+struct Mutation => {
+	site_index => '$',
+	node => '$',
+};
 	
 	sub set_mutmap {
 		$static_tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".l.r.newick");
-		my %fasta = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".all.fa");
+		my @arr = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".all.fa");
+		my %fasta = %{$arr[0]};
+		my $alignment_length = $arr[1];
+		$static_alignment_length = $alignment_length;
+		$static_protein  = $_[0];
+		%static_fasta = %fasta;
+			
+		my @nodes = $static_tree -> get_nodes;
+		foreach my $node(@nodes){
+			#if ($node->is_root()) {next;}
+			my $name = $node ->get_name();
+			$static_hash_of_nodes{$name} = \$node;
+		}
+		
 		my @mutmaps;
+		my @bkg_mutmaps;
 		if($_[1] eq "syn"){
 			 @mutmaps = synmutmap($static_tree, \%fasta);
+			 @bkg_mutmaps = codonmutmap($static_tree, \%fasta);
+			 $static_state = "s";
 		} 
 		elsif($_[1] eq "nsyn"){
 			 @mutmaps = codonmutmap($static_tree, \%fasta);
+			 @bkg_mutmaps = synmutmap($static_tree, \%fasta);
+			 $static_state = "n";
 		} 
 		else {
 			die "only syn or nsyn can be used as the second argument; unknown $_[1] was used instead";
 		}
 		%static_subs_on_node = %{$mutmaps[0]};
 		%static_nodes_with_sub = %{$mutmaps[1]};
+		
+		%static_background_subs_on_node = %{$bkg_mutmaps[0]};
+		%static_background_nodes_with_sub = %{$bkg_mutmaps[1]};
+	
+		
+		
 	}
 	
 	sub get_static_tree{
@@ -155,11 +205,15 @@ sub parse_fasta {
 	my $nodeseqs_file = shift;
 	my %nodeseqs;
 	my $seqio = Bio::SeqIO->new(-file => $nodeseqs_file, -format => "fasta");
+	my $length;
 	while ( my $seqobj = $seqio->next_seq ) {
 		my $trimmed_id = (split(/\//, $seqobj->display_id))[0];
     	$nodeseqs{ $trimmed_id } = $seqobj->seq;
+    	if (!$length){
+    		$length = $seqobj->length();
+    	}
 	}
-	return %nodeseqs;
+	return (\%nodeseqs, $length);
 }
 
 sub mutmap {
@@ -216,6 +270,7 @@ sub codonmutmap {
 	return (\%subs_on_node, \%nodes_with_sub);
 };
 
+
 sub synmutmap {
 
 	my $tree = $_[0];
@@ -239,8 +294,212 @@ sub synmutmap {
 	}
 
 	return (\%subs_on_node, \%nodes_with_sub);
+}
+
+sub incidence_matrix_1 {
+
+	my %subs_on_node = %static_subs_on_node;
+	my %matrix;
+	my $length;
+	if ($static_state eq 'n'){
+		$length = $static_alignment_length/3;
+	}
+	else {
+		$length = $static_alignment_length;
+	}
+
+	my @nodes = $static_tree -> get_nodes;
+	foreach my $node(@nodes){
+		my $name = $node ->get_name();
+		my $incidence_vector =  Bit::Vector->new($length+1);
+		
+		foreach my $index(keys %{$subs_on_node{$name}}){
+			print "index ".$index;
+			$incidence_vector-> Bit_On($index); #indices start from 1
+		}
+		$matrix{$name} = $incidence_vector;
+		print $matrix{$name}->to_Bin();
+		print "\n";
+	}
+	
 };
 
+sub complete_incidence_matrix {
+	my %subs_on_node = %static_subs_on_node;
+	my %nodes_with_sub = %static_nodes_with_sub;
+	my %matrix;
+	my $length;
+	if ($static_state eq "n"){
+		$length = $static_alignment_length/3;
+	}
+	elsif ($static_state eq "s") {
+		$length = $static_alignment_length;
+	}
+	
+	my @sorted_sites;
+	my @sorted_nodnames;
+	
+	# select nodes with at least one mutation of the corresponding type (syn or nsyn, depending on the mutmap state)
+	my @nodes = $static_tree -> get_nodes;
+	foreach my $node(@nodes){
+		my $name = $node ->get_name();
+		
+			push @sorted_nodnames, $name;
+		
+	}
+	
+	my %empty_nodes_hash = map { $_ => 0 } @sorted_nodnames;
+	my %incidence_hash;
+	
+	# select sites with at least 3 mutations of the corresponding type
+	# upd - not sure if such sites should be excluded, changed minimum to 1
+	foreach my $ind(1..$length){
+			my %site_incidence = %empty_nodes_hash;
+			push @sorted_sites, $ind;
+			#print " added $ind to sorted sites\n";
+			foreach my $node(@{$nodes_with_sub{$ind}}){
+				$site_incidence{$$node->get_name()} = 1;
+			}
+			$incidence_hash{$ind} = \%site_incidence;
+		
+	}
+	
+	@static_sorted_nodnames = @sorted_nodnames;
+	@static_sorted_sites = @sorted_sites;
+	
+	return %incidence_hash;
+}
+
+
+sub incidence_matrix {
+
+	my %subs_on_node = %static_subs_on_node;
+	my %nodes_with_sub = %static_nodes_with_sub;
+	my %matrix;
+	my $length;
+	if ($static_state eq "n"){
+		$length = $static_alignment_length/3;
+	}
+	elsif ($static_state eq "s") {
+		$length = $static_alignment_length;
+	}
+	
+	my @sorted_sites;
+	my @sorted_nodnames;
+	
+	# select nodes with at least one mutation of the corresponding type (syn or nsyn, depending on the mutmap state)
+	my @nodes = $static_tree -> get_nodes;
+	foreach my $node(@nodes){
+		my $name = $node ->get_name();
+		if (scalar (keys %{$subs_on_node{$name}}) > 0){
+			push @sorted_nodnames, $name;
+		}
+	}
+	
+	my %empty_nodes_hash = map { $_ => 0 } @sorted_nodnames;
+	my %incidence_hash;
+	
+	# select sites with at least 3 mutations of the corresponding type
+	# upd - not sure if such sites should be excluded, changed minimum to 1
+	foreach my $ind(1..$length){
+		if($nodes_with_sub{$ind} && scalar @{$nodes_with_sub{$ind}} > 0){# possibility to have at least 2 mutations after an ancestral one
+			my %site_incidence = %empty_nodes_hash;
+			push @sorted_sites, $ind;
+			#print " added $ind to sorted sites\n";
+			foreach my $node(@{$nodes_with_sub{$ind}}){
+				$site_incidence{$$node->get_name()} = 1;
+			}
+			$incidence_hash{$ind} = \%site_incidence;
+		}
+	}
+	
+	@static_sorted_nodnames = @sorted_nodnames;
+	@static_sorted_sites = @sorted_sites;
+	
+	return %incidence_hash;
+};
+
+sub print_incidence_matrix {
+	my %incidence_hash = %{$_[0]};
+	my $path = $_[1];
+	my $matrix_file = $path.$static_protein."_incidence_matrix";
+	my $sorted_sites_file = $path.$static_protein."_sorted_sites";
+	my $sorted_nodnames_file = $path.$static_protein."_sorted_nodnames";
+	open MATRIX, ">$matrix_file" or die "Cannot open file ".$matrix_file."\n";
+	foreach my $nodname (@static_sorted_nodnames){
+		foreach my $ind (@static_sorted_sites){
+			print MATRIX $incidence_hash{$ind}->{$nodname};
+		}
+		print MATRIX "\n";
+	}
+	close MATRIX;
+	
+	open SSITES, ">$sorted_sites_file" or die "Cannot open file ".$sorted_sites_file."\n";
+	foreach my $ind(@static_sorted_sites){
+		print SSITES $ind."\n";
+	}
+	close SSITES;
+	
+	open SNODES, ">$sorted_nodnames_file" or die "Cannot open file ".$sorted_nodnames_file."\n";
+	foreach my $name(@static_sorted_nodnames){
+		print SNODES $name."\n";
+	}
+	close SNODES;
+	
+}
+
+sub read_incidence_matrix {
+	my $matrix_file = $_[0];
+	open MATRIX, "<$matrix_file" or die "Cannot open file ".$matrix_file."\n";
+	my %subs_on_node;
+	my %nodes_with_sub;
+	my $line_index = 0;
+	while(<MATRIX>){
+		if (/^$/) {last;}
+			my $nodname = $static_sorted_nodnames[$line_index];
+			my @sites = split(',');
+			my %substs;
+			foreach my $s(@sites){
+				my $ind = $static_sorted_sites[$s-1];
+#				print " $s is $ind\n";
+				my $p=Substitution->new();
+				$p->position($ind);
+				$p->ancestral_allele("ATG");
+				$p->derived_allele("ATG");
+				$substs{$ind} = $p;
+				if (! exists $nodes_with_sub{$ind}){
+					$nodes_with_sub{$ind} = ();
+				}
+	#			print "\n nodndame ".$_."\n";
+	#			print "\nREF 1 ".ref($static_hash_of_nodes{$nodname})."\n";
+	#			print "\nREF 2 ".ref(${$static_hash_of_nodes{$nodname}})."\n";
+				push (@{$nodes_with_sub{$ind}}, \${$static_hash_of_nodes{$nodname}}); #вытащить из дерева по имени
+			}
+			$subs_on_node{$nodname} = \%substs;
+			$line_index++;
+
+	}
+	close MATRIX;
+	return (\%subs_on_node, \%nodes_with_sub);
+			
+}
+
+sub test_mutmaps{
+	
+	foreach my $ind(keys %static_nodes_with_sub){
+		my $nodes_count = scalar @{$static_nodes_with_sub{$ind}};
+		print " index $ind, $nodes_count nodes ";
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			print $$node->get_name()."\t";
+		}
+		print "\n";
+	}
+	
+	foreach my $nodname(keys %static_subs_on_node){
+		my $sites_count = scalar keys $static_subs_on_node{$nodname};
+		print " node $nodname, $sites_count sites\n";
+	}
+}
 
 sub parse_tree {
 					my $tree_file = $_[0];
@@ -431,7 +690,7 @@ sub load_data{
 	
 }
 
-#print_tree_with_mutations(87);
+#print_tree_with_mutations(19);
 #print_tree_with_mutations(503);
 #print_tree_with_mutations(465);
 # prints nexus tree, on wich all mutations in the specified site are shown 
@@ -521,6 +780,14 @@ my @n1_wan_epitopes = qw(248, 249, 250, 273, 309, 338, 339, 341, 343, 396, 397, 
 my @h1_antigenic = qw( 138 144 145 147 150 158 163 142 170 177 200 203 206 207 208 210 211 52 53 60 288 290 291 294 312 327 111 180 222 226 233 239 241 64 71 86 88 90 97 99 284 );
 
 
+#h1 Ren, Li, Liu (antigenic) - intersection of two methods
+my @h1_antigenic_ren = qw(60 71	88	138	142	144	147	158	204	207	210	222	338);
+
+my @h1_antigenic_Huang_and_host_shift = qw(71	200	203	206	210	211	288	294	);
+
+
+
+
 my @n2_surface = (34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 88, 89, 90, 91, 92, 93, 95, 107, 110, 111, 112, 113, 118, 125, 126, 127, 128, 130, 141, 143, 146, 147, 149, 150, 151, 152, 153, 154, 160, 161, 162, 169, 171, 173, 187, 189, 196, 197, 198, 199, 200, 208, 209, 210, 212, 215, 216, 218, 219, 220, 221, 222, 224, 234, 236, 244, 245, 246, 247, 248, 249, 250, 251, 253, 258, 259, 261, 262, 263, 264, 265, 267, 268, 269, 270, 271, 273, 277, 283, 284, 285, 286, 292, 295, 296, 304, 306, 307, 308, 309, 310, 311, 312, 313, 315, 326, 328, 329, 330, 331, 332, 334, 336, 337, 338, 339, 341, 342, 343, 344, 346, 347, 356, 357, 358, 359, 366, 367, 368, 369, 370, 371, 378, 380, 381, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 396, 399, 400, 401, 402, 403, 413, 414, 415, 416, 417, 430, 431, 432, 433, 434, 435, 437, 450, 451, 452, 453, 455, 456, 457, 459, 461, 463, 464, 465, 466, 468, 469, 470);
 my @n1_surface = (34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 86, 88, 89, 90, 93, 94, 95, 111, 118, 126, 127, 128, 136, 141, 143, 146, 147, 148, 149, 150, 151, 152, 154, 162, 163, 165, 172, 174, 189, 191, 199, 200, 201, 202, 209, 210, 211, 214, 215, 217, 218, 220, 221, 222, 223, 224, 226, 236, 237, 247, 248, 249, 250, 251, 252, 255, 258, 260, 261, 263, 264, 265, 266, 267, 268, 269, 271, 273, 274, 275, 279, 285, 286, 287, 288, 290, 296, 297, 298, 304, 306, 307, 308, 309, 311, 312, 313, 314, 326, 328, 329, 330, 331, 332, 333, 334, 335, , , 336, 337, 338, 340, 341, 349, 350, 351, 352, 360, 361, 362, 363, 364, 365, 372, 374, 375, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 389, 391, 392, 393, 394, 395, 398, 406, 407, 408, 413, 414, 415, 416, 417, 426, 427, 429, 430, 431, 432, 433, 434, 435, 437, 439, 450, 451, 452, 454, 455, 456, 457, 461, 463, 464, 465, 467, 468);
 
@@ -568,18 +835,24 @@ my @h1_trailing_neva = (91,200,232,169,268);
 my @n1_leading_neva = (163,263,388,6,149,59,78,14,80,101,427,386,200);
 my @n1_trailing_neva = (434,275,15,267,83,287);
 
+
+my @h3_deps_evolving = qw(10 61 151 161 171 174 245 264 347);
+## 90 240 277 179 - only in egg-adapted before 1979
+my @h1_jianpeng_evolving = qw(156 169 171 203 206 210 238 90 240 277 179);
+
+my @h1_wenfu_evolving = qw(98 110 157 178 202 203 238 176);
 #my @not_in_pdb_h1 = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563);
 #my @h3_best_sites = (235,202,183,478,538,189,66);
 #logic();
 
-#my @sites = (7,139);
+#my @sites = (546);
 #for my $site(@sites){
-#	print_tree_with_mutations($site);
+#	print_tree_with_mutations($site, "h3");
 #}
 
 #print_tree_with_mutations(176, "n2");
-
-#logic_medstat_groups_labelshuffler("h1", "nsyn", 1000, "leading", \@h1_leading_kr);
+#push @h1_surface, @h1_internal;
+#logic_medstat_groups("h1", "nsyn", 1000, "shadow", \@h1_surface);
 #logic_medstat_groups("h1", "nsyn", 1000, "leading", \@h1_leading_kr);
 #logic_medstat_groups_labelshuffler("h1", "nsyn", 1000, "trailing", \@h1_trailing_kr);
 #logic_medstat_groups("h1", "nsyn", 1000, "trailing", \@h1_trailing_kr);
@@ -1953,7 +2226,13 @@ return $median;
 
 sub medtest {
 	my @array = (5,5,5,5);
-	print hist_median(\@array);
+	my %hash;
+	$hash{1} = 2;
+	$hash{2} = 4;
+	$hash{3} = 4;
+	$hash{4} = 10;
+	print hist_median(\@array)."\n";
+	print hist_median_for_hash(\%hash);
 }
 
 #takes an array of probabilities for 0,1,2...
@@ -1975,6 +2254,23 @@ sub hist_median{
 	}
 #print_hist(\@hist);
 	return $median;
+}
+
+#takes a hash of probabilities for 0,1,2...
+sub hist_median_for_hash{
+	my %prehist =  %{$_[0]};
+	my @hist;
+	my @sorted_keys = sort {$a <=> $b} keys %prehist;
+	for (my $i = 1; $i <= $sorted_keys[-1]; $i++){
+		if ($prehist{$i}){
+			push @hist, $prehist{$i};
+		}
+		else {
+			push @hist, 0;
+		}
+	}
+
+	return hist_median(\@hist);
 }
 
 ## for hist->interval->site_index
@@ -4285,11 +4581,274 @@ sub test_my_visit_depth_first {
 }
 
 
- set_mutmap("h1", "nsyn");
+my @h1uptrend = qw(111 169 205 113);
+#entrenchment_bootstrap("h1", 100, 150);
+#boot_median_test("h1", 150);
+
+#set_mutmap("h1", "nsyn");
+#set_distance_matrix("h1");
+#depth_groups_entrenchment_optimized(10,150);
+
+
+#entrenchment_bootstrap_full("n2", 100, 100);
+
+
+enrichment_optimized("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n2_opti_proc_100_group_obs", "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n2_opti_proc_100_group", \@n2_host_shift);
+
+#write_csv("h1");
+#write_csv("h3");
+#write_csv("n1");
+#write_csv("n2");
+
+#rewrite_csv("h3");
+#set_mutmap("h1", "nsyn");
+#boot_median_test("h1");
+
+sub entrenchment_bootstrap{ 
+	my $prot = $_[0];
+	my $restriction = $_[1];
+	set_mutmap($prot, "nsyn");
+	set_distance_matrix($prot);
+	my %matrix = incidence_matrix(); #!
+	print_incidence_matrix(\%matrix, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	my %hash = depth_groups_entrenchment_optimized(10,$restriction);
+	my $norm;
+	foreach my $bin(1..32){
+			$norm += $hash{$bin}[0];
+	}
+
+	my @simulated_hists;
+	for (my $i = 1; $i < 101; $i++){
+		my @mock_mutmaps = read_incidence_matrix("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
+		
+		%static_subs_on_node = %{$mock_mutmaps[0]};
+		%static_nodes_with_sub = %{$mock_mutmaps[1]};
+
+		my %hash = depth_groups_entrenchment_optimized(10,$restriction);
+		push @simulated_hists, \%hash;
+		%static_ring_hash = ();
+		%static_depth_hash = ();
+	}
+
+	store \@simulated_hists, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_full_simulation_".$restriction."_stored";
+	my $arref = retrieve("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_full_simulation_".$restriction."_stored");
+	
+	open CSV, ">C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_full_simulation_".$restriction.".csv";
+	foreach my $bin(1..32){
+			print CSV $bin."_obs,".$bin."_exp,";
+	}
+	print CSV "\n";
+
+	foreach my $i(0..99){
+		my $sum;
+		foreach my $bin(1..32){
+				$sum += $arref->[$i]->{$bin}->[0];
+		}
+		foreach my $bin(1..32){
+			print CSV ($arref->[$i]->{$bin}->[0])*$norm/$sum.",".($arref->[$i]->{$bin}->[1])*$norm/$sum.",";
+		}
+		print CSV"\n";
+	}
+	close CSV;
+}
+
+sub entrenchment_bootstrap_full{ 
+	my $prot = $_[0];
+	my $iterations = $_[1];
+	my $restriction = $_[2];
+	set_mutmap($prot, "nsyn");
+	set_distance_matrix($prot);
+	my %matrix = incidence_matrix(); #!
+	print_incidence_matrix(\%matrix, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	my %obs_hash = depth_groups_entrenchment_optimized(10,$restriction);
+	my $norm;
+	foreach my $bin(1..32){
+			$norm += $obs_hash{$bin}[0];
+	}
+	
+	%static_ring_hash = ();
+	%static_depth_hash = ();
+	%static_subtree_info = ();
+	
+	my @simulated_hists;
+	for (my $i = 1; $i <= $iterations; $i++){
+		my @mock_mutmaps = read_incidence_matrix("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
+		
+		%static_subs_on_node = %{$mock_mutmaps[0]};
+		%static_nodes_with_sub = %{$mock_mutmaps[1]};
+
+		my %hash = depth_groups_entrenchment_optimized(10,$restriction);
+		push @simulated_hists, \%hash;
+		
+		my $sum;
+		foreach my $bin(1..32){
+				$sum += $hash{$bin}[0];
+		}
+		foreach my $bin(1..32){
+			$hash{$bin}[0] = $hash{$bin}[0]*$norm/$sum;
+			$hash{$bin}[1] = $hash{$bin}[1]*$norm/$sum;
+		}
+		
+		%static_ring_hash = ();
+		%static_depth_hash = ();
+		%static_subtree_info = ();
+	}
+
+	store \@simulated_hists, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_group_simulation_".$restriction."_stored";
+	my $arref = retrieve("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_group_simulation_".$restriction."_stored");
+	
+	open CSV, ">C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_group_simulation_".$restriction.".csv";
+	foreach my $bin(1..32){
+			print CSV $bin."_obs,".$bin."_exp,";
+	}
+	print CSV "\n";
+
+	foreach my $i(0..$iterations){
+		foreach my $bin(1..32){
+			print CSV ($arref->[$i]->{$bin}->[0]).",".($arref->[$i]->{$bin}->[1]).",";
+		}
+		print CSV"\n";
+	}
+	close CSV;
+	
+	my $file = $prot."_group_boot_median_test_".$restriction;
+	open FILE, ">$file";
+	foreach my $bin(1..32){
+			$obs_hash{$bin} = $obs_hash{$bin}->[0];
+		}
+	my $obs_median = hist_median_for_hash(\%obs_hash);
+	
+	print FILE "\n observed median: $obs_median\n";
+	
+	my $pval_epi;
+	my $pval_env;
+	
+	foreach my $i(0..$iterations){
+		my %hash;
+		foreach my $bin(1..32){
+			$hash{$bin} = $arref->[$i]->{$bin}->[0];
+		}
+		my $boot_median = hist_median_for_hash(\%hash);
+		print FILE "\n boot median: $boot_median\n";
+		if ($boot_median <= $obs_median){
+			$pval_epi += 1;
+		}
+		if ($boot_median >= $obs_median){
+			$pval_env += 1;
+		}
+
+	}
+	print FILE "pvalue epistasis ".($pval_epi/$iterations)." pvalue environment ".($pval_env/$iterations);
+	close FILE;
+}
+
+
+sub rewrite_csv {
+	my $prot = $_[0];
+	my $arref = retrieve("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_150_stored");
+	open CSV, ">C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_150.csv";
+	
+	foreach my $bin(1..32){
+			print CSV $bin."_obs,".$bin."_exp,";
+	}
+	print CSV "\n";
+	foreach my $i(0..99){
+		my $sum;
+		foreach my $bin(1..32){
+				$sum += $arref->[$i]->{$bin}->[0];
+		}
+		foreach my $bin(1..32){
+			print CSV ($arref->[$i]->{$bin}->[0])*326/$sum.",".($arref->[$i]->{$bin}->[1])*326/$sum.",";
+		}
+		print CSV"\n";
+	}
+	close CSV;
+	
+}
+
+
+sub write_csv {
+	my $prot = $_[0];
+	my $arref = retrieve("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_50_stored");
+	open CSV, ">C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_50.csv";
+	
+	foreach my $bin(1..31){
+			print CSV $bin."_obs,".$bin."_exp,";
+	}
+	print CSV "\n";
+
+	foreach my $i(0..101){
+		foreach my $bin(1..31){
+			print CSV $arref->[$i]->{$bin}->[0].",".$arref->[$i]->{$bin}->[1].",";
+		}
+		print CSV "\n";
+	}
+	close CSV;
+}
+#print "tester ".$arref->[0]->{3}->[0]."\t";
+#print "tester ".$arref->[1]."\t";
+
+sub main_optim {
+	set_mutmap("h1", "nsyn");
+	set_distance_matrix("h1");
+	depth_groups_entrenchment_optimized(10);
+}
+
+
+
+
+#depth_groups_entrenchment(10);
+#egor_site_entrenchment();
 #global_entrenchment_epsilon(3, 1);
+#sites_num();
 # neva_site_entrenchment(10);
- depth_groups_entrenchment(10);
+#depth_groups_entrenchment(10, \@h1uptrend);
+#depth_groups_entrenchment_bootstrap(1, \@h3_antigenic_koel, 100);
  #maxdepths_hist();
+ 
+sub boot_median_test {
+	my $prot = $_[0];
+	my $restriction = $_[1];
+	my $arref = retrieve("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_".$restriction."_stored");
+
+	my %obs_hash = depth_groups_entrenchment(10, $restriction);
+	my $file = $prot."_new_boot_median_test_".$restriction;
+	open FILE, ">$file";
+	foreach my $bin(1..32){
+			$obs_hash{$bin} = $obs_hash{$bin}->[0];
+		}
+	
+	my $obs_median = hist_median_for_hash(\%obs_hash);
+	
+	print FILE "\n observed median: $obs_median\n";
+	
+	my $pval_epi;
+	my $pval_env;
+	
+	
+	foreach my $i(0..99){
+		my %hash;
+		my $sum;
+		foreach my $bin(1..32){
+				$sum += $arref->[$i]->{$bin}->[0];
+		}
+		foreach my $bin(1..32){
+			$hash{$bin} = ($arref->[$i]->{$bin}->[0])*326/$sum;
+		}
+		my $boot_median = hist_median_for_hash(\%hash);
+		print FILE "\n boot median: $boot_median\n";
+		if ($boot_median <= $obs_median){
+			$pval_epi += 1;
+		}
+		if ($boot_median >= $obs_median){
+			$pval_env += 1;
+		}
+
+	}
+	
+	print FILE "pvalue epistasis ".($pval_epi/100)." pvalue environment ".($pval_env/100);
+	close FILE;
+} 
  
 sub maxdepths_hist {
 	my @array;
@@ -4521,7 +5080,634 @@ sub neva_site_entrenchment {
 	
 }
 
+#bullshit_test();
+sub bullshit_test{
+	
+	set_mutmap("h1", "nsyn");
+	my %matrix = incidence_matrix();
+	print_incidence_matrix(\%matrix, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	my $step = 2;
+	my $root = $static_tree-> get_root;
+	my @array;
+	my %hist;
+	print "radius,site,node,observed,expected\n";
+	my @group;
+
+	foreach my $ind (1..7){
+		print "\nindex $ind\n";
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			
+			if(ref($node) eq "REF"){
+				$node = ${$node};
+			}
+			print "\n   node ".$node->get_name()."\n";
+			if (!$node->is_terminal){
+			my @args = ($ind, $step, $node);
+			my_visit_depth_first ($node, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+			my_visit_depth_first ($node, \@array,\&max_depth,\&has_no_mutation,\@args,0);
+			my $total_muts;
+			my $total_length;
+	#print "depth ".$static_depth_hash{$ind}{$node->get_name()}."\n";
+			if ($static_depth_hash{$ind}{$node->get_name()} > 0){
+			foreach my $bin (keys %{$static_ring_hash{$ind}{$node->get_name()}}){
+				print "         bin ".$bin*$step."\n";
+				print "            adding ".$static_ring_hash{$ind}{$node->get_name()}{$bin}[0]." to muts\n";
+				print "            adding ".$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]." to length\n";
+				$total_muts += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
+				$total_length += $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
+			}
+			#if ($total_length > 0 && $total_muts/$total_length < 0.005){
+			if ($total_length > 0){
+			foreach my $bin (sort {$a <=> $b} (keys %{$static_ring_hash{$ind}{$node->get_name()}})){
+				
+				if ($total_length > 0 && $static_ring_hash{$ind}{$node->get_name()}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
+					print "         bin ".$bin*$step."\n";
+					$hist{$bin}[0] += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0]; #observed
+					print "            adding ".$static_ring_hash{$ind}{$node->get_name()}{$bin}[0]." to observed\n";
+					$hist{$bin}[1] += $total_muts*$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]/$total_length; #expected
+					print "            adding ".$total_muts*$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]/$total_length." to expected\n";
+				}
+				if (!$hist{$bin}[0]){
+					$hist{$bin}[0] += 0;
+				}
+				if (!$hist{$bin}[1]){
+					$hist{$bin}[1] += 0;
+				}
+				#print "$bin,$ind,".$node->get_name().",".$hist{$bin}[0].",".$hist{$bin}[1]."\n";
+			}
+			}
+			}
+		}
+		}
+	}
+	
+	foreach my $bin (sort {$a <=> $b} keys %hist){
+		print " up to ".$bin*$step."\t".$hist{$bin}[0]."\t".$hist{$bin}[1]."\n";
+	}
+}
+
+
+
 sub depth_groups_entrenchment {
+	my $step = $_[0];
+	my $restriction = $_[1];
+	my $root = $static_tree-> get_root;
+	my @array;
+	my %hist;
+	print "radius,site,node,observed,expected\n";
+	my @group;
+	if ($_[2]){
+		@group = @{$_[2]};
+	}
+	else {
+		@group = (1..565);
+	}
+	foreach my $ind (@group){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			if(ref($node) eq "REF"){
+				$node = ${$node};
+			}
+			if (!$node->is_terminal){
+			my @args = ($ind, $step, $node);
+			my_visit_depth_first ($node, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+			my_visit_depth_first ($node, \@array,\&max_depth,\&has_no_mutation,\@args,0);
+			my $total_muts;
+			my $total_length;
+	#print "depth ".$static_depth_hash{$ind}{$node->get_name()}."\n";
+			if ($static_depth_hash{$ind}{$node->get_name()} > $restriction){
+			foreach my $bin (keys %{$static_ring_hash{$ind}{$node->get_name()}}){
+				$total_muts += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
+				$total_length += $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
+			}
+			print $node->get_name()." ".$ind." TOTALS: $total_muts, $total_length, maxdepth ".$static_depth_hash{$ind}{$node->get_name()}."\n";
+			#if ($total_length > 0 && $total_muts/$total_length < 0.005){
+			if ($total_length > 0){
+			foreach my $bin (sort {$a <=> $b} (keys %{$static_ring_hash{$ind}{$node->get_name()}})){
+				
+				if ($total_length > 0 && $static_ring_hash{$ind}{$node->get_name()}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
+					$hist{$bin}[0] += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0]; #observed
+					$hist{$bin}[1] += $total_muts*$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]/$total_length; #expected
+					
+				}
+				if (!$hist{$bin}[0]){
+					$hist{$bin}[0] += 0;
+				}
+				if (!$hist{$bin}[1]){
+					$hist{$bin}[1] += 0;
+				}
+				#print "$bin,$ind,".$node->get_name().",".$hist{$bin}[0].",".$hist{$bin}[1]."\n";
+			}
+			}
+			}
+		}
+		}
+	}
+	
+	foreach my $bin (sort {$a <=> $b} keys %hist){
+		print " up to ".$bin*$step."\t".$hist{$bin}[0]."\t".$hist{$bin}[1]."\n";
+	}
+	return %hist;
+	
+	
+}
+
+sub no_check{
+	return 1;
+}
+
+
+
+sub enrichment_optimized {
+	my $obsfile = $_[0];
+	my $bootfile = $_[1];
+	my @group = @{$_[2]};
+	
+	my %grouphash;
+	foreach my $ind(@group){
+		$grouphash{$ind} = 1;
+	}
+	
+	my %hash;
+	my %obshash;
+
+	
+	open FILE, "<$obsfile" or die "Cannot open $obsfile\n";
+	while(<FILE>){
+		if ($_ =~ /^rad/){
+			next;
+		}
+		my @arr = split(/,/);
+		my $ind = $arr[1] ;
+		my $bin = $arr[0];
+		# bin, ind, node, obs
+		$obshash{$ind}{$bin} += $arr[3];
+	}
+
+	my $norm;
+	foreach my $bin(1..32){
+		foreach my $ind (keys %obshash){
+			$norm += $obshash{$ind}{$bin};
+		}
+	}
+	
+	my %obshash_g;
+	my %obshash_c;
+	foreach my $bin(1..32){
+			foreach my $ind(keys %obshash){
+				if ($grouphash{$ind}){
+					$obshash_g{$bin} += $obshash{$ind}{$bin}; # group
+				}
+				else {
+					$obshash_c{$bin} += $obshash{$ind}{$bin}; # complement
+				}
+			}
+	}
+		
+	my $obs_median_g = hist_median_for_hash(\%obshash_g);
+	my $obs_median_c = hist_median_for_hash(\%obshash_c);
+	print " obs_median_g $obs_median_g  obs_median_c $obs_median_c\n ";	
+	
+	open FILE, "<$bootfile" or die "Cannot open $bootfile\n";
+	my $iteration = 0;
+	while(<FILE>){
+		if ($_ =~ /^rad/){
+			$iteration++;
+			next;
+		}
+		my @arr = split(/,/);
+		my $ind = $arr[1] ;
+		my $bin = $arr[0];
+		# bin, ind, node, obs
+		$hash{$iteration}{$ind}{$bin} += $arr[3];
+	}
+	close FILE;
+	print "$iteration iterations\n";
+	my $pval_env_enrichment;
+	my $pval_env_depletion;
+	my $pval_epi_enrichment;
+	my $pval_epi_depletion;
+	
+	
+	foreach my $i(keys %hash){
+		my $sum;
+		my %hash_g;
+		my %hash_c;
+		foreach my $bin(1..32){
+			foreach my $ind (1..565){
+				$sum += $hash{$i}{$ind}{$bin};
+			}
+		}
+		foreach my $bin(1..32){
+			foreach my $ind(keys %{$hash{$i}}){
+				if ($grouphash{$ind}){
+					$hash_g{$bin} += $hash{$i}{$ind}{$bin}*$norm/$sum; # group
+				}
+				else {
+					$hash_c{$bin} += $hash{$i}{$ind}{$bin}*$norm/$sum; # complement
+				}
+			}
+		}
+		my $boot_median_g = hist_median_for_hash(\%hash_g);
+		my $boot_median_c = hist_median_for_hash(\%hash_c);
+		print " boot_median_g $boot_median_g  boot_median_c $boot_median_c\n ";	
+		
+		if ($obs_median_g-$obs_median_c <= $boot_median_g-$boot_median_c){
+			$pval_env_enrichment += 1;
+		}
+		if ($obs_median_g-$obs_median_c >= $boot_median_g-$boot_median_c){
+			$pval_env_depletion += 1;
+		}
+		if (-$obs_median_g+$obs_median_c <= -$boot_median_g+$boot_median_c){
+			$pval_epi_enrichment += 1;
+		}
+		if (-$obs_median_g+$obs_median_c >= -$boot_median_g+$boot_median_c){
+			$pval_epi_depletion += 1;
+		}
+		
+	}
+	
+	print " pval epi enrichment ".$pval_epi_enrichment/$iteration."\n";
+	print " pval epi depletion ".$pval_epi_depletion/$iteration."\n";
+	print " pval env enrichment ".$pval_env_enrichment/$iteration."\n";
+	print " pval env depletion ".$pval_env_depletion/$iteration."\n";
+		
+}
+
+sub depth_groups_entrenchment_optimized {
+	my $step = $_[0];
+	my $restriction = $_[1];
+	my $root = $static_tree-> get_root;
+	my @array;
+	my %hist;
+	print "radius,site,node,observed\n";
+	print 
+	my @group;
+	if ($_[2]){
+		@group = @{$_[2]};
+	}
+	else {
+		@group = (1..565);
+	}
+
+	my %closest_ancestors;
+	$root->set_generic("-closest_ancestors" => \%closest_ancestors);
+	my @args = ( $step, $root);
+	my_visit_depth_first ($root, \@array,\&entrenchment_visitor,\&no_check,\@args,0);
+	foreach my $ind (@group){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			if(ref($node) eq "REF"){
+				$node = ${$node};
+			}
+			my $total_muts;
+			my $total_length;
+	#print "depth ".$static_depth_hash{$ind}{$node->get_name()}."\n";
+			if ($static_subtree_info{$node->get_name()}{$ind}{"maxdepth"} > $restriction){
+				foreach my $bin (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}}){
+					$total_muts += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0];
+					$total_length += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1];
+				}	
+			#	print $node->get_name()." ".$ind." TOTALS: $total_muts, $total_length, maxdepth ".$static_subtree_info{$node->get_name()}{$ind}{"maxdepth"}."\n";
+				#if ($total_length > 0 && $total_muts/$total_length < 0.005){
+				if ($total_length > 0){
+					foreach my $bin (sort {$a <=> $b} (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}})){
+						if ($total_length > 0 && $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
+							$hist{$bin}[0] += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0]; #observed
+							$hist{$bin}[1] += $total_muts*$static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1]/$total_length; #expected	
+						}
+						if (!$hist{$bin}[0]){
+							$hist{$bin}[0] += 0;
+						}
+						if (!$hist{$bin}[1]){
+							$hist{$bin}[1] += 0;
+						}
+	print "$bin,$ind,".$node->get_name().",".$hist{$bin}[0]."\n";
+				}
+				}
+			}
+			
+		}
+	}	
+	
+#	foreach my $bin (sort {$a <=> $b} keys %hist){
+#		print " up to ".$bin*$step."\t".$hist{$bin}[0]."\t".$hist{$bin}[1]."\n";
+#	}
+	return %hist;	
+}
+
+
+
+sub depth_groups_entrenchment_hash {
+	my $step = $_[0];
+	my $root = $static_tree-> get_root;
+	my @array;
+	my %hist;
+	print "radius,site,node,observed,expected\n";
+	my @group;
+	if ($_[1]){
+		@group = @{$_[1]};
+	}
+	else {
+		@group = (1..565);
+	}
+	foreach my $ind (@group){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			if(ref($node) eq "REF"){
+				$node = ${$node};
+			}
+			if (!$node->is_terminal){
+			my @args = ($ind, $step, $node);
+			my_visit_depth_first ($node, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+			my_visit_depth_first ($node, \@array,\&max_depth,\&has_no_mutation,\@args,0);
+			my $total_muts;
+			my $total_length;
+	#print "depth ".$static_depth_hash{$ind}{$node->get_name()}."\n";
+			if ($static_depth_hash{$ind}{$node->get_name()} > 50){
+			foreach my $bin (keys %{$static_ring_hash{$ind}{$node->get_name()}}){
+				$total_muts += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
+				$total_length += $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
+			}
+			#if ($total_length > 0 && $total_muts/$total_length < 0.005){
+			if ($total_length > 0){
+			foreach my $bin (sort {$a <=> $b} (keys %{$static_ring_hash{$ind}{$node->get_name()}})){
+				
+				if ($total_length > 0 && $static_ring_hash{$ind}{$node->get_name()}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
+					$hist{$bin}{$ind}[0] += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0]; #observed
+					$hist{$bin}{$ind}[1] += $total_muts*$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]/$total_length; #expected
+					
+				}
+				if (!$hist{$bin}{$ind}[0]){
+					$hist{$bin}{$ind}[0] += 0;
+				}
+				if (!$hist{$bin}{$ind}[1]){
+					$hist{$bin}{$ind}[1] += 0;
+				}
+				
+			}
+			}
+			}
+		}
+		}
+
+	}
+	
+	foreach my $bin (sort {$a <=> $b} keys %hist){
+		my $obs_sum;
+		my $exp_sum;
+		foreach my $s (@group){
+			$obs_sum += $hist{$bin}{$s}[0];
+			$exp_sum += $hist{$bin}{$s}[1];
+		}
+		print " up to ".$bin*$step."\t".$obs_sum."\t".$exp_sum."\n";
+	}
+	return %hist;
+	
+}
+
+
+sub depth_groups_entrenchment_bootstrap {
+	my $step = $_[0];
+	my $root = $static_tree-> get_root;
+	my @pregroup = @{$_[1]};
+	my $iterations = $_[2];
+	
+	# both group and complement must contain only variable sites:
+	my %variable_sites;
+	foreach my $s(1..565){
+		if ($static_nodes_with_sub{$s}){
+			$variable_sites{$s} = 1;
+		}
+	}
+	
+	my %ghash;
+	my @group;
+	foreach my $s(@pregroup){
+		if ($variable_sites{$s}){
+			$ghash{$s} = 1;
+			push @group, $s;
+		}
+	}
+	my @complement;
+	foreach my $s(keys %variable_sites){
+		if (!$ghash{$s}){
+			push @complement, $s;
+		}
+	}
+	my @variable_sites_array = keys %variable_sites;
+	my %hist = depth_groups_entrenchment_hash($step, \@variable_sites_array);
+	my @obs_values = diffdiff(\%hist, \@group, \@complement);
+	 
+	my $counter1;
+	my $counter2;
+
+	
+	for (my $i = 0; $i < $iterations; $i++){
+		
+		my @boot_group = shuffle @variable_sites_array;
+		my @boot_complement = splice (@boot_group, scalar @group, scalar @variable_sites_array - scalar @group);
+		my @boot_values = diffdiff(\%hist, \@boot_group, \@boot_complement);
+		
+		if ($boot_values[4] >= $obs_values[4]){
+			$counter1++;
+		}
+		if ($boot_values[4] <= $obs_values[4]){
+			$counter2++;
+		}
+
+
+	}
+	print "epistasis enrichment ".$counter1/$iterations."\n";
+	print "environment enrichment ".$counter2/$iterations."\n";
+
+}
+
+
+sub squashed_hist {
+	my %hist = %{$_[0]};
+	my %squashed_hist;
+	foreach my $bin (keys %hist){
+		foreach my $ind (keys %{$hist{$bin}}){
+			$squashed_hist{$bin}[0] += $hist{$bin}{$ind}[0];
+			$squashed_hist{$bin}[1] += $hist{$bin}{$ind}[1];
+		}
+	}
+	return %squashed_hist;
+}
+
+sub squashed_hist_subset {
+	my %hist = %{$_[0]};
+	my @group = @{$_[1]};
+	my %hist_subset;
+	foreach my $bin (keys %hist){
+		foreach my $ind (@group){
+			$hist_subset{$bin}[0] += $hist{$bin}{$ind}[0];
+			$hist_subset{$bin}[1] += $hist{$bin}{$ind}[1];
+		}
+	}
+	return %hist_subset;
+}
+
+sub diffdiff {
+	my %hist = %{$_[0]};
+	my @group = @{$_[1]};
+	my @complement = @{$_[2]};
+	
+	my %group_hist = squashed_hist_subset(\%hist, \@group);
+	my %group_obs_hist;
+	my %group_exp_hist;
+	foreach my $k(keys %group_hist){
+		$group_obs_hist{$k} = $group_hist{$k}->[0];
+		$group_exp_hist{$k} = $group_hist{$k}->[1];
+	}
+	my %complement_hist = squashed_hist_subset(\%hist, \@complement);
+	my %complement_obs_hist;
+	my %complement_exp_hist;
+	foreach my $k(keys %complement_hist){
+		$complement_obs_hist{$k} = $complement_hist{$k}->[0];
+		$complement_exp_hist{$k} = $complement_hist{$k}->[1];
+	}
+	my $group_obs = hist_median_for_hash(\%group_obs_hist);
+	my $group_exp = hist_median_for_hash(\%group_exp_hist);
+	my $compl_obs = hist_median_for_hash(\%complement_obs_hist);
+	my $compl_exp = hist_median_for_hash(\%complement_exp_hist);
+	
+	print "\n Medians:\t".$group_obs."\t";
+	print $group_exp."\t";
+	print $compl_obs."\t";
+	print $compl_exp."\t";
+
+	my $diffdiff =  $group_exp - $group_obs - $compl_exp + $compl_obs; # > 0 if epist
+	print $diffdiff."\n";
+	
+	return ($group_obs, $group_exp, $compl_obs, $compl_exp, $diffdiff);
+}
+
+# incorrect! updates ring (adds to it) with every iteration
+sub _delete_depth_groups_entrenchment_bootstrap {
+	
+	my $step = $_[0];
+	my $root = $static_tree-> get_root;
+	my @pregroup = @{$_[1]};
+	my $iterations = $_[2];
+	
+	# both group and complement must contain only variable sites:
+	my %variable_sites;
+	foreach my $s(1..565){
+		if ($static_nodes_with_sub{$s}){
+			$variable_sites{$s} = 1;
+		}
+	}
+	
+	my %ghash;
+	my @group;
+	foreach my $s(@pregroup){
+		if ($variable_sites{$s}){
+			$ghash{$s} = 1;
+			push @group, $s;
+		}
+	}
+	my @complement;
+	foreach my $s(keys %variable_sites){
+		if (!$ghash{$s}){
+			push @complement, $s;
+		}
+	}
+	
+	my %group_hist = depth_groups_entrenchment($step, \@group);
+	my %group_obs_hist;
+	my %group_exp_hist;
+	foreach my $k(keys %group_hist){
+		$group_obs_hist{$k} = $group_hist{$k}->[0];
+		$group_exp_hist{$k} = $group_hist{$k}->[1];
+	}
+	my %complement_hist = depth_groups_entrenchment($step, \@complement);
+	my %complement_obs_hist;
+	my %complement_exp_hist;
+	foreach my $k(keys %complement_hist){
+		$complement_obs_hist{$k} = $complement_hist{$k}->[0];
+		$complement_exp_hist{$k} = $complement_hist{$k}->[1];
+	}
+	my $group_obs = hist_median_for_hash(\%group_obs_hist);
+	my $group_exp = hist_median_for_hash(\%group_exp_hist);
+	my $compl_obs = hist_median_for_hash(\%complement_obs_hist);
+	my $compl_exp = hist_median_for_hash(\%complement_exp_hist);
+	
+	
+	print "\n Medians:\t".$group_obs."\t";
+	print $group_exp."\t";
+	print $compl_obs."\t";
+	print $compl_exp."\t";
+
+	my $diffdiff =  $group_exp - $group_obs - $compl_exp + $compl_obs; # > 0 if epist
+	 
+	my @variable_sites_array = keys %variable_sites;
+	my $counter1;
+	my $counter2;
+	my $counter3;
+	my $counter4;
+	
+	for (my $i = 0; $i < $iterations; $i++){
+		
+		my @boot_group = shuffle @variable_sites_array;
+		my @boot_complement = splice (@boot_group, scalar @group, scalar @variable_sites_array - scalar @group);
+		foreach my $g(@boot_group){
+			print $g."\n";
+		}
+		
+		
+		my %boot_group_hist = depth_groups_entrenchment($step, \@boot_group);
+		my %boot_group_obs_hist;
+		my %boot_group_exp_hist;
+		foreach my $k(keys %boot_group_hist){
+			$boot_group_obs_hist{$k} = $boot_group_hist{$k}->[0];
+			$boot_group_exp_hist{$k} = $boot_group_hist{$k}->[1];
+		}
+		my %boot_complement_hist = depth_groups_entrenchment($step, \@boot_complement);
+		my %boot_complement_obs_hist;
+		my %boot_complement_exp_hist;
+		foreach my $k(keys %boot_complement_hist){
+			$boot_complement_obs_hist{$k} = $boot_complement_hist{$k}->[0];
+			$boot_complement_exp_hist{$k} = $boot_complement_hist{$k}->[1];
+		}
+		my $boot_group_obs = hist_median_for_hash(\%boot_group_obs_hist);
+		my $boot_group_exp = hist_median_for_hash(\%boot_group_exp_hist);
+		my $boot_compl_obs = hist_median_for_hash(\%boot_complement_obs_hist);
+		my $boot_compl_exp = hist_median_for_hash(\%boot_complement_exp_hist);
+		
+		if ($boot_group_exp-$boot_group_obs - $boot_compl_exp+$boot_compl_obs >= $diffdiff){
+			$counter1++;
+		}
+		if ($boot_group_exp-$boot_group_obs - $boot_compl_exp+$boot_compl_obs <= $diffdiff){
+			$counter2++;
+		}
+		if (-$boot_group_exp+$boot_group_obs + $boot_compl_exp-$boot_compl_obs >= $diffdiff){
+			$counter3++;
+		}
+		if (-$boot_group_exp+$boot_group_obs + $boot_compl_exp-$boot_compl_obs <= $diffdiff){
+			$counter4++;
+		}
+
+	}
+	print "epistasis enrichment ".$counter1/$iterations."\n";
+	print "epistasis depletion ".$counter2/$iterations."\n";
+	print "environment enrichment ".$counter3/$iterations."\n";
+	print "environment depletion ".$counter4/$iterations."\n";
+}
+
+sub sites_num {
+	my $counter;
+	foreach my $ind (1..566){
+		if (ref($static_nodes_with_sub{$ind}) eq "ARRAY") {
+		my $c = scalar @{$static_nodes_with_sub{$ind}};
+		if ($c > 2){
+			$counter++;
+		}
+		}
+	}
+	print $counter;
+}
+
+
+sub depth_groups_entrenchment_heaps {
 	my $step = $_[0];
 	my $root = $static_tree-> get_root;
 	my @array;
@@ -4549,17 +5735,25 @@ sub depth_groups_entrenchment {
 				$total_muts += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
 				$total_length += $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
 			}
-			if ($total_length > 0 && $total_muts/$total_length >= 0.005){
+			if ($total_length > 0 && $total_muts/$total_length < 0.005){
+			#if ($total_length > 0){
 			foreach my $bin (sort {$a <=> $b} (keys %{$static_ring_hash{$ind}{$node->get_name()}})){
+				my $heap0 = 0;
+				my $heap1 = 1;
+				if ($static_ring_hash{$ind}{$node->get_name()}{1}[0] > $total_muts*$static_ring_hash{$ind}{$node->get_name()}{1}[1]/$total_length) {
+					$heap0 = 2;
+					$heap1 = 3;
+				}
 				if ($total_length > 0 && $static_ring_hash{$ind}{$node->get_name()}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
-					$hist{$bin}[0] += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0]; #observed
-					$hist{$bin}[1] += $total_muts*$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]/$total_length; #expected
+					$hist{$bin}[$heap0] += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0]; #observed
+					$hist{$bin}[$heap1] += $total_muts*$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]/$total_length; #expected
+					
 				}
-				if (!$hist{$bin}[0]){
-					$hist{$bin}[0] += 0;
+				if (!$hist{$bin}[$heap0]){
+					$hist{$bin}[$heap0] += 0;
 				}
-				if (!$hist{$bin}[1]){
-					$hist{$bin}[1] += 0;
+				if (!$hist{$bin}[$heap1]){
+					$hist{$bin}[$heap1] += 0;
 				}
 				print "$bin,$ind,".$node->get_name().",".$hist{$bin}[0].",".$hist{$bin}[1]."\n";
 			}
@@ -4570,12 +5764,11 @@ sub depth_groups_entrenchment {
 	}
 	
 	foreach my $bin (sort {$a <=> $b} keys %hist){
-		print " up to ".$bin*$step."\t".$hist{$bin}[0]."\t".$hist{$bin}[1]."\n";
+		print " up to ".$bin*$step."\t".$hist{$bin}[0]."\t".$hist{$bin}[1]."\t".$hist{$bin}[2]."\t".$hist{$bin}[3]."\n";
 	}
 	
 	
 }
-
 
 
 # one hist for one ancestor aa in one site
@@ -4621,7 +5814,146 @@ sub egor_site_entrenchment {
 	
 }
 
+# one hist for one ancestor aa in one site
+sub egor_smart_site_entrenchment {
+	my $step = 1;
+	my $root = $static_tree-> get_root;
+	my @array;
+	print "radius,site,node,density\n";
+	for (my $ind = 1; $ind < 566; $ind++){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			$node = ${$node};
+			if (!$node->is_terminal){
+			my %hist;
+			#my $ancestor = ${$static_subs_on_node{$node->get_name()}}{$ind}->{"Substitution::ancestral_allele"};
+			my @args = ($ind, $step, $node);
+			my_visit_depth_first ($node, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+			
+			my $cumulative_muts;
+			my $cumulative_length;
+			my @sorted_keys = sort {$a <=> $b} (keys %{$static_ring_hash{$ind}{$node->get_name()}});
+			foreach my $bin (@sorted_keys){
+				#print "bin $bin observed ".$static_ring_hash{$ind}{$node->get_name()}{$bin}[0]." totmut $total_muts totlen $total_length\n";
+				my $muts_in_bin = $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
+				my $length_of_bin = $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
+				$cumulative_muts += $muts_in_bin;
+				$cumulative_length += $length_of_bin;
+				if ($cumulative_length > 0){ #there are some internal nodes with 0-length terminal daughter branches
+					#	$hist{$bin}{$ancestor} += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0]/$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]; #density
 
+					$hist{$bin} = $cumulative_muts/$cumulative_length; #density
+				}
+				else {
+					$hist{$bin} = 0;
+				}
+				#if ($muts_in_bin > 0 || $bin == $sorted_keys[0] || $bin == $sorted_keys[-1]){	
+					if ($muts_in_bin > 0){	
+					print "$bin,$ind,".$node->get_name().",".$hist{$bin}."\n";
+				}
+				
+			}
+			
+
+		}
+		}
+	}
+	
+	
+	
+	
+}
+
+# last egor plots sub
+sub egor_diff_rings_site_entrenchment {
+	my $step = 1;
+	my $root = $static_tree-> get_root;
+	my @array;
+	print "radius,site,node,density,cum_muts,cum_length\n";
+	for (my $ind = 1; $ind < 566; $ind++){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			$node = ${$node};
+			if (!$node->is_terminal){
+			my %hist;
+			#my $ancestor = ${$static_subs_on_node{$node->get_name()}}{$ind}->{"Substitution::ancestral_allele"};
+			my @args = ($ind, $step, $node);
+			my_visit_depth_first ($node, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+			my $cumulative_muts;
+			my $cumulative_length;
+			my @sorted_keys = sort {$a <=> $b} (keys %{$static_ring_hash{$ind}{$node->get_name()}});
+			foreach my $bin (@sorted_keys){
+				#print "bin $bin observed ".$static_ring_hash{$ind}{$node->get_name()}{$bin}[0]." totmut $total_muts totlen $total_length\n";
+				my $muts_in_bin = $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
+				my $length_of_bin = $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
+				$cumulative_muts += $muts_in_bin;
+				$cumulative_length += $length_of_bin;
+				if ($cumulative_length > 0){ #there are some internal nodes with 0-length terminal daughter branches
+					#	$hist{$bin}{$ancestor} += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0]/$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]; #density
+					$hist{$bin} = $cumulative_muts/$cumulative_length; #density
+				}
+				else {
+					$hist{$bin} = 0;
+				}
+				#if ($muts_in_bin > 0 || $bin == $sorted_keys[0] || $bin == $sorted_keys[-1]){	
+					if ($muts_in_bin > 0){	
+					print "$bin,$ind,".$node->get_name().",".$hist{$bin}.",".$cumulative_muts.",".$cumulative_length."\n";
+					$cumulative_muts = 0;
+					$cumulative_length = 0;
+				}
+				
+			}
+			
+
+		}
+		}
+	}
+	
+	
+	
+	
+}
+
+sub egor_rings_site_entrenchment {
+		my $step = 10;
+	my $root = $static_tree-> get_root;
+	my @array;
+	print "radius,site,node,density\n";
+	for (my $ind = 1; $ind < 566; $ind++){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			$node = ${$node};
+			if (!$node->is_terminal){
+			my %hist;
+			#my $ancestor = ${$static_subs_on_node{$node->get_name()}}{$ind}->{"Substitution::ancestral_allele"};
+			my @args = ($ind, $step, $node);
+			my_visit_depth_first ($node, \@array,\&update_ring,\&has_no_mutation,\@args,0);
+
+			my @sorted_keys = sort {$a <=> $b} (keys %{$static_ring_hash{$ind}{$node->get_name()}});
+			foreach my $bin (@sorted_keys){
+				#print "bin $bin observed ".$static_ring_hash{$ind}{$node->get_name()}{$bin}[0]." totmut $total_muts totlen $total_length\n";
+				my $muts_in_bin = $static_ring_hash{$ind}{$node->get_name()}{$bin}[0];
+				my $length_of_bin = $static_ring_hash{$ind}{$node->get_name()}{$bin}[1];
+				if ($length_of_bin > 0){ #there are some internal nodes with 0-length terminal daughter branches
+					#	$hist{$bin}{$ancestor} += $static_ring_hash{$ind}{$node->get_name()}{$bin}[0]/$static_ring_hash{$ind}{$node->get_name()}{$bin}[1]; #density
+					$hist{$bin} = $muts_in_bin/$length_of_bin; #density
+				}
+				else {
+					$hist{$bin} = 0;
+				}
+				#if ($muts_in_bin > 0 || $bin == $sorted_keys[0] || $bin == $sorted_keys[-1]){	
+				#	if ($muts_in_bin > 0){	
+					print "$bin,$ind,".$node->get_name().",".$hist{$bin}."\n";
+				#}
+				
+			}
+			
+
+		}
+		}
+	}
+	
+	
+	
+	
+}
 
 # input: name of the protein (for filepath), $tree.
 # returns a hash: key - node of the tree, value - total length of all branches of its subtree
@@ -4674,14 +6006,18 @@ sub distances_to_subtree_mutations {
 		my $check_callback = $_[3];
 		my $callback_args = $_[4];
 		my $depth = $_[5];
-		
 		push @array, $node;
 		my $len = $node -> get_branch_length;
 		$depth += $len;
 		&$action_callback($node, $callback_args, $depth);
 		if (! $node->is_terminal && &$check_callback($node, $callback_args)){
-			@array = my_visit_depth_first($node->get_first_daughter, \@array, \&$action_callback, \&$check_callback, $callback_args, $depth);
-			@array = my_visit_depth_first($node->get_last_daughter, \@array, \&$action_callback, \&$check_callback, $callback_args, $depth);
+			my $i = 0;
+			while($node->get_child($i)){
+				@array = my_visit_depth_first($node->get_child($i), \@array, \&$action_callback, \&$check_callback, $callback_args, $depth);
+				$i++;
+				#@array = my_visit_depth_first($node->get_first_daughter, \@array, \&$action_callback, \&$check_callback, $callback_args, $depth);
+				#@array = my_visit_depth_first($node->get_last_daughter, \@array, \&$action_callback, \&$check_callback, $callback_args, $depth);
+			}
 		}
 		
 		$node = pop @array;
@@ -4699,7 +6035,8 @@ sub distances_to_subtree_mutations {
 		my_visit_depth_first($root, (), \&has_no_mutation, \&update_ring, \($site_index, $step));
     }
     
- 	sub has_no_mutation {
+    # old version, does not account for  mutations of the other type
+ 	sub has_no_same_type_mutation { #has_no_same_type_mutation
  		my $node = $_[0];
  		my $site_index = $_[1]->[0];
  		my $starting_node = $_[1]->[2];
@@ -4714,6 +6051,60 @@ sub distances_to_subtree_mutations {
  			return 1;
  		}
  	}  
+ 	
+ 	
+ 	# also accounts for mutations of the other type (synonimous for nsyn and non-synonimous for syn)
+ 	sub has_no_mutation{
+ 		my $node = $_[0];
+ 		my $site_index = $_[1]->[0];
+ 		my $starting_node = $_[1]->[2];
+ 		
+ 		if ($node eq $starting_node){
+ 			return 1;
+ 		}
+ 		if (${$static_subs_on_node{$node->get_name()}}{$site_index}){
+ 			return 0;
+ 		}
+ 		
+ 		if ($static_state eq "n"){
+ 			if (is_neighbour_changing(${$static_background_subs_on_node{$node->get_name()}}{$site_index}, 1) == 1){
+ 				return 0;
+ 			}
+ 			else {
+ 				return 1;
+ 			}
+ 		}
+ 		else {
+ 			if (${$static_background_subs_on_node{$node->get_name()}}{$site_index}){
+ 				return 0;
+ 			}
+ 			else {
+ 				return 1;
+ 			}
+ 		}
+ 	}  
+ 	
+ 	
+ 	sub has_no_background_mutation {
+ 		my $node = $_[0];
+ 		my $site_index = $_[1];
+ 		if ($static_state eq "n"){
+ 			if (is_neighbour_changing(${$static_background_subs_on_node{$node->get_name()}}{$site_index}, 1) == 1){
+ 				return 0;
+ 			}
+ 			else {
+ 				return 1;
+ 			}
+ 		}
+ 		else {
+ 			if (${$static_background_subs_on_node{$node->get_name()}}{$site_index}){
+ 				return 0;
+ 			}
+ 			else {
+ 				return 1;
+ 			}
+ 		}
+ 	}
  	
 # 	test_max_depth();
  	sub test_max_depth{
@@ -4776,11 +6167,126 @@ sub distances_to_subtree_mutations {
 			return;
 		}
  		#print "depth $depth step $step bin ".(bin($depth,$step))."\n";
- 		if (!has_no_mutation($_[0], \@{$_[1]})){
+ 		if (!has_no_same_type_mutation($_[0], \@{$_[1]})){ #has_no_same_type_mutation
  			$static_ring_hash{$site_index}{$starting_node->get_name()}{bin($depth,$step)}[0] += 1;
  		}
  		$static_ring_hash{$site_index}{$starting_node->get_name()}{bin($depth,$step)}[1] += $node->get_branch_length;
  		
+ 	}
+ 	
+ 	#sub set_distance_matrix {
+ 	#	my $tree = $static_tree;
+ 	#	my @nodes = @{$tree->get_internals};
+ 	#	push @nodes, @{$tree->get_terminals};
+ 	#	foreach my $node(@nodes){
+ 	#		foreach my $other_node(@nodes){
+ 	#			$static_distance_hash{$node->get_name()}{$other_node->get_name()} = calc_true_patristic_distance(\${$node}, \${$other_node});
+ 	#		}
+ 	#	}
+ 			
+ 	#}
+ 	
+ 	sub set_dr_distance_matrix {
+ 		my $prot = $_[0];
+ 		my $file = "C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/Mock/".$prot."_distance_matrix.csv";
+ 		
+ 		open CSV, "<$file";
+ 		my $header = <CSV>;
+ 		$header =~ s/[\s\n\r\t]+$//s;
+ 		my @nodelables = split(',', $header);
+ 		#shift @nodelables;
+ 		while(<CSV>){
+ 			$_ =~ s/[\s\n\r\t]+$//s;
+ 			print $_;
+ 			my @dists = split(',', $_);
+ 			my $node = $dists[0];
+ 			for (my $i = 1; $i < scalar @dists; $i++){
+ 				$static_distance_hash{$node}{$nodelables[$i]} = $dists[$i];
+ 			#	print " $node ^".$nodelables[$i]."^".$dists[$i]."^";
+ 			}
+ 		}
+ 		close CSV;
+
+ 	}
+ 	
+ 	
+sub set_distance_matrix {
+ 		my $prot = $_[0];
+ 		my $file = "C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$prot."_distance_matrix.csv";
+ 		
+ 		open CSV, "<$file";
+ 		my $header = <CSV>;
+ 		$header =~ s/[\s\n\r\t]+$//s;
+ 		my @nodelables = split(',', $header);
+ 		while(<CSV>){
+			$_ =~ s/[\s\n\r\t]+$//s;
+ 			my @dists = split(',', $_);
+ 			my $node = $dists[0];
+ 			for (my $i = 1; $i < scalar @dists; $i++){
+ 				$static_distance_hash{$node}{$nodelables[$i]} = $dists[$i];
+ 			}
+ 		}
+ 		close CSV;
+
+ 	}
+ 	
+ 	
+ 	sub entrenchment_visitor {
+ 		my $node = $_[0];
+ 		my $step = $_[1]->[0];
+ 		
+	#	my $site_index = $_[1]->[0]; #no site index needed as an argument for this function
+	#	my $starting_node = $_[1]->[1];
+	#	my %closest_ancestors = %{$_[1]->[2]};
+	#	my $depth = $_[2] - $starting_node->get_branch_length ;
+	#	if ($node eq $starting_node){return;}
+	#	if ($starting_node -> is_terminal){return;}
+		if (!$node->is_root){
+		my %closest_ancestors = %{$node->get_parent->get_generic("-closest_ancestors")};
+		
+		if (%closest_ancestors){
+
+		foreach my $site_index(keys %closest_ancestors){ 
+			my $anc_node = $closest_ancestors{$site_index};
+			my $depth = $static_distance_hash{$anc_node->get_name()}{$node->get_name()};
+			#if ($anc_node eq $node) {next;}
+			$static_subtree_info{$anc_node->get_name()}{$site_index}{"hash"}{bin($depth,$step)}[1] += $node->get_branch_length;
+
+			my $current_maxdepth = $static_subtree_info{$anc_node->get_name()}{$site_index}{"maxdepth"};
+		#	print " current maxdepth $current_maxdepth\n";
+			if ($current_maxdepth){
+					$static_subtree_info{$anc_node->get_name()}{$site_index}{"maxdepth"} = max($current_maxdepth, $depth);
+				#	print " now current maxdepth ".$static_subtree_info{$anc_node->get_name()}{$site_index}{"maxdepth"}."\n";
+			}
+			else {
+					$static_subtree_info{$anc_node->get_name()}{$site_index}{"maxdepth"} = $depth;
+				#	print " NEW current maxdepth $depth\n";
+			}
+		
+		}
+		
+		my @ancestors = keys %closest_ancestors;	
+		foreach my $site_index(@ancestors){
+			if (!has_no_background_mutation($node, $site_index)){
+				delete $closest_ancestors{$site_index};
+			}
+		}	
+		}
+		
+		foreach my $site_index(keys %{$static_subs_on_node{$node->get_name()}}){
+			if ($closest_ancestors{$site_index}){
+				my $anc_node = $closest_ancestors{$site_index};
+				my $depth = $static_distance_hash{$anc_node->get_name()}{$node->get_name()} - ($node->get_branch_length)/2;
+			#	print " ancestor ".$anc_node->get_name(). " node ".$node->get_name()." depth $depth\n";
+			#	push $static_subtree_info{$anc_node->get_name()}{$site_index}{"nodes"}, \$node;
+				$static_subtree_info{$anc_node->get_name()}{$site_index}{"hash"}{bin($depth,$step)}[0] += 1;
+			}
+			$closest_ancestors{$site_index} = $node;
+		}
+		
+		$node->set_generic("-closest_ancestors" => \%closest_ancestors);
+		}
+#!
  	}
    
    

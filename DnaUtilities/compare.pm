@@ -5,7 +5,7 @@ use vars qw(@ISA @EXPORT $VERSION);
 use Exporter;
 $VERSION = 1.00; # Or higher
 @ISA = qw(Exporter);
-@EXPORT = qw(count_substitutions nsyn_substitutions syn_substitutions nsyn_substitutions_codons); # Symbols to autoexport (:DEFAULT tag)
+@EXPORT = qw(count_substitutions nsyn_substitutions syn_substitutions nsyn_substitutions_codons is_neighbour_changing); # Symbols to autoexport (:DEFAULT tag)
 
 use Bio::Tools::CodonTable;
 use Class::Struct;
@@ -15,6 +15,30 @@ struct Substitution => {
 	ancestral_allele => '$',
 	derived_allele => '$'
 };
+
+my $myCodonTable;
+my %possible_subs;
+my %neighbour_hash;
+
+sub get_codon_table{
+	if (!$myCodonTable){
+		$myCodonTable = Bio::Tools::CodonTable->new();
+	}
+	return $myCodonTable
+}
+
+sub get_possible_subs {
+	if (!%possible_subs){
+		%possible_subs = (
+			A => ['T', 'C', 'G'],
+			T => ['A', 'C', 'G'],
+			G => ['T', 'C', 'A'],
+			C => ['T', 'A', 'G']
+		);
+	}
+	return %possible_subs;
+}
+
 
 #This function counts synonimous and non synonymous substitutions between two sequences
 sub count_substitutions{
@@ -58,6 +82,8 @@ sub count_substitutions{
 	};
 	return @{$ra_syn}+@{$ra_nsyn}; # sum of lengths
 };
+
+
 
 sub nsyn_substitutions{
 	my $anc_seq=shift;
@@ -188,5 +214,96 @@ sub syn_substitutions{
 	return  %ra_nsyn;
 }
 
+# tells if synonimous substitution changes the range of one-symbol neighbours
+sub is_neighbour_changing {
+	my $subst = $_[0];
+	my $full = $_[1];
+	if (!$full){
+		$full = 0;
+	}
+	
+	my $existing_answer = $neighbour_hash{$subst->{"Substitution::ancestral_allele"}}->{$subst->{"Substitution::derived_allele"}}->{$full};
+	if ($existing_answer){
+		return $existing_answer
+	}
+	else {
+	
+	my $codonTable = get_codon_table();
+	
+	my %anc_neighbours = get_neighbours($subst->{"Substitution::ancestral_allele"});
+	my %der_neighbours = get_neighbours($subst->{"Substitution::derived_allele"});
+	
+	my $answer = 0;
+	if (length(keys %anc_neighbours) != length(keys %der_neighbours)){
+		$answer = 1;
+	}
+	else {
+		if ($full == 1){
+			foreach my $k (keys %anc_neighbours){
+				if (!$der_neighbours{$k} || $der_neighbours{$k} ne $anc_neighbours{$k}){
+					$answer = 1;
+				}
+			}
+		}
+		else {
+			foreach my $k (keys %anc_neighbours){
+				if (!$der_neighbours{$k}){
+					$answer = 1;
+				}
+			}
+		}
+	}
+	
+	$neighbour_hash{$subst->{"Substitution::ancestral_allele"}}->{$subst->{"Substitution::derived_allele"}}->{$full} = $answer;
+	return $answer;
+	}
+
+}
+test_is_neighbour_changing();
+
+sub test_is_neighbour_changing{
+			my $p=Substitution->new();
+			$p->position(5);
+			$p->ancestral_allele("CCT");
+			$p->derived_allele("CCC");
+			print is_neighbour_changing($p, 1);
+			my $p=Substitution->new();
+			$p->position(5);
+			$p->ancestral_allele("CCA");
+			$p->derived_allele("CCC");
+			print is_neighbour_changing($p, 1);
+			$p->position(5);
+			$p->ancestral_allele("CCT");
+			$p->derived_allele("CCC");
+			print is_neighbour_changing($p, 1);
+			$p->position(5);
+			$p->ancestral_allele("gcg");
+			$p->derived_allele("gcc");
+			print is_neighbour_changing($p, 1);
+}
+
+sub get_neighbours {
+	my $codon = $_[0];
+	my %neighbours;
+	my $codonTable = get_codon_table();
+	my $possible_subs = get_possible_subs();
+	for (my $i = 0; $i < 3; $i++){
+		my $str = $codon;
+		foreach my $letter (@{$possible_subs{substr($codon, $i, 1)}}){
+			substr($str, $i, 1) = $letter;
+			$neighbours{$codonTable->translate($str)}++;
+		}
+	}
+	return %neighbours;
+}
+
+sub test_get_neighbours {
+	my %neigh = get_neighbours("ATG");
+	foreach my $n(keys %neigh){
+		print $n."\t".$neigh{$n}."\n";
+	}
+}
+
+#test_is_neighbour_changing();
 
 1;
