@@ -4,6 +4,7 @@
 
 use strict;
 use Bio::Phylo::IO;
+use Bio::Phylo::Forest::Tree; # 9.11 
 use DnaUtilities::compare qw(nsyn_substitutions syn_substitutions nsyn_substitutions_codons is_neighbour_changing);
 use TreeUtils::Phylo::PhyloUtils qw(remove_zero_branches);
 
@@ -25,6 +26,7 @@ use Statistics::Descriptive;
 use Storable;
 
 use Class::Struct;
+use DnaUtilities::observation_vector qw(make_observation_vector shuffle_obsv);
 
 $| = 1;
 
@@ -78,6 +80,7 @@ struct Mutation => {
 	node => '$',
 };
 	
+	# !
 	sub set_mutmap {
 		$static_tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".l.r.newick");
 		my @arr = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".all.fa");
@@ -4693,15 +4696,22 @@ my @h1uptrend = qw(111 169 205 113);
 #depth_groups_entrenchment_optimized(10,150, \@h3_internal);
 
 # "green" control
-#entrenchment_bootstrap_full("n2", 100, 150);
+# entrenchment_bootstrap_full("h1", 100, 0);
 
+# 29.10 new bootstrap: probability for a mutation to fall on a branch depends on the length of that branch; 
+# number of mutations (in all sites) per branch does not have to be the same as in real data
+# entrenchment_vector_bootstrap ("n2", 100, 150);
 
+# 30.10 using it again
+#entrenchment_bootstrap_full_selection("h1", 5, 150, 1); #iterations, restriction, subtract_tallest
 
+# 30.10 and also this one, with new shuffling algorithm
+#entrenchment_bootstrap_full_selection_vector("n1", 10000, 100, 1); #iterations, restriction, subtract_tallest
 
 #entrenchment_blue_violet_bootstrap("n1", 100, 0); #restriction - last
 
-
-#enrichment_blue_violet_optimized ("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n2_for_enrichment_1_norestr_obs", "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n2_for_enrichment_1_norestr", \@n2_internal);
+# 30.10 analyze groups
+#enrichment_blue_violet_optimized ("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1_for_enrichment_vector_50_10000_obs", "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1_for_enrichment_vector_50_10000", \@h1_surface);
 
 #enrichment_optimized("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n1_opti_proc_100_group_obs", "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n1_opti_proc_100_group", \@n1_wan_epitopes);
 
@@ -4760,6 +4770,103 @@ sub entrenchment_bootstrap{
 		print CSV"\n";
 	}
 	close CSV;
+}
+
+# new bootstrap: probability for a mutation to fall on a branch depends on the length of that branch; 
+# number of mutations (in all sites) per branch does not have to be the same as in real data
+sub entrenchment_vector_bootstrap {
+	my $prot = $_[0];
+	my $iterations = $_[1];
+	my $restriction = $_[2];
+	set_mutmap($prot, "nsyn");
+	set_distance_matrix($prot);
+	#my %matrix = incidence_matrix(); #!
+	#print_incidence_matrix(\%matrix, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	my %obs_hash = depth_groups_entrenchment_optimized(10,$restriction);
+	my $norm;
+	foreach my $bin(1..32){
+			$norm += $obs_hash{$bin}[0];
+	}
+	
+	%static_ring_hash = ();
+	%static_depth_hash = ();
+	%static_subtree_info = ();
+	
+	my @simulated_hists;
+	
+	my %obs_vectors = get_observation_vectors();
+	
+	for (my $i = 1; $i <= $iterations; $i++){
+
+		my %shuffled_obs_vectors = shuffle_observation_vectors(\%obs_vectors);
+		my @mock_mutmaps = read_observation_vectors(\%shuffled_obs_vectors);
+		%static_subs_on_node = %{$mock_mutmaps[0]};
+		%static_nodes_with_sub = %{$mock_mutmaps[1]};
+
+		my %hash = depth_groups_entrenchment_optimized(10,$restriction);
+		
+		my $sum;
+		foreach my $bin(1..32){
+				$sum += $hash{$bin}[0];
+		}
+		foreach my $bin(1..32){
+			$hash{$bin}[0] = $hash{$bin}[0]*$norm/$sum;
+			$hash{$bin}[1] = $hash{$bin}[1]*$norm/$sum;
+		}
+		
+		push @simulated_hists, \%hash;
+		
+		%static_ring_hash = ();
+		%static_depth_hash = ();
+		%static_subtree_info = ();
+	}
+
+	store \@simulated_hists, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_vector_simulation_".$restriction."_stored";
+	my $arref = retrieve("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_vector_simulation_".$restriction."_stored");
+	
+	open CSV, ">C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_vector_simulation_".$restriction.".csv";
+	foreach my $bin(1..32){
+			print CSV $bin."_obs,".$bin."_exp,";
+	}
+	print CSV "\n";
+
+	foreach my $i(0..$iterations-1){
+		foreach my $bin(1..32){
+			print CSV ($arref->[$i]->{$bin}->[0]).",".($arref->[$i]->{$bin}->[1]).",";
+		}
+		print CSV"\n";
+	}
+	close CSV;
+	
+	my $file = $prot."_vector_boot_median_test_".$restriction;
+	open FILE, ">$file";
+	foreach my $bin(1..32){
+			$obs_hash{$bin} = $obs_hash{$bin}->[0];
+		}
+	my $obs_median = hist_median_for_hash(\%obs_hash);
+	
+	print FILE "\n observed median: $obs_median\n";
+	
+	my $pval_epi;
+	my $pval_env;
+	
+	foreach my $i(0..$iterations-1){
+		my %hash;
+		foreach my $bin(1..32){
+			$hash{$bin} = $arref->[$i]->{$bin}->[0];
+		}
+		my $boot_median = hist_median_for_hash(\%hash);
+		print FILE "\n boot median: $boot_median\n";
+		if ($boot_median <= $obs_median){
+			$pval_epi += 1;
+		}
+		if ($boot_median >= $obs_median){
+			$pval_env += 1;
+		}
+
+	}
+	print FILE "pvalue epistasis ".($pval_epi/$iterations)." pvalue environment ".($pval_env/$iterations);
+	close FILE;
 }
 
 sub entrenchment_bootstrap_full{ 
@@ -4852,8 +4959,459 @@ sub entrenchment_bootstrap_full{
 	close FILE;
 }
 
+# 21.10 only ancestor mutations present in real data are selected from permutations for expectance construction
 
-#check_entrenchment_blue_violet_bootstrap ("h3", 200);
+sub entrenchment_bootstrap_full_selection { 
+	my $prot = $_[0];
+	my $iterations = $_[1];
+	my $restriction = $_[2];
+	my $subtract_tallest = $_[3];
+	set_mutmap($prot, "nsyn");
+	set_distance_matrix($prot);
+	my %matrix = incidence_matrix(); #!
+	print_incidence_matrix(\%matrix, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	my %obs_hash = depth_groups_entrenchment_optimized_selector_alldepths(1,$restriction,$subtract_tallest); #bin, restriction, subtract-tallest
+	my %ancestor_nodes;
+	foreach my $ancnode(keys %obs_hash){
+		$ancestor_nodes{$ancnode} = 1;
+	#	print "ANCNODE ".$ancnode."\n";
+	}
+	
+	
+	my $norm;
+		
+	my $maxbin = 0;
+	
+	foreach my $site_node(keys %obs_hash){
+		foreach my $bin(keys %{$obs_hash{$site_node}}){
+			$maxbin = max($bin, $maxbin);
+			$norm += $obs_hash{$site_node}{$bin}[0];
+		}
+	}
+
+	
+	%static_ring_hash = ();
+	%static_depth_hash = ();
+	%static_subtree_info = ();
+	
+	my @simulated_hists;
+	for (my $i = 1; $i <= $iterations; $i++){
+		my @mock_mutmaps = read_incidence_matrix("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
+		
+		%static_subs_on_node = %{$mock_mutmaps[0]};
+		%static_nodes_with_sub = %{$mock_mutmaps[1]};
+
+		my %hash;
+		my $sum;
+		my %prehash = depth_groups_entrenchment_optimized_selection_alldepths(1,$restriction,\%ancestor_nodes,$subtract_tallest); #bin, restriction, ancestor_nodes, subtract-tallest
+		
+		
+		foreach my $bin(1..$maxbin){
+				foreach my $site_node(keys %prehash){
+					#print " READING $site_node\n";
+								$sum += $prehash{$site_node}{$bin}[0];
+								#$hash{$mutnum}{"counter"} = $prehash{$mutnum}{$site_node}{"counter"};
+								$hash{$bin}[1] += $prehash{$site_node}{$bin}[1];
+								$hash{$bin}[0] += $prehash{$site_node}{$bin}[0];
+								#print "site node ".$site_node." mutnum $mutnum\n";
+							
+			}
+		}
+		
+		
+		#foreach my $bin(1..$maxbin){
+		#		$sum += $hash{$bin}[0];
+		#}
+		
+		foreach my $bin(1..$maxbin){
+			$hash{$bin}[0] = $hash{$bin}[0]*$norm/$sum;
+			$hash{$bin}[1] = $hash{$bin}[1]*$norm/$sum;
+		}
+		push @simulated_hists, \%hash;
+		
+		%static_ring_hash = ();
+		%static_depth_hash = ();
+		%static_subtree_info = ();
+	}
+
+	store \@simulated_hists, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_testselector_".$restriction."_stored";
+	my $arref = retrieve("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_testselector_".$restriction."_stored");
+	
+	open CSV, ">C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_testselector_".$restriction.".csv";
+	foreach my $bin(1..$maxbin){
+			print CSV $bin."_obs,".$bin."_exp,";
+	}
+	print CSV "\n";
+
+	foreach my $i(0..$iterations-1){
+		foreach my $bin(1..$maxbin){
+			print CSV ($arref->[$i]->{$bin}->[0]).",".($arref->[$i]->{$bin}->[1]).",";
+		}
+		print CSV"\n";
+	}
+	close CSV;
+	
+	my $file = $prot."_testselector_boot_median_test_".$restriction;
+	open FILE, ">$file";
+	my %flat_obs_hash;
+	foreach my $bin(1..$maxbin){
+		foreach my $node (keys %obs_hash){
+			$flat_obs_hash{$bin} += $obs_hash{$node}{$bin}[0];
+		}
+	}
+	my $obs_median = hist_median_for_hash(\%flat_obs_hash);
+	
+	print FILE "\n observed median: $obs_median\n";
+	
+	my $pval_epi;
+	my $pval_env;
+	
+	foreach my $i(0..$iterations-1){
+		my %hash;
+		foreach my $bin(1..$maxbin){
+			$hash{$bin} = $arref->[$i]->{$bin}->[0];
+		}
+		my $boot_median = hist_median_for_hash(\%hash);
+		print FILE "\n boot median: $boot_median\n";
+		if ($boot_median <= $obs_median){
+			$pval_epi += 1;
+		}
+		if ($boot_median >= $obs_median){
+			$pval_env += 1;
+		}
+
+	}
+	print FILE "pvalue epistasis ".($pval_epi/$iterations)." pvalue environment ".($pval_env/$iterations);
+	close FILE;
+}
+
+# 5.11 for entrenchment_bootstrap_full_selection_vector
+sub set_boot_mutmap {
+		$static_tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".l.r.newick");
+		my @arr = parse_fasta("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".all.fa");
+		my %fasta = %{$arr[0]};
+		my $alignment_length = $arr[1];
+		$static_alignment_length = $alignment_length;
+		$static_protein  = $_[0];
+		%static_fasta = %fasta;
+		$static_state = "n";
+		my $obs_vectors = $_[1];
+			
+		my @nodes = $static_tree -> get_nodes;
+		foreach my $node(@nodes){
+			#if ($node->is_root()) {next;}
+			my $name = $node ->get_name();
+			$static_hash_of_nodes{$name} = \$node;
+		}
+		
+		
+		# todo: or read bkg_mutmap from file?
+		my @bkg_mutmaps = synmutmap($static_tree, \%fasta);
+		
+		%static_background_subs_on_node = %{$bkg_mutmaps[0]};
+		%static_background_nodes_with_sub = %{$bkg_mutmaps[1]};
+		
+		
+		my %shuffled_obs_vectors = shuffle_observation_vectors($obs_vectors);
+		my @mock_mutmaps = read_observation_vectors(\%shuffled_obs_vectors);
+		%static_subs_on_node = %{$mock_mutmaps[0]};
+		%static_nodes_with_sub = %{$mock_mutmaps[1]};
+}
+
+
+#prepare_real_data("h1", 0, 1); # prot, restriction, subtract_tallest
+#print "---\n";
+#prepare_real_data("n1", 0, 1);
+#print "---\n";
+#prepare_real_data("h3", 0, 1);
+#print "---\n";
+prepare_real_data("n2", 0, 1);
+
+#my $prot = $ARGV[0];
+#my $iterations = $ARGV[1];
+#my $subtract_tallest = $ARGV[2];
+#my $tag = $ARGV[3];
+#iterations_gulp ($prot, $iterations, 0, $subtract_tallest, $tag); # in fact, it does not read restriction parameter (third)
+
+
+# 5.11 for entrenchment_bootstrap_full_selection_vector
+sub iterations_gulp {
+	my $prot = $_[0];
+	my $iterations = $_[1];
+	my $subtract_tallest = $_[3];
+	my $tag = $_[4];
+	
+	#my $ancestor_nodes = $_[4];
+	#my $obs_vector = $_[5];
+	#my $norm = $_[6];
+	
+	my $realdata = retrieve ("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_realdata");
+	#print Dumper ($realdata->{"hash_of_nodes"});
+		my $norm = $realdata->{"norm"};
+		my $maxbin = $realdata->{"maxbin"};
+		my $ancestor_nodes = $realdata->{"ancestor_nodes"};
+		my $obs_vectors = $realdata->{"obs_vectors"};
+		#$static_tree = $realdata->{"tree"}; # does not work
+		$static_tree = parse_tree("C:/Users/weidewind/Documents/CMD/Coevolution/Influenza/Kryazhimsky11/".$_[0].".l.r.newick");
+		#print "MY TREE: ".ref($static_tree)."\n";
+		%static_background_subs_on_node = %{$realdata->{"bkg_subs_on_node"}};
+		%static_background_nodes_with_sub = %{$realdata->{"bkg_nodes_with_sub"}};
+		%static_distance_hash = %{$realdata->{"distance_hash"}};
+		%static_hash_of_nodes = %{$realdata->{"hash_of_nodes"}};
+	
+	my @simulated_hists;
+	for (my $i = 1; $i <= $iterations; $i++){
+		#set_boot_mutmap($prot, $obs_vector);
+		#set_distance_matrix($prot);
+		#print Dumper ($obs_vectors);
+		my %shuffled_obs_vectors = shuffle_observation_vectors($obs_vectors);
+		#print Dumper (\%shuffled_obs_vectors);
+		my @mock_mutmaps = read_observation_vectors(\%shuffled_obs_vectors);
+		%static_subs_on_node = %{$mock_mutmaps[0]};
+		%static_nodes_with_sub = %{$mock_mutmaps[1]};
+		#print Dumper (\%static_subs_on_node);
+		my %hash;
+		my $sum;
+		my %prehash = depth_groups_entrenchment_optimized_selection_alldepths(1,0,$ancestor_nodes,$subtract_tallest); #bin, restriction, ancestor_nodes, subtract-tallest
+		
+		
+		foreach my $bin(1..$maxbin){
+				foreach my $site_node(keys %prehash){
+					#print " READING $site_node\n";
+								$sum += $prehash{$site_node}{$bin}[0];
+							#$hash{$mutnum}{"counter"} = $prehash{$mutnum}{$site_node}{"counter"};
+								$hash{$bin}[1] += $prehash{$site_node}{$bin}[1];
+								$hash{$bin}[0] += $prehash{$site_node}{$bin}[0];
+								#print " sum $sum\n";
+							
+			}
+		}
+		
+		
+		#foreach my $bin(1..$maxbin){
+		#		$sum += $hash{$bin}[0];
+		#}
+		
+		foreach my $bin(1..$maxbin){
+			$hash{$bin}[0] = $hash{$bin}[0]*$norm/$sum;
+			$hash{$bin}[1] = $hash{$bin}[1]*$norm/$sum;
+		}
+		push @simulated_hists, \%hash;
+		
+		%static_ring_hash = ();
+		%static_depth_hash = ();
+		%static_subtree_info = ();
+	}
+	store \@simulated_hists, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_alldepths_stored_".$tag;
+	my $arref = retrieve("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_alldepths_stored_".$tag);
+	
+	open CSV, ">C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_alldepths_".$tag.".csv";
+	foreach my $bin(1..$maxbin){
+			print CSV $bin."_obs,".$bin."_exp,";
+	}
+	print CSV "\n";
+
+	foreach my $i(0..$iterations-1){
+		foreach my $bin(1..$maxbin){
+			print CSV ($arref->[$i]->{$bin}->[0]).",".($arref->[$i]->{$bin}->[1]).",";
+		}
+		print CSV"\n";
+	}
+	close CSV;
+}
+
+
+
+#5.11 for entrenchment_bootstrap_full_selection_vector
+# analyze real data, prepare bkg_mutmap, ancestor_nodes and obs_vector
+sub prepare_real_data {
+	my $prot = $_[0];
+	my $restriction = $_[2];
+	my $subtract_tallest = $_[3];
+	set_mutmap($prot, "nsyn");
+	set_distance_matrix($prot);
+	my %matrix = incidence_matrix(); #!
+	print_incidence_matrix(\%matrix, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	my %obs_hash = depth_groups_entrenchment_optimized_selector_alldepths(1,$restriction,$subtract_tallest); #bin, restriction, subtract-tallest
+	my %ancestor_nodes;
+	foreach my $ancnode(keys %obs_hash){
+		$ancestor_nodes{$ancnode} = 1;
+	#	print "ANCNODE ".$ancnode."\n";
+	}	
+	
+	my $norm;
+	my $maxbin = 0;
+	
+	foreach my $site_node(keys %obs_hash){
+		foreach my $bin(keys %{$obs_hash{$site_node}}){
+			$maxbin = max($bin, $maxbin);
+			$norm += $obs_hash{$site_node}{$bin}[0];
+		}
+	}
+
+	my %obs_vectors = get_observation_vectors();
+	#print "REAL TREE: ".ref($static_tree)."\n";
+	my %realdata = (
+		norm => $norm,
+		maxbin => $maxbin,
+		#tree => $static_tree,
+		ancestor_nodes => \%ancestor_nodes,
+		obs_vectors => \%obs_vectors,
+		bkg_subs_on_node => \%static_background_subs_on_node,
+		bkg_nodes_with_sub => \%static_background_nodes_with_sub,
+		distance_hash => \%static_distance_hash,
+		hash_of_nodes => \%static_hash_of_nodes,
+	);
+	
+	store \%realdata, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_testrealdata";
+	%static_ring_hash = ();
+	%static_depth_hash = ();
+	%static_subtree_info = ();
+	
+	%static_subs_on_node = ();
+	%static_background_subs_on_node = ();
+	%static_nodes_with_sub = ();
+	%static_background_nodes_with_sub = ();
+}
+
+
+# 9.11 take a set of files "stdout" and write three files containing obs,exp for three maxdepths.
+# Compute p-values for these maxdepths.
+
+sub concat_and_divide {
+	
+}
+
+sub entrenchment_bootstrap_full_selection_vector { 
+	my $prot = $_[0];
+	my $iterations = $_[1];
+	my $restriction = $_[2];
+	my $subtract_tallest = $_[3];
+	set_mutmap($prot, "nsyn");
+	set_distance_matrix($prot);
+	my %matrix = incidence_matrix(); #!
+	print_incidence_matrix(\%matrix, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	my %obs_hash = depth_groups_entrenchment_optimized_selector_alldepths(1,$restriction,$subtract_tallest); #bin, restriction, subtract-tallest
+	my %ancestor_nodes;
+	foreach my $ancnode(keys %obs_hash){
+		$ancestor_nodes{$ancnode} = 1;
+	#	print "ANCNODE ".$ancnode."\n";
+	}
+	
+	
+	my $norm;
+		
+	my $maxbin = 0;
+	
+	foreach my $site_node(keys %obs_hash){
+		foreach my $bin(keys %{$obs_hash{$site_node}}){
+			$maxbin = max($bin, $maxbin);
+			$norm += $obs_hash{$site_node}{$bin}[0];
+		}
+	}
+
+	
+	%static_ring_hash = ();
+	%static_depth_hash = ();
+	%static_subtree_info = ();
+	
+	my @simulated_hists;
+	my %obs_vectors = get_observation_vectors();
+	
+	for (my $i = 1; $i <= $iterations; $i++){
+		my %shuffled_obs_vectors = shuffle_observation_vectors(\%obs_vectors);
+		my @mock_mutmaps = read_observation_vectors(\%shuffled_obs_vectors);
+		%static_subs_on_node = %{$mock_mutmaps[0]};
+		%static_nodes_with_sub = %{$mock_mutmaps[1]};
+
+		my %hash;
+		my $sum;
+		my %prehash = depth_groups_entrenchment_optimized_selection_alldepths(1,$restriction,\%ancestor_nodes,$subtract_tallest); #bin, restriction, ancestor_nodes, subtract-tallest
+		
+		
+		foreach my $bin(1..$maxbin){
+				foreach my $site_node(keys %prehash){
+					#print " READING $site_node\n";
+								$sum += $prehash{$site_node}{$bin}[0];
+								#$hash{$mutnum}{"counter"} = $prehash{$mutnum}{$site_node}{"counter"};
+								$hash{$bin}[1] += $prehash{$site_node}{$bin}[1];
+								$hash{$bin}[0] += $prehash{$site_node}{$bin}[0];
+								#print "site node ".$site_node." mutnum $mutnum\n";
+							
+			}
+		}
+		
+		
+		#foreach my $bin(1..$maxbin){
+		#		$sum += $hash{$bin}[0];
+		#}
+		
+		foreach my $bin(1..$maxbin){
+			$hash{$bin}[0] = $hash{$bin}[0]*$norm/$sum;
+			$hash{$bin}[1] = $hash{$bin}[1]*$norm/$sum;
+		}
+		push @simulated_hists, \%hash;
+		
+		%static_ring_hash = ();
+		%static_depth_hash = ();
+		%static_subtree_info = ();
+	}
+
+	store \@simulated_hists, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_selector_vector_".$restriction."_stored";
+	my $arref = retrieve("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_selector_vector_".$restriction."_stored");
+	
+	open CSV, ">C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_selector_vector_".$restriction.".csv";
+	foreach my $bin(1..$maxbin){
+			print CSV $bin."_obs,".$bin."_exp,";
+	}
+	print CSV "\n";
+
+	foreach my $i(0..$iterations-1){
+		foreach my $bin(1..$maxbin){
+			print CSV ($arref->[$i]->{$bin}->[0]).",".($arref->[$i]->{$bin}->[1]).",";
+		}
+		print CSV"\n";
+	}
+	close CSV;
+	
+	my $file = $prot."_selector_vector_boot_median_test_".$restriction;
+	open FILE, ">$file";
+	my %flat_obs_hash;
+	foreach my $bin(1..$maxbin){
+		foreach my $node (keys %obs_hash){
+			$flat_obs_hash{$bin} += $obs_hash{$node}{$bin}[0];
+		}
+	}
+	my $obs_median = hist_median_for_hash(\%flat_obs_hash);
+	
+	print FILE "\n observed median: $obs_median\n";
+	
+	my $pval_epi;
+	my $pval_env;
+	
+	foreach my $i(0..$iterations-1){
+		my %hash;
+		foreach my $bin(1..$maxbin){
+			$hash{$bin} = $arref->[$i]->{$bin}->[0];
+		}
+		my $boot_median = hist_median_for_hash(\%hash);
+		print FILE "\n boot median: $boot_median\n";
+		if ($boot_median <= $obs_median){
+			$pval_epi += 1;
+		}
+		if ($boot_median >= $obs_median){
+			$pval_env += 1;
+		}
+
+	}
+	print FILE "pvalue epistasis ".($pval_epi/$iterations)." pvalue environment ".($pval_env/$iterations);
+	close FILE;
+}
+
+
+# active on 26.10
+#check_entrenchment_blue_violet_bootstrap ("h1", 50);
+
 #	check_part_2("h3", 20, 150);
 
 sub test_remove_zero_branches {
@@ -4863,11 +5421,9 @@ sub test_remove_zero_branches {
 	my $treestr=tree2str($multitree);
 	print TREE $treestr;
 	close TREE;
-	
 }
-
-test_remove_zero_branches();
-
+            
+            
 sub check_entrenchment_blue_violet_bootstrap {
 	my $prot = $_[0];
 	my $iterations = $_[1];
@@ -4896,28 +5452,40 @@ sub check_entrenchment_blue_violet_bootstrap {
 	my %all_simulated_medians;
 	my %all_hash;
 	
-	open STORAGE, ">C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simply_norestr_stored_200.csv";
+	open STORAGE, ">C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_todelete_2434node.csv";
 	for (my $i = 1; $i <= $iterations; $i++){
 		my @mock_mutmaps = read_incidence_matrix("C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
 		
 		%static_subs_on_node = %{$mock_mutmaps[0]};
 		%static_nodes_with_sub = %{$mock_mutmaps[1]};
 
-		my %hash = check_depth_groups_entrenchment_optimized(1);
-		push @simulated_hists, \%hash;
-		
+
+
+		my %prehash = check_depth_groups_entrenchment_optimized(1);
+		push @simulated_hists, \%prehash;
+		my %hash;
 		my $sum;
 		
+		
 		foreach my $bin(1..$maxbin){
-				foreach my $mutnum (keys %hash){
+			print "----\n";
+				foreach my $mutnum (keys %prehash){
 					if ($mutnum > 0){
-						foreach my $site_node(keys %{$hash{$mutnum}}){
-							$sum += $hash{$mutnum}{$bin}[0];
+						foreach my $site_node(keys %{$prehash{$mutnum}}){
+							if ($site_node eq "INTNODE2434"){
+								$sum += $prehash{$mutnum}{$site_node}{$bin}[0];
+								$hash{$mutnum}{"counter"} = $prehash{$mutnum}{$site_node}{"counter"};
+								$hash{$mutnum}{$bin}[1] = $prehash{$mutnum}{$site_node}{$bin}[1];
+								$hash{$mutnum}{$bin}[0] = $prehash{$mutnum}{$site_node}{$bin}[0];
+								print "site node ".$site_node." mutnum $mutnum\n";
+							}
 						}
 					}	
 			}
 		}
-		
+		if ($sum == 0){
+			next;
+		}
 				foreach my $mutnum (keys %hash){
 					if ($mutnum > 0){
 					#print STORAGE ">$mutnum,".$hash{$mutnum}{"counter"}."\n";
@@ -4961,12 +5529,12 @@ sub check_entrenchment_blue_violet_bootstrap {
 	
 	
 	
-	foreach my $mutnum(@sorted_keys){
-		print STORAGE $mutnum."\n";
-		for (my $i = 1; $i <= $iterations; $i++){
-			print STORAGE $simulated_medians{$mutnum}[0][$i].",".$simulated_medians{$mutnum}[1][$i]."\n";
-		}
-	}
+#	foreach my $mutnum(@sorted_keys){
+	#	print STORAGE $mutnum."\n";
+	#	for (my $i = 1; $i <= $iterations; $i++){
+	#		print STORAGE $simulated_medians{$mutnum}[0][$i].",".$simulated_medians{$mutnum}[1][$i]."\n";
+	#	}
+	#}
 close STORAGE;
 	#store \@simulated_hists, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_check_simulation_150_hash_stored";
 	
@@ -5035,6 +5603,7 @@ sub check_part_2	{
 
 	close FILE;
 }
+
 
 
 sub entrenchment_blue_violet_bootstrap{ 
@@ -5633,7 +6202,7 @@ sub enrichment_blue_violet_optimized {
 	
 	my $maxbin = 0;
 	while(<FILE>){
-		if ($_ =~ /^rad/){
+		if ($_ =~ /^rad/ || $_ =~ /^tot/){
 			next;
 		}
 		my @arr = split(/,/);
@@ -5702,8 +6271,15 @@ sub enrichment_blue_violet_optimized {
 	while(<FILE>){
 		if ($_ =~ /^rad/){
 			$iteration++;
+			if ($iteration%100 == 0){
+				print "iteration $iteration\n";
+			}
 			next;
 		}
+		if ($_ =~ /^tot/){
+			next;
+		}
+
 		my @arr = split(/,/);
 		my $ind = $arr[1] ;
 		my $bin = $arr[0];
@@ -5796,6 +6372,200 @@ sub enrichment_blue_violet_optimized {
 	print " pval env depletion ".$pval_env_depletion/$iteration."\n";
 }
 
+
+sub enrichment_blue_violet_optimized_twice {
+		my $obsfile = $_[0];
+	my $bootfile = $_[1];
+	my @group = @{$_[2]};
+	
+	my %grouphash;
+	foreach my $ind(@group){
+		$grouphash{$ind} = 1;
+	}
+	
+	my %boot_obshash;
+	my %boot_exphash;
+	my %obshash;
+	my %exphash;
+
+	
+	open FILE, "<$obsfile" or die "Cannot open $obsfile\n";
+	
+	my $maxbin = 0;
+	while(<FILE>){
+		if ($_ =~ /^rad/ || $_ =~ /^tot/){
+			next;
+		}
+		my @arr = split(/,/);
+		my $ind = $arr[1] ;
+		my $bin = $arr[0];
+		
+		$maxbin = max($bin, $maxbin);
+		# bin, ind, node, obs, exp
+		$obshash{$ind}{$bin} += $arr[3];
+		$exphash{$ind}{$bin} += $arr[4];
+	}
+
+	my $norm;
+	foreach my $bin(1..$maxbin){
+		foreach my $ind (keys %obshash){
+			$norm += $obshash{$ind}{$bin};
+		}
+	}
+	
+	my %obshash_g;
+	my %obshash_c;
+	my %exphash_g;
+	my %exphash_c;
+	
+	my $counter_g;
+	my $counter_c;
+	
+	foreach my $bin(1..$maxbin){
+			foreach my $ind(keys %obshash){
+				if ($grouphash{$ind}){
+					$obshash_g{$bin} += $obshash{$ind}{$bin}; # group
+					$exphash_g{$bin} += $exphash{$ind}{$bin}; # group
+				}
+				else {
+					$obshash_c{$bin} += $obshash{$ind}{$bin}; # complement
+					$exphash_c{$bin} += $exphash{$ind}{$bin}; # complement
+				}
+			}
+	}
+		
+		
+		foreach my $ind(keys %obshash){
+				if ($grouphash{$ind}){
+					if ($obshash{$ind}){
+						$counter_g ++;
+					}
+				}
+				else {
+					if ($obshash{$ind}){
+						$counter_c ++;
+					}
+				}
+			}
+		
+		
+	print "number of sites: group $counter_g , complement $counter_c\n";
+		
+	my $obs_median_g = hist_median_for_hash(\%obshash_g);
+	my $obs_median_c = hist_median_for_hash(\%obshash_c);
+	my $exp_median_g = hist_median_for_hash(\%exphash_g);
+	my $exp_median_c = hist_median_for_hash(\%exphash_c);
+	print " obs_median_g $obs_median_g  obs_median_c $obs_median_c exp_median_g $exp_median_g  exp_median_c $exp_median_c\n ";	
+	
+	
+	
+	
+	open FILE, "<$bootfile" or die "Cannot open $bootfile\n";
+	my $pval_env_enrichment;
+	my $pval_env_depletion;
+	my $pval_epi_enrichment;
+	my $pval_epi_depletion;
+	my $iteration = 0;
+	while(<FILE>){
+		if ($_ =~ /^rad/){
+			$iteration++;
+			if ($iteration%100 == 0){
+				print "iteration $iteration\n";
+			}
+			
+			
+			
+			my $sum;
+			my %boot_obshash_g;
+			my %boot_obshash_c;
+			my %boot_exphash_g;
+			my %boot_exphash_c;
+		
+			my $counter_g;
+			my $counter_c;
+			foreach my $ind(keys %boot_obshash){
+				if ($grouphash{$ind}){
+					if ($boot_obshash{$ind}){
+						$counter_g ++;
+					}
+				}
+				else {
+					if ($boot_obshash{$ind}){
+						$counter_c ++;
+					}
+				}
+			}
+		
+		
+			print "number of sites: group $counter_g , complement $counter_c\n";
+		
+		
+		
+			foreach my $bin(1..$maxbin){
+				foreach my $ind (1..565){
+					$sum += $boot_obshash{$ind}{$bin};
+				}
+			}
+			foreach my $bin(1..$maxbin){
+				foreach my $ind(keys %boot_obshash){
+					if ($grouphash{$ind}){
+						$boot_obshash_g{$bin} += $boot_obshash{$ind}{$bin}*$norm/$sum; # group
+						$boot_exphash_g{$bin} += $boot_exphash{$ind}{$bin}*$norm/$sum; # group
+					}
+					else {
+						$boot_obshash_c{$bin} += $boot_obshash{$ind}{$bin}*$norm/$sum; # complement
+						$boot_exphash_c{$bin} += $boot_exphash{$ind}{$bin}*$norm/$sum; # complement
+					}
+				}
+			}
+			my $boot_obs_median_g = hist_median_for_hash(\%boot_obshash_g);
+			my $boot_obs_median_c = hist_median_for_hash(\%boot_obshash_c);
+			my $boot_exp_median_g = hist_median_for_hash(\%boot_exphash_g);
+			my $boot_exp_median_c = hist_median_for_hash(\%boot_exphash_c);
+			print " boot_obs_median_g $boot_obs_median_g  boot_obs_median_c $boot_obs_median_c boot_exp_median_g $boot_exp_median_g  boot_exp_median_c $boot_exp_median_c\n ";	
+		
+			if (($boot_obs_median_g-$boot_exp_median_g) - ($boot_obs_median_c-$boot_exp_median_c) 
+				 >= ($obs_median_g-$exp_median_g) - ($obs_median_c-$exp_median_c) ){
+				$pval_env_enrichment += 1;
+			}
+			if (($boot_obs_median_g-$boot_exp_median_g) - ($boot_obs_median_c-$boot_exp_median_c) 
+				 <= ($obs_median_g-$exp_median_g) - ($obs_median_c-$exp_median_c)){
+				$pval_env_depletion += 1;
+			}
+			if (-($boot_obs_median_g-$boot_exp_median_g) + ($boot_obs_median_c-$boot_exp_median_c) 
+				 >= -($obs_median_g-$exp_median_g) + ($obs_median_c-$exp_median_c)){
+				$pval_epi_enrichment += 1;
+			}
+			if (-($boot_obs_median_g-$boot_exp_median_g) + ($boot_obs_median_c-$boot_exp_median_c) 
+				 <= -($obs_median_g-$exp_median_g) + ($obs_median_c-$exp_median_c)){
+				$pval_epi_depletion += 1;
+			}
+		
+			
+			%boot_obshash = ();
+			%boot_exphash = ();
+			next;
+		}
+		if ($_ =~ /^tot/){
+			next;
+		}
+
+		my @arr = split(/,/);
+		my $ind = $arr[1] ;
+		my $bin = $arr[0];
+		# bin, ind, node, obs,exp
+		$boot_obshash{$ind}{$bin} += $arr[3];
+		$boot_exphash{$ind}{$bin} += $arr[4];
+	}
+	close FILE;
+	print "$iteration iterations\n";
+
+	
+	print " pval epi enrichment ".$pval_epi_enrichment/$iteration."\n";
+	print " pval epi depletion ".$pval_epi_depletion/$iteration."\n";
+	print " pval env enrichment ".$pval_env_enrichment/$iteration."\n";
+	print " pval env depletion ".$pval_env_depletion/$iteration."\n";
+}
 
 sub enrichment_optimized {
 	my $obsfile = $_[0];
@@ -5922,7 +6692,7 @@ sub depth_groups_entrenchment_optimized {
 	my @array;
 	my %hist;
 	print "radius,site,node,observed,expected\n";
-	print 
+	
 	my @group;
 	if ($_[2]){
 		@group = @{$_[2]};
@@ -5952,7 +6722,8 @@ sub depth_groups_entrenchment_optimized {
 				#if ($total_length > 0 && $total_muts/$total_length < 0.005){
 				if ($total_length > 0){
 					foreach my $bin (sort {$a <=> $b} (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}})){
-						if ($total_length > 0 && $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
+						#if ($total_length > 0 && $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
+						if ($total_length > 0){ # 30.10 the ine up there was a mistake	
 							$hist{$bin}[0] += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0]; #observed
 							$hist{$bin}[1] += $total_muts*$static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1]/$total_length; #expected	
 						}
@@ -5977,6 +6748,424 @@ sub depth_groups_entrenchment_optimized {
 }
 
 
+# 21.10 for permutations select only ancestral mutations (with > 0 number of reversions) present in real data 
+
+sub depth_groups_entrenchment_optimized_selection {
+	my $step = $_[0];
+	my $restriction = $_[1];
+	my $ancestral_nodes = $_[2];
+	my $subtract_tallest = $_[3];
+
+	my $root = $static_tree-> get_root;
+	my @array;
+	my %hist;
+	print "radius,site,node,observed,expected\n";
+	
+	my @group;
+	if ($_[4]){
+		@group = @{$_[4]};
+	}
+	else {
+		@group = (1..565);
+	}
+	
+	
+
+	my %closest_ancestors;
+	$root->set_generic("-closest_ancestors" => \%closest_ancestors);
+	my @args = ( $step, $root, $subtract_tallest);
+	my_visit_depth_first ($root, \@array,\&entrenchment_visitor,\&no_check,\@args,0);
+	foreach my $ind (@group){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			if(ref($node) eq "REF"){
+				$node = ${$node};
+			}
+			my $site_node = $node->get_name();
+			if (!$ancestral_nodes->{$site_node}){
+			#	print "$ind $site_node NOT IN REAL ANCESTORS\n";
+				my $totmut;
+				my $totlen;
+				foreach my $bin (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}}){
+					$totmut += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0];
+					$totlen += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1];
+				}	
+			#	print " totmut $totmut, totlen $totlen\n";
+				next;
+			}
+		#	print "$site_node is still here\n";
+			my $total_muts;
+			my $total_length;
+	#print "depth ".$static_depth_hash{$ind}{$node->get_name()}."\n";
+			if ($static_subtree_info{$node->get_name()}{$ind}{"maxdepth"} > $restriction){
+				
+				my %subtract_hash;
+				
+				if ($subtract_tallest){
+					my $tallest_tip = ${$static_hash_of_nodes{$static_subtree_info{$node->get_name()}{$ind}{"maxdepth_node"}}};	
+					my @path_to_tallest_tip = @{$tallest_tip->get_ancestors()};	
+					my $index_of_ancestor_node;
+					my $path_length = $tallest_tip->get_branch_length; # todo: check if ancestors contain the node itself
+				
+					for(my $n = 0; $n < scalar @path_to_tallest_tip; $n++){		
+						if ($path_to_tallest_tip[$n]->get_name eq $node->get_name){
+							$index_of_ancestor_node = $n;
+							last;
+						}
+						my $depth = $static_distance_hash{$node->get_name()}{$path_to_tallest_tip[$n]->get_name()};
+						$subtract_hash{bin($depth,$step)} += $path_to_tallest_tip[$n]->get_branch_length;
+						$path_length += $path_to_tallest_tip[$n]->get_branch_length;
+					}
+				}
+				
+				foreach my $bin (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}}){
+					$total_muts += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0];
+					$total_length += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1];
+					if ($subtract_tallest && $subtract_hash{$bin}){
+						$total_length -= $subtract_hash{$bin};
+					}
+				}	
+				#print $node->get_name()." ".$ind." TOTALS: $total_muts, $total_length, maxdepth ".$static_subtree_info{$node->get_name()}{$ind}{"maxdepth"}."\n";
+				#if ($total_length > 0 && $total_muts/$total_length < 0.005){
+				if ($total_length > 0){
+					print "total muts $total_muts \n";
+					foreach my $bin (sort {$a <=> $b} (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}})){
+						#if ($total_length > 0 && $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
+						if ($total_length > 0){ # 30.10 - the line up there was a mistake.
+							my $local_length = $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1];
+							if ($subtract_tallest && $subtract_hash{$bin}){
+								$local_length -= $subtract_hash{$bin};
+							}
+							$hist{$site_node}{$bin}[0] += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0]; #observed
+							$hist{$site_node}{$bin}[1] += $total_muts*$local_length/$total_length; #expected	
+						}
+						if (!$hist{$site_node}{$bin}[0]){
+							$hist{$site_node}{$bin}[0] += 0;
+						}
+						if (!$hist{$site_node}{$bin}[1]){
+							$hist{$site_node}{$bin}[1] += 0;
+						}
+	 print "$bin,$ind,".$node->get_name().",".$hist{$site_node}{$bin}[0].",".$hist{$site_node}{$bin}[1]."\n";
+				}
+				}
+			}
+			
+		}
+	}	
+	
+	#foreach my $bin (sort {$a <=> $b} keys %hist){
+	#	print " up to ".$bin*$step."\t".$hist{$bin}[0]."\t".$hist{$bin}[1]."\n";
+	#}
+	return %hist;	
+}
+
+# 3.11 prints maxdepth for each site_node - so that the necessary maxdepth could be chosen afterwards; 
+# does not print site_node for each bin.
+
+sub depth_groups_entrenchment_optimized_selection_alldepths {
+	my $step = $_[0];
+	my $ancestral_nodes = $_[2];
+	my $subtract_tallest = $_[3];
+#print "TREE INDEPTH: ".ref($static_tree)."\n";
+	my $root = $static_tree-> get_root;
+#print "ROOT INDEPTH: ".ref($root)."\n";		
+	my @array;
+	my %hist;
+	print ">new iteration\n";
+	
+	my @group;
+	if ($_[4]){
+		@group = @{$_[4]};
+	}
+	else {
+		@group = (1..565);
+	}
+	
+	
+	my %closest_ancestors;
+	$root->set_generic("-closest_ancestors" => \%closest_ancestors);
+	my @args = ( $step, $root, $subtract_tallest);
+	my_visit_depth_first ($root, \@array,\&entrenchment_visitor,\&no_check,\@args,0);
+	foreach my $ind (@group){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			if(ref($node) eq "REF"){
+				$node = ${$node};
+			}
+			my $site_node = $node->get_name();
+			if (!$ancestral_nodes->{$site_node}){
+			#	print "$ind $site_node NOT IN REAL ANCESTORS\n";
+				my $totmut;
+				my $totlen;
+				foreach my $bin (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}}){
+					$totmut += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0];
+					$totlen += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1];
+				}	
+				#print " totmut $totmut, totlen $totlen\n";
+				next;
+			}
+		#	print "$site_node is still here\n";
+			my $total_muts;
+			my $total_length;
+	#print "depth ".$static_depth_hash{$ind}{$node->get_name()}."\n";
+			if ($static_subtree_info{$node->get_name()}{$ind}{"maxdepth"} > 50){
+				
+				my %subtract_hash;
+				
+				if ($subtract_tallest){
+					my $tallest_tip = ${$static_hash_of_nodes{$static_subtree_info{$node->get_name()}{$ind}{"maxdepth_node"}}};	
+					my @path_to_tallest_tip = @{$tallest_tip->get_ancestors()};	
+					my $index_of_ancestor_node;
+					my $path_length = $tallest_tip->get_branch_length; # todo: check if ancestors contain the node itself
+			print "starting node ".$node->get_name()."\t";
+					for(my $n = 0; $n < scalar @path_to_tallest_tip; $n++){		
+						if ($path_to_tallest_tip[$n]->get_name() eq $node->get_name()){
+							$index_of_ancestor_node = $n;
+							last;
+						}
+			print $path_to_tallest_tip[$n]->get_name()."\t";
+						my $depth = $static_distance_hash{$node->get_name()}{$path_to_tallest_tip[$n]->get_name()};
+						$subtract_hash{bin($depth,$step)} += $path_to_tallest_tip[$n]->get_branch_length;
+						$path_length += $path_to_tallest_tip[$n]->get_branch_length;
+					}
+					
+			print "\n";
+				}
+				
+				foreach my $bin (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}}){
+					$total_muts += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0];
+					$total_length += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1];
+					if ($subtract_tallest && $subtract_hash{$bin}){
+						$total_length -= $subtract_hash{$bin};
+					}
+				}	
+				#print $node->get_name()." ".$ind." TOTALS: $total_muts, $total_length, maxdepth ".$static_subtree_info{$node->get_name()}{$ind}{"maxdepth"}."\n";
+				#if ($total_length > 0 && $total_muts/$total_length < 0.005){
+				if ($total_length > 0){
+					#print "total muts $total_muts \n";
+					print "site $ind node ".$node->get_name()." maxdepth ".$static_subtree_info{$node->get_name()}{$ind}{"maxdepth"}."\n";
+					foreach my $bin (sort {$a <=> $b} (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}})){
+						#if ($total_length > 0 && $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
+						if ($total_length > 0){ # 30.10 - the line up there was a mistake.
+							my $local_length = $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1];
+							if ($subtract_tallest && $subtract_hash{$bin}){
+								$local_length -= $subtract_hash{$bin};
+							}
+							$hist{$site_node}{$bin}[0] += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0]; #observed
+							$hist{$site_node}{$bin}[1] += $total_muts*$local_length/$total_length; #expected	
+						}
+						if (!$hist{$site_node}{$bin}[0]){
+							$hist{$site_node}{$bin}[0] += 0;
+						}
+						if (!$hist{$site_node}{$bin}[1]){
+							$hist{$site_node}{$bin}[1] += 0;
+						}
+	 print "$bin,".$hist{$site_node}{$bin}[0].",".$hist{$site_node}{$bin}[1]."\n";
+				}
+				}
+			}
+			
+		}
+	}	
+	
+	#foreach my $bin (sort {$a <=> $b} keys %hist){
+	#	print " up to ".$bin*$step."\t".$hist{$bin}[0]."\t".$hist{$bin}[1]."\n";
+	#}
+	return %hist;	
+}
+
+# 21.10 select meaningful ancestral mutations from real data
+sub depth_groups_entrenchment_optimized_selector {
+	my $step = $_[0];
+	my $restriction = $_[1];
+	my $subtract_tallest = $_[2];
+
+	my $root = $static_tree-> get_root;
+	my @array;
+	my %hist;
+	print "radius,site,node,observed,expected\n";
+	
+	my @group;
+	if ($_[3]){
+		@group = @{$_[3]};
+	}
+	else {
+		@group = (1..565);
+	}
+	
+
+	my %closest_ancestors;
+	$root->set_generic("-closest_ancestors" => \%closest_ancestors);
+	my @args = ( $step, $root, $subtract_tallest);
+	my_visit_depth_first ($root, \@array,\&entrenchment_visitor,\&no_check,\@args,0);
+	foreach my $ind (@group){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			if(ref($node) eq "REF"){
+				$node = ${$node};
+			}
+			my $site_node = $node->get_name();
+			my $total_muts;
+			my $total_length;
+	#print "depth ".$static_depth_hash{$ind}{$node->get_name()}."\n";
+			if ($static_subtree_info{$node->get_name()}{$ind}{"maxdepth"} > $restriction){
+				
+				my %subtract_hash;
+				
+				if ($subtract_tallest){
+					#print "just checking ".$static_subtree_info{$node->get_name()}{$ind}{"maxdepth_node"}."\n";
+					my $tallest_tip = ${$static_hash_of_nodes{$static_subtree_info{$node->get_name()}{$ind}{"maxdepth_node"}}};	
+					my @path_to_tallest_tip = @{$tallest_tip->get_ancestors()};	
+					my $index_of_ancestor_node;
+					my $path_length = $tallest_tip->get_branch_length; # todo: check if ancestors contain the node itself
+				
+					for(my $n = 0; $n < scalar @path_to_tallest_tip; $n++){		
+						if ($path_to_tallest_tip[$n]->get_name eq $node->get_name){
+							$index_of_ancestor_node = $n;
+							last;
+						}
+						my $depth = $static_distance_hash{$node->get_name()}{$path_to_tallest_tip[$n]->get_name()};
+						$subtract_hash{bin($depth,$step)} += $path_to_tallest_tip[$n]->get_branch_length;
+						$path_length += $path_to_tallest_tip[$n]->get_branch_length;
+					}
+				}
+				
+				foreach my $bin (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}}){
+					$total_muts += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0];
+					$total_length += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1];
+					if ($subtract_tallest && $subtract_hash{$bin}){
+						$total_length -= $subtract_hash{$bin};
+					}
+				}	
+				#print $node->get_name()." ".$ind." TOTALS: $total_muts, $total_length, maxdepth ".$static_subtree_info{$node->get_name()}{$ind}{"maxdepth"}."\n";
+				#if ($total_length > 0 && $total_muts/$total_length < 0.005){
+				if ($total_length > 0 && $total_muts > 0){ # 21.10 added total_muts > 0
+				print "total muts $total_muts \n";
+					foreach my $bin (sort {$a <=> $b} (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}})){
+						#if ($total_length > 0 && $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
+						 if ($total_length > 0){ 
+							my $local_length = $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1];
+							if ($subtract_tallest && $subtract_hash{$bin}){
+								$local_length -= $subtract_hash{$bin};
+							}
+							$hist{$site_node}{$bin}[0] += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0]; #observed
+							$hist{$site_node}{$bin}[1] += $total_muts*$local_length/$total_length; #expected	
+						}
+						if (!$hist{$site_node}{$bin}[0]){
+							$hist{$site_node}{$bin}[0] += 0;
+						}
+						if (!$hist{$site_node}{$bin}[1]){
+							$hist{$site_node}{$bin}[1] += 0;
+						}
+	 print "$bin,$ind,".$node->get_name().",".$hist{$site_node}{$bin}[0].",".$hist{$site_node}{$bin}[1]."\n";
+				}
+				}
+			}
+			
+		}
+	}	
+	
+	#foreach my $bin (sort {$a <=> $b} keys %hist){
+	#	print " up to ".$bin*$step."\t".$hist{$bin}[0]."\t".$hist{$bin}[1]."\n";
+	#}
+	return %hist;	
+}
+
+# 3.11 prints maxdepth for each site_node - so that the necessary maxdepth could be chosen afterwards; 
+# does not print site_node for each bin.
+
+sub depth_groups_entrenchment_optimized_selector_alldepths {
+	my $step = $_[0];
+	my $restriction = $_[1];
+	my $subtract_tallest = $_[2];
+
+	my $root = $static_tree-> get_root;
+	my @array;
+	my %hist;
+	print "real data\n";
+	
+	my @group;
+	if ($_[3]){
+		@group = @{$_[3]};
+	}
+	else {
+		@group = (1..565);
+	}
+	
+
+	my %closest_ancestors;
+	$root->set_generic("-closest_ancestors" => \%closest_ancestors);
+	my @args = ( $step, $root, $subtract_tallest);
+	my_visit_depth_first ($root, \@array,\&entrenchment_visitor,\&no_check,\@args,0);
+	foreach my $ind (@group){
+		foreach my $node(@{$static_nodes_with_sub{$ind}}){
+			if(ref($node) eq "REF"){
+				$node = ${$node};
+			}
+			my $site_node = $node->get_name();
+			my $total_muts;
+			my $total_length;
+	#print "depth ".$static_depth_hash{$ind}{$node->get_name()}."\n";
+			if ($static_subtree_info{$node->get_name()}{$ind}{"maxdepth"} > $restriction){
+				
+				my %subtract_hash;
+				
+				if ($subtract_tallest){
+					#print "just checking ".$static_subtree_info{$node->get_name()}{$ind}{"maxdepth_node"}."\n";
+					my $tallest_tip = ${$static_hash_of_nodes{$static_subtree_info{$node->get_name()}{$ind}{"maxdepth_node"}}};	
+					my @path_to_tallest_tip = @{$tallest_tip->get_ancestors()};	
+					my $index_of_ancestor_node;
+					my $path_length = $tallest_tip->get_branch_length; # todo: check if ancestors contain the node itself
+				
+					for(my $n = 0; $n < scalar @path_to_tallest_tip; $n++){		
+						if ($path_to_tallest_tip[$n]->get_name eq $node->get_name){
+							$index_of_ancestor_node = $n;
+							last;
+						}
+						my $depth = $static_distance_hash{$node->get_name()}{$path_to_tallest_tip[$n]->get_name()};
+						$subtract_hash{bin($depth,$step)} += $path_to_tallest_tip[$n]->get_branch_length;
+						$path_length += $path_to_tallest_tip[$n]->get_branch_length;
+					}
+				}
+				
+				foreach my $bin (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}}){
+					$total_muts += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0];
+					$total_length += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1];
+					if ($subtract_tallest && $subtract_hash{$bin}){
+						$total_length -= $subtract_hash{$bin};
+					}
+				}	
+				#print $node->get_name()." ".$ind." TOTALS: $total_muts, $total_length, maxdepth ".$static_subtree_info{$node->get_name()}{$ind}{"maxdepth"}."\n";
+				#if ($total_length > 0 && $total_muts/$total_length < 0.005){
+				if ($total_length > 0 && $total_muts > 0){ # 21.10 added total_muts > 0
+				#print "total muts $total_muts \n";
+				print "site $ind node ".$node->get_name()." maxdepth ".$static_subtree_info{$node->get_name()}{$ind}{"maxdepth"}."\n";
+					foreach my $bin (sort {$a <=> $b} (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}})){
+						#if ($total_length > 0 && $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
+						 if ($total_length > 0){ 
+							my $local_length = $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1];
+							if ($subtract_tallest && $subtract_hash{$bin}){
+								$local_length -= $subtract_hash{$bin};
+							}
+							$hist{$site_node}{$bin}[0] += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0]; #observed
+							$hist{$site_node}{$bin}[1] += $total_muts*$local_length/$total_length; #expected	
+						}
+						if (!$hist{$site_node}{$bin}[0]){
+							$hist{$site_node}{$bin}[0] += 0;
+						}
+						if (!$hist{$site_node}{$bin}[1]){
+							$hist{$site_node}{$bin}[1] += 0;
+						}
+	 print "$bin,".$hist{$site_node}{$bin}[0].",".$hist{$site_node}{$bin}[1]."\n";
+				}
+				}
+			}
+			
+		}
+	}	
+	
+	#foreach my $bin (sort {$a <=> $b} keys %hist){
+	#	print " up to ".$bin*$step."\t".$hist{$bin}[0]."\t".$hist{$bin}[1]."\n";
+	#}
+	return %hist;	
+}
 
 
 
@@ -6005,11 +7194,12 @@ sub check_depth_groups_entrenchment_optimized {
 			if(ref($node) eq "REF"){
 				$node = ${$node};
 			}
+			my $site_node = $node->get_name();
 			my $total_muts;
 			my $total_length;
 
 				#my $maxdepth = int($static_subtree_info{$node->get_name()}{$ind}{"maxdepth"}/50);
-				if ($static_subtree_info{$node->get_name()}{$ind}{"maxdepth"} > 0){
+				if ($static_subtree_info{$node->get_name()}{$ind}{"maxdepth"} > 150){
 				my %subtract_hash;
 				
 				if ($subtract_tallest){
@@ -6019,7 +7209,7 @@ sub check_depth_groups_entrenchment_optimized {
 					my $path_length = $tallest_tip->get_branch_length; # todo: check if ancestors contain the node itself
 				
 					for(my $n = 0; $n < scalar @path_to_tallest_tip; $n++){		
-						if ($path_to_tallest_tip[$n] eq $node){
+						if ($path_to_tallest_tip[$n]->get_name eq $node->get_name){
 							$index_of_ancestor_node = $n;
 							last;
 						}
@@ -6040,22 +7230,25 @@ sub check_depth_groups_entrenchment_optimized {
 				}	
 
 				if ($total_length > 0){
-					$hist{$total_muts}{"counter"} += 1;
+					if ($site_node eq "INTNODE2434"){
+						print "mutnum $total_muts maxdepth ".$static_subtree_info{$node->get_name()}{$ind}{"maxdepth"}."\n";
+					}
+					$hist{$total_muts}{$site_node}{"counter"} += 1;
 					foreach my $bin (sort {$a <=> $b} (keys %{$static_subtree_info{$node->get_name()}{$ind}{"hash"}})){
 						if ($total_length > 0 && $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1] > 0){ #there are some internal nodes with 0-length terminal daughter branches
 							my $local_length = $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[1];
 							if ($subtract_tallest && $subtract_hash{$bin}){
 								$local_length -= $subtract_hash{$bin};
 							}
-							$hist{$total_muts}{$bin}[0] += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0]; #observed
-							$hist{$total_muts}{$bin}[1] += $total_muts*$local_length/$total_length; #expected	
+							$hist{$total_muts}{$site_node}{$bin}[0] += $static_subtree_info{$node->get_name()}{$ind}{"hash"}{$bin}[0]; #observed
+							$hist{$total_muts}{$site_node}{$bin}[1] += $total_muts*$local_length/$total_length; #expected	
 							
 						}
-						if (!$hist{$total_muts}{$bin}[0]){
-							$hist{$total_muts}{$bin}[0] = 0;
+						if (!$hist{$total_muts}{$site_node}{$bin}[0]){
+							$hist{$total_muts}{$site_node}{$bin}[0] = 0;
 						}
-						if (!$hist{$total_muts}{$bin}[1]){
-							$hist{$total_muts}{$bin}[1] = 0;
+						if (!$hist{$total_muts}{$site_node}{$bin}[1]){
+							$hist{$total_muts}{$site_node}{$bin}[1] = 0;
 						}
 	# print "$total_muts,".$static_subtree_info{$node->get_name()}{$ind}{"maxdepth"}."$bin,$ind,".$node->get_name().",".$hist{$bin}[0].",".$hist{$bin}[1]."\n";
 				}
@@ -6966,6 +8159,75 @@ sub set_distance_matrix {
 #!
  	}
    
+   # 13.10 This method is analogous to entrenchment_visitor, 
+   # but it also collects for each node number of descending lineages (Ki)
+   # was not finished
+ #  sub entrenchment_visitor_corrected {
+ #  		my $node = $_[0];
+ #		my $step = $_[1]->[0];
+ #		my $subtract_tallest =$_[1]->[2];
+# 		
+# 		foreach my $site_index(){
+# 			if ($node->is_terminal){
+# 				$static_subtree_info{$anc_node->get_name()}{$site_index}{"k"} = 0;
+# 			}
+# 			else {
+# 				# only branches without bkg mutations are considered
+# 				my $sum;
+# 				foreach my $child (@{$node->get_children()}){
+# 					if (!has_no_background_mutation($child, $site_index)){
+ #						$sum += $static_subtree_info{$child->get_name()}{$site_index}{"k"};
+ #					}
+ #				}
+ #				$static_subtree_info{$anc_node->get_name()}{$site_index}{"k"} = $sum;
+ #			}
+ #		}
+ #		
+#		if (!$node->is_root){
+#		my %closest_ancestors = %{$node->get_parent->get_generic("-closest_ancestors")};
+#		
+#		if (%closest_ancestors){
+#
+#		foreach my $site_index(keys %closest_ancestors){ 
+#			my $anc_node = $closest_ancestors{$site_index};
+#			my $depth = $static_distance_hash{$anc_node->get_name()}{$node->get_name()};
+#			#if ($anc_node eq $node) {next;}
+#			$static_subtree_info{$anc_node->get_name()}{$site_index}{"hash"}{bin($depth,$step)}[1] += $node->get_branch_length;
+#
+#			my $current_maxdepth = $static_subtree_info{$anc_node->get_name()}{$site_index}{"maxdepth"};
+#		#	print " current maxdepth $current_maxdepth\n";
+#			if ($current_maxdepth < $depth){
+#					$static_subtree_info{$anc_node->get_name()}{$site_index}{"maxdepth"} = $depth;
+#					if ($subtract_tallest){
+#							$static_subtree_info{$anc_node->get_name()}{$site_index}{"maxdepth_node"} = $node->get_name();
+#					}
+#			}					
+#		
+#		}
+#		
+#		my @ancestors = keys %closest_ancestors;	
+#		foreach my $site_index(@ancestors){
+#			if (!has_no_background_mutation($node, $site_index)){
+#				delete $closest_ancestors{$site_index};
+#			}
+#		}	
+#		}
+#		
+#		foreach my $site_index(keys %{$static_subs_on_node{$node->get_name()}}){
+#			if ($closest_ancestors{$site_index}){
+#				my $anc_node = $closest_ancestors{$site_index};
+#				my $depth = $static_distance_hash{$anc_node->get_name()}{$node->get_name()} - ($node->get_branch_length)/2;
+#			#	print " ancestor ".$anc_node->get_name(). " node ".$node->get_name()." depth $depth\n";
+#			#	push $static_subtree_info{$anc_node->get_name()}{$site_index}{"nodes"}, \$node;
+#				$static_subtree_info{$anc_node->get_name()}{$site_index}{"hash"}{bin($depth,$step)}[0] += 1;
+#			}
+#			$closest_ancestors{$site_index} = $node;
+#		}
+#		
+#		$node->set_generic("-closest_ancestors" => \%closest_ancestors);
+#		}
+ #  }
+   
    
    sub bin {
    	my $depth = $_[0];
@@ -7101,6 +8363,234 @@ sub key_for_node_pair{
 	}
 	
 
+	
+}
+
+# outputs hash of hashes used for construction of observed_vector
+sub get_hashes {
+	my %res_hash;
+	foreach my $ind(keys %static_nodes_with_sub){
+		my %x_hash;
+		my %y_hash;
+		foreach my $node($static_tree->get_nodes){
+			$x_hash{$node->get_name()} = $node->get_branch_length;
+			if ($static_subs_on_node{$node->get_name()}{$ind}){
+				$y_hash{$node->get_name()} = 1;
+			}
+			else {
+				$y_hash{$node->get_name()} = 0;
+			}
+		}
+		$res_hash{$ind}{"x"} = \%x_hash;
+		$res_hash{$ind}{"y"} = \%y_hash;
+	}
+	return %res_hash;	
+}
+
+# constructs a hash of observation_vectors from our object
+sub get_observation_vectors {
+	my %res_hash;
+	my %hash = get_hashes();
+	foreach my $ind (keys %hash){
+		my @arr = make_observation_vector($hash{$ind}{"x"}, $hash{$ind}{"y"});
+		$res_hash{$ind} = \@arr;
+	}
+	#print Dumper (\%res_hash);
+	#print "____";
+	return %res_hash;
+}
+
+sub shuffle_observation_vectors {
+	my $obs_vectors = $_[0];
+	my %shuffled_obs_vectors;
+	foreach my $ind (keys %{$obs_vectors}){
+		my @arr = shuffle_obsv(\@{$obs_vectors->{$ind}});
+		$shuffled_obs_vectors{$ind} = \@arr;
+	}
+	#print Dumper (\%shuffled_obs_vectors);
+	return %shuffled_obs_vectors;
+}
+
+# constructs our object given the observation_vectors (shuffled)
+sub read_observation_vectors {
+	my $obs_vectors = $_[0];
+	my %subs_on_node;
+	my %nodes_with_sub;
+
+	foreach my $ind(keys %{$obs_vectors}){
+		foreach my $set(@{$obs_vectors->{$ind}}){
+		if ($set->[2] == 1){
+			my $nodname = $set->[0];
+			my $p=Substitution->new();
+			$p->position($ind);
+			$p->ancestral_allele("ATG");
+			$p->derived_allele("ATG");
+			$subs_on_node{$nodname}{$ind} = $p;
+			if (! exists $nodes_with_sub{$ind}){
+					$nodes_with_sub{$ind} = ();
+			}
+			push (@{$nodes_with_sub{$ind}}, \${$static_hash_of_nodes{$nodname}}); #вытащить из дерева по имени
+			
+		}
+		}
+	}
+	return (\%subs_on_node, \%nodes_with_sub);
+}
+
+#test_obsv_manipulation();
+
+sub test_obsv_manipulation {
+	my $prot = "h1";
+	my $restriction = 0;
+	set_mutmap($prot, "nsyn");
+	set_distance_matrix($prot);
+	my %obs_vectors = get_observation_vectors();
+	
+	my %shuffled_obs_vectors = shuffle_observation_vectors(\%obs_vectors);
+	my @mock_mutmaps = read_observation_vectors(\%shuffled_obs_vectors);
+	%static_subs_on_node = %{$mock_mutmaps[0]};
+	%static_nodes_with_sub = %{$mock_mutmaps[1]};
+
+	my %hash = depth_groups_entrenchment_optimized(10,$restriction);
+	
+	
+	open CSV, ">C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_vector_simulation_test_".$restriction.".csv";
+	foreach my $bin(1..32){
+			print CSV $bin."_obs,".$bin."_exp,";
+	}
+	print CSV "\n";
+
+	#foreach my $i(0..$iterations-1){
+		foreach my $bin(1..32){
+			print CSV $hash{$bin}[0].",".$hash{$bin}[1].",";
+		}
+		print CSV "\n";
+	#}
+	close CSV;
+	
+	
+	#push @simulated_hists, \%hash;
+	#%static_ring_hash = ();
+	#%static_depth_hash = ();
+	
+	
+}
+
+#check_entrenchment_blue_violet_bootstrap_vector ("h1", 1000);
+
+sub check_entrenchment_blue_violet_bootstrap_vector {
+	my $prot = $_[0];
+	my $iterations = $_[1];
+	set_mutmap($prot, "nsyn");
+	set_distance_matrix($prot);
+	
+	my %obs_hash = depth_groups_entrenchment_optimized(1,150);
+	my %real_obs_hash;
+	my %real_exp_hash;
+	my $norm;
+	
+	my $maxbin = 0;
+	
+	foreach my $bin(keys %obs_hash){
+			$maxbin = max($bin, $maxbin);
+			$norm += $obs_hash{$bin}[0];
+	}
+	
+	%static_ring_hash = ();
+	%static_depth_hash = ();
+	%static_subtree_info = ();
+	
+	my @simulated_hists;
+	my %simulated_medians;
+	my %all_simulated_medians;
+	my %all_hash;
+	
+	my %obs_vectors = get_observation_vectors();
+	open STORAGE, ">C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_1000_test_right_maxpath_subtracted_150_vector_sim.csv";
+	for (my $i = 1; $i <= $iterations; $i++){
+		my %shuffled_obs_vectors = shuffle_observation_vectors(\%obs_vectors);
+		my @mock_mutmaps = read_observation_vectors(\%shuffled_obs_vectors);
+		%static_subs_on_node = %{$mock_mutmaps[0]};
+		%static_nodes_with_sub = %{$mock_mutmaps[1]};
+
+		my %prehash = check_depth_groups_entrenchment_optimized(1,1);
+		push @simulated_hists, \%prehash;
+		my %hash;
+		my $sum;
+		
+		
+		foreach my $bin(1..$maxbin){
+			print "----\n";
+				foreach my $mutnum (keys %prehash){
+					if ($mutnum > 0){
+						foreach my $site_node(keys %{$prehash{$mutnum}}){
+						#	if ($site_node eq "INTNODE2434"){
+								$sum += $prehash{$mutnum}{$site_node}{$bin}[0];
+								$hash{$mutnum}{"counter"} = $prehash{$mutnum}{$site_node}{"counter"};
+								$hash{$mutnum}{$bin}[1] = $prehash{$mutnum}{$site_node}{$bin}[1];
+								$hash{$mutnum}{$bin}[0] = $prehash{$mutnum}{$site_node}{$bin}[0];
+								print "site node ".$site_node." mutnum $mutnum\n";
+						#	}
+						}
+					}	
+			}
+		}
+		if ($sum == 0){
+			next;
+		}
+				foreach my $mutnum (keys %hash){
+					if ($mutnum > 0){
+					#print STORAGE ">$mutnum,".$hash{$mutnum}{"counter"}."\n";
+					foreach my $bin(1..$maxbin){
+						$hash{$mutnum}{$bin}[0] = $hash{$mutnum}{$bin}[0]*$norm/$sum;
+						$all_hash{$mutnum}{$bin}[0] += $hash{$mutnum}{$bin}[0];
+						$hash{$mutnum}{$bin}[1] = $hash{$mutnum}{$bin}[1]*$norm/$sum;
+						$all_hash{$mutnum}{$bin}[1] += $hash{$mutnum}{$bin}[1];
+					#	print STORAGE "$bin,".$hash{$mutnum}{$bin}[0].",".$hash{$mutnum}{$bin}[1]."\n";
+					}
+					if ($hash{$mutnum}{"counter"}){
+						$all_hash{$mutnum}{"counter"} += $hash{$mutnum}{"counter"};
+					}
+					my $boot_obs_median = hist_median_for_hash_arr(\%{$hash{$mutnum}}, 0);
+					push @{$simulated_medians{$mutnum}[0]}, $boot_obs_median;
+					my $boot_exp_median = hist_median_for_hash_arr(\%{$hash{$mutnum}}, 1);
+					push @{$simulated_medians{$mutnum}[1]}, $boot_exp_median;
+					}
+			}
+		
+		%static_ring_hash = ();
+		%static_depth_hash = ();
+		%static_subtree_info = ();
+	}
+	
+	my @sorted_keys = sort {$a <=> $b} keys %simulated_medians;
+	my %total_medians;
+	foreach my $mutnum(@sorted_keys){
+		my $stat_obs = Statistics::Descriptive::Full->new();
+		$stat_obs->add_data(\@{$simulated_medians{$mutnum}[0]});
+		my $stat_exp = Statistics::Descriptive::Full->new();
+		$stat_exp->add_data(\@{$simulated_medians{$mutnum}[1]});
+		print STORAGE $mutnum.",".hist_median_for_hash_arr(\%{$all_hash{$mutnum}}, 0).",".
+		hist_mean_for_hash_arr(\%{$all_hash{$mutnum}}, 0).",".stddev(\@{$simulated_medians{$mutnum}[0]}).",".
+		$stat_obs->percentile(5).",".
+		$stat_obs->percentile(95).",".
+		hist_median_for_hash_arr(\%{$all_hash{$mutnum}}, 1).",".
+		hist_mean_for_hash_arr(\%{$all_hash{$mutnum}}, 1).",".stddev(\@{$simulated_medians{$mutnum}[1]}).",".
+		$stat_exp->percentile(5).",".
+		$stat_exp->percentile(95).",".
+		$all_hash{$mutnum}{"counter"}."\n";
+	}
+	
+	
+	
+#	foreach my $mutnum(@sorted_keys){
+	#	print STORAGE $mutnum."\n";
+	#	for (my $i = 1; $i <= $iterations; $i++){
+	#		print STORAGE $simulated_medians{$mutnum}[0][$i].",".$simulated_medians{$mutnum}[1][$i]."\n";
+	#	}
+	#}
+close STORAGE;
+	#store \@simulated_hists, "C:/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_check_simulation_150_hash_stored";
 	
 }
 
