@@ -26,6 +26,8 @@ use Storable qw(store retrieve lock_retrieve);
 use Class::Struct;
 use DnaUtilities::observation_vector qw(make_observation_vector shuffle_obsv);
 use IO::Handle;
+use Cwd qw(abs_path cwd getcwd);
+use File::Spec;
 
 $| = 1;
 
@@ -87,7 +89,7 @@ struct Mutation => {
 			$filepath = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/";
 		}
 		else {
-			$filepath = "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
+			$filepath = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
 		}
 		$static_tree = parse_tree($filepath.$_[0].".l.r.newick");
 		my @arr = parse_fasta($filepath.$_[0].".all.fa");
@@ -567,13 +569,13 @@ sub parse_tree {
 } 
 
 sub test {
-my %mm = mutmap_from_files("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.l.r.newick","/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.all.fa");  
+my %mm = mutmap_from_files("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.l.r.newick","/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.all.fa");  
 print Dumper ($mm{"INTNODE2340"}[0]);
 print ($mm{"INTNODE2340"}[0]->{"Substitution::position"});
 }
 
 sub test2 {
-my %mm = mutmap_from_files("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.l.r.newick","/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.all.fa");  
+my %mm = mutmap_from_files("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.l.r.newick","/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.all.fa");  
 print Dumper ($mm{"INTNODE2340"});
 #print ($mm{"INTNODE2340"}[0]->{"Substitution::position"});
 }
@@ -605,7 +607,7 @@ print ($vect2->to_Bin()."\t".$vect3->to_Bin()."\t".$vect4->to_Bin()."\n");
 
 
 sub patrtest{
-		my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n1.l.r.newick");
+		my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n1.l.r.newick");
 	foreach my $node(@{$tree->get_internals()}){
 		if ($node->get_name() eq "INTNODE2473"){
 		foreach my $n(@{$tree->get_internals()}){
@@ -710,11 +712,11 @@ sub get_mrcn {
     }
 
 
-set_mutmap("n2", "syn", "locally");
-my @sites = (13,31,258,263,278,326,366,403,436,449,461,463);
-for my $site(@sites){
-	print_static_tree_with_mutations($site);
-}
+#set_mutmap("n2", "syn", "locally");
+#my @sites = (13,31,258,263,278,326,366,403,436,449,461,463);
+#for my $site(@sites){
+#	print_static_tree_with_mutations($site);
+#}
 #print_static_tree_with_mutations(175, "h3");
 
 # prints nexus tree, on wich all mutations in the specified site are shown 
@@ -764,8 +766,8 @@ my $site = shift;
 my $prot = shift;
 my $tree = parse_tree("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/$prot.l.r.newick");
 my %fasta = parse_fasta("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/$prot.all.fa");
-#my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/$prot.l.r.newick");
-#my %fasta = parse_fasta("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/$prot.all.fa");
+#my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/$prot.l.r.newick");
+#my %fasta = parse_fasta("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/$prot.all.fa");
 my @mutmaps = codonmutmap($tree, \%fasta);
 my $myCodonTable   = Bio::Tools::CodonTable->new();
 my %subs_on_node = %{$mutmaps[0]};
@@ -1056,11 +1058,11 @@ my @h1_wenfu_evolving = qw(98 110 157 178 202 203 238 176);
 #logic_shuffler();
 #logic_unrestricted();
 #logic();
-#logic_collector_general_shuffler("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.l.r.newick", "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.all.fa");
-#logic_collector_sites("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n2.l.r.newick", "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n2.all.fa");
-#logic_rcesas_sites("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.l.r.newick", "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.all.fa");
+#logic_collector_general_shuffler("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.l.r.newick", "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.all.fa");
+#logic_collector_sites("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n2.l.r.newick", "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n2.all.fa");
+#logic_rcesas_sites("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.l.r.newick", "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.all.fa");
 #print "==============";
-#logic("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.l.r.newick", "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.all.fa");
+#logic("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.l.r.newick", "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.all.fa");
 
 #logic_general_same_ancestor();
 #logic_general_same_ancestor_unrestricted();
@@ -1116,8 +1118,8 @@ sub logic_collector_general_shuffler {
 
 # analyze sites
 sub logic_median_statistics {
-	my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".l.r.newick");
-	my %fasta = parse_fasta("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".all.fa");
+	my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".l.r.newick");
+	my %fasta = parse_fasta("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".all.fa");
 	my @mutmaps;
 	if($_[1] eq "syn"){
 		 @mutmaps = synmutmap($tree, \%fasta);
@@ -1177,8 +1179,8 @@ for (my $ind = 1; $ind <566; $ind++){
 #global analysis
 
 sub logic_global_median_statistics{
-	my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".l.r.newick");
-	my %fasta = parse_fasta("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".all.fa");
+	my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".l.r.newick");
+	my %fasta = parse_fasta("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".all.fa");
 	my @mutmaps;
 	if($_[1] eq "syn"){
 		 @mutmaps = synmutmap($tree, \%fasta);
@@ -1280,8 +1282,8 @@ foreach my $ind(@array){
 #global analysis
 
 sub global_entrenchment_statistics{
-	my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".l.r.newick");
-	my %fasta = parse_fasta("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".all.fa");
+	my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".l.r.newick");
+	my %fasta = parse_fasta("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".all.fa");
 	my @mutmaps;
 	if($_[1] eq "syn"){
 		 @mutmaps = synmutmap($tree, \%fasta);
@@ -1383,8 +1385,8 @@ foreach my $ind(@array){
 
 ## wrong idea, correct implementation - tests medians of distances, not of our statistics.
 sub logic_median_test {
-		my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n1.l.r.newick");
-		my %fasta = parse_fasta("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n1.all.fa");
+		my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n1.l.r.newick");
+		my %fasta = parse_fasta("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n1.all.fa");
 		my @mutmaps = synmutmap($tree, \%fasta);
 		my %subs_on_node = %{$mutmaps[0]};
 		my %nodes_with_sub = %{$mutmaps[1]};
@@ -1466,8 +1468,8 @@ for (my $ind = 1; $ind <566; $ind++){
 
 
 sub logic_median_global_test {
-		my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.l.r.newick");
-		my %fasta = parse_fasta("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.all.fa");
+		my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.l.r.newick");
+		my %fasta = parse_fasta("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.all.fa");
 		my @mutmaps = codonmutmap($tree, \%fasta);
 		my %subs_on_node = %{$mutmaps[0]};
 		my %nodes_with_sub = %{$mutmaps[1]};
@@ -1727,6 +1729,18 @@ sub hist_mean {
 
 #takes a hash of probabilities for 0,1,2...
 sub hist_median_for_hash{
+	my @hist = hist_to_array($_[0]);
+	return hist_median(\@hist);
+}
+
+#takes a hash of probabilities for 0,1,2...
+sub hist_mean_for_hash {
+	my @hist = hist_to_array($_[0]);
+	return hist_mean(\@hist);
+}
+
+# takes hash of probabilities for 0,1,2... and returns an array of ordered values
+sub hist_to_array {
 	my %prehist =  %{$_[0]};
 	my @hist;
 	my @sorted_keys = sort {$a <=> $b} keys %prehist;
@@ -1738,8 +1752,7 @@ sub hist_median_for_hash{
 			push @hist, 0;
 		}
 	}
-
-	return hist_median(\@hist);
+	return @hist;
 }
 
 sub hist_median_for_hash_arr{
@@ -1755,25 +1768,9 @@ sub hist_median_for_hash_arr{
 			push @hist, 0;
 		}
 	}
-
 	return hist_median(\@hist);
 }
 
-sub hist_mean_for_hash{
-	my %prehist =  %{$_[0]};
-	my @hist;
-	my @sorted_keys = sort {$a <=> $b} keys %prehist;
-	for (my $i = 1; $i <= $sorted_keys[-1]; $i++){
-		if ($prehist{$i}){
-			push @hist, $prehist{$i};
-		}
-		else {
-			push @hist, 0;
-		}
-	}
-
-	return hist_mean(\@hist);
-}
 
 sub hist_mean_for_hash_arr{
 	my %prehist =  %{$_[0]};
@@ -1861,8 +1858,8 @@ sub median_difference{
 
 
 sub logic_sites_seqsis {
-		my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.l.r.newick");
-		my %fasta = parse_fasta("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.all.fa");
+		my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.l.r.newick");
+		my %fasta = parse_fasta("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.all.fa");
 		my @mutmaps = codonmutmap($tree, \%fasta);
 		my %subs_on_node = %{$mutmaps[0]};
 		my %nodes_with_sub = %{$mutmaps[1]};
@@ -2048,8 +2045,8 @@ foreach my $site(sort { $a <=> $b } keys %final){
 #
 # 
 sub logic_shuffler {
-	my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.l.r.newick");
-		my %fasta = parse_fasta("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.all.fa");
+	my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.l.r.newick");
+		my %fasta = parse_fasta("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h3.all.fa");
 		my @mutmaps = synmutmap($tree, \%fasta);
 		my %subs_on_node = %{$mutmaps[0]};
 		my %nodes_with_sub = %{$mutmaps[1]};
@@ -2126,8 +2123,8 @@ foreach my $interval(sort { $a <=> $b } keys %bins){
 
 ## bootstrap: standard shuffler, shuffles labels on sites
 sub logic_medstat_groups_labelshuffler {
-	my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".l.r.newick");
-	my %fasta = parse_fasta("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".all.fa");
+	my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".l.r.newick");
+	my %fasta = parse_fasta("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".all.fa");
 	my @mutmaps;
 	if($_[1] eq "syn"){
 		 @mutmaps = synmutmap($tree, \%fasta);
@@ -2264,8 +2261,8 @@ print OUT "site\tsame_median\tdiff_median\tmedian_difference\tpvalue\n";
 
 ## bootstrap: randomly chooses group of sites
 sub logic_medstat_groups {
-	my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".l.r.newick");
-	my %fasta = parse_fasta("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".all.fa");
+	my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".l.r.newick");
+	my %fasta = parse_fasta("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$_[0].".all.fa");
 	my @mutmaps;
 	if($_[1] eq "syn"){
 		 @mutmaps = synmutmap($tree, \%fasta);
@@ -2439,8 +2436,8 @@ sub test_group_bootstrap{
 ##control distribution for site i - min distances to any mutation at each site (set size ~ length of the protein*number of branches with mutation in site i)
 
 sub subtreetest{
-	my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.l.r.newick");
-my %fasta = parse_fasta("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.all.fa");
+	my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.l.r.newick");
+my %fasta = parse_fasta("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.all.fa");
 my @mutmaps = mutmap($tree, \%fasta);
 my %subs_on_node = %{$mutmaps[0]};
 my %nodes_with_sub = %{$mutmaps[1]};
@@ -3551,13 +3548,13 @@ sub find_min_distances_naive{
 #test_my_visit_depth_first();
 
 sub test_tree_lengths {
-	my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/Mock/h1.l.r.newick");
+	my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/Mock/h1.l.r.newick");
 	my $protein_name = "h1";
 	tree_lengths($protein_name,$tree);
 }
 
 sub test_subtree_lengths {
-	my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/Mock/h1.l.r.newick");
+	my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/Mock/h1.l.r.newick");
 	my $protein_name = "h1";
 	my $hash = subtree_lengths($protein_name, $tree);
 	print $hash->{"alastar7"}." must be 13";
@@ -3565,7 +3562,7 @@ sub test_subtree_lengths {
 
 sub test_my_visit_depth_first {
 	    set_mutmap("h1", "nsyn"); # for this sub to work properly path in set_mutmap had to be changed to Mock
-		my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/Mock/h1.l.r.newick");
+		my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/Mock/h1.l.r.newick");
 	    my @array;
 	    my $root = $tree-> get_root;
 	    my @args = (2,5, $root);
@@ -3599,9 +3596,9 @@ my @h1uptrend = qw(111 169 205 113);
 #entrenchment_blue_violet_bootstrap("n1", 100, 0); #restriction - last
 
 
-#enrichment_blue_violet_optimized ("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n2_for_enrichment_1_norestr_obs", "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n2_for_enrichment_1_norestr", \@n2_internal);
+#enrichment_blue_violet_optimized ("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n2_for_enrichment_1_norestr_obs", "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n2_for_enrichment_1_norestr", \@n2_internal);
 
-#enrichment_optimized("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n1_opti_proc_100_group_obs", "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n1_opti_proc_100_group", \@n1_wan_epitopes);
+#enrichment_optimized("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n1_opti_proc_100_group_obs", "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/n1_opti_proc_100_group", \@n1_wan_epitopes);
 
 #write_csv("h1");
 #write_csv("h3");
@@ -3618,7 +3615,7 @@ sub entrenchment_bootstrap{
 	set_mutmap($prot, "nsyn");
 	set_distance_matrix($prot);
 	my %matrix = incidence_matrix(); #!
-	print_incidence_matrix(\%matrix, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	print_incidence_matrix(\%matrix, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
 	my %hash = depth_groups_entrenchment_optimized(10,$restriction);
 	my $norm;
 	foreach my $bin(1..32){
@@ -3627,7 +3624,7 @@ sub entrenchment_bootstrap{
 
 	my @simulated_hists;
 	for (my $i = 1; $i < 101; $i++){
-		my @mock_mutmaps = read_incidence_matrix("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
+		my @mock_mutmaps = read_incidence_matrix("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
 		
 		%static_subs_on_node = %{$mock_mutmaps[0]};
 		%static_nodes_with_sub = %{$mock_mutmaps[1]};
@@ -3638,10 +3635,10 @@ sub entrenchment_bootstrap{
 		%static_depth_hash = ();
 	}
 
-	store \@simulated_hists, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_full_simulation_".$restriction."_stored";
-	my $arref = retrieve("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_full_simulation_".$restriction."_stored");
+	store \@simulated_hists, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_full_simulation_".$restriction."_stored";
+	my $arref = retrieve("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_full_simulation_".$restriction."_stored");
 	
-	open CSV, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_full_simulation_".$restriction.".csv";
+	open CSV, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_full_simulation_".$restriction.".csv";
 	foreach my $bin(1..32){
 			print CSV $bin."_obs,".$bin."_exp,";
 	}
@@ -3669,7 +3666,7 @@ sub entrenchment_vector_bootstrap {
 	set_mutmap($prot, "nsyn");
 	set_distance_matrix($prot);
 	#my %matrix = incidence_matrix(); #!
-	#print_incidence_matrix(\%matrix, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	#print_incidence_matrix(\%matrix, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
 	my %obs_hash = depth_groups_entrenchment_optimized(10,$restriction);
 	my $norm;
 	foreach my $bin(1..32){
@@ -3709,10 +3706,10 @@ sub entrenchment_vector_bootstrap {
 		%static_subtree_info = ();
 	}
 
-	store \@simulated_hists, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_vector_simulation_".$restriction."_stored";
-	my $arref = retrieve("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_vector_simulation_".$restriction."_stored");
+	store \@simulated_hists, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_vector_simulation_".$restriction."_stored";
+	my $arref = retrieve("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_vector_simulation_".$restriction."_stored");
 	
-	open CSV, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_vector_simulation_".$restriction.".csv";
+	open CSV, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_vector_simulation_".$restriction.".csv";
 	foreach my $bin(1..32){
 			print CSV $bin."_obs,".$bin."_exp,";
 	}
@@ -3764,7 +3761,7 @@ sub entrenchment_bootstrap_full{
 	set_mutmap($prot, "nsyn");
 	set_distance_matrix($prot);
 	my %matrix = incidence_matrix(); #!
-	print_incidence_matrix(\%matrix, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	print_incidence_matrix(\%matrix, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
 	my %obs_hash = depth_groups_entrenchment_optimized(10,$restriction);
 	my $norm;
 	foreach my $bin(1..32){
@@ -3777,7 +3774,7 @@ sub entrenchment_bootstrap_full{
 	
 	my @simulated_hists;
 	for (my $i = 1; $i <= $iterations; $i++){
-		my @mock_mutmaps = read_incidence_matrix("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
+		my @mock_mutmaps = read_incidence_matrix("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
 		
 		%static_subs_on_node = %{$mock_mutmaps[0]};
 		%static_nodes_with_sub = %{$mock_mutmaps[1]};
@@ -3799,10 +3796,10 @@ sub entrenchment_bootstrap_full{
 		%static_subtree_info = ();
 	}
 
-	store \@simulated_hists, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_noneed_simulation_".$restriction."_stored";
-	my $arref = retrieve("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_noneed_simulation_".$restriction."_stored");
+	store \@simulated_hists, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_noneed_simulation_".$restriction."_stored";
+	my $arref = retrieve("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_noneed_simulation_".$restriction."_stored");
 	
-	open CSV, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_noneed_simulation_".$restriction.".csv";
+	open CSV, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_noneed_simulation_".$restriction.".csv";
 	foreach my $bin(1..32){
 			print CSV $bin."_obs,".$bin."_exp,";
 	}
@@ -3857,7 +3854,7 @@ sub entrenchment_bootstrap_full_selection {
 	set_mutmap($prot, "nsyn");
 	set_distance_matrix($prot);
 	my %matrix = incidence_matrix(); #!
-	print_incidence_matrix(\%matrix, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	print_incidence_matrix(\%matrix, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
 	my %obs_hash = depth_groups_entrenchment_optimized_selector_alldepths(1,$restriction,$subtract_tallest); #bin, restriction, subtract-tallest
 	my %ancestor_nodes;
 	foreach my $ancnode(keys %obs_hash){
@@ -3884,7 +3881,7 @@ sub entrenchment_bootstrap_full_selection {
 	
 	my @simulated_hists;
 	for (my $i = 1; $i <= $iterations; $i++){
-		my @mock_mutmaps = read_incidence_matrix("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
+		my @mock_mutmaps = read_incidence_matrix("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
 		
 		%static_subs_on_node = %{$mock_mutmaps[0]};
 		%static_nodes_with_sub = %{$mock_mutmaps[1]};
@@ -3922,10 +3919,10 @@ sub entrenchment_bootstrap_full_selection {
 		%static_subtree_info = ();
 	}
 
-	store \@simulated_hists, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_selector_".$restriction."_stored";
-	my $arref = retrieve("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_selector_".$restriction."_stored");
+	store \@simulated_hists, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_selector_".$restriction."_stored";
+	my $arref = retrieve("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_selector_".$restriction."_stored");
 	
-	open CSV, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_selector_".$restriction.".csv";
+	open CSV, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_selector_".$restriction.".csv";
 	foreach my $bin(1..$maxbin){
 			print CSV $bin."_obs,".$bin."_exp,";
 	}
@@ -3974,11 +3971,11 @@ sub entrenchment_bootstrap_full_selection {
 }
 
 
-#prepare_real_data("h1",0,0,1);
-#prepare_real_data("h3",0,0,1);
-#prepare_real_data("n1",0,0,1);
-#prepare_real_data("n2",0,0,1);
-#my $realdata = lock_retrieve ("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1_realdata") or die "Cannot retrieve real_data";
+#prepare_real_data("h1",0,0,0,"locally");
+#prepare_real_data("h3",0,0,0,"locally");
+#prepare_real_data("n1",0,0,0,"locally");
+#prepare_real_data("n2",0,0,0,"locally");
+#my $realdata = lock_retrieve ("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1_realdata") or die "Cannot retrieve real_data";
 #my $norm100 = compute_norm(100, \@h1_antigenic);
 #print "\nnorm 100 ".$norm100;
 #my $norm150 = compute_norm(150, \@h1_antigenic);
@@ -4003,12 +4000,12 @@ sub entrenchment_bootstrap_full_selection {
 ## Procedure for launching iterations on server
 #my $prot = $ARGV[0];
 #my $tag = $ARGV[1];
-#my $iterations = 250; 
+#my $iterations = 500; 
 #$static_protein = $prot;
-##my $realdata = lock_retrieve ("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_realdata") or die "Cannot retrieve real_data";
-#my $realdata = lock_retrieve ("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_syndata") or die "Cannot retrieve syn_data";
+##my $realdata = lock_retrieve ("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_realdata_maxpath_not_subtracted") or die "Cannot retrieve real_data";
+#my $realdata = lock_retrieve ("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_realdata_maxpath_not_subtracted") or die "Cannot retrieve real_data";
 #print "Starting gulp $tag of $iterations iterations for protein $prot..\n";
-#iterations_gulp ($prot, $iterations, 0, 1, $tag);
+#iterations_gulp ($prot, $iterations, 0, 0, $tag);
 #print "Finished gulp $tag of $iterations iterations for protein $prot\n";
 ###
 
@@ -4019,7 +4016,7 @@ sub entrenchment_bootstrap_full_selection {
 #print "stat subtree info check ";
 #print scalar keys %static_subtree_info;
 #print "\n";
-#	my $realdata = lock_retrieve ("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_realdata") or die "Cannot retrieve real_data";
+#	my $realdata = lock_retrieve ("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_realdata") or die "Cannot retrieve real_data";
 #
 #iterations_gulp ($prot, $iterations, 0, 1, $tag); # in fact, it does not read restriction parameter (third)
 #$tag = "tag2";
@@ -4031,119 +4028,49 @@ sub entrenchment_bootstrap_full_selection {
 #count_pvalues($prot,"tag");
 ##
 
-## 25.01
-#my $prot = "h1";
-#my $tag = "19_02";
+sub maxpath_tag{
+	my $subtract_maxpath = $_[0];
+	my $tag;
+	if ($subtract_maxpath){
+		$tag = "maxpath_subtracted";
+	}
+	else {
+		$tag = "maxpath_not_subtracted"
+	};
+	return $tag;
+}
+
+sub syn_tag {
+	my $syn = $_[0];
+	my $tag;
+	if ($syn){
+		$tag = "syn";
+	}
+	else {
+		$tag = "nsyn";
+	}
+	return $tag;
+}
+
+## 25.01 Procedure for obtaining p-values
+my $prot = "h1";
+my $syn = 0;
+my $subtract_maxpath = 0;
+my $tag = "median_vs_mean"."_".syn_tag($syn)."_".maxpath_tag($subtract_maxpath);
+
 #my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_realdata");
-#my @maxdepths = (50, 100, 150);
-##my @groups = (\@h1_antigenic, \@h1_pocket_closest, \@h1_surface, \@h1_internal, \@h1_host_shift_001, \@h1_leading_kr, \@h1_trailing_kr, \@h1_antigenic_ren);
-##my @names = ("antigenic", "pocket_closest", "surface", "internal", "host_shift_001", "leading_kr", "trailing_kr", "antigenic_ren");
-#my @groups = (\@h1_increased_binding);
-#my @names = ("increased_binding");
-#my @groups_and_names = prepare_groups_and_names(\@groups, \@names);
-#concat_and_divide_simult ($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]});
-#count_pvalues($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]});
-
-## 26.02 Number of nodes in analysis
-#print "\nh1------\n";
-#my $prot = "h1";
-#my $restriction = 50;
-#my @all = (0..565);
-#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_realdata");
-#my @groups = (\@all, \@h1_increased_binding, \@h1_antigenic_ren, \@h1_epitopes, \@h1_antigenic, \@h1_pocket_closest, \@h1_surface, \@h1_internal, \@h1_host_shift_001, \@h1_leading_kr, \@h1_trailing_kr);
-#my @names = ("all", "increased_binding", "antigenic_ren","epitopes", "antigenic","pocket_closest","surface","internal","host_shift_001","leading", "trailing");
-#print_nodes_in_analysis ($prot, $restriction, \@groups, \@names, 1);
-#$realdata = 0;
-#print "\nh3------\n";
-my $prot = "h3";
-#my $restriction = 50;
-#my @all = (0..565);
-my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_realdata");
-#my @groups = (\@all, \@h3_antigenic, \@h3_antigenic_koel, \@h3_antigenic_smith, \@h3_antigenic_steinbruck, \@h3_epitopes, \@h3_shih_epitopes, \@h3_pocket_closest, \@h3_surface, \@h3_internal, \@h3_host_shift_001, \@h3_leading_kr, \@h3_trailing_kr);
-#my @names = ("all", "antigenic", "antigenic_koel", "antigenic_smith", "antigenic_steinbruck", "epitopes", "shih_epitopes","pocket_closest","surface","internal","host_shift_001","leading", "trailing");
-#print_nodes_in_analysis ($prot, $restriction, \@groups, \@names, 1);
-#$realdata = 0;
-#print "\nn2------\n";
-#my $prot = "n2";
-#my $restriction = 50;
-#my @all = (0..565);
-#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_realdata");
-#my @groups = (\@all, \@n2_epitopes, \@n2_pocket_closest, \@n2_surface, \@n2_internal, \@n2_host_shift_001, \@n2_leading_kr, \@n2_trailing_kr, \@n2_decreasing, \@n2_increasing);
-#my @names = ("all", "epitopes","pocket_closest","surface","internal","host_shift_001","leading", "trailing", "decreasing", "increasing");
-#print_nodes_in_analysis ($prot, $restriction, \@groups, \@names, 1);
-#$realdata = 0;
-#print "\nn1------\n";
-#my $prot = "n1";
-#my $restriction = 50;
-#my @all = (0..565);
-#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_realdata");
-#my @groups = (\@all, \@n1_wan_epitopes, \@n1_epitopes, \@n1_pocket_closest, \@n1_surface, \@n1_internal, \@n1_host_shift_001, \@n1_leading_kr, \@n1_trailing_kr);
-#my @names = ("all", "wan_epitopes","epitopes", "pocket_closest","surface","internal","host_shift_001","leading", "trailing");
-#print_nodes_in_analysis ($prot, $restriction, \@groups, \@names, 1);
-
-
-
-# 18.02 syn
-#my $prot = "h1";
-#my $tag = "synall";
-#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/syndata/".$prot."_syndata");
-#my @maxdepths = (50, 100, 150);
-#my @groups = (\@h1_epitopes, \@h1_antigenic, \@h1_pocket_closest, \@h1_surface, \@h1_internal, \@h1_host_shift_001, \@h1_leading_kr, \@h1_trailing_kr, \@h1_antigenic_ren);
-#my @names = ("epitopes", "antigenic", "pocket_closest", "surface", "internal", "host_shift_001", "leading_kr", "trailing_kr", "antigenic_ren");
-##my @groups = (\@h1_epitopes);
-##my @names = ("epitopes");
-#my @groups_and_names = prepare_groups_and_names(\@groups, \@names);
-#concat_and_divide_simult ($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]}, 1);
-#count_pvalues($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]});
-
-
-# 18.02 syn
-#my $prot = "h3";
-#my $tag = "synall";
-#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/syndata/".$prot."_syndata");
-#my @maxdepths = (50, 100, 150);
-#my @groups = (\@h3_epitopes,\@h3_antigenic_smith,\@h3_antigenic_steinbruck, \@h3_antigenic_koel, \@h3_pocket_closest, \@h3_surface, \@h3_internal, \@h3_host_shift_001, \@h3_leading_kr, \@h3_trailing_kr);
-#my @names = ("epitopes", "antigenic_smith", "antigenic_steinbruck","antigenic_koel","pocket_closest", "surface", "internal", "host_shift_001", "leading_kr", "trailing_kr", "antigenic_ren");
-##my @groups = (\@h1_epitopes);
-##my @names = ("epitopes");
-#my @groups_and_names = prepare_groups_and_names(\@groups, \@names);
-#concat_and_divide_simult ($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]}, 1);
-#count_pvalues($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]});
-
-# 18.02 syn
-#my $prot = "n2";
-#my $tag = "synall";
-#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/syndata/".$prot."_syndata");
-#my @maxdepths = (50, 100, 150);
-#my @groups = (\@n2_internal);
-#my @names = ("internal");
-#my @groups_and_names = prepare_groups_and_names(\@groups, \@names);
-#concat_and_divide_simult ($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]}, 1);
-#count_pvalues($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]});
-
-# 16.02 leading to trailing enrichment
-#my $prot = "n2";
-#my $tag = "lt";
-#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_realdata");
-#my @maxdepths = (50, 100, 150);
-#my @groups_and_names = prepare_lt_groups_and_names($prot);
-##print scalar @{$groups_and_names[0]};
-##print "\n";
-##print scalar @{$groups_and_names[1]};
-##print "\n";
-##foreach my $n(@{$groups_and_names[0]}){
-##	foreach my $t(@{$n}){
-##		print $t."\n";
-##	}
-##}
-##print scalar @{$groups_and_names[1]};
-##print "\n";
-##foreach my $n(@{$groups_and_names[1]}){
-##	print $n."\n";
-##}
-#concat_and_divide_simult ($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]});
-#count_pvalues($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]});
-
+## For this line to work with syn data you will have to change the srtucture
+my $dir = File::Spec->catdir(getcwd(),syn_tag($syn), maxpath_tag($subtract_maxpath);
+my $realdatapath = File::Spec->catfile($dir, $prot."_realdata");
+my $realdata = lock_retrieve ($realdatapath);
+my @maxdepths = (50, 100, 150);
+#my @groups = (\@h1_antigenic, \@h1_pocket_closest, \@h1_surface, \@h1_internal, \@h1_host_shift_001, \@h1_leading_kr, \@h1_trailing_kr, \@h1_antigenic_ren);
+#my @names = ("antigenic", "pocket_closest", "surface", "internal", "host_shift_001", "leading_kr", "trailing_kr", "antigenic_ren");
+my @groups = (\@h1_increased_binding);
+my @names = ("increased_binding");
+my @groups_and_names = prepare_groups_and_names(\@groups, \@names);
+concat_and_divide_simult ($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]}, $syn, $subtract_maxpath);
+count_pvalues($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]}, $dir);
 
 #my $prot = "h3";
 #my $tag = "26_02";
@@ -4181,6 +4108,110 @@ my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolu
 #count_pvalues($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]});
 
 
+
+## 26.02 Number of nodes in analysis
+#print "\nh1------\n";
+#my $prot = "h1";
+#my $restriction = 50;
+#my @all = (0..565);
+#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_realdata");
+#my @groups = (\@all, \@h1_increased_binding, \@h1_antigenic_ren, \@h1_epitopes, \@h1_antigenic, \@h1_pocket_closest, \@h1_surface, \@h1_internal, \@h1_host_shift_001, \@h1_leading_kr, \@h1_trailing_kr);
+#my @names = ("all", "increased_binding", "antigenic_ren","epitopes", "antigenic","pocket_closest","surface","internal","host_shift_001","leading", "trailing");
+#print_nodes_in_analysis ($prot, $restriction, \@groups, \@names, 1);
+#$realdata = 0;
+#print "\nh3------\n";
+#my $prot = "h3";
+#my $restriction = 50;
+#my @all = (0..565);
+#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_realdata");
+#my @groups = (\@all, \@h3_antigenic, \@h3_antigenic_koel, \@h3_antigenic_smith, \@h3_antigenic_steinbruck, \@h3_epitopes, \@h3_shih_epitopes, \@h3_pocket_closest, \@h3_surface, \@h3_internal, \@h3_host_shift_001, \@h3_leading_kr, \@h3_trailing_kr);
+#my @names = ("all", "antigenic", "antigenic_koel", "antigenic_smith", "antigenic_steinbruck", "epitopes", "shih_epitopes","pocket_closest","surface","internal","host_shift_001","leading", "trailing");
+#print_nodes_in_analysis ($prot, $restriction, \@groups, \@names, 1);
+#$realdata = 0;
+#print "\nn2------\n";
+#my $prot = "n2";
+#my $restriction = 50;
+#my @all = (0..565);
+#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_realdata");
+#my @groups = (\@all, \@n2_epitopes, \@n2_pocket_closest, \@n2_surface, \@n2_internal, \@n2_host_shift_001, \@n2_leading_kr, \@n2_trailing_kr, \@n2_decreasing, \@n2_increasing);
+#my @names = ("all", "epitopes","pocket_closest","surface","internal","host_shift_001","leading", "trailing", "decreasing", "increasing");
+#print_nodes_in_analysis ($prot, $restriction, \@groups, \@names, 1);
+#$realdata = 0;
+#print "\nn1------\n";
+#my $prot = "n1";
+#my $restriction = 50;
+#my @all = (0..565);
+#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_realdata");
+#my @groups = (\@all, \@n1_wan_epitopes, \@n1_epitopes, \@n1_pocket_closest, \@n1_surface, \@n1_internal, \@n1_host_shift_001, \@n1_leading_kr, \@n1_trailing_kr);
+#my @names = ("all", "wan_epitopes","epitopes", "pocket_closest","surface","internal","host_shift_001","leading", "trailing");
+#print_nodes_in_analysis ($prot, $restriction, \@groups, \@names, 1);
+
+
+
+# 18.02 syn
+#my $prot = "h1";
+#my $tag = "synall";
+#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/syndata/".$prot."_syndata");
+#my @maxdepths = (50, 100, 150);
+#my @groups = (\@h1_epitopes, \@h1_antigenic, \@h1_pocket_closest, \@h1_surface, \@h1_internal, \@h1_host_shift_001, \@h1_leading_kr, \@h1_trailing_kr, \@h1_antigenic_ren);
+#my @names = ("epitopes", "antigenic", "pocket_closest", "surface", "internal", "host_shift_001", "leading_kr", "trailing_kr", "antigenic_ren");
+##my @groups = (\@h1_epitopes);
+##my @names = ("epitopes");
+#my @groups_and_names = prepare_groups_and_names(\@groups, \@names);
+#concat_and_divide_simult ($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]}, "syn");
+#count_pvalues($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]});
+
+
+# 18.02 syn
+#my $prot = "h3";
+#my $tag = "synall";
+#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/syndata/".$prot."_syndata");
+#my @maxdepths = (50, 100, 150);
+#my @groups = (\@h3_epitopes,\@h3_antigenic_smith,\@h3_antigenic_steinbruck, \@h3_antigenic_koel, \@h3_pocket_closest, \@h3_surface, \@h3_internal, \@h3_host_shift_001, \@h3_leading_kr, \@h3_trailing_kr);
+#my @names = ("epitopes", "antigenic_smith", "antigenic_steinbruck","antigenic_koel","pocket_closest", "surface", "internal", "host_shift_001", "leading_kr", "trailing_kr", "antigenic_ren");
+##my @groups = (\@h1_epitopes);
+##my @names = ("epitopes");
+#my @groups_and_names = prepare_groups_and_names(\@groups, \@names);
+#concat_and_divide_simult ($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]}, "syn");
+#count_pvalues($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]});
+
+# 18.02 syn
+#my $prot = "n2";
+#my $tag = "synall";
+#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/syndata/".$prot."_syndata");
+#my @maxdepths = (50, 100, 150);
+#my @groups = (\@n2_internal);
+#my @names = ("internal");
+#my @groups_and_names = prepare_groups_and_names(\@groups, \@names);
+#concat_and_divide_simult ($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]}, "syn");
+#count_pvalues($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]});
+
+# 16.02 leading to trailing enrichment
+#my $prot = "n2";
+#my $tag = "lt";
+#my $realdata = lock_retrieve ("/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_realdata");
+#my @maxdepths = (50, 100, 150);
+#my @groups_and_names = prepare_lt_groups_and_names($prot);
+##print scalar @{$groups_and_names[0]};
+##print "\n";
+##print scalar @{$groups_and_names[1]};
+##print "\n";
+##foreach my $n(@{$groups_and_names[0]}){
+##	foreach my $t(@{$n}){
+##		print $t."\n";
+##	}
+##}
+##print scalar @{$groups_and_names[1]};
+##print "\n";
+##foreach my $n(@{$groups_and_names[1]}){
+##	print $n."\n";
+##}
+#concat_and_divide_simult ($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]});
+#count_pvalues($prot, $tag, \@maxdepths, \@{$groups_and_names[0]}, \@{$groups_and_names[1]});
+
+
+
+
 # 18.02 syn control
 #prepare_syn_data("n2", 0,0,1);
 
@@ -4200,7 +4231,7 @@ sub iterations_gulp {
 		$filepath = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/";
 	}
 	else {
-		$filepath = "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
+		$filepath = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
 		
 	}
 	
@@ -4208,7 +4239,7 @@ sub iterations_gulp {
 	#my $ancestor_nodes = $_[4];
 	#my $obs_vector = $_[5];
 	#my $norm = $_[6];
-#	my $realdata = retrieve ("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_realdata") or die "Cannot retrieve real_data";
+#	my $realdata = retrieve ("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_realdata") or die "Cannot retrieve real_data";
 
 		my $maxbin = $realdata->{"maxbin"};
 		#print "Retrieved maxbin $maxbin\n";
@@ -4305,7 +4336,7 @@ sub compute_norm {
 		$group_hash{$ind} = 1;
 	}
 	
-#	$real_data = lock_retrieve("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_realdata") or die "Cannot retrieve real_data";
+#	$real_data = lock_retrieve("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_realdata") or die "Cannot retrieve real_data";
 	my $obs_hash = $realdata->{"obs_hash50"}; 
 	my $subtree_info = $realdata->{"subtree_info"};
 	
@@ -4466,7 +4497,7 @@ sub print_nodes_in_analysis {
 	set_mutmap($prot, "nsyn", "locally");
 	set_distance_matrix($prot, "locally");
 	#my %matrix = incidence_matrix(); #!
-	#print_incidence_matrix(\%matrix, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	#print_incidence_matrix(\%matrix, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
 	# used depth_groups_entrenchment_optimized_selector_alldepths but changed it for depth_groups_entrenchment_optimized_selector_alldepths_2, because the latter
 	# keeps in obs_hash info about site index as well as about node name
 	my $i = 0;
@@ -4497,10 +4528,17 @@ sub prepare_real_data {
 	my $prot = $_[0];
 	my $restriction = $_[2];
 	my $subtract_tallest = $_[3];
-	set_mutmap($prot, "nsyn");
-	set_distance_matrix($prot);
+	my $locally = $_[4];
+	set_mutmap($prot, "nsyn", $locally);
+	set_distance_matrix($prot, $locally);
 	my %matrix = incidence_matrix(); #!
-	print_incidence_matrix(\%matrix, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	
+	my $matrix_path = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
+	if($locally){
+		$matrix_path = "/cygdrive/c/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
+	}
+	
+	print_incidence_matrix(\%matrix, $matrix_path);
 	# used depth_groups_entrenchment_optimized_selector_alldepths but changed it for depth_groups_entrenchment_optimized_selector_alldepths_2, because the latter
 	# keeps in obs_hash info about site index as well as about node name
 	my %obs_hash = depth_groups_entrenchment_optimized_selector_alldepths_2(1,$restriction,$subtract_tallest); #bin, restriction, subtract-tallest
@@ -4572,7 +4610,22 @@ my %realdata = (
 	obs_hash50 => \%obs_hash50,
 );
 
-store \%realdata, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_realdata";
+my $realdatapath = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
+print $realdatapath."\n";
+if ($locally){
+	$realdatapath = "/cygdrive/c/Users/weidewind/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
+}
+print $realdatapath."\n";
+$realdatapath = $realdatapath.$prot."_realdata";
+print $realdatapath."\n";
+if ($subtract_tallest){
+	$realdatapath = $realdatapath."_maxpath_subtracted";
+}
+else {
+	$realdatapath = $realdatapath."_maxpath_not_subtracted";
+}
+print $realdatapath."\n";
+store \%realdata, $realdatapath;
 %static_ring_hash = ();
 %static_depth_hash = ();
 %static_subtree_info = ();
@@ -4598,7 +4651,7 @@ sub concat_and_divide_old {
 	my $iteration_number = 1;
 	my $maxbin = $realdata->{"maxbin"};
 	foreach my $gulp(1..$gulps){
-		my $gulp_filename = "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_for_enrichment_".$tag.$gulp;
+		my $gulp_filename = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_for_enrichment_".$tag.$gulp;
 		open GULP, "<$gulp_filename" or die "Cannot open $gulp_filename";
 		
 		while (<GULP>){
@@ -4692,9 +4745,9 @@ sub concat_and_divide_old {
 	
 	
 	# write to file: out of this cycle
-			open CSV50, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_50_".$tag.".csv";
-			open CSV100, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_100_".$tag.".csv";
-			open CSV150, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_150_".$tag.".csv";
+			open CSV50, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_50_".$tag.".csv";
+			open CSV100, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_100_".$tag.".csv";
+			open CSV150, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_150_".$tag.".csv";
 			# normalization: in cycle or also out of it, if sums are kept in separate hash
 			foreach my $i (1..$iteration_number-1){
 				foreach my $bin(1..$maxbin){
@@ -4779,7 +4832,7 @@ sub concat_and_divide {
 	
 	
 	#foreach my $gulp(1..$gulps){
-	#	my $gulp_filename = "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_for_enrichment_".$tag.$gulp;
+	#	my $gulp_filename = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_for_enrichment_".$tag.$gulp;
 	
 	my $dirname = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."/";
 	opendir(DH, $dirname);
@@ -4908,9 +4961,9 @@ sub concat_and_divide {
 	
 	
 #	# write to file: out of this cycle
-#			open CSV50, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_50_".$tag.".csv";
-#			open CSV100, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_100_".$tag.".csv";
-#			open CSV150, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_150_".$tag.".csv";
+#			open CSV50, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_50_".$tag.".csv";
+#			open CSV100, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_100_".$tag.".csv";
+#			open CSV150, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_150_".$tag.".csv";
 #			# normalization: in cycle or also out of it, if sums are kept in separate hash
 #			foreach my $i (1..$iteration_number-1){
 #				foreach my $bin(1..$maxbin){
@@ -5204,8 +5257,12 @@ sub concat_and_divide_simult {
 	my @groups = @{$_[3]};
 	my @group_names = @{$_[4]};
 	my $syn = $_[5];
+	my $subtract_maxpath = $_[6];
 	
-	open NODECOUNT, ">/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_".$tag."_nodecount";
+	my $dir = File::Spec->catdir(getcwd(),syn_tag($syn), maxpath_tag($subtract_maxpath);
+	my $nodecount_file = File::Spec->catfile($dir, $prot."_".$tag."_nodecount");
+	open NODECOUNT, ">$nodecount_file" or die "Cannot create $nodecount_file";
+	#open NODECOUNT, ">/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_".$tag."_nodecount";
 	
 	my %hash;
 	my $iteration_number = 1;
@@ -5233,14 +5290,17 @@ sub concat_and_divide_simult {
 	
 	
 	#foreach my $gulp(1..$gulps){
-	#	my $gulp_filename = "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_for_enrichment_".$tag.$gulp;
-	my $dirname;
-	if ($syn){
-		$dirname = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_syn/";
-	}
-	else {
-		$dirname = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."/";
-	}
+	#	my $gulp_filename = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_for_enrichment_".$tag.$gulp;
+	my $dirname = File::Spec->catdir($dir, $prot);
+	
+	#if ($syn){
+	#	#$dirname = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_syn/";
+	#	 $dirname = File::Spec->catdir($dirname, $prot."_syn");
+	#}
+	#else {
+	#	#$dirname = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."/";
+	#	$dirname = File::Spec->catdir($dirname, $prot);
+	#}
 	opendir(DH, $dirname);
 	my @files = readdir(DH);
 	closedir(DH);
@@ -5250,7 +5310,9 @@ sub concat_and_divide_simult {
 	foreach my $md(@maxdepths){
 		foreach my $group_number(0.. scalar @groups - 1){
 			local *FILE;
-			open FILE, ">/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_gulpselector_vector_".$md."_".$group_names[$group_number]."_".$tag.".csv" or die;
+			my $csvfile =  File::Spec->catfile($dir, $prot."_gulpselector_vector_".$md."_".$group_names[$group_number]."_".$tag.".csv");
+			open FILE, ">$csvfile" or die "Cannot create $csvfile";
+			
 			FILE->autoflush(1);
 			$filehandles{$md}{$group_number} = *FILE;
 		}
@@ -5412,9 +5474,9 @@ sub concat_and_divide_simult {
 	
 	
 #	# write to file: out of this cycle
-#			open CSV50, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_50_".$tag.".csv";
-#			open CSV100, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_100_".$tag.".csv";
-#			open CSV150, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_150_".$tag.".csv";
+#			open CSV50, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_50_".$tag.".csv";
+#			open CSV100, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_100_".$tag.".csv";
+#			open CSV150, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_gulpselector_vector_150_".$tag.".csv";
 #			# normalization: in cycle or also out of it, if sums are kept in separate hash
 #			foreach my $i (1..$iteration_number-1){
 #				foreach my $bin(1..$maxbin){
@@ -5441,13 +5503,19 @@ my $tag = $_[1];
 my @restriction_levels = @{$_[2]};
 my @groups = @{$_[3]};
 my @group_names = @{$_[4]};
+my $dir = $_[5];
 
-my $countfile = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_count_".$tag;
-open COUNTER, ">$countfile";
+
+#my $countfile = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
+#if ($locally){
+#	$countfile = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/";
+#}
+
+my $countfile = File::Spec->catfile($dir, $prot."_count_".$tag);
+open COUNTER, ">$countfile" or die "Cannot create $countfile";
 COUNTER->autoflush(1);
 
-
-my $maxbin = $realdata->{"maxbin"}; ## is it trustworthy?
+my $maxbin = $realdata->{"maxbin"}; 
 #print "before cycle\n";
 my $obs_hash = $realdata->{"obs_hash50"};
 my $subtree_info = $realdata->{"subtree_info"};
@@ -5490,12 +5558,15 @@ print "level $restriction\n";
 	
 ## end of copypaste	
 	
+	#my $file = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
+	#if ($locally){
+	#	$file = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/";
+	#}
+	#$file = $file.$prot."_gulpselector_vector_boot_median_test_".$restriction."_".$group_names[$group_number]."_".$tag;
 	
-	
-		my $file = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_gulpselector_vector_boot_median_test_".$restriction."_".$group_names[$group_number]."_".$tag;
-		open FILE, ">$file";
-		
-		
+	my $file = File::Spec->catfile($dir, $prot."_gulpselector_vector_boot_median_test_".$restriction."_".$group_names[$group_number]."_".$tag);
+	open FILE, ">$file" or die "Cannot create $file";
+			
 	my %histhash;
 	foreach my $site_node(keys %obs_hash_restricted){
 		foreach my $bin (keys %{$obs_hash_restricted{$site_node}}){
@@ -5515,23 +5586,35 @@ print "level $restriction\n";
 #print " going to flat hash\n";
 		foreach my $bin(1..$maxbin){
 			foreach my $node (keys %obs_hash_restricted){
-				$flat_obs_hash{$bin} += $obs_hash_restricted{$node}{$bin}[0];
-				$flat_exp_hash{$bin} += $obs_hash_restricted{$node}{$bin}[1];
+				$flat_obs_hash{$bin} += $obs_hash_restricted{$node}{$bin}[0]; 
+				$flat_exp_hash{$bin} += $obs_hash_restricted{$node}{$bin}[1]; 
 			}
 		}
 #print " computing hist emdian \n"	;
 		my $obs_median = hist_median_for_hash(\%flat_obs_hash);
 		my $exp_median = hist_median_for_hash(\%flat_exp_hash);
+		my $obs_mean = hist_mean_for_hash(\%flat_obs_hash); # 18.03 - added the same statistics based on histogram mean (instead of median)
+		my $exp_mean = hist_mean_for_hash(\%flat_exp_hash);
 		
 		print FILE "\n observed median: $obs_median\n";
 		print FILE "\n poisson expected median: $exp_median\n";
-
+		print FILE "\n observed mean: $obs_mean\n";
+		print FILE "\n poisson expected mean: $exp_mean\n";
+		
 		my $pval_epi;
 		my $pval_env;
+		my $pval_epi_for_mean;
+		my $pval_env_for_mean;
 
 	
-#print "going to read input file\n";		
-		my $csvfile = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_gulpselector_vector_".$restriction."_".$group_names[$group_number]."_".$tag.".csv";
+#print "going to read input file\n";	
+		#my $csvfile = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
+		#if ($locally){
+		#	$csvfile = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/";
+		#}
+		#$csvfile = $csvfile.$prot."_gulpselector_vector_".$restriction."_".$group_names[$group_number]."_".$tag.".csv";
+
+		my $csvfile = File::Spec->catfile($dir, $prot."_gulpselector_vector_".$restriction."_".$group_names[$group_number]."_".$tag.".csv");
 		open CSVFILE, "<$csvfile" or die "Cannot open $csvfile";
 		my $iteration = 0;
 		my @hist_obs;
@@ -5566,20 +5649,22 @@ print "level $restriction\n";
 			
 			my $boot_obs_median = hist_median_for_hash(\%boot_obs_hash);
 			my $boot_exp_median = hist_median_for_hash(\%boot_exp_hash);
+			my $boot_obs_mean = hist_mean_for_hash(\%boot_obs_hash);
+			my $boot_exp_mean = hist_mean_for_hash(\%boot_exp_hash);
 			print FILE "\n boot obs median: $boot_obs_median boot exp median: $boot_exp_median \n";
-#			if ($boot_median <= $obs_median){
-#				$pval_epi += 1;
-#			}
-#			if ($boot_median >= $obs_median){
-#				$pval_env += 1;
-#			}
+			print FILE "\n boot obs mean: $boot_obs_mean boot exp mean: $boot_exp_mean \n";
 			if ($boot_obs_median - $boot_exp_median >= $obs_median - $exp_median){
 				$pval_env += 1;
 			}
 			if ($boot_obs_median - $boot_exp_median <= $obs_median - $exp_median){
 				$pval_epi += 1;
 			}
-			
+			if ($boot_obs_mean - $boot_exp_mean >= $obs_mean - $exp_mean){
+				$pval_env_for_mean += 1;
+			}
+			if ($boot_obs_mean - $boot_exp_mean <= $obs_mean - $exp_mean){
+				$pval_epi_for_mean += 1;
+			}
 			$iteration++;
 		}
 		
@@ -5596,7 +5681,10 @@ print "level $restriction\n";
 		
 		close CSVFILE;
 	
-		print FILE "pvalue epistasis ".($pval_epi/$iteration)." pvalue environment ".($pval_env/$iteration);
+		print FILE "- pvalue_epistasis  pvalue_environment\n";
+		print FILE "median_stat ".($pval_epi/$iteration)." ".($pval_env/$iteration)."\n";
+		print FILE "mean_stat ".($pval_epi_for_mean/$iteration)." ".($pval_env_for_mean/$iteration)."\n";
+
 		close FILE;	
 	
 	
@@ -5630,9 +5718,15 @@ print "level $restriction\n";
 ## end of copypaste	
 	my $count = scalar keys %obs_hash_restricted;
 	print  COUNTER "$restriction ".$group_names[$group_number]." group $count "; 
-	
-	
-		my $file = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_gulpselector_vector_boot_median_test_".$restriction."_".$group_names[$group_number]."_".$tag;
+		
+		
+		#my $file = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
+		#if ($locally){
+		#	$file = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/";
+		#}
+		#$file = $csvfile.$prot."_gulpselector_vector_boot_median_test_".$restriction."_".$group_names[$group_number]."_".$tag;
+		
+		my $file = File::Spec->catfile($dir, $prot."_gulpselector_vector_boot_median_test_".$restriction."_".$group_names[$group_number]."_".$tag);
 		open FILE, ">$file";
 		
 		
@@ -5664,15 +5758,24 @@ print "level $restriction\n";
 #print " computing hist emdian \n"	;
 		my $obs_median = hist_median_for_hash(\%flat_obs_hash);
 		my $exp_median = hist_median_for_hash(\%flat_exp_hash);
-
-		print FILE "\n observed median: $obs_median expected poisson median $exp_median\n";
-
+		my $obs_mean = hist_mean_for_hash(\%flat_obs_hash);
+		my $exp_mean = hist_mean_for_hash(\%flat_exp_hash);
+		
+		print FILE "\n observed median: $obs_median expected poisson median $exp_median observed mean: $obs_mean expected poisson mean $exp_mean\n";
 	
 #print "going to read input file\n";		
-		my $csvfile = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_gulpselector_vector_".$restriction."_".$group_names[$group_number]."_".$tag.".csv";
+		
+		#my $csvfile = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
+		#if ($locally){
+		#	$csvfile = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/";
+		#}
+		#$csvfile = $csvfile.$prot."_gulpselector_vector_".$restriction."_".$group_names[$group_number]."_".$tag.".csv";
+		
+		my $csvfile = File::Spec->catfile($dir,$prot."_gulpselector_vector_".$restriction."_".$group_names[$group_number]."_".$tag.".csv");
 		open CSVFILE, "<$csvfile" or die "Cannot open $csvfile";
 		my $iteration = 0;
 		my @group_boot_medians;
+		my @group_boot_means;
 		my @hist_obs;
 		my @hist_exp;
 		my @array_gbo_minus_gbe;
@@ -5714,9 +5817,15 @@ print "level $restriction\n";
 			
 			my $boot_obs_median = hist_median_for_hash(\%boot_obs_hash);
 			my $boot_exp_median = hist_median_for_hash(\%boot_exp_hash);
+			my $boot_obs_mean = hist_mean_for_hash(\%boot_obs_hash);
+			my $boot_exp_mean = hist_mean_for_hash(\%boot_exp_hash);
+			
 			$group_boot_medians[$iteration][0] = $boot_obs_median;
 			$group_boot_medians[$iteration][1] = $boot_exp_median;
-			print FILE "\n boot obs median: $boot_obs_median\n";
+			$group_boot_means[$iteration][0] = $boot_obs_mean;
+			$group_boot_means[$iteration][1] = $boot_exp_mean;			
+			print FILE "\n boot obs median: $boot_obs_median boot obs mean: $boot_obs_mean\n";
+			
 			$iteration++;
 		}
 		close CSVFILE;	
@@ -5749,11 +5858,16 @@ my $maxbin = 0;
 ## end of copypaste	
 	
 		my $count = scalar keys %complement_obs_hash_restricted;
-	print  COUNTER " $restriction ".$group_names[$group_number]." complement $count\n"; 
+		print  COUNTER " $restriction ".$group_names[$group_number]." complement $count\n"; 
 	
-	
-		my $file = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_gulpselector_vector_boot_median_test_".$restriction."_".$group_names[$group_number]."_".$tag;
-		open FILE, ">$file";
+		#my $file = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
+		#if ($locally){
+		#	$file = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/";
+		#}
+		#$file = $csvfile.$prot."_gulpselector_vector_boot_median_test_".$restriction."_".$group_names[$group_number]."_".$tag;
+		
+		my $file = File::Spec->catfile($dir,$prot."_gulpselector_vector_boot_median_test_".$restriction."_".$group_names[$group_number]."_".$tag);
+		open FILE, ">$file" or die "Cannot create $file";
 		my %complement_flat_obs_hash;
 		my %complement_flat_exp_hash;
 #print " going to flat hash\n";
@@ -5766,15 +5880,23 @@ my $maxbin = 0;
 #print " computing hist emdian \n"	;
 		my $complement_obs_median = hist_median_for_hash(\%complement_flat_obs_hash);
 		my $complement_exp_median = hist_median_for_hash(\%complement_flat_exp_hash);
-
-		print FILE "\n observed median: $complement_obs_median expected median: $complement_exp_median\n";
-
+		my $complement_obs_mean = hist_mean_for_hash(\%complement_flat_obs_hash);
+		my $complement_exp_mean = hist_mean_for_hash(\%complement_flat_exp_hash);
+		
+		print FILE "\n observed median: $complement_obs_median expected median: $complement_exp_median observed mean: $complement_obs_mean expected mean: $complement_exp_mean\n";
 	
 #print "going to read input file\n";		
-		my $csvfile = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/".$prot."_gulpselector_vector_".$restriction."_".$group_names[$group_number]."_".$tag.".csv";
+		#my $csvfile = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";
+		#if ($locally){
+		#	$csvfile = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/";
+		#}
+		#$csvfile = $csvfile.$prot."_gulpselector_vector_".$restriction."_".$group_names[$group_number]."_".$tag.".csv";
+		
+		my $csvfile = File::Spec->catfile($dir,$prot."_gulpselector_vector_".$restriction."_".$group_names[$group_number]."_".$tag.".csv");
 		open CSVFILE, "<$csvfile" or die "Cannot open $csvfile";
 		my $iteration = 0;
 		my @complement_boot_medians;
+		my @complement_boot_means;
 		my @hist_compl_obs;
 		my @hist_compl_exp;
 		my @array_cbo_minus_cbe;
@@ -5816,9 +5938,13 @@ my $maxbin = 0;
 			
 			my $boot_obs_median = hist_median_for_hash(\%boot_obs_hash);
 			my $boot_exp_median = hist_median_for_hash(\%boot_exp_hash);
+			my $boot_obs_mean = hist_mean_for_hash(\%boot_obs_hash);
+			my $boot_exp_mean = hist_mean_for_hash(\%boot_exp_hash);			
 			$complement_boot_medians[$iteration][0] = $boot_obs_median;
 			$complement_boot_medians[$iteration][1] = $boot_exp_median;
-			print FILE "\n boot obs median: $boot_obs_median boot exp median $boot_exp_median\n";
+			$complement_boot_means[$iteration][0] = $boot_obs_mean;
+			$complement_boot_means[$iteration][1] = $boot_exp_mean;
+			print FILE "\n boot obs median: $boot_obs_median boot exp median $boot_exp_median  boot obs mean: $boot_obs_mean boot exp mean $boot_exp_mean\n";
 			
 			$iteration++;
 		}
@@ -5878,7 +6004,15 @@ my $maxbin = 0;
 		my $pval_epi_depletion;		
 		my $pval_epi;
 		my $pval_env;
+		my $pval_env_enrichment_for_mean;
+		my $pval_epi_enrichment_for_mean;
+		my $pval_env_depletion_for_mean;
+		my $pval_epi_depletion_for_mean;		
+		my $pval_epi_for_mean;
+		my $pval_env_for_mean;
+		
 		for (my $i = 0; $i < scalar @group_boot_medians; $i++){
+		## medians
 			if (($group_boot_medians[$i][0] - $group_boot_medians[$i][1]) - ($complement_boot_medians[$i][0] - $complement_boot_medians[$i][1])
 				>= ($obs_median - $exp_median) - ($complement_obs_median - $complement_exp_median)){
 				$pval_env_enrichment += 1;
@@ -5902,11 +6036,38 @@ my $maxbin = 0;
 			if ($group_boot_medians[$i][0] - $group_boot_medians[$i][1] <= $obs_median - $exp_median){
 				$pval_epi += 1;
 			}
+			
+			## means
+			
+			if (($group_boot_means[$i][0] - $group_boot_means[$i][1]) - ($complement_boot_means[$i][0] - $complement_boot_means[$i][1])
+				>= ($obs_mean - $exp_mean) - ($complement_obs_mean - $complement_exp_mean)){
+				$pval_env_enrichment_for_mean += 1;
+			}
+			if (($group_boot_means[$i][0] - $group_boot_means[$i][1]) - ($complement_boot_means[$i][0] - $complement_boot_means[$i][1])
+				<= ($obs_mean - $exp_mean) - ($complement_obs_mean - $complement_exp_mean)){
+				$pval_env_depletion_for_mean += 1;
+			}
+			if (-($group_boot_means[$i][0] - $group_boot_means[$i][1]) + ($complement_boot_means[$i][0] - $complement_boot_means[$i][1])
+				>= -($obs_mean - $exp_mean) + ($complement_obs_mean - $complement_exp_mean)){
+				$pval_epi_enrichment_for_mean += 1;
+			}
+			if (-($group_boot_means[$i][0] - $group_boot_means[$i][1]) + ($complement_boot_means[$i][0] - $complement_boot_means[$i][1])
+				<= -($obs_mean - $exp_mean) + ($complement_obs_mean - $complement_exp_mean)){
+				$pval_epi_depletion_for_mean += 1;
+			}
+			
+			if ($group_boot_means[$i][0] - $group_boot_means[$i][1] >= $obs_mean - $exp_mean){
+				$pval_env_for_mean += 1;
+			}
+			if ($group_boot_means[$i][0] - $group_boot_means[$i][1] <= $obs_mean - $exp_mean){
+				$pval_epi_for_mean += 1;
+			}
 		}
 		
-		print FILE "pvalue_epistasis_enrichment ".($pval_epi_enrichment/$iteration)." pvalue_environment_enrichment ".($pval_env_enrichment/$iteration);
-		print FILE " pvalue_epistasis_depletion".($pval_epi_depletion/$iteration)." pvalue_environment_depletion  ".($pval_env_depletion/$iteration);
-		print FILE " pvalue_epistasis ".($pval_epi/$iteration)." pvalue_environment ".($pval_env/$iteration)."\n";
+		print FILE "- pvalue_epistasis_enrichment pvalue_environment_enrichment pvalue_epistasis pvalue_environment\n";
+		print FILE "median_stat ".($pval_epi_enrichment/$iteration)." ".($pval_env_enrichment/$iteration)." ".($pval_epi/$iteration)." ".($pval_env/$iteration)."\n";
+		print FILE "mean_stat ".($pval_epi_enrichment_for_mean/$iteration)." ".($pval_env_enrichment_for_mean/$iteration)." ".($pval_epi_for_mean/$iteration)." ".($pval_env_for_mean/$iteration)."\n";
+
 		close FILE;	
 	
 	
@@ -5925,7 +6086,7 @@ sub entrenchment_bootstrap_full_selection_vector {
 	set_mutmap($prot, "nsyn");
 	set_distance_matrix($prot);
 	my %matrix = incidence_matrix(); #!
-	print_incidence_matrix(\%matrix, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	print_incidence_matrix(\%matrix, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
 	my %obs_hash = depth_groups_entrenchment_optimized_selector_alldepths(1,$restriction,$subtract_tallest); #bin, restriction, subtract-tallest
 	my %ancestor_nodes;
 	foreach my $ancnode(keys %obs_hash){
@@ -5992,10 +6153,10 @@ sub entrenchment_bootstrap_full_selection_vector {
 		%static_subtree_info = ();
 	}
 
-	store \@simulated_hists, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_testselector_vector_".$restriction."_stored";
-	my $arref = retrieve("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_testselector_vector_".$restriction."_stored");
+	store \@simulated_hists, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_testselector_vector_".$restriction."_stored";
+	my $arref = retrieve("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_testselector_vector_".$restriction."_stored");
 	
-	open CSV, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_testselector_vector_".$restriction.".csv";
+	open CSV, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_testselector_vector_".$restriction.".csv";
 	foreach my $bin(1..$maxbin){
 			print CSV $bin."_obs,".$bin."_exp,";
 	}
@@ -6050,7 +6211,7 @@ sub entrenchment_bootstrap_full_selection_vector {
 #	check_part_2("h3", 20, 150);
 
 sub test_remove_zero_branches {
-	my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.l.r.newick");
+	my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/h1.l.r.newick");
 	my $multitree = remove_zero_branches($tree);
 	open TREE, ">multitree.tre" or die "Cannot create file";
 	my $treestr=tree2str($multitree);
@@ -6065,7 +6226,7 @@ sub check_entrenchment_blue_violet_bootstrap {
 	set_mutmap($prot, "nsyn");
 	set_distance_matrix($prot);
 	my %matrix = incidence_matrix(); #!
-	print_incidence_matrix(\%matrix, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	print_incidence_matrix(\%matrix, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
 	my %obs_hash = depth_groups_entrenchment_optimized(1,0);
 	my %real_obs_hash;
 	my %real_exp_hash;
@@ -6087,9 +6248,9 @@ sub check_entrenchment_blue_violet_bootstrap {
 	my %all_simulated_medians;
 	my %all_hash;
 	
-	open STORAGE, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_todelete_2434node.csv";
+	open STORAGE, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_todelete_2434node.csv";
 	for (my $i = 1; $i <= $iterations; $i++){
-		my @mock_mutmaps = read_incidence_matrix("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
+		my @mock_mutmaps = read_incidence_matrix("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
 		
 		%static_subs_on_node = %{$mock_mutmaps[0]};
 		%static_nodes_with_sub = %{$mock_mutmaps[1]};
@@ -6171,7 +6332,7 @@ sub check_entrenchment_blue_violet_bootstrap {
 	#	}
 	#}
 close STORAGE;
-	#store \@simulated_hists, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_check_simulation_150_hash_stored";
+	#store \@simulated_hists, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_check_simulation_150_hash_stored";
 	
 }
 
@@ -6181,7 +6342,7 @@ sub check_part_2	{
 	my $restriction = $_[2];
 
 	my $maxbin = 400;
-		my $arref = retrieve("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_check_simulation_".$restriction."_stored");
+		my $arref = retrieve("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_check_simulation_".$restriction."_stored");
 	
 	my $file = $prot."_check_statistics_".$restriction;
 	open FILE, ">$file";
@@ -6248,7 +6409,7 @@ sub entrenchment_blue_violet_bootstrap{
 	set_mutmap($prot, "nsyn");
 	set_distance_matrix($prot);
 	my %matrix = incidence_matrix(); #!
-	print_incidence_matrix(\%matrix, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	print_incidence_matrix(\%matrix, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
 	my %obs_hash = depth_groups_entrenchment_optimized(1,$restriction);
 	my %real_obs_hash;
 	my %real_exp_hash;
@@ -6267,7 +6428,7 @@ sub entrenchment_blue_violet_bootstrap{
 	
 	my @simulated_hists;
 	for (my $i = 1; $i <= $iterations; $i++){
-		my @mock_mutmaps = read_incidence_matrix("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
+		my @mock_mutmaps = read_incidence_matrix("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_ShuffledMatrices/$i");
 		
 		%static_subs_on_node = %{$mock_mutmaps[0]};
 		%static_nodes_with_sub = %{$mock_mutmaps[1]};
@@ -6289,10 +6450,10 @@ sub entrenchment_blue_violet_bootstrap{
 		%static_subtree_info = ();
 	}
 
-	store \@simulated_hists, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_1_100noneed_bv_simulation_".$restriction."_stored";
-	my $arref = retrieve("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_1_100noneed_bv_simulation_".$restriction."_stored");
+	store \@simulated_hists, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_1_100noneed_bv_simulation_".$restriction."_stored";
+	my $arref = retrieve("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_1_100noneed_bv_simulation_".$restriction."_stored");
 	
-	open CSV, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_1_100noneed_bv_simulation_".$restriction.".csv";
+	open CSV, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_1_100noneed_bv_simulation_".$restriction.".csv";
 	foreach my $bin(1..$maxbin){
 			print CSV $bin."_obs,".$bin."_exp,";
 	}
@@ -6346,8 +6507,8 @@ sub entrenchment_blue_violet_bootstrap{
 
 sub rewrite_csv {
 	my $prot = $_[0];
-	my $arref = retrieve("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_150_stored");
-	open CSV, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_150.csv";
+	my $arref = retrieve("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_150_stored");
+	open CSV, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_150.csv";
 	
 	foreach my $bin(1..32){
 			print CSV $bin."_obs,".$bin."_exp,";
@@ -6370,8 +6531,8 @@ sub rewrite_csv {
 
 sub write_csv {
 	my $prot = $_[0];
-	my $arref = retrieve("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_50_stored");
-	open CSV, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_50.csv";
+	my $arref = retrieve("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_50_stored");
+	open CSV, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_50.csv";
 	
 	foreach my $bin(1..31){
 			print CSV $bin."_obs,".$bin."_exp,";
@@ -6410,7 +6571,7 @@ sub main_optim {
 sub boot_median_test {
 	my $prot = $_[0];
 	my $restriction = $_[1];
-	my $arref = retrieve("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_".$restriction."_stored");
+	my $arref = retrieve("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_simulation_".$restriction."_stored");
 
 	my %obs_hash = depth_groups_entrenchment(10, $restriction);
 	my $file = $prot."_new_boot_median_test_".$restriction;
@@ -6686,7 +6847,7 @@ sub bullshit_test{
 	
 	set_mutmap("h1", "nsyn");
 	my %matrix = incidence_matrix();
-	print_incidence_matrix(\%matrix, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
+	print_incidence_matrix(\%matrix, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/");
 	my $step = 2;
 	my $root = $static_tree-> get_root;
 	my @array;
@@ -8935,7 +9096,7 @@ sub distances_to_subtree_mutations {
  	
  	sub set_dr_distance_matrix {
  		my $prot = $_[0];
- 		my $file = "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/Mock/".$prot."_distance_matrix.csv";
+ 		my $file = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/Mock/".$prot."_distance_matrix.csv";
  		
  		open CSV, "<$file";
  		my $header = <CSV>;
@@ -8965,7 +9126,7 @@ sub set_distance_matrix {
 			$filepath = "/cygdrive/c/Users/weidewind/Documents/CMD/Coevolution/Influenza/perlOutput/epi_or_env_december_2015/";
 		}
 		else {
-			$filepath = "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";	
+			$filepath = "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/";	
 		}		
  		my $file = $filepath.$prot."_distance_matrix.csv";
  		
@@ -9125,7 +9286,7 @@ sub set_distance_matrix {
    }
     
 #sub distances_to_subtree_mutationss {
-#	my $tree = parse_tree("/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/Mock/h1.l.r.newick");
+#	my $tree = parse_tree("/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/Mock/h1.l.r.newick");
 #	my $node = $_[1]; # a node, not a nodename
 #   $tree -> prune_tips()
 #	$tree->visit_depth_first(
@@ -9339,7 +9500,7 @@ sub test_obsv_manipulation {
 	my %hash = depth_groups_entrenchment_optimized(10,$restriction);
 	
 	
-	open CSV, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_vector_simulation_test_".$restriction.".csv";
+	open CSV, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_vector_simulation_test_".$restriction.".csv";
 	foreach my $bin(1..32){
 			print CSV $bin."_obs,".$bin."_exp,";
 	}
@@ -9391,7 +9552,7 @@ sub check_entrenchment_blue_violet_bootstrap_vector {
 	my %all_hash;
 	
 	my %obs_vectors = get_observation_vectors();
-	open STORAGE, ">/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_1000_test_right_maxpath_subtracted_150_vector_sim.csv";
+	open STORAGE, ">/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_1000_test_right_maxpath_subtracted_150_vector_sim.csv";
 	for (my $i = 1; $i <= $iterations; $i++){
 		my %shuffled_obs_vectors = shuffle_observation_vectors(\%obs_vectors);
 		my @mock_mutmaps = read_observation_vectors(\%shuffled_obs_vectors);
@@ -9475,7 +9636,7 @@ sub check_entrenchment_blue_violet_bootstrap_vector {
 	#	}
 	#}
 close STORAGE;
-	#store \@simulated_hists, "/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_check_simulation_150_hash_stored";
+	#store \@simulated_hists, "/export/home/popova/workspace/perlCoevolution/TreeUtils/Phylo/MutMap/".$prot."_check_simulation_150_hash_stored";
 	
 }
 
